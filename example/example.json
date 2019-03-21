@@ -11,6 +11,10 @@
 
 - Each folder should have a `README.md` which explains the service's role
 
+## Naming your API
+- An api should be named following the resource it reflects
+    `Catalog service has apis over product resources, so it should have an api description file named: product-api.yaml`
+
 ## Creating or Updating an API
 - Create a new file inside your service's folder (create one if not yet exists)
 
