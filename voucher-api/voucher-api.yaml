@@ -1,0 +1,143 @@
+---
+openapi: 3.0.2
+info:
+  version: 2.1.0
+  title: Voucher API
+  description: An API that allows access to voucher resource
+  contact:
+    name: Nguyễn Thanh Xuân
+    email: xuan.nt@teko.vn
+servers:
+  - url: https://offlinesales-qc.teko.vn
+    description: QC/Testing server
+  - url: https://offlinesales-staging.teko.vn
+    description: Staging server
+  - url: https://offlinesales.teko.vn
+    description: Production server
+paths:
+  '/vouchers/{voucher_code}':
+    get:
+      summary: get information about a voucher with code
+      operationId: getOneVoucher
+      parameters:
+        - name: voucher_code
+          in: path
+          description: the code (example EV23XASD) which represents the voucher
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: voucher object response
+          content:
+            application/json:
+              schema:
+                '$ref': '#/components/schemas/VoucherResp'
+        '404':
+          description: voucher not found response
+          content:
+            application/json:
+              schema:
+                '$ref': '#/components/schemas/Error'
+components:
+  schemas:
+    VoucherResp:
+      required:
+        - code
+      properties:
+        code:
+          type: string
+        result:
+          required:
+            - voucher
+          properties:
+            voucher:
+              '$ref': '#/components/schemas/Voucher'
+    Voucher:
+      required:
+        - status
+        - code
+      properties:
+        status:
+          type: integer
+          description: 1 - used | 2 - useable | 3 - cancelled
+        code:
+          type: string
+          description: voucher code
+        createdFrom:
+          type: string
+          description: from which order this voucher was created
+        usedFor:
+          type: string
+          description: for which order this voucher was used
+        startAt:
+          type: integer
+          format: int64
+          description: |
+            from when this voucher can be used
+            if this key has a value, it will override the value 
+            inside voucher data
+        endAt:
+          type: integer
+          format: int64
+          description: |
+            until when this voucher can be used
+            if this key has a value, it will override the value 
+            inside voucher data
+        data:
+          '$ref': '#/components/schemas/VoucherData'
+    VoucherData:
+      properties:
+        applyFrom:
+          type: integer
+          format: int64
+          description: only apply if the order grand total is higher than
+          example: 1000000
+        name:
+          type: string
+          description: the name of the program
+          example: Voucher doanh nghiệp cho đơn hàng lớn hơn 10 triệu
+        startAt:
+          type: integer
+          format: int64
+          description: from when this voucher can be used
+        endAt:
+          type: integer
+          format: int64
+        discount:
+          type: object
+          oneOf:
+            - '$ref': '#/components/schemas/DiscountByValue'
+            - '$ref': '#/components/schemas/DiscountByPercentage'
+    DiscountByValue:
+      required:
+        - value
+      properties:
+        value:
+          type: integer
+          format: int64
+          example: 1000000
+    DiscountByPercentage:
+      required:
+        - percent
+      properties:
+        percent:
+          type: integer
+          example: 8
+        maxValue:
+          type: integer
+          format: int64
+          example: 5000000
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+          description: error code, should different from 00
+          example: 01
+        message:
+          type: string
+          description: error message
+          example: voucher not found!
