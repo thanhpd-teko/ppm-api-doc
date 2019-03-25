@@ -1,0 +1,24 @@
+get:
+  tags:
+    - Vouchers
+  summary: get information about a voucher with code
+  parameters:
+    - name: voucher_code
+      in: path
+      description: the code (example EV23XASD) which represents the voucher
+      required: true
+      schema:
+        type: string
+  responses:
+    200:
+      description: voucher object response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/VoucherResp'
+    404:
+      description: voucher not found response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
