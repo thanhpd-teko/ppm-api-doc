@@ -1,0 +1,11 @@
+required:
+  - code
+properties:
+  code:
+    type: string
+    result:
+      required:
+        - voucher
+      properties:
+        voucher:
+          $ref: '#/components/schemas/Voucher'

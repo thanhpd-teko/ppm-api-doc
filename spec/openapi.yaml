@@ -1,0 +1,31 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Example.com
+  contact:
+    email: tien.dv@teko.vn
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  x-logo:
+    url: 'https://apis.guru/openapi-template/logo.png'
+  description: >
+    This documentation describes APIs used in/exposed from Teko micro-services ecosystem
+
+    # Introduction
+
+    These specifications are following
+
+    [OpenAPI 3.0.0
+    format](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md).
+
+tags:
+  - name: Vouchers
+    description: Provides apis for voucher service
+servers:
+  - url: 'http://example.com/api/v1'
+  - url: 'https://example.com/api/v1'
+x-tagGroups:
+  - name: Offline Sales
+    tags:
+      - Vouchers

@@ -1,0 +1,8 @@
+
+apiTitle: Teko Open API
+splitSpec: true
+codeSamples: false
+swaggerUI: true
+travis: true
+repo: teko-vn/api-docs
+oasVersion: 3.0.0

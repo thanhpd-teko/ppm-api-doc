@@ -1,3 +1,0 @@
-https://github.com/swagger-api/swagger-ui
-https://github.com/peter-evans/swagger-github-pages
-https://swagger.io/blog/api-development/generator-openapi-repo/
