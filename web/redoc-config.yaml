@@ -1,3 +1,4 @@
+hideDownloadButton: true
 theme:
   colors:
     primary:
