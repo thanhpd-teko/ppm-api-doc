@@ -9,7 +9,6 @@ info:
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
   x-logo:
     url: 'https://teko-vn.github.io/api-docs/Teko-Logo-01.svg'
-    backgroundColor: '#0033A0'
   description: >
     This documentation describes APIs used in/exposed from Teko micro-services ecosystem
 
