@@ -47,19 +47,27 @@
 
 ## Testing your changes locally
 
-1. Install [Node JS](https://nodejs.org/)
-2. Clone repo and run `yarn install` in the repo root
+1. Install [Node JS](https://nodejs.org/):
+   - Using `yarn`: `node`>=10.14.0.
+   - Using `npm`: `node`>=8.15.x.
+2. Clone repo and run `yarn install` or `npm install` in the repo root
 
 ### Usage
 
 #### `yarn start`
 
+#### `npm run start` (with `npm`)
+
 Starts the development server.
 
 #### `yarn build`
 
+#### `npm run build` (with `npm`)
+
 Bundles the spec and prepares web_deploy folder with static assets.
 
 #### `yarn test`
+
+#### `npm run test` (with `npm`)
 
 Validates the spec.
