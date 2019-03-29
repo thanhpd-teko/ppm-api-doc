@@ -1,0 +1,11 @@
+required:
+  - error
+properties:
+  error:
+    type: string
+    description: error message
+    example: invalid_request
+  error_description:
+    type: string
+    description: error description
+    example: 'Invalid "refresh_token" in request'

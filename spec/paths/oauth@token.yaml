@@ -1,0 +1,72 @@
+post:
+  tags:
+    - IdentityPlatformAPI
+  summary: Get Token API
+  parameters:
+    - name: grant_type
+      description: Luồng lấy token tương ứng.
+      enum:
+        [
+          "authorization_code",
+          "token",
+          "password",
+          "client_credentials",
+          "refresh_token",
+        ]
+      required: true
+    - name: client_id
+      description: |
+        Thông tin Client ID.
+      type: string
+      required: true
+    - name: client_secret
+      description: |
+        Thông tin Client Secret.
+        Được sử dụng trong các `grant_type`:
+          - `authorizetion_code`
+          - `client_credentials`
+          - `refresh_token`
+    - name: code
+      description: |
+        Được sử dụng trong `grant_type`: `authorization_code`.
+        Authorization code nhận được khi gọi `GET /oauth/authorization`.
+    - name: redirect_uri
+      description: |
+        Được sử dụng trong các `grant_type`:
+        - `authorization_code`
+        - `token`
+        `redirect_uri` Client đã đăng ký.
+    - name: username
+      description: |
+        Được sử dụng trong `grant_type`: `password`.
+        Thông tin tên tài khoản.
+    - name: password
+      description: |
+        Được sử dụng trong `grant_type`: `password`.
+        Mật khẩu của tài khoản tương ứng.
+    - name: refresh_token
+      description: |
+        Được sử dụng trong `grant_type`: `refresh_token`.
+        `refresh_token` nhận được khi exchange `code` trong Authorization Flow.
+  responses:
+    200:
+      description: token object response
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/TokenResp"
+    400:
+      description: invalid request response
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/InvalidRequestResp"
+    401:
+      description: invalid client response
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/InvalidRequestResp"
+
+  servers:
+    - url: http://id.teko.vn
