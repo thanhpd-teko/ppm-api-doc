@@ -1,11 +1,11 @@
 post:
   tags:
-    - IdentityPlatformAPI
+    - IAM API
   summary: Get Token API
   parameters:
     - name: grant_type
       in: query
-      description: Luồng lấy token tương ứng.
+      description: Token flow corresponding
       schema:
         type: string
         enum:
@@ -18,7 +18,7 @@ post:
     - name: client_id
       in: query
       description: |
-        Thông tin Client ID.
+        Client ID Information.
       schema:
         type: string
       required: true
@@ -27,8 +27,8 @@ post:
       schema:
         type: string
       description: |
-        Thông tin Client Secret.
-        Được sử dụng trong các `grant_type`:
+        Client Secret Information.
+        Used in `grant_type`:
           - `authorizetion_code`
           - `client_credentials`
           - `refresh_token`
@@ -37,56 +37,62 @@ post:
       schema:
         type: string
       description: |
-        Được sử dụng trong `grant_type`: `authorization_code`.
-        Authorization code nhận được khi gọi `GET /oauth/authorization`.
+        Used in `grant_type`: 
+          - `authorization_code`.
+
+        Authorization code will be received after calling `GET /oauth/authorization`.
     - name: redirect_uri
       in: query
       schema:
         type: string
       description: |
-        Được sử dụng trong các `grant_type`:
+        Used in `grant_type`:
         - `authorization_code`
         - `token`
-        `redirect_uri` Client đã đăng ký.
+
+        `redirect_uri` Client registered.
     - name: username
       in: query
       schema:
         type: string
       description: |
-        Được sử dụng trong `grant_type`: `password`.
-        Thông tin tên tài khoản.
+        Used in `grant_type`: `password`.
+        Username Information
     - name: password
       in: query
       schema:
         type: string
       description: |
-        Được sử dụng trong `grant_type`: `password`.
-        Mật khẩu của tài khoản tương ứng.
+        Used in `grant_type`: 
+          - `password`.
+        Password of user corresponding.
     - name: refresh_token
       in: query
       schema:
         type: string
       description: |
-        Được sử dụng trong `grant_type`: `refresh_token`.
-        `refresh_token` nhận được khi exchange `code` trong Authorization Flow.
+        Used in `grant_type`: 
+          - `refresh_token`. 
+          
+        `refresh_token` is received when exchange `code` in Authorization Flow.
   responses:
-    '200':
+    "200":
       description: token object response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TokenResp'
-    '400':
+            $ref: "#/components/schemas/OAuthToken"
+    "400":
       description: invalid request response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/InvalidRequestResp'
-    '401':
+            $ref: "#/components/schemas/OAuthError"
+    "401":
       description: invalid client response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/InvalidRequestResp'
+            $ref: "#/components/schemas/OAuthError"
   servers:
-    - url: 'http://id.teko.vn'
+    - url: "http://id.teko.vn"

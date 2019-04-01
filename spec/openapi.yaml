@@ -22,7 +22,7 @@ info:
 tags:
   - name: Vouchers
     description: Provides apis for voucher service
-  - name: IdentityPlatformAPI
+  - name: IAM API
     description: Provives apis for Identity Platform API services
     externalDocs:
       url: "http://id.teko.vn/api/docs/"
@@ -33,6 +33,6 @@ x-tagGroups:
   - name: Offline Sales
     tags:
       - Vouchers
-  - name: IAM
+  - name: Identity Platform
     tags:
-      - IdentityPlatformAPI
+      - IAM API

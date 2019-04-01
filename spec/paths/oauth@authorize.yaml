@@ -1,13 +1,13 @@
 get:
   tags:
-    - IdentityPlatformAPI
+    - IAM API
   summary: Authorize API
   parameters:
     - name: response_type
       description: |
-        Chỉ định thông tin App muốn được trả lại trong callback url.
-        code được sử dụng trong Authorization Flow.
-        token được sử dụng trong Implicit Flow.
+        Information application which is returned in callback url.
+        The value MUST be one of "code" for requesting an authorization code, "token" for
+        requesting an access token (implicit grant).
       in: query
       schema:
         type: string
@@ -17,37 +17,34 @@ get:
       required: true
     - name: client_id
       description: |
-        Thông tin Client ID.
+        Client ID information.
       in: query
       schema:
         type: string
       required: true
     - name: redirect_uri
       description: >
-        Đường dẫn mà ID Service sẽ điều hướng người dùng sau khi ủy quyền thành
-        công.
-
-        Nếu không có, mặc định sử dụng redirect_uri Client đã đăng ký.
+        Url that ID service will redirect user after authorization is successful.
+        If not have, default use redirect_uri which client registered.
       in: query
       schema:
         type: string
       required: false
     - name: scope
       description: |
-        Chỉ định cấp độ truy cập (quyền) mà Client muốn yêu cầu.
-        Các cấp độ truy cập cách nhau bởi dấu trắng.
+        Definition of access level (access control) which client want to request.
+        Scopes are delimmited by spaces.
       in: query
       schema:
         type: string
       required: true
     - name: state
       description: >
-        Chuỗi ký tự ngẫu nhiên do bên Client tự sinh.
+        Randomize string which client generated.
 
-        Không bắt buộc nhưng nên có, để tránh tấn công CSRF.
+        Not REQUIRED but should have, for prevent CSRF attack.
 
-        Cần lưu lại theo session của người dùng để kiểm tra lại sau khi ủy quyền
-        thành công.
+        Have to save by user session to re-check after authorization is successful.
       in: query
       schema:
         type: string
