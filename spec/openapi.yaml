@@ -24,8 +24,6 @@ tags:
     description: Provides apis for voucher service
   - name: IAM API
     description: Provives apis for Identity Platform API services
-    externalDocs:
-      url: "http://id.teko.vn/api/docs/"
 servers:
   - url: "http://example.com/api/v1"
   - url: "https://example.com/api/v1"
