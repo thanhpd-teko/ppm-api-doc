@@ -1,0 +1,12 @@
+required:
+  - query
+  - highlight
+properties:
+  query:
+    type: string
+    description: relative keyword with defination query of user
+    example: 'laptop dell'
+  highlight:
+    type: string
+    description: highlight keyword
+    example: '<em>laptop</em> dell'

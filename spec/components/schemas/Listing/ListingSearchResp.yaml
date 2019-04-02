@@ -1,0 +1,21 @@
+required:
+  - code
+  - status
+  - message
+  - data
+properties:
+  code:
+    type: integer
+    description: error code, should different from 00
+    example: 200
+  status:
+    type: boolean
+    description: status of response
+    example: true
+  message:
+    type: string
+    description: response message
+    example: ''
+  data:
+    $ref: '#/components/schemas/ListingSearch'
+

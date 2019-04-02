@@ -1,0 +1,7 @@
+required:
+  - test
+properties:
+  test:
+    type: string
+    description: test only
+    example: 'test'

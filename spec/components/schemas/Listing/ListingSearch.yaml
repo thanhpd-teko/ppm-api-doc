@@ -1,0 +1,41 @@
+required:
+  - currentPage
+  - pageSize
+  - totalItems
+  - nextPage
+  - prevPage
+  - totalPage
+  - products
+properties:
+  currentPage:
+    type: integer
+    description: current page
+    example: 1
+  pageSize:
+    type: integer
+    description: maximum number of products each page
+    example: 10
+  totalItems:
+    type: integer
+    description: total result (products)
+    example: 102
+  nextPage:
+    type: integer | null
+    description: next page from current page
+    example: 2
+  prevPage:
+    type: integer | null
+    description: previous page from current page
+    example: null
+  totalPage:
+    type: integer
+    description: total pages
+    example: 11
+  products:
+    type: array
+    items:
+      $ref: '#/components/schemas/ListingProductData'
+  keywords:
+    type: array
+    items:
+      $ref: '#/components/schemas/ListingKeywordData'

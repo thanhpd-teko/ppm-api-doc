@@ -1,0 +1,44 @@
+get:
+  tags:
+    - Search
+  summary: search and return product listing by query
+  servers:
+    - url: 'http://listing.phongvu.com/{basePath}'
+      variables:
+        basePath:
+          default: api
+  parameters:
+    - name: _page
+      in: path
+      description: page number
+      required: true
+      schema:
+        type: integer
+      example: 1
+    - name: _limit
+      in: path
+      description: maximum number of products in response
+      required: true
+      schema:
+        type: integer
+      example: 10
+    - name: q
+      in: path
+      description: keyword for searching
+      required: true
+      schema:
+        type: string
+      example: 'laptop'
+  responses:
+    200:
+      description: response for successful request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListingSearchResp'
+    400:
+      description: invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListingError'

@@ -1,0 +1,27 @@
+required:
+  - code
+  - status
+  - message
+  - error
+  - data
+properties:
+  code:
+    type: integer
+    description: error code, should different from 00
+    example: 400
+  status:
+    type: boolean
+    description: status of response
+    example: false
+  message:
+    type: string
+    description: error message
+    example: '400 Bad Request: Input payload validation failed'
+  error:
+    type: object | null
+    description: list errors
+    example: "{'_page': 'Page number, starting from 1 invalid literal for int() with base 10: 'b'}"
+  data:
+    type: object
+    description: list products
+    example: null
