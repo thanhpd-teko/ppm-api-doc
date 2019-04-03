@@ -15,10 +15,10 @@ get:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/VoucherResp'
+            $ref: "#/components/schemas/VoucherResp"
     404:
       description: voucher not found response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"

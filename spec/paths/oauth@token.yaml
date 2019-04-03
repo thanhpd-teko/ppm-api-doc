@@ -1,0 +1,98 @@
+post:
+  tags:
+    - IAM API
+  summary: Get Token API
+  parameters:
+    - name: grant_type
+      in: query
+      description: Token flow corresponding
+      schema:
+        type: string
+        enum:
+          - authorization_code
+          - token
+          - password
+          - client_credentials
+          - refresh_token
+      required: true
+    - name: client_id
+      in: query
+      description: |
+        Client ID Information.
+      schema:
+        type: string
+      required: true
+    - name: client_secret
+      in: query
+      schema:
+        type: string
+      description: |
+        Client Secret Information.
+        Used in `grant_type`:
+          - `authorizetion_code`
+          - `client_credentials`
+          - `refresh_token`
+    - name: code
+      in: query
+      schema:
+        type: string
+      description: |
+        Used in `grant_type`: 
+          - `authorization_code`.
+
+        Authorization code will be received after calling `GET /oauth/authorization`.
+    - name: redirect_uri
+      in: query
+      schema:
+        type: string
+      description: |
+        Used in `grant_type`:
+        - `authorization_code`
+        - `token`
+
+        `redirect_uri` Client registered.
+    - name: username
+      in: query
+      schema:
+        type: string
+      description: |
+        Used in `grant_type`: `password`.
+        Username Information
+    - name: password
+      in: query
+      schema:
+        type: string
+      description: |
+        Used in `grant_type`: 
+          - `password`.
+        Password of user corresponding.
+    - name: refresh_token
+      in: query
+      schema:
+        type: string
+      description: |
+        Used in `grant_type`: 
+          - `refresh_token`. 
+          
+        `refresh_token` is received when exchange `code` in Authorization Flow.
+  responses:
+    "200":
+      description: token object response
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/OAuthToken"
+    "400":
+      description: invalid request response
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/OAuthError"
+    "401":
+      description: invalid client response
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/OAuthError"
+  servers:
+    - url: "http://id.teko.vn"

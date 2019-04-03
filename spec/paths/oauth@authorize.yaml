@@ -1,0 +1,63 @@
+get:
+  tags:
+    - IAM API
+  summary: Authorize API
+  parameters:
+    - name: response_type
+      description: |
+        Information application which is returned in callback url.
+        The value MUST be one of "code" for requesting an authorization code, "token" for
+        requesting an access token (implicit grant).
+      in: query
+      schema:
+        type: string
+        enum:
+          - code
+          - token
+      required: true
+    - name: client_id
+      description: |
+        Client ID information.
+      in: query
+      schema:
+        type: string
+      required: true
+    - name: redirect_uri
+      description: >
+        Url that ID service will redirect user after authorization is successful.
+        If not have, default use redirect_uri which client registered.
+      in: query
+      schema:
+        type: string
+      required: false
+    - name: scope
+      description: |
+        Definition of access level (access control) which client want to request.
+        Scopes are delimmited by spaces.
+      in: query
+      schema:
+        type: string
+      required: true
+    - name: state
+      description: >
+        Randomize string which client generated.
+
+        Not REQUIRED but should have, for prevent CSRF attack.
+
+        Have to save by user session to re-check after authorization is successful.
+      in: query
+      schema:
+        type: string
+      required: false
+  responses:
+    "302":
+      description: >-
+        location to `redirect_uri` with parameter `code` or `token` and `state`
+        (optional) in query string.
+      content:
+        text/html:
+          schema:
+            type: string
+            example: Redirecting ...
+  servers:
+    - url: "http://id.teko.vn"
