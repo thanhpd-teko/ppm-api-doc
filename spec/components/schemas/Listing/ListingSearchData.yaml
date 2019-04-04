@@ -1,0 +1,9 @@
+required:
+  - products
+properties:
+  products:
+    $ref: '#/components/schemas/ListingSearchProduct'
+  keywords:
+    type: array
+    items:
+      $ref: '#/components/schemas/ListingKeywordData'

@@ -123,6 +123,33 @@ get:
       schema:
         type: string
       example: 715,1023
+    - name: tags
+      in: query
+      required: false
+      description: |
+        filter product in list tags, separated by commas
+      schema:
+        type: string
+      example: new,hot,flashsale
+    - name: attributes.<attribute_code>
+      in: query
+      required: false
+      description: |
+        filter product by attribute value, separated by commas
+      schema:
+        type: int | string | boolean
+    - name: resp_ne
+      in: query
+      required: false
+      description: |
+        Using for exclude any data of response
+        >
+        Default, response has 3 main blocks: ***products***, ***keywords***, ***attributes***.
+        >
+        Using parameter to get necessary response. Each value is separated by commas
+      schema:
+        type: string
+      example: attributes
   responses:
     200:
       description: response for successful request

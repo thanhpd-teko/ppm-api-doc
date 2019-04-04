@@ -17,5 +17,5 @@ properties:
     description: response message
     example: ''
   data:
-    $ref: '#/components/schemas/ListingSearch'
+    $ref: '#/components/schemas/ListingSearchData'
 

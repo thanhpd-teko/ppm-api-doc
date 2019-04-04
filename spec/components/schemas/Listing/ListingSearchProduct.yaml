@@ -5,7 +5,7 @@ required:
   - nextPage
   - prevPage
   - totalPage
-  - products
+  - data
 properties:
   currentPage:
     type: integer
@@ -31,11 +31,7 @@ properties:
     type: integer
     description: total pages
     example: 11
-  products:
+  data:
     type: array
     items:
       $ref: '#/components/schemas/ListingProductData'
-  keywords:
-    type: array
-    items:
-      $ref: '#/components/schemas/ListingKeywordData'
