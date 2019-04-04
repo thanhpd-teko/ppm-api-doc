@@ -1,0 +1,30 @@
+required:
+  - total
+  - code
+  - name
+  - values
+properties:
+  total:
+    type: integer
+    description: total products has this attribute
+    example: 900
+  code:
+    type: string
+    description: attribute code
+    example: laptop_chipdohoaroi
+  name:
+    type: string
+    description: attribute name for display
+    example: Bàn phím số
+  values:
+    type: array
+    items:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: total products have this value for attribute
+          example: 10
+        value:
+          type: integer | string
+          example: NVIDIA GeForce MX150

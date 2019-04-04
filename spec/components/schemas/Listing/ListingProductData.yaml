@@ -1,7 +1,112 @@
 required:
-  - test
+  - sku
+  - name
+  - displayName
+  - url
 properties:
-  test:
+  sku:
     type: string
-    description: test only
-    example: 'test'
+    description: product sku
+    example: 1810912
+  name:
+    type: string
+    description: product name
+    example: "Máy tính xách tay/ Laptop Asus A510UF-EJ587T (i5-8250U)"
+  displayName:
+    type: string
+    description: name for displaying on web
+    example: "Laptop ASUS VivoBook A510UF-EJ587T (15.6\"/i5-8250U 1.6 GHz - 3.4 GHz/4GB RAM/1TB HDD/NVIDIA GeForce MX130 2GB/Windows 10 Home SL 64-bit/1.7kg)"
+  url:
+    type: string
+    description: product url on web
+    example: "https://phongvu.vn/may-tinh-xach-tay-laptop-asus-a510uf-ej587t-i5-8250u-vang-p35635.html"
+  prices:
+    type: object
+    properties:
+      supplierSalePrice:
+        type: float
+        description: sale price from supplier
+        example: 5000000
+      sellPrice:
+        type: float
+        description: sell price
+        example: 4700000
+  promotionPrices:
+    type: array
+    items:
+      type: object
+      properties:
+        channel:
+          type: string
+          description: all type prices apply only this channel
+          example: online
+        promotionPrice:
+          type: float
+          description: product price after apply some promotion campaigns
+          example: 4600000
+        flashSalePrice:
+          type: float
+          description: product price with flash sale campaign. It can be null
+          example: 4500000
+        bestPrice:
+          type: float
+          description: best price if user apply all coupon, promotion payment,...
+          example: 4300000
+  images:
+    type: array
+    items:
+      type: object
+      properties:
+        url:
+          type: string
+          description: image url
+          example: "https://phongvu.vn/media/catalog/product/cache/23/small_image/60x60/9df78eab33525d08d6e5fb8d27136e95//d/e/dell_vostro_5568_1.jpg"
+        priority:
+          type: integer
+          description: priority for this image
+          example: 1
+  tags:
+    type: array
+    description: list of tags
+    items:
+      type: string
+    example: ['tag_1', 'tag_2']
+  branchInStocks:
+    type: array
+    description: instock of product
+    items:
+      type: object
+      properties:
+        incoming:
+          type: interger
+          example: 2
+        productBizType:
+          type: string
+          example: ''
+        reserved:
+          type: integer
+          example: 0
+        warehouse:
+          type: string
+          example: CH0000
+        storeCode:
+          type: string
+          example: B
+        outgoing:
+          type: integer
+          example: 0
+        location:
+          type: string
+          example: 000001
+        available:
+          type: integer
+          example: 2
+        onHand:
+          type: integer
+          example: 0
+        branch:
+          type: string
+          example: CH0000
+        name:
+          type: string
+          example: Kho ĐĐKD 21 - số 10 Đại Lộ Lê Lợi, P.Điện Biên, Thanh Hóa

@@ -59,7 +59,7 @@ get:
       description: |
         Listing conditions for sorting result.
         >
-        Values: [`price`, `stock`, `new`, `topSale`].
+        Values: [`price`, `stock`, `new`, `popular`].
         >
         >> Specially, with sorting by stock, if you want to prioritize any branch, add branch code with underscore like **stock_CP01**
       schema:
