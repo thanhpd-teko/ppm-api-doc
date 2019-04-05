@@ -60,11 +60,13 @@ properties:
     type: object
     properties:
       supplierSalePrice:
-        type: float
+        type: number
+        format: double
         description: sale price from supplier
         example: 5000000
       sellPrice:
-        type: float
+        type: number
+        format: double
         description: sell price
         example: 4700000
   promotionPrices:
@@ -77,15 +79,19 @@ properties:
           description: all type prices apply only this channel
           example: online
         promotionPrice:
-          type: float
+          type: number
+          format: double
           description: product price after apply some promotion campaigns
           example: 4600000
         flashSalePrice:
-          type: float
+          type: number
+          format: double
+          nullable: true
           description: product price with flash sale campaign. It can be null
           example: 4500000
         bestPrice:
-          type: float
+          type: number
+          format: double
           description: best price if user apply all coupon, promotion payment,...
           example: 4300000
   images:
@@ -114,7 +120,7 @@ properties:
       type: object
       properties:
         incoming:
-          type: interger
+          type: integer
           description: Số lượng sắp nhập kho
           example: 2
         productBizType:

@@ -20,11 +20,13 @@ properties:
     description: total result (products)
     example: 102
   nextPage:
-    type: integer | null
+    type: integer
+    nullable: true
     description: next page from current page
     example: 2
   prevPage:
-    type: integer | null
+    type: integer
+    nullable: true
     description: previous page from current page
     example: null
   totalPage:

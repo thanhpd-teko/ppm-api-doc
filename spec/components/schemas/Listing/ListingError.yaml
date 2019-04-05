@@ -18,10 +18,12 @@ properties:
     description: error message
     example: '400 Bad Request: Input payload validation failed'
   error:
-    type: object | null
+    type: object
+    nullable: true
     description: list errors
     example: "{'_page': 'Page number, starting from 1 invalid literal for int() with base 10: 'b'}"
   data:
     type: object
+    nullable: true
     description: list products
     example: null

@@ -1,5 +1,3 @@
-required:
-  - products
 properties:
   products:
     $ref: '#/components/schemas/ListingSearchProduct'

@@ -79,7 +79,8 @@ get:
       description: |
         filter product has price greater or equal than
       schema:
-        type: float
+        type: number
+        format: double
       example: 5000000
     - name: price_lte
       in: query
@@ -87,7 +88,8 @@ get:
       description: |
         filter product has price less or equal than
       schema:
-        type: float
+        type: number
+        format: double
       example: 10000000
     - name: sellingStatus
       required: false
@@ -129,7 +131,9 @@ get:
       description: |
         filter product by attribute value, separated by commas
       schema:
-        type: int | string | boolean
+        oneOf:
+          - type: string
+          - type: integer
     - name: resp_ne
       in: query
       required: false

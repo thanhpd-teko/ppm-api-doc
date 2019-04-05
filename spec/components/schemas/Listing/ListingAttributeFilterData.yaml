@@ -26,5 +26,7 @@ properties:
           description: total products have this value for attribute
           example: 10
         value:
-          type: integer | string
+          oneOf:
+            - type: string
+            - type: integer
           example: NVIDIA GeForce MX150
