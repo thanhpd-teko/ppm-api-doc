@@ -20,6 +20,42 @@ properties:
     type: string
     description: product url on web
     example: "https://phongvu.vn/may-tinh-xach-tay-laptop-asus-a510uf-ej587t-i5-8250u-vang-p35635.html"
+  branchName:
+    type: string
+    description: product's brand name
+    example: ASUS
+  colorName:
+    type: string
+    description: product's color name
+    example: Đỏ
+  status:
+    type: object
+    description: product's statuses
+    properties:
+      sellingStatus:
+        type: object
+        description: product's selling status
+        properties:
+          code:
+            type: string
+            description: selling status code
+            example: 1
+          name:
+            type: string
+            description: selling status name
+            example: Trang thai 1
+      editingStatus:
+        type: object
+        description: product's editing status
+        properties:
+          code:
+            type: string
+            description: editing status code
+            example: review
+          name:
+            type: string
+            description: editing status name
+            example: Chờ duyệt lại nội dung
   prices:
     type: object
     properties:
@@ -79,34 +115,41 @@ properties:
       properties:
         incoming:
           type: interger
+          description: Số lượng sắp nhập kho
           example: 2
         productBizType:
           type: string
-          example: ''
+          description: Loại hình kinh doanh sản phẩm
+          example: 'NEW'
         reserved:
           type: integer
+          description: Số lượng đang giữ
           example: 0
         warehouse:
           type: string
+          description: Mã kho
           example: CH0000
         storeCode:
           type: string
+          description: Loại khu vực Asia
           example: B
         outgoing:
           type: integer
+          description: Số lượng sắp xuất kho
           example: 0
         location:
           type: string
+          description: Khu vực chứa hàng
           example: 000001
         available:
           type: integer
+          description: Số lượng tồn kho thực tế - số đã giữ hàng = onHand - reserved
           example: 2
         onHand:
           type: integer
+          description: Số lượng thực tế đang có trong kho
           example: 0
         branch:
           type: string
+          description: Mã chi nhánh
           example: CH0000
-        name:
-          type: string
-          example: Kho ĐĐKD 21 - số 10 Đại Lộ Lê Lợi, P.Điện Biên, Thanh Hóa

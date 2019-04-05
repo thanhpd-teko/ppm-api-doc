@@ -19,7 +19,7 @@ get:
           - offline
           - online
       example: offline
-    - name: userId
+    - name: visitorId
       in: query
       required: true
       description: |
@@ -98,7 +98,7 @@ get:
         type: string
       style: form
       explode: false
-      example: 1,5,7
+      example: code_1,code_2
     - name: brand
       in: query
       required: false
@@ -115,14 +115,6 @@ get:
       schema:
         type: string
       example: 04-N010-02,01-N020-03
-    - name: saleCategory
-      in: query
-      required: false
-      description: |
-        filter product in list sale categories, separated by commas
-      schema:
-        type: string
-      example: 715,1023
     - name: tags
       in: query
       required: false
