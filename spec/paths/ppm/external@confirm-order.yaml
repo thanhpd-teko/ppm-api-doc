@@ -49,10 +49,11 @@ post:
       content:
         "*/*":
           schema:
+            required:
+              - transactionId
             properties:
               transactionId:
                 type: integer
-                required: true
                 description: Mã giao dịch trừ ngân sách bên ppm, phục vụ đối chiếu
     "400":
       description: Xác nhận đơn lỗi

@@ -2,7 +2,7 @@ get:
   tags:
     - External Promotion
   summary: Lấy list các chương trình khuyến mãi theo mã coupon với điều kiện theo đơn hàng
-  operationId: get-order-promotions
+  operationId: get-coupon-promotions
   parameters:
     - name: channel
       in: query
