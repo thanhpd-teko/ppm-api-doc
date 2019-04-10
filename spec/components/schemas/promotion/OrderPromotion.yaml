@@ -1,0 +1,18 @@
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  conditions:
+    type: array
+    items:
+      $ref: "#/components/schemas/OrderCondition"
+  description:
+    type: string
+  benefits:
+    type: array
+    items:
+      $ref: "#/components/schemas/Benefit"
+  govRegister:
+    type: boolean
+    description: Đăng ký với bộ công thương

@@ -24,6 +24,9 @@ tags:
     description: Provides apis for voucher service
   - name: IAM API
     description: Provives apis for Identity Platform API services
+  - name: External Promotion
+    description: Provide apis for other services to get promotion info
+
 servers:
   - url: "http://example.com/api/v1"
   - url: "https://example.com/api/v1"
@@ -34,3 +37,6 @@ x-tagGroups:
   - name: Identity Platform
     tags:
       - IAM API
+  - name: Price And Promotions
+    tags:
+      - External Promotion

@@ -1,0 +1,30 @@
+get:
+  tags:
+    - External Promotion
+  summary: Lấy list các chương trình khuyến mãi theo đơn hàng
+  operationId: get-order-promotions
+  parameters:
+    - name: channel
+      in: query
+      required: false
+      schema:
+        type: string
+    - name: showroom
+      in: query
+      required: false
+      schema:
+        type: string
+    - name: paymentMethod
+      in: query
+      required: false
+      schema:
+        type: string
+  responses:
+    "200":
+      description: Lấy thông tin chương trình khuyến mãi thành công
+      content:
+        "*/*":
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/OrderPromotion"
