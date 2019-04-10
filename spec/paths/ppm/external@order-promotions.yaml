@@ -27,4 +27,4 @@ get:
           schema:
             type: array
             items:
-              $ref: "#/components/schemas/OrderPromotion"
+              $ref: "#/components/schemas/Promotion"
