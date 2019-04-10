@@ -1,0 +1,93 @@
+post:
+  summary: Xác nhận đơn hàng và trừ ngân sách
+  operationId: confirm-order-promotions
+  tags:
+    - External Promotion
+  parameters:
+    - name: confirmOrderReq
+      required: true
+      in: query
+      schema:
+        required:
+          - orderNumber
+          - products
+          - channel
+          - selectedOrderPromotionIds
+        properties:
+          orderNumber:
+            type: string
+          products:
+            type: array
+            items:
+              required:
+                - sku
+                - quantity
+              properties:
+                sku:
+                  type: string
+                quantity:
+                  type: integer
+                selectedPromotionId:
+                  description: Id của ctkm áp dụng cho sản phẩm này
+                  type: integer
+          selectedOrderPromotionIds:
+            type: array
+            description: Id các chương trình km đã chọn cho đơn hàng
+            items:
+              type: integer
+          coupon:
+            type: string
+          channel:
+            $ref: '#/components/schemas/ChannelTypes'
+          showroom:
+            type: string
+          paymentMethod:
+            type: string
+  responses:
+    "200":
+      description: Xác nhận đơn, trừ ngân sách thành công
+      content:
+        "*/*":
+          schema:
+            properties:
+              transactionId:
+                type: integer
+                required: true
+                description: Mã giao dịch trừ ngân sách bên ppm, phục vụ đối chiếu
+    "400":
+      description: Xác nhận đơn lỗi
+      content:
+        "*/*":
+          schema:
+            properties:
+              products:
+                type: array
+                items:
+                  required:
+                    - sku
+                    - selectedPromotionId
+                    - errorCode
+                    - errorMessage
+                  properties:
+                    sku:
+                      type: string
+                    selectedPromotionId:
+                      type: integer
+                    errorCode:
+                      type: string
+                    errorMessage:
+                      type: string
+              orderPromotionErrors:
+                type: array
+                items:
+                  required:
+                    - selectedPromotionId
+                    - errorCode
+                    - errorMessage
+                  properties:
+                    selectedPromotionId:
+                      type: integer
+                    errorCode:
+                      type: string
+                    errorMessage:
+                      type: string
