@@ -3,6 +3,12 @@ properties:
     type: integer
   name:
     type: string
+  type:
+    type: string
+    enum:
+      - order
+      - product
+      - coupon
   conditions:
     type: array
     items:

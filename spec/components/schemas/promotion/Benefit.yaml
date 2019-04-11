@@ -11,6 +11,11 @@ properties:
         enum:
           - item
           - order
+      discountType:
+        type: string
+        enum:
+          - amount
+          - percent
       percent:
         type: number
         description: Phần trăm giảm giá
@@ -23,10 +28,5 @@ properties:
   items:
     type: array
     items:
-      properties:
-        sku:
-          type: string
-        name:
-          type: string
-        price:
-          type: number
+      $ref: "#/components/schemas/Gift"
+

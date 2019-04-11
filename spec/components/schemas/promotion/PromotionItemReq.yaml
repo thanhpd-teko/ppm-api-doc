@@ -1,0 +1,16 @@
+properties:
+  id:
+    type: integer
+  coupon:
+    type: string
+    description: Coupon được áp dụng cho chương trình khuyến mãi
+  promotionAmount:
+    type: integer
+  gifts:
+    type: array
+    items:
+      $ref: "#/components/schemas/Gift"
+  vouchers:
+    type: array
+    items:
+      type: string

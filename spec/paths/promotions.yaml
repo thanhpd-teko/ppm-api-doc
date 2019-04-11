@@ -1,7 +1,7 @@
 get:
   tags:
     - External Promotion
-  summary: Lấy list các chương trình khuyến mãi theo mã coupon với điều kiện theo đơn hàng
+  summary: Lấy list các chương trình khuyến mãi theo điều kiện filter
   operationId: get-coupon-promotions
   parameters:
     - name: channel
@@ -16,9 +16,17 @@ get:
         type: string
     - name: coupon
       in: query
+      descripton: Required nếu như type là coupon
+      schema:
+        type: string
+    - name: type
+      in: query
       required: true
       schema:
         type: string
+        enum:
+          - order
+          - coupon
     - name: paymentMethod
       in: query
       required: false

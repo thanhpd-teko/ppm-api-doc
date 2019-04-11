@@ -1,0 +1,14 @@
+required:
+  - sku
+  - name
+  - price
+  - total
+properties:
+  sku:
+    type: string
+  total:
+    type: integer
+  name:
+    type: string
+  price:
+    type: number
