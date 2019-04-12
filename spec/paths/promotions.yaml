@@ -16,7 +16,7 @@ get:
         type: string
     - name: coupon
       in: query
-      descripton: Required nếu như type là coupon
+      description: Required nếu như type là coupon
       schema:
         type: string
     - name: type
