@@ -1,6 +1,8 @@
 properties:
   products:
-    $ref: '#/components/schemas/ListingSearchProduct'
+    type: array
+    items:
+      $ref: '#/components/schemas/ListingProductData'
   keywords:
     type: array
     items:

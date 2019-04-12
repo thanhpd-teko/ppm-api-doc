@@ -159,3 +159,12 @@ get:
         application/json:
           schema:
             $ref: '#/components/schemas/ListingError'
+          examples:
+            error:
+              summary: An example of 400 error
+              value:
+                code: 400
+                status: false
+                message: "400 Bad Request: Input payload validation failed"
+                error: "{'_page': 'Page number, starting from 1 invalid literal for int() with base 10: 'b'}"
+                data: null

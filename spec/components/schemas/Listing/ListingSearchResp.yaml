@@ -1,21 +1,19 @@
 required:
   - code
-  - status
-  - message
-  - data
+  - result
+  - extra
 properties:
   code:
     type: integer
     description: error code, should different from 00
     example: 200
-  status:
-    type: boolean
-    description: status of response
-    example: true
-  message:
-    type: string
-    description: response message
-    example: ''
-  data:
+  result:
     $ref: '#/components/schemas/ListingSearchData'
+  extra:
+    type: object
+    properties:
+      totalItems:
+        type: integer
+        description: total products
+        example: 102
 

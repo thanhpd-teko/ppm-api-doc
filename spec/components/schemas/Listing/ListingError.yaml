@@ -8,22 +8,22 @@ properties:
   code:
     type: integer
     description: error code, should different from 00
-    example: 400
+#    example: 400
   status:
     type: boolean
     description: status of response
-    example: false
+#    example: false
   message:
     type: string
     description: error message
-    example: '400 Bad Request: Input payload validation failed'
+#    example: '400 Bad Request: Input payload validation failed'
   error:
     type: object
     nullable: true
     description: list errors
-    example: "{'_page': 'Page number, starting from 1 invalid literal for int() with base 10: 'b'}"
+#    example: "{'_page': 'Page number, starting from 1 invalid literal for int() with base 10: 'b'}"
   data:
     type: object
     nullable: true
     description: list products
-    example: null
+#    example: null
