@@ -38,6 +38,4 @@ get:
       content:
         "*/*":
           schema:
-            type: array
-            items:
-              $ref: "#/components/schemas/Promotion"
+            $ref: "#/components/schemas/PromotionResp"

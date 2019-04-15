@@ -1,0 +1,9 @@
+required:
+  - code
+properties:
+  code:
+    type: string
+  result:
+    type: array
+    items:
+      $ref: '#/components/schemas/Promotion'
