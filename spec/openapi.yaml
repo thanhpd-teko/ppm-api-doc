@@ -34,3 +34,6 @@ x-tagGroups:
   - name: Identity Platform
     tags:
       - IAM API
+  - name: Payment service
+    tags:
+      - Methods

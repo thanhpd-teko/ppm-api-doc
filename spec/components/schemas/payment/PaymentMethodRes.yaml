@@ -1,0 +1,10 @@
+properties:
+  code:
+    type: integer
+    example: 200 
+  message:
+    type: string
+    example: 'OK'
+  result:
+    $ref: '#/components/schemas/PaymentMethodData'
+        

@@ -1,0 +1,14 @@
+required:
+  - code
+  - payment_code
+  - message
+properties:
+  code:
+    type: integer
+    example: 400
+  payment_code:
+    type: string
+    example: '001'  
+  message:
+    type: string
+    example: 'IP is not allowed to connect'        
