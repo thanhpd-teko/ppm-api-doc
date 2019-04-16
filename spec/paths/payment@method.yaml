@@ -62,6 +62,12 @@ post:
         - `installment_term`
 
         - `bank_code`
+    - name: hash_secret
+      in: query
+      schema:
+        type: string
+      description: secret string encrypted by secret key and all parameters for checksum
+      required: true
 
   responses:
     "200":
