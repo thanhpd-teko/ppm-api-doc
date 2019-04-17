@@ -4,9 +4,9 @@ required:
   - extra
 properties:
   code:
-    type: integer
+    type: string
     description: error code, should different from 00
-    example: 200
+    example: '00'
   result:
     $ref: '#/components/schemas/ListingSearchData'
   extra:
@@ -16,4 +16,12 @@ properties:
         type: integer
         description: total products
         example: 102
+      page:
+        type: integer
+        description: current page
+        example: 2
+      pageSize:
+        type: integer
+        description: maximum products in 1 page
+        example: 10
 

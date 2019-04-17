@@ -20,19 +20,39 @@ properties:
     type: string
     description: product url on web
     example: "https://phongvu.vn/may-tinh-xach-tay-laptop-asus-a510uf-ej587t-i5-8250u-vang-p35635.html"
-  branchName:
-    type: string
-    description: product's brand name
-    example: ASUS
-  colorName:
-    type: string
-    description: product's color name
-    example: Đỏ
+  brand:
+    type: object
+    description: product's brand
+    properties:
+      code:
+        type: string
+        description: brand code
+        example: Asus
+      id:
+        type: integer
+        description: brand id
+        example: 1
+      name:
+        type: string
+        description: brand name
+        example: ASUS
+  color:
+    type: object
+    description: product's color data
+    properties:
+      code:
+        type: string
+        description: color code
+        example: BLK
+      name:
+        type: string
+        description: color name
+        example: Đen
   status:
     type: object
     description: product's statuses
     properties:
-      sellingStatus:
+      selling:
         type: object
         description: product's selling status
         properties:
@@ -44,7 +64,7 @@ properties:
             type: string
             description: selling status name
             example: Trang thai 1
-      editingStatus:
+      pulished:
         type: object
         description: product's editing status
         properties:
@@ -89,11 +109,6 @@ properties:
           nullable: true
           description: product price with flash sale campaign. It can be null
           example: 4500000
-        bestPrice:
-          type: number
-          format: double
-          description: best price if user apply all coupon, promotion payment,...
-          example: 4300000
   images:
     type: array
     items:
@@ -113,7 +128,7 @@ properties:
     items:
       type: string
     example: ['tag_1', 'tag_2']
-  branchInStocks:
+  stocks:
     type: array
     description: instock of product
     items:

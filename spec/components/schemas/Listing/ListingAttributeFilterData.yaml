@@ -1,5 +1,4 @@
 required:
-  - total
   - code
   - name
   - values
@@ -7,15 +6,12 @@ properties:
   total:
     type: integer
     description: total products has this attribute
-    example: 900
   code:
     type: string
     description: attribute code
-    example: laptop_chipdohoaroi
   name:
     type: string
     description: attribute name for display
-    example: Bàn phím số
   values:
     type: array
     items:
@@ -24,9 +20,9 @@ properties:
         count:
           type: integer
           description: total products have this value for attribute
-          example: 10
+        option:
+          type: integer
+          description: optional id of this value
         value:
-          oneOf:
-            - type: string
-            - type: integer
-          example: NVIDIA GeForce MX150
+          type: string
+          description: display name for this attribute
