@@ -9,10 +9,8 @@ properties:
       - order
       - product
       - coupon
-  conditions:
-    type: array
-    items:
-      $ref: "#/components/schemas/Condition"
+  condition:
+    $ref: "#/components/schemas/Condition"
   description:
     type: string
   benefits:

@@ -4,6 +4,8 @@ properties:
   code:
     type: string
   result:
-    type: array
-    items:
-      $ref: '#/components/schemas/Promotion'
+    properties:
+      promotions:
+        type: array
+        items:
+          $ref: '#/components/schemas/Promotion'

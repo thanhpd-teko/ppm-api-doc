@@ -27,11 +27,24 @@ get:
         enum:
           - order
           - coupon
-    - name: paymentMethod
+    - name: payment_method
       in: query
       required: false
       schema:
         type: string
+    - name: start_time
+      in: query
+      required: false
+      description: theo format %Y-%m-%dT%H:%M:%SZ
+    - name: end_time
+      in: query
+      required: false
+      description: theo format %Y-%m-%dT%H:%M:%SZ
+    - name: skus
+      in: query
+      type: string
+      required: false
+      description: List các sku tách nhau bởi dấu phẩy
   responses:
     "200":
       description: Lấy thông tin chương trình khuyến mãi thành công
