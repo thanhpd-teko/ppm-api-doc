@@ -35,11 +35,11 @@ get:
     - name: start_time
       in: query
       required: false
-      description: theo format %Y-%m-%dT%H:%M:%SZ
+      description: theo format yyyy-MM-dd'T'HH:mm:ssZ
     - name: end_time
       in: query
       required: false
-      description: theo format %Y-%m-%dT%H:%M:%SZ
+      description: theo format yyyy-MM-dd'T'HH:mm:ssZ
     - name: skus
       in: query
       type: string
