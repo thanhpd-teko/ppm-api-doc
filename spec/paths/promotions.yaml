@@ -36,14 +36,19 @@ get:
       in: query
       required: false
       description: theo format yyyy-MM-dd'T'HH:mm:ssZ
+      schema:
+        type: string
     - name: end_time
       in: query
       required: false
+      schema:
+        type: string
       description: theo format yyyy-MM-dd'T'HH:mm:ssZ
     - name: skus
       in: query
-      type: string
       required: false
+      schema:
+        type: string
       description: List các sku tách nhau bởi dấu phẩy
   responses:
     "200":
