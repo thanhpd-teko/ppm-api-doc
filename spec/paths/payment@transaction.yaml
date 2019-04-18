@@ -1,0 +1,23 @@
+get:
+  tags:
+    - Transaction Information
+  parameters:
+    - name: transaction_code
+      in: query
+      description: code of transaction
+      schema:
+        type: string
+      required: true
+  responses:
+    '200':
+      description: Successful query transaction
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Transaction'
+    '404':
+      description: Transaction not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TransactionError'
