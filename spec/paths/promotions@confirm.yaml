@@ -4,12 +4,13 @@ post:
   operationId: confirm-order-promotions
   tags:
     - Price & Promotion API
-  parameters:
-    - name: confirmOrderReq
-      required: true
-      in: query
-      schema:
-        $ref: '#/components/schemas/ConfirmPromotionOrderReq'
+  requestBody:
+    description: Dữ liệu khuyến mãi của đơn hàng
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ConfirmPromotionOrderReq'
   responses:
     "200":
       description: Xác nhận đơn, trừ ngân sách thành công

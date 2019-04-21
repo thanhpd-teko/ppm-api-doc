@@ -1,12 +1,17 @@
 required:
-  - orderNumber
+  - orderId
+  - orderCode
   - products
   - channel
-  - showroom
+  - terminal
   - orderPromotionIds
 properties:
-  orderNumber:
+  orderId:
     type: string
+    description: Order uuid
+  orderCode:
+    type: string
+    description: Order Code
   productPromotions:
     type: array
     items:
@@ -27,7 +32,6 @@ properties:
           type: array
           items:
             $ref: '#/components/schemas/PromotionItemReq'
-
   orderPromotions:
     description: Các ctkm áp dụng cho đơn hàng
     properties:
@@ -41,7 +45,7 @@ properties:
         description: Giá sau khi áp dụng khuyến mãi
   channel:
     $ref: '#/components/schemas/ChannelTypes'
-  showroom:
+  terminal:
     type: string
   paymentMethod:
     type: string
