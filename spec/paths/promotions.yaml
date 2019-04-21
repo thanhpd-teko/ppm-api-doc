@@ -1,26 +1,30 @@
 get:
   tags:
-    - External Promotion
-  summary: Lấy list các chương trình khuyến mãi theo điều kiện filter
+    - Price & Promotion API
+  summary: Promotion API
+  description: Lấy list các chương trình khuyến mãi theo điều kiện filter
   operationId: get-coupon-promotions
   parameters:
     - name: channel
+      description: Kênh bán hàng
       in: query
       required: false
       schema:
         type: string
-    - name: showroom
+    - name: terminal
       in: query
+      description: Địa điểm bán hàng (đi kèm khi channel = showroom)
       required: false
       schema:
         type: string
     - name: coupon
       in: query
-      description: Required nếu như type là coupon
+      description: Mã giảm giá (required khi type = coupon)
       schema:
         type: string
     - name: type
       in: query
+      description: Loại khuyến mãi (theo mã giảm giá hay theo đơn hàng)
       required: true
       schema:
         type: string
@@ -29,27 +33,28 @@ get:
           - coupon
     - name: payment_method
       in: query
+      description: Hình thức thanh toán
       required: false
       schema:
         type: string
     - name: start_time
       in: query
+      description: Thời điểm bắt đầu theo format yyyy-MM-dd'T'HH:mm:ssZ
       required: false
-      description: theo format yyyy-MM-dd'T'HH:mm:ssZ
       schema:
         type: string
     - name: end_time
       in: query
+      description: Thời điểm kết thúc theo format yyyy-MM-dd'T'HH:mm:ssZ
       required: false
       schema:
         type: string
-      description: theo format yyyy-MM-dd'T'HH:mm:ssZ
     - name: skus
       in: query
+      description: Danh sách các sản phẩm, tách nhau bởi dấu phẩy
       required: false
       schema:
         type: string
-      description: List các sku tách nhau bởi dấu phẩy
   responses:
     "200":
       description: Lấy thông tin chương trình khuyến mãi thành công

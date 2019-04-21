@@ -6,9 +6,10 @@ required:
 properties:
   sku:
     type: string
-  total:
+  quantity:
     type: integer
   name:
     type: string
   price:
     type: number
+    description: Giá trị của quà tặng tại thời điểm tạo đơn hàng

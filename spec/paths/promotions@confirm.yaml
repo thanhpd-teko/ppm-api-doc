@@ -1,8 +1,9 @@
 post:
-  summary: Xác nhận đơn hàng và trừ ngân sách
+  summary: Promotion Confirm API
+  description: Xác nhận đơn hàng và trừ ngân sách 
   operationId: confirm-order-promotions
   tags:
-    - External Promotion
+    - Price & Promotion API
   parameters:
     - name: confirmOrderReq
       required: true

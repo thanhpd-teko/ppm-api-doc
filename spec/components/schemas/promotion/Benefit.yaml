@@ -2,29 +2,26 @@ properties:
   type:
     type: string
     enum:
-      - money
-      - simple-item
-  money:
+      - discount
+      - gifts
+  discount:
     properties:
-      applyOn:
-        type: string
-        enum:
-          - item
-          - order
-      discountType:
+      # applyOn:
+      #   type: string
+      #   enum:
+      #     - item
+      #     - order
+      type:
         type: string
         enum:
           - amount
           - percent
-      percent:
+      value:
         type: number
-        description: Phần trăm giảm giá
-      amount:
-        type: number
-        description: Tổng tiền giảm giá
+        description: Gía trị giảm (tuỳ vào type)
       maxDiscount:
         type: number
-        description: Mã giảm giá
+        description: Giá trị giảm giá tối đa
   items:
     type: array
     items:

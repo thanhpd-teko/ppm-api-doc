@@ -39,4 +39,4 @@ x-tagGroups:
       - IAM API
   - name: Price And Promotions
     tags:
-      - External Promotion
+      - Price & Promotion API
