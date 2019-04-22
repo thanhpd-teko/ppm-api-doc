@@ -1,18 +1,11 @@
 required:
   - code
-  - status
   - message
-  - error
-  - data
 properties:
   code:
-    type: integer
+    type: string
     description: error code, should different from 00
 #    example: 400
-  status:
-    type: boolean
-    description: status of response
-#    example: false
   message:
     type: string
     description: error message
