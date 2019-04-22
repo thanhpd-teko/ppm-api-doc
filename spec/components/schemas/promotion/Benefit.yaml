@@ -1,29 +1,28 @@
 properties:
-  type:
-    type: string
-    enum:
-      - discount
-      - gifts
-  discount:
-    properties:
-      # applyOn:
-      #   type: string
-      #   enum:
-      #     - item
-      #     - order
-      type:
-        type: string
-        enum:
-          - amount
-          - percent
-      value:
-        type: number
-        description: Gía trị giảm (tuỳ vào type)
-      maxDiscount:
-        type: number
-        description: Giá trị giảm giá tối đa
+#  type:
+#    type: string
+#    enum:
+#      - discount
+#      - gifts
+#  discount:
+#    properties:
+#      type:
+#        type: string
+#        enum:
+#          - amount
+#          - percent
+#      value:
+#        type: number
+#        description: Gía trị giảm (tuỳ vào type)
+#      maxDiscount:
+#        type: number
+#        description: Giá trị giảm giá tối đa
+  money:
+    type: array
+    items:
+      $ref: "#/components/schemas/BenefitMoney"
   items:
     type: array
     items:
-      $ref: "#/components/schemas/Gift"
+      $ref: "#/components/schemas/BenefitItems"
 
