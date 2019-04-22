@@ -22,11 +22,7 @@ properties:
     type: number
     description: Điều kiện giá trị đơn hàng max
   channel:
-    type: string
-    enum:
-      - all
-      - online
-      - offline
+    $ref: '#/components/schemas/ChannelTypes'
   paymentMethods:
     type: array
     items:
