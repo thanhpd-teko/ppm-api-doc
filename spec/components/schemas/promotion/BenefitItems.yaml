@@ -5,9 +5,9 @@ required:
   - total
 properties:
   id:
-    type: Integer
+    type: integer
   applyOn:
-    type: String
+    type: string
     enum:
       - product
       - order
@@ -24,7 +24,7 @@ properties:
       - inactive
     description: Trạng thái ngân sách
   budgetId:
-    type: Integer
+    type: integer
     description: Id của ngân sách
   outOfBudget:
     type: boolean

@@ -1,8 +1,8 @@
 properties:
   id:
-    type: Integer
+    type: integer
   applyOn:
-    type: String
+    type: string
     enum:
       - product
       - order
@@ -12,13 +12,13 @@ properties:
       - money
       - percent
   percent:
-    type: Float
+    type: number
     description: Số % được giảm (trong TH giảm giá theo %)
   money:
-    type: Float
+    type: number
     description: Số tiền được giảm (trong TH giảm giá theo tiền)
   maxDiscount:
-    type: Float
+    type: number
     description: Số tiền được giảm giá tối đa (trong TH giảm giá theo %)
   budgetStatus:
     type: string
@@ -27,7 +27,7 @@ properties:
       - inactive
     description: Trạng thái ngân sách
   budgetId:
-    type: Integer
+    type: integer
     description: Id của ngân sách
   outOfBudget:
     type: boolean
