@@ -1,32 +1,13 @@
 properties:
-  startedAt:
-    type: string
-    example: '2019-01-02T10:00:00Z'
-  endedAt:
-    type: string
-    example: '2019-01-02T10:00:00Z'
-  timeRanges:
-    type: array
-    items:
-      properties:
-        start:
-          type: string
-          example: '10:00'
-        end:
-          type: string
-          example: '14:00'
   orderValueMin:
     type: number
     description: Điều kiện giá trị đơn hàng min
   orderValueMax:
     type: number
     description: Điều kiện giá trị đơn hàng max
-  channel:
+  coupon:
     type: string
-    enum:
-      - all
-      - online
-      - offline
+    description: Mã coupon được áp dụng cho CTKM
   paymentMethods:
     type: array
     items:

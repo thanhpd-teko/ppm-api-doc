@@ -9,7 +9,7 @@ properties:
   gifts:
     type: array
     items:
-      $ref: "#/components/schemas/Gift"
+      $ref: "#/components/schemas/BenefitItems"
   vouchers:
     type: array
     items:

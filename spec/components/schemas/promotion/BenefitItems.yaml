@@ -1,0 +1,31 @@
+required:
+  - sku
+  - name
+  - price
+  - total
+properties:
+  id:
+    type: Integer
+  applyOn:
+    type: String
+    enum:
+      - product
+      - order
+  sku:
+    type: string
+  quantity:
+    type: integer
+  name:
+    type: string
+  budgetStatus:
+    type: string
+    enum:
+      - active
+      - inactive
+    description: Trạng thái ngân sách
+  budgetId:
+    type: Integer
+    description: Id của ngân sách
+  outOfBudget:
+    type: boolean
+    description: Ngân sách còn hay hết
