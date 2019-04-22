@@ -1,0 +1,28 @@
+post:
+  description: ':return: feId[SrmProduct]'
+  operationId: post_srm_product_lists
+  tags:
+    - srmProducts
+  parameters:
+    - name: payload
+      required: true
+      schema:
+        $ref: '#/definitions/srm_product_item_req'
+      in: body
+    - name: X-Fields
+      format: mask
+      type: string
+      description: An optional fields mask
+      in: header
+  summary: Create a product
+  responses:
+    '200':
+      description: Successful Creation
+      schema:
+        $ref: '#/definitions/srm_product_item_res'
+    '400':
+      description: Nhóm sản phẩm không tồn tại
+    '403':
+      description: Insufficient permissions
+    '500':
+      description: Internal failure

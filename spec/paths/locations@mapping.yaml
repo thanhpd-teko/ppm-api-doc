@@ -1,0 +1,19 @@
+get:
+  description: ':return: list[Location]'
+  operationId: get_location_mapping
+  tags:
+    - locations
+  parameters:
+    - name: X-Fields
+      format: mask
+      type: string
+      description: An optional fields mask
+      in: header
+  summary: Get list all locations mapping
+  responses:
+    '200':
+      description: Success
+      schema:
+        items:
+          $ref: '#/definitions/location_mapping_res'
+        type: array

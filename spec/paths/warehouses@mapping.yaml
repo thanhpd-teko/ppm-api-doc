@@ -1,0 +1,19 @@
+get:
+  description: ':return: list[Warehouse]'
+  operationId: get_warehouse_mapping
+  tags:
+    - warehouses
+  parameters:
+    - name: X-Fields
+      format: mask
+      type: string
+      description: An optional fields mask
+      in: header
+  summary: Get list all warehouses mapping
+  responses:
+    '200':
+      description: Success
+      schema:
+        items:
+          $ref: '#/definitions/warehouse_mapping_res'
+        type: array

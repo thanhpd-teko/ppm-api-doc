@@ -1,0 +1,55 @@
+get:
+  description: ':return: list[StockQuant]'
+  operationId: get_stock_quants_out
+  tags:
+    - stockQuants
+  parameters:
+    - name: products
+      description: List sku
+      type: array
+      in: query
+      required: true
+      items:
+        type: string
+      collectionFormat: multi
+    - name: regions
+      description: Vùng / miền
+      type: array
+      in: query
+      items:
+        type: integer
+      collectionFormat: multi
+    - name: branches
+      description: Chi nhánh
+      type: array
+      in: query
+      items:
+        type: string
+      collectionFormat: multi
+    - name: warehouses
+      description: Mã Kho
+      type: array
+      in: query
+      items:
+        type: string
+      collectionFormat: multi
+    - name: locations
+      description: Địa điểm
+      type: array
+      in: query
+      items:
+        type: string
+      collectionFormat: multi
+    - name: X-Fields
+      format: mask
+      type: string
+      description: An optional fields mask
+      in: header
+  summary: Get list all stock quants but for minimize properties
+  responses:
+    '200':
+      description: Successful Return
+      schema:
+        items:
+          $ref: '#/definitions/_stock_quant_item_min'
+        type: array

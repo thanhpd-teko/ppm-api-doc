@@ -1,0 +1,39 @@
+parameters:
+  - name: id
+    required: true
+    type: integer
+    in: path
+delete:
+  description: ':return: feId[SrmProduct]'
+  operationId: delete_srm_product_item
+  tags:
+    - srmProducts
+  parameters:
+    - name: X-Fields
+      format: mask
+      type: string
+      description: An optional fields mask
+      in: header
+  summary: Delete a product
+  responses:
+    '200':
+      description: Successful Delete
+      schema:
+        $ref: '#/definitions/srm_product_item_res'
+put:
+  description: ':return: feId[SrmProduct]'
+  operationId: put_srm_product_item
+  tags:
+    - srmProducts
+  parameters:
+    - name: X-Fields
+      format: mask
+      type: string
+      description: An optional fields mask
+      in: header
+  summary: Update a product
+  responses:
+    '200':
+      description: Successful Update
+      schema:
+        $ref: '#/definitions/srm_product_item_res'

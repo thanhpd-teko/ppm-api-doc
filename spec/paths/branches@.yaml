@@ -1,0 +1,19 @@
+get:
+  description: ':return: list[Branch]'
+  operationId: get_branches
+  tags:
+    - branches
+  parameters:
+    - name: X-Fields
+      format: mask
+      type: string
+      description: An optional fields mask
+      in: header
+  summary: Get list all branches
+  responses:
+    '200':
+      description: Successful Return
+      schema:
+        items:
+          $ref: '#/definitions/branch_list_res'
+        type: array
