@@ -2,18 +2,69 @@ get:
   tags:
     - IAM API
   summary: Authorize API
+  description: |
+    1. The Authorization Code Grant (or Web Application Flow). Detail parameters:
+      - `response_type=code` (required) is set to code indicating that you want an authorization code as the response.
+      - `client_id` (required) is the identifier for your app. You will have received a client_id when first registering your app with the service.
+      - `redirect_uri` (optional). The `redirect_uri` may be optional depending on the API, but is highly recommended.
+      This is the URL to which you want the user to be redirected after the authorization is complete.
+      This must match the redirect URL that you have previously registered with the service.
+      - `scope` (optional). Include one or more scope values (space-separated) to request additional levels of access.
+      The values will depend on the particular service.
+      - `state` (recommended). This is used to prevent CSRF attacks.
+    2. The Implicit Grant (or Mobile Application Flow). Detail parameters:
+      - `response_type=token` (required). This tells the authorization server that the application is initiating the Implicit flow.
+      Note the difference from the Authorization Code flow where this value is set to code
+      - `client_id` (required). The public identifier for the application, obtained when the developer first registered the application.
+      - `redirect_uri` (optional). Tells the authorization server where to send the user back to after they approve the request.
+      - `scope`. One or more space-separated strings indicating which permissions the application is requesting.
+      The specific OAuth API you’re using will define the scopes that it supports.
+      - `state` (recommended). This is used to prevent CSRF attacks.
+    3. The Resource Owner Password Credentials Grant  (or the Legacy Application Flow). 
+    This flow does not use authorization endpoint.
+    4. The Client Credentials Grant (or Backend Application Flow). The same with [3].
+    5. Using with OIDC:
+
+      5.1. `response_type=code`
+      - `openid` is not included in `scope`. The same with Authorization Code Grant Flow.
+      - `openid` is included in `scope`. An ID token is issued from the token endpoint in addition to an access token.
+      
+      5.2. `response_type=token`. The same with Implicit Grant Flow for RFC 6749. 
+      Even if `openid` is included in the `scope` request parameter, an ID token is not issued.
+      This flow uses the authorization endpoint but does not use the token endpoint.
+
+      5.3. `response_type=id_token`. When the value of `response_type` is `id_token`, an ID token is issued from the authorization endpoint.
+      This flow does not use the token endpoint.
+
+      5.4. `response_type=id_token token`.
+
+      5.5. `response_type=code id_token`.
+
+      5.6. `response_type=code token`.
+
+      5.7. `response_type=code id_token token`.
+
+      From 5.4 to 5.7 (Hybrid Flow). See docs [here](https://medium.com/@darutk/diagrams-of-all-the-openid-connect-flows-6968e3990660).
+
+      5.8. `response_type=none`. When the value of response_type is none, nothing is issued from the authorization endpoint.
+      This flow does not use the token endpoint.
+
   parameters:
     - name: response_type
       description: |
         Information application which is returned in callback url.
-        The value MUST be one of "code" for requesting an authorization code, "token" for
-        requesting an access token (implicit grant).
+        For example, with 
+        The value `MUST` be: 
+          - `code` for requesting an authorization code.
+          - `token` for requesting an access token (implicit grant flow). 
+          - `id_token` for OpenID Connect.
       in: query
       schema:
         type: string
         enum:
           - code
           - token
+          - id_token
       required: true
     - name: client_id
       description: |
@@ -33,7 +84,7 @@ get:
     - name: scope
       description: |
         Definition of access level (access control) which client want to request.
-        Scopes are delimmited by spaces.
+        Scopes are delimmited by spaces. If we want to use OIDC flow, add `openid` into `scope` request parameter.
       in: query
       schema:
         type: string
@@ -52,7 +103,7 @@ get:
   responses:
     "302":
       description: >-
-        location to `redirect_uri` with parameter `code` or `token` and `state`
+        location to `redirect_uri` with parameter `code` or `token` or `id_token` and `state`
         (optional) in query string.
       content:
         text/html:
