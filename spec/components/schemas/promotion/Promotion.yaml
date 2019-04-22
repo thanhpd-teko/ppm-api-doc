@@ -31,7 +31,8 @@ properties:
           example: '14:00:00'
   condition:
     $ref: "#/components/schemas/Condition"
-
+  channel:
+    $ref: '#/components/schemas/ChannelTypes'
   benefit:
     $ref: "#/components/schemas/Benefit"
   govRegister:

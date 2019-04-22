@@ -8,8 +8,6 @@ properties:
   coupon:
     type: string
     description: Mã coupon được áp dụng cho CTKM
-  channel:
-    $ref: '#/components/schemas/ChannelTypes'
   paymentMethods:
     type: array
     items:
