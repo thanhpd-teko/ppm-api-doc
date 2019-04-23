@@ -1,0 +1,11 @@
+type: object
+properties:
+  items:
+    type: array
+    items:
+      $ref: '#/components/schemas/stock_quant_item'
+  sku:
+    type: string
+    description: Product sku
+required:
+  - sku

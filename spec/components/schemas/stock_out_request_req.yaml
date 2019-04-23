@@ -1,0 +1,20 @@
+type: object
+properties:
+  requestCode:
+    type: string
+    description: Mã phiếu xuất kho
+  orderID:
+    type: string
+    description: Mã đơn hàng (nếu thuộc loại xuất khác thì orderID = 0)
+  createdAt:
+    type: string
+    description: Thời gian yêu cầu
+    format: date-time
+  requestType:
+    type: integer
+    description: Loại xuất
+required:
+  - createdAt
+  - orderID
+  - requestCode
+  - requestType

@@ -1,19 +1,22 @@
 get:
-  description: ':return: list[Branch]'
-  operationId: get_branch_mapping
-  tags:
-    - branches
-  parameters:
-    - name: X-Fields
-      format: mask
-      type: string
-      description: An optional fields mask
-      in: header
   summary: Get list all branches mapping
   responses:
     '200':
       description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/branch_list_res'
+  operationId: get_branch_mapping
+  description: ':return: list[Branch]'
+  parameters:
+    - name: X-Fields
+      in: header
+      description: An optional fields mask
       schema:
-        items:
-          $ref: '#/definitions/branch_list_res'
-        type: array
+        type: string
+        format: mask
+  tags:
+    - branches

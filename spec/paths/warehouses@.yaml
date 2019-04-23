@@ -1,19 +1,22 @@
 get:
-  description: ':return: list[Warehouse]'
-  operationId: get_warehouses
-  tags:
-    - warehouses
-  parameters:
-    - name: X-Fields
-      format: mask
-      type: string
-      description: An optional fields mask
-      in: header
   summary: Get list all warehouses
   responses:
     '200':
       description: Successful Return
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/warehouse_list_res'
+  operationId: get_warehouses
+  description: ':return: list[Warehouse]'
+  parameters:
+    - name: X-Fields
+      in: header
+      description: An optional fields mask
       schema:
-        items:
-          $ref: '#/definitions/warehouse_list_res'
-        type: array
+        type: string
+        format: mask
+  tags:
+    - warehouses

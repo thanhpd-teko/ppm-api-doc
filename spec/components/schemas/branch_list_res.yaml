@@ -1,0 +1,10 @@
+type: object
+properties:
+  name:
+    type: string
+    description: branch name
+  code:
+    type: string
+    description: branch code
+required:
+  - code

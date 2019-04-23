@@ -1,0 +1,14 @@
+type: object
+properties:
+  name:
+    type: string
+    description: location name
+  parentCode:
+    type: string
+    description: location parent code
+  code:
+    type: string
+    description: location code
+required:
+  - code
+  - parentCode

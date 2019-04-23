@@ -1,0 +1,100 @@
+type: object
+properties:
+  barcode:
+    type: string
+    description: Mã vạch
+  productBrandCode:
+    type: string
+    description: Thương hiệu
+  partNumber:
+    type: string
+    description: Part Number
+  shortName:
+    type: string
+    description: Tên tính năng
+  uomName:
+    type: string
+    description: Đơn vị tính
+  categCode:
+    type: string
+    description: Nhóm sản phẩm
+  supportDelivery:
+    type: boolean
+    description: Hỗ trợ giao hàng
+    default: false
+  note:
+    type: string
+    description: Ghi chú
+  productStatus:
+    type: integer
+    description: Trạng thái
+  isUncounted:
+    type: boolean
+    description: Không kiểm đếm
+    default: false
+  exchangePeriod:
+    type: integer
+    description: Một đổi 1 trong (ngày)
+  warrantyNote:
+    type: string
+    description: Ghi chú bảo hành
+  warrantyPeriod:
+    type: number
+    description: Thời gian bảo hành
+  uomPoName:
+    type: string
+    description: Đơn vị đo lường mua hàng
+  type:
+    enum:
+      - consu
+      - product
+    example: consu
+    description: >-
+      Loại sản phẩm:- consu: Sản phẩm không quản lý tồn kho (Cho phép bán âm)-
+      product: Sản phẩm có quản lý tồn & lưu kho
+    type: string
+  warrantyStamp_qty:
+    type: integer
+    description: Số lượng tem bảo hành
+  defaultCode:
+    type: string
+    description: Mã
+  name:
+    type: string
+    description: Tên
+  costPriceCalc:
+    type: boolean
+    description: Tính giá thành
+    default: false
+  saleOnlineOnly:
+    type: boolean
+    description: Chỉ bán online
+    default: false
+  attributeValueCode:
+    type: string
+    description: Thuộc tính (màu sắc)
+  isService:
+    type: boolean
+    description: Sản phẩm dịch vụ
+    default: false
+  salePoint:
+    type: number
+    description: Điểm sản phẩm
+  tracking:
+    type: string
+    description: tracking
+required:
+  - barcode
+  - categCode
+  - costPriceCalc
+  - defaultCode
+  - isService
+  - isUncounted
+  - name
+  - productBrandCode
+  - saleOnlineOnly
+  - supportDelivery
+  - tracking
+  - type
+  - uomName
+  - uomPoName

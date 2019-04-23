@@ -1,19 +1,22 @@
 get:
-  description: ':return: list[Location]'
-  operationId: get_location_mapping
-  tags:
-    - locations
-  parameters:
-    - name: X-Fields
-      format: mask
-      type: string
-      description: An optional fields mask
-      in: header
   summary: Get list all locations mapping
   responses:
     '200':
       description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/location_mapping_res'
+  operationId: get_location_mapping
+  description: ':return: list[Location]'
+  parameters:
+    - name: X-Fields
+      in: header
+      description: An optional fields mask
       schema:
-        items:
-          $ref: '#/definitions/location_mapping_res'
-        type: array
+        type: string
+        format: mask
+  tags:
+    - locations
