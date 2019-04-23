@@ -1,6 +1,7 @@
 get:
   tags:
-    - Transaction Information
+    - Transaction
+  summary: Filter transaction by transaction's code
   parameters:
     - name: transaction_code
       in: query

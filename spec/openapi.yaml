@@ -37,3 +37,4 @@ x-tagGroups:
   - name: Payment service
     tags:
       - Methods
+      - Transaction
