@@ -26,10 +26,10 @@ tags:
     description: |
       We provide four examples one for each of the grant types defined by the [OAuth2 RFC 6749](https://tools.ietf.org/html/rfc6749).
       These grant types (or workflows) are:
-      1. Authorization Code Grant (Web Application Flow).
-      2. The Implicit Grant (or Mobile / Single Page Application Flow).
-      3. The Resource Owner Password Credentials Grant  (or, more succinctly, the Legacy Application Flow). 
-      4. The Client Credentials Grant (or Backend Application Flow).
+      1. Authorization Code Grant.
+      2. The Implicit Grant.
+      3. The Resource Owner Password Credentials Grant. 
+      4. The Client Credentials Grant.
 
       For OAuth2, you can see example to connect with OAuth2 [here](https://requests-oauthlib.readthedocs.io/en/latest/oauth2_workflow.html).
 
