@@ -32,7 +32,7 @@ properties:
   condition:
     $ref: "#/components/schemas/Condition"
   channel:
-    $ref: '#/components/schemas/ChannelTypes'
+    $ref: '#/components/schemas/Channel'
   benefit:
     $ref: "#/components/schemas/Benefit"
   govRegister:

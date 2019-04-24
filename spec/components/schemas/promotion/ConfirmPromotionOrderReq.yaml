@@ -44,7 +44,7 @@ properties:
         type: integer
         description: Giá sau khi áp dụng khuyến mãi
   channel:
-    $ref: '#/components/schemas/ChannelTypes'
+    $ref: '#/components/schemas/Channel'
   terminal:
     type: string
   paymentMethod:

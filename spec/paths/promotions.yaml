@@ -10,7 +10,7 @@ get:
       in: query
       required: false
       schema:
-        $ref: '#/components/schemas/ChannelTypes'
+        $ref: '#/components/schemas/Channel'
     - name: terminal
       in: query
       description: Địa điểm bán hàng (đi kèm khi channel = showroom)
