@@ -1,0 +1,34 @@
+properties:
+  type:
+    type: string
+    enum:
+      - promotion
+      - extra
+    description: Loại khuyến mãi
+  applyType:
+    type: string
+    enum:
+      - product
+      - coupon
+      - order
+  applyOn:
+    type: array
+    items:
+      $ref: '#/components/schemas/PromotionApplyOnItem'
+  discount:
+    type: float
+  gifts:
+    type: array
+    items:
+      $ref: '#/components/schemas/Gift'
+  vouchers:
+    type: array
+    items:
+      type: string
+  coupon:
+    type: string
+    description: Truyền lên coupon code nếu ctkm này ăn theo coupon
+required:
+  - type
+  - applyType
+  - applyOn

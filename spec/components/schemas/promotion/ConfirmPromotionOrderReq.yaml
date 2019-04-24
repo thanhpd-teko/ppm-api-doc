@@ -12,37 +12,14 @@ properties:
   orderCode:
     type: string
     description: Order Code
-  productPromotions:
+  orderLines:
     type: array
     items:
-      required:
-        - sku
-        - quantity
-      properties:
-        sku:
-          type: string
-        quantity:
-          type: integer
-        price:
-          type: integer
-        promotionPrice:
-          type: integer
-          description: Giá sau khi áp dụng các khuyến mãi
-        promotions:
-          type: array
-          items:
-            $ref: '#/components/schemas/PromotionItemReq'
-  orderPromotions:
-    description: Các ctkm áp dụng cho đơn hàng
-    properties:
-      promotions:
-        type: array
-        items:
-          $ref: '#/components/schemas/PromotionItemReq'
-        description: List các ctkm của đơn hàng
-      promotionPrice:
-        type: integer
-        description: Giá sau khi áp dụng khuyến mãi
+      $ref: '#/components/schemas/OrderLine'
+  promotions:
+    type: array
+    items:
+      $ref: '#/components/schemas/PromotionItem'
   channel:
     $ref: '#/components/schemas/Channel'
   terminal:
