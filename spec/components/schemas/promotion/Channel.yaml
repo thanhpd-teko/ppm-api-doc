@@ -1,0 +1,6 @@
+type: string
+enum:
+  - phong_vu_online
+  - phong_vu_showroom
+  - phong_vu_agent
+  - vnshop_online

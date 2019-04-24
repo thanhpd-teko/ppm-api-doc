@@ -28,7 +28,7 @@ tags:
       These grant types (or workflows) are:
       1. Authorization Code Grant (Web Application Flow).
       2. The Implicit Grant (or Mobile / Single Page Application Flow).
-      3. The Resource Owner Password Credentials Grant  (or, more succinctly, the Legacy Application Flow). 
+      3. The Resource Owner Password Credentials Grant  (or, more succinctly, the Legacy Application Flow).
       4. The Client Credentials Grant (or Backend Application Flow).
 
       For OAuth2, you can see example to connect with OAuth2 [here](https://requests-oauthlib.readthedocs.io/en/latest/oauth2_workflow.html).
@@ -38,6 +38,8 @@ tags:
       OAuth 2.0 is a specification as to how to issue `access tokens`. It is defined in RFC 6749 (The OAuth 2.0 Authorization Framework).
 
       OpenID Connect is a specification as to how to issue ID tokens. The main part is defined in OpenID Connect Core 1.0.
+  - name: External Promotion
+    description: Provide apis for other services to get promotion info
 
 servers:
   - url: "http://example.com/api/v1"
@@ -49,3 +51,6 @@ x-tagGroups:
   - name: Identity Platform
     tags:
       - IAM API
+  - name: Price And Promotions
+    tags:
+      - Price & Promotion API

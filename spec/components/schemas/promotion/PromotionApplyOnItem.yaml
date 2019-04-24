@@ -1,0 +1,9 @@
+properties:
+  id:
+    type: string
+    description: order line id
+  quantity:
+    type: integer
+required:
+  - id
+  - quantity
