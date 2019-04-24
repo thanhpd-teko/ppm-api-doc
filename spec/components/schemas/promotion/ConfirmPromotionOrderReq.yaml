@@ -28,5 +28,5 @@ properties:
   paymentMethod:
     type: string
   grandPrice:
-    type: float
+    type: integer
     description: Tổng giá trị đơn hàng

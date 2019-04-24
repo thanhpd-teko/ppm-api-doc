@@ -16,7 +16,7 @@ properties:
     items:
       $ref: '#/components/schemas/PromotionApplyOnItem'
   discount:
-    type: float
+    type: integer
   gifts:
     type: array
     items:

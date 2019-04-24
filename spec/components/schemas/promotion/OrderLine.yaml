@@ -5,7 +5,7 @@ properties:
   sku:
     type: string
   price:
-    type: float
+    type: integer
     description: giá gốc
   quantity:
     type: integer
