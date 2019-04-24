@@ -3,6 +3,7 @@ post:
     - IAM API
   summary: Get Token API
   description: |
+    This API is **Token Endpoint** which help you to issue `access_tokens`.
     1. **Authorization Code Grant** flow with following parameters:
 
       - `grant_type=authorization_code` - This tells the token endpoint that the application is using the Authorization Code grant type.

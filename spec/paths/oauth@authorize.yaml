@@ -3,6 +3,7 @@ get:
     - IAM API
   summary: Authorize API
   description: |
+    Here is **Authorization EndPoint**. We have to call it to get `code` or `token` to issues `access_tokens`.
     1. The **Authorization Code Grant** with following parameters:
       - `response_type=code` (required) is set to code indicating that you want an authorization code as the response.
       - `client_id` (required) is the identifier for your app. You will have received a client_id when first registering your app with the service.
