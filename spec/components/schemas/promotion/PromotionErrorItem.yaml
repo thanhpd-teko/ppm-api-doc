@@ -1,0 +1,13 @@
+properties:
+  id:
+    type: string
+    description: order line id
+  code:
+    type: string
+    description: mã lỗi
+  message:
+    type: string
+    description: Mô tả lỗi
+required:
+  - id
+  - code

@@ -12,44 +12,17 @@ properties:
     example: Invalid order promotion!
   extra:
     properties:
-      orderPromotions:
-        properties:
-          promotions:
-            type: array
-            items:
-              properties:
-                id:
-                  type: integer
-                  description: Promotion id
-                errorCode:
-                  type: string
-                errorMessage:
-                  type: string
-            description: List các ctkm của đơn hàng bị lỗi
-          errorCode:
-            type: string
-          errorMessage:
-            type: string
-      productPromotions:
+      promotions:
         type: array
         items:
-          properties:
-            sku:
-              type: string
-            quantity:
-              type: integer
-            errorCode:
-              type: string
-            errorMessage:
-              type: string
-            promotions:
-              type: array
-              items:
-                properties:
-                  id:
-                    type: integer
-                  errorCode:
-                    type: string
-                  errorMessage:
-                    type: string
+          $ref: '#/components/schemas/PromotionErrorItem'
+      order:
+        properties:
+          code:
+            type: string
+            description: Mã lỗi đơn hàng
+          message:
+            type: string
+            description: Mô tả lỗi
+
 
