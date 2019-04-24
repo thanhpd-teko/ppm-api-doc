@@ -1,7 +1,7 @@
 properties:
-  id:
+  uuid:
     type: string
-    description: order line id
+    description: uuid của gói khuyến mãi bị lỗi
   code:
     type: string
     description: mã lỗi
@@ -9,5 +9,5 @@ properties:
     type: string
     description: Mô tả lỗi
 required:
-  - id
+  - uuid
   - code

@@ -17,12 +17,17 @@ properties:
         items:
           $ref: '#/components/schemas/PromotionErrorItem'
       order:
-        properties:
-          code:
-            type: string
-            description: Mã lỗi đơn hàng
-          message:
-            type: string
-            description: Mô tả lỗi
+        type: array
+        items:
+          properties:
+            code:
+              type: string
+              description: Mã lỗi đơn hàng
+            message:
+              type: string
+              description: Mô tả lỗi
+          required:
+            - code
+
 
 

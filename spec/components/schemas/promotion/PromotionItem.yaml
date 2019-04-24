@@ -1,4 +1,10 @@
 properties:
+  promotionId:
+    type: integer
+    description: Id của promotions
+  uuid:
+    type: string
+    description: Mã uuid của gói khuyến mãi
   type:
     type: string
     enum:
