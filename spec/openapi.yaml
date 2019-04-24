@@ -23,7 +23,21 @@ tags:
   - name: Vouchers
     description: Provides apis for voucher service
   - name: IAM API
-    description: Provives apis for Identity Platform API services
+    description: |
+      We provide four examples one for each of the grant types defined by the [OAuth2 RFC 6749](https://tools.ietf.org/html/rfc6749).
+      These grant types (or workflows) are:
+      1. Authorization Code Grant (Web Application Flow).
+      2. The Implicit Grant (or Mobile / Single Page Application Flow).
+      3. The Resource Owner Password Credentials Grant  (or, more succinctly, the Legacy Application Flow).
+      4. The Client Credentials Grant (or Backend Application Flow).
+
+      For OAuth2, you can see example to connect with OAuth2 [here](https://requests-oauthlib.readthedocs.io/en/latest/oauth2_workflow.html).
+
+      In addition, we also support [OpenID Connect Flow](https://openid.net/connect/) which has been developed by extending OAuth 2.0.
+
+      OAuth 2.0 is a specification as to how to issue `access tokens`. It is defined in RFC 6749 (The OAuth 2.0 Authorization Framework).
+
+      OpenID Connect is a specification as to how to issue ID tokens. The main part is defined in OpenID Connect Core 1.0.
   - name: External Promotion
     description: Provide apis for other services to get promotion info
 
