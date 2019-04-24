@@ -5,6 +5,7 @@ required:
   - channel
   - terminal
   - orderPromotionIds
+  - grandPrice
 properties:
   orderId:
     type: string
@@ -26,3 +27,6 @@ properties:
     type: string
   paymentMethod:
     type: string
+  grandPrice:
+    type: float
+    description: Tổng giá trị đơn hàng
