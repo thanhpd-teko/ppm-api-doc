@@ -7,7 +7,7 @@ post:
   parameters:
     - in: header
       name: Authorization
-      description: Basic `base64({username}:{password})`
+      description: Basic `base64({client_id}:{client_secret})`
       schema:
         type: string
       required: false
