@@ -3,9 +3,11 @@ required:
   - orderCode
   - products
   - channel
-  - terminal
   - orderPromotionIds
-  - grandPrice
+  - grandTotal
+  - paymentMethod
+  - orderLines
+  - promotions
 properties:
   orderId:
     type: string
@@ -26,7 +28,7 @@ properties:
   terminal:
     type: string
   paymentMethod:
-    type: string
-  grandPrice:
+    $ref: '#/components/schemas/PaymentMethod'
+  grandTotal:
     type: integer
     description: Tổng giá trị đơn hàng
