@@ -49,12 +49,6 @@ get:
       required: false
       schema:
         type: string
-    - name: skus
-      in: query
-      description: Danh sách các sản phẩm, tách nhau bởi dấu phẩy
-      required: false
-      schema:
-        type: string
   responses:
     "200":
       description: Lấy thông tin chương trình khuyến mãi thành công
