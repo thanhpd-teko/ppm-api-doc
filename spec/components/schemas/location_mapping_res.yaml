@@ -1,10 +1,10 @@
 type: object
 properties:
-  name:
-    type: string
-    description: location name
   code:
     type: string
     description: location code
+  name:
+    type: string
+    description: location name
 required:
   - code

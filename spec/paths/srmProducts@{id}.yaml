@@ -1,4 +1,14 @@
+parameters:
+  - name: id
+    in: path
+    required: true
+    schema:
+      type: integer
 put:
+  description: ':return: feId[SrmProduct]'
+  operationId: put_srm_product_item
+  requestBody:
+    $ref: '#/components/requestBodies/srm_product_item_req'
   summary: Update a product
   responses:
     '200':
@@ -7,25 +17,11 @@ put:
         application/json:
           schema:
             $ref: '#/components/schemas/srm_product_item_res'
-  operationId: put_srm_product_item
-  description: ':return: feId[SrmProduct]'
-  parameters:
-    - name: X-Fields
-      in: header
-      description: An optional fields mask
-      schema:
-        type: string
-        format: mask
   tags:
     - srmProducts
-parameters:
-  - name: id
-    in: path
-    required: true
-    schema:
-      type: integer
 delete:
-  summary: Delete a product
+  description: ':return: feId[SrmProduct]'
+  operationId: delete_srm_product_item
   responses:
     '200':
       description: Successful Delete
@@ -33,14 +29,6 @@ delete:
         application/json:
           schema:
             $ref: '#/components/schemas/srm_product_item_res'
-  operationId: delete_srm_product_item
-  description: ':return: feId[SrmProduct]'
-  parameters:
-    - name: X-Fields
-      in: header
-      description: An optional fields mask
-      schema:
-        type: string
-        format: mask
+  summary: Delete a product
   tags:
     - srmProducts

@@ -1,4 +1,48 @@
 get:
+  description: ':return: list[StockQuant]'
+  operationId: get_stock_quants_out
+  parameters:
+    - description: List sku
+      in: query
+      required: true
+      name: products
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
+    - description: Vùng / miền
+      in: query
+      name: regions
+      explode: true
+      schema:
+        type: array
+        items:
+          type: integer
+    - description: Chi nhánh
+      in: query
+      name: branches
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
+    - description: Mã Kho
+      in: query
+      name: warehouses
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
+    - description: Địa điểm
+      in: query
+      name: locations
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
   summary: Get list all stock quants but for minimize properties
   responses:
     '200':
@@ -9,55 +53,5 @@ get:
             type: array
             items:
               $ref: '#/components/schemas/_stock_quant_item_min'
-  operationId: get_stock_quants_out
-  description: ':return: list[StockQuant]'
-  parameters:
-    - name: products
-      in: query
-      description: List sku
-      required: true
-      explode: true
-      schema:
-        type: array
-        items:
-          type: string
-    - name: regions
-      in: query
-      description: Vùng / miền
-      explode: true
-      schema:
-        type: array
-        items:
-          type: integer
-    - name: branches
-      in: query
-      description: Chi nhánh
-      explode: true
-      schema:
-        type: array
-        items:
-          type: string
-    - name: warehouses
-      in: query
-      description: Mã Kho
-      explode: true
-      schema:
-        type: array
-        items:
-          type: string
-    - name: locations
-      in: query
-      description: Địa điểm
-      explode: true
-      schema:
-        type: array
-        items:
-          type: string
-    - name: X-Fields
-      in: header
-      description: An optional fields mask
-      schema:
-        type: string
-        format: mask
   tags:
     - stockQuants

@@ -1,15 +1,15 @@
 type: object
 properties:
-  requestCode:
-    type: string
-    description: Mã phiếu xuất kho
   orderID:
     type: string
     description: mã đơn hàng (nếu thuộc loại xuất khác thì orderID = 0)
   createdAt:
     type: string
-    description: Thời gian xác nhận
     format: date-time
+    description: Thời gian xác nhận
+  requestCode:
+    type: string
+    description: Mã phiếu xuất kho
   staffId:
     type: integer
     description: Mã nhân viên nhận hàng

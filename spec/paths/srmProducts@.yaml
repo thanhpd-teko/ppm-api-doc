@@ -1,4 +1,8 @@
 post:
+  description: ':return: feId[SrmProduct]'
+  operationId: post_srm_product_lists
+  requestBody:
+    $ref: '#/components/requestBodies/srm_product_item_req'
   summary: Create a product
   responses:
     '200':
@@ -13,20 +17,5 @@ post:
       description: Insufficient permissions
     '500':
       description: Internal failure
-  operationId: post_srm_product_lists
-  description: ':return: feId[SrmProduct]'
-  parameters:
-    - name: X-Fields
-      in: header
-      description: An optional fields mask
-      schema:
-        type: string
-        format: mask
-  requestBody:
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/srm_product_item_req'
-    required: true
   tags:
     - srmProducts

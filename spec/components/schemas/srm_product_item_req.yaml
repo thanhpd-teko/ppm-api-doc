@@ -1,88 +1,88 @@
 type: object
 properties:
-  barcode:
-    type: string
-    description: Mã vạch
   productBrandCode:
     type: string
     description: Thương hiệu
-  partNumber:
-    type: string
-    description: Part Number
-  shortName:
-    type: string
-    description: Tên tính năng
-  uomName:
-    type: string
-    description: Đơn vị tính
-  categCode:
-    type: string
-    description: Nhóm sản phẩm
-  supportDelivery:
-    type: boolean
-    description: Hỗ trợ giao hàng
-    default: false
-  note:
-    type: string
-    description: Ghi chú
-  productStatus:
-    type: integer
-    description: Trạng thái
-  isUncounted:
-    type: boolean
-    description: Không kiểm đếm
-    default: false
-  exchangePeriod:
-    type: integer
-    description: Một đổi 1 trong (ngày)
-  warrantyNote:
-    type: string
-    description: Ghi chú bảo hành
-  warrantyPeriod:
-    type: number
-    description: Thời gian bảo hành
   uomPoName:
     type: string
     description: Đơn vị đo lường mua hàng
-  type:
-    enum:
-      - consu
-      - product
-    example: consu
-    description: >-
-      Loại sản phẩm:- consu: Sản phẩm không quản lý tồn kho (Cho phép bán âm)-
-      product: Sản phẩm có quản lý tồn & lưu kho
-    type: string
-  warrantyStamp_qty:
-    type: integer
-    description: Số lượng tem bảo hành
-  defaultCode:
-    type: string
-    description: Mã
-  name:
-    type: string
-    description: Tên
-  costPriceCalc:
+  supportDelivery:
     type: boolean
-    description: Tính giá thành
     default: false
-  saleOnlineOnly:
-    type: boolean
-    description: Chỉ bán online
-    default: false
-  attributeValueCode:
-    type: string
-    description: Thuộc tính (màu sắc)
-  isService:
-    type: boolean
-    description: Sản phẩm dịch vụ
-    default: false
-  salePoint:
-    type: number
-    description: Điểm sản phẩm
+    description: Hỗ trợ giao hàng
   tracking:
     type: string
     description: tracking
+  uomName:
+    type: string
+    description: Đơn vị tính
+  partNumber:
+    type: string
+    description: Part Number
+  saleOnlineOnly:
+    type: boolean
+    default: false
+    description: Chỉ bán online
+  categCode:
+    type: string
+    description: Nhóm sản phẩm
+  productStatus:
+    type: integer
+    description: Trạng thái
+  warrantyNote:
+    type: string
+    description: Ghi chú bảo hành
+  type:
+    example: consu
+    type: string
+    enum:
+      - consu
+      - product
+    description: >-
+      Loại sản phẩm:- consu: Sản phẩm không quản lý tồn kho (Cho phép bán âm)-
+      product: Sản phẩm có quản lý tồn & lưu kho
+  isUncounted:
+    type: boolean
+    default: false
+    description: Không kiểm đếm
+  costPriceCalc:
+    type: boolean
+    default: false
+    description: Tính giá thành
+  isService:
+    type: boolean
+    default: false
+    description: Sản phẩm dịch vụ
+  name:
+    type: string
+    description: Tên
+  exchangePeriod:
+    type: integer
+    description: Một đổi 1 trong (ngày)
+  warrantyPeriod:
+    type: number
+    description: Thời gian bảo hành
+  barcode:
+    type: string
+    description: Mã vạch
+  warrantyStamp_qty:
+    type: integer
+    description: Số lượng tem bảo hành
+  attributeValueCode:
+    type: string
+    description: Thuộc tính (màu sắc)
+  salePoint:
+    type: number
+    description: Điểm sản phẩm
+  shortName:
+    type: string
+    description: Tên tính năng
+  defaultCode:
+    type: string
+    description: Mã
+  note:
+    type: string
+    description: Ghi chú
 required:
   - barcode
   - categCode

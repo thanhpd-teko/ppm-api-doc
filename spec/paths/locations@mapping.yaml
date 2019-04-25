@@ -1,5 +1,6 @@
 get:
-  summary: Get list all locations mapping
+  description: ':return: list[Location]'
+  operationId: get_location_mapping
   responses:
     '200':
       description: Success
@@ -9,14 +10,6 @@ get:
             type: array
             items:
               $ref: '#/components/schemas/location_mapping_res'
-  operationId: get_location_mapping
-  description: ':return: list[Location]'
-  parameters:
-    - name: X-Fields
-      in: header
-      description: An optional fields mask
-      schema:
-        type: string
-        format: mask
+  summary: Get list all locations mapping
   tags:
     - locations

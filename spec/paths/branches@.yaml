@@ -1,5 +1,6 @@
 get:
-  summary: Get list all branches
+  description: ':return: list[Branch]'
+  operationId: get_branches
   responses:
     '200':
       description: Successful Return
@@ -9,14 +10,6 @@ get:
             type: array
             items:
               $ref: '#/components/schemas/branch_list_res'
-  operationId: get_branches
-  description: ':return: list[Branch]'
-  parameters:
-    - name: X-Fields
-      in: header
-      description: An optional fields mask
-      schema:
-        type: string
-        format: mask
+  summary: Get list all branches
   tags:
     - branches

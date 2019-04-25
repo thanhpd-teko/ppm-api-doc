@@ -1,5 +1,6 @@
 get:
-  summary: Get list all warehouses mapping
+  description: ':return: list[Warehouse]'
+  operationId: get_warehouse_mapping
   responses:
     '200':
       description: Success
@@ -9,14 +10,6 @@ get:
             type: array
             items:
               $ref: '#/components/schemas/warehouse_mapping_res'
-  operationId: get_warehouse_mapping
-  description: ':return: list[Warehouse]'
-  parameters:
-    - name: X-Fields
-      in: header
-      description: An optional fields mask
-      schema:
-        type: string
-        format: mask
+  summary: Get list all warehouses mapping
   tags:
     - warehouses

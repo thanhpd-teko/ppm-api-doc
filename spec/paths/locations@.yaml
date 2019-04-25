@@ -1,5 +1,6 @@
 get:
-  summary: Get list all locations
+  description: ':return: list[Location]'
+  operationId: get_locations
   responses:
     '200':
       description: Successful Return
@@ -9,14 +10,6 @@ get:
             type: array
             items:
               $ref: '#/components/schemas/location_list_res'
-  operationId: get_locations
-  description: ':return: list[Location]'
-  parameters:
-    - name: X-Fields
-      in: header
-      description: An optional fields mask
-      schema:
-        type: string
-        format: mask
+  summary: Get list all locations
   tags:
     - locations

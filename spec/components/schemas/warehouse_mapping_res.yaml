@@ -1,10 +1,10 @@
 type: object
 properties:
-  name:
-    type: string
-    description: warehouse name
   code:
     type: string
     description: warehouse code
+  name:
+    type: string
+    description: warehouse name
 required:
   - code
