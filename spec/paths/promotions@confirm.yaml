@@ -1,0 +1,31 @@
+post:
+  summary: Promotion Confirm API
+  description: Xác nhận đơn hàng và trừ ngân sách 
+  operationId: confirm-order-promotions
+  tags:
+    - Price & Promotion API
+  requestBody:
+    description: Dữ liệu khuyến mãi của đơn hàng
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ConfirmPromotionOrderReq'
+  responses:
+    "200":
+      description: Xác nhận đơn, trừ ngân sách thành công
+      content:
+        "*/*":
+          schema:
+            required:
+              - transactionId
+            properties:
+              transactionId:
+                type: integer
+                description: Mã giao dịch trừ ngân sách bên ppm, phục vụ đối chiếu
+    "400":
+      description: Xác nhận đơn lỗi
+      content:
+        "*/*":
+          schema:
+            $ref: '#/components/schemas/PromotionError'

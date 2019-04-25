@@ -1,0 +1,38 @@
+post:
+  tags:
+    - IAM API
+  summary: Introspect Token API
+  description: |
+    Introspection Token API in OAuth2 help you to get information from your access or refresh token.
+  parameters:
+    - in: header
+      name: Authorization
+      description: Basic `base64({client_id}:{client_secret})`
+      schema:
+        type: string
+      required: false
+    - name: token
+      description: your access or refresh token which is used for introspect.
+      in: query
+      schema:
+        type: string
+      required: true
+    - name: token_type_hint
+      description: |
+        `access_token` or `refresh_token`.
+      in: query
+      schema:
+        type: string
+        enum:
+          - access_token
+          - refresh_token
+      required: false
+  responses:
+    "200":
+      description: token introspection object response
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/OAuthIntrospectToken"
+  servers:
+    - url: "http://id.teko.vn"

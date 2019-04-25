@@ -23,7 +23,62 @@ tags:
   - name: Vouchers
     description: Provides apis for voucher service
   - name: IAM API
-    description: Provives apis for Identity Platform API services
+    description: |
+      We provide four examples one for each of the grant types defined by the [OAuth2 RFC 6749](https://tools.ietf.org/html/rfc6749).
+      These grant types (or workflows) are:
+      1. Authorization Code Grant.
+      2. The Implicit Grant.
+      3. The Resource Owner Password Credentials Grant.
+      4. The Client Credentials Grant.
+
+      For OAuth2, you can see example to connect with OAuth2 [here](https://requests-oauthlib.readthedocs.io/en/latest/oauth2_workflow.html).
+
+      In addition, we also support [OpenID Connect Flow](https://openid.net/connect/) which has been developed by extending OAuth 2.0.
+
+      OAuth 2.0 is a specification as to how to issue `access tokens`. It is defined in RFC 6749 (The OAuth 2.0 Authorization Framework).
+
+      OpenID Connect is a specification as to how to issue ID tokens. The main part is defined in OpenID Connect Core 1.0.
+
+      **Access Token**
+
+      JSON Web Token (JWT) is an open standard ([`RFC 7519`](https://tools.ietf.org/html/rfc7519)) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA or ECDSA.
+      Although JWTs can be encrypted to also provide secrecy between parties, we will focus on signed tokens. Signed tokens can verify the integrity of the claims contained within it, while encrypted tokens hide those claims from other parties. When tokens are signed using public/private key pairs, the signature also certifies that only the party holding the private key is the one that signed it.
+
+      IAM Access Token (JWT) with following format:
+      - ***HEADER***: algorithm & token type
+      ```
+      {
+          "typ": "JWT",
+          "alg": "RS256"
+      }
+      ```
+
+      - ***PAYLOAD***: data
+      ```
+      {
+          "jti": "14qbEKuydIxz7IBLpg9EXludOOGztBEpoadiKcuEbtcct4Rd",
+          "client_id": "client_id_0",
+          "scope": "profile",
+          "user": {
+            "id": 1,
+            "name": "User 0"
+          }
+      }
+      ```
+        - `jti` - JWT ID.
+        - `client_id` - your client_id of application.
+        - `scope` - your scope of application.
+        - `user` - with id and name are included -  `user_id` and `user_name`.
+
+      - ***VERIFY SIGNATURE***
+
+        `RSASHA56(base64UrlEncode(header) + "." + base64UrlEncode(payload), <your public key>, <your private key>)`.
+
+      See [here](https://tools.ietf.org/html/rfc7519#section-4) for more information.
+
+  - name: External Promotion
+    description: Provide apis for other services to get promotion info
+
   - name: Product Listing
     description: Provides apis for Product Listing APIs
 servers:
@@ -39,3 +94,6 @@ x-tagGroups:
   - name: Product Search
     tags:
       - Search
+  - name: Price And Promotions
+    tags:
+      - Price & Promotion API
