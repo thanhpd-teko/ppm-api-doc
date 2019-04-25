@@ -140,12 +140,12 @@ get:
       description: |
         Using for exclude any data of response
         >
-        Default, response has 3 main blocks: ***products***, ***keywords***, ***attributes***.
+        Default, response has 3 main blocks: ***products***, ***keywords***, ***filters***.
         >
         Using parameter to get necessary response. Each value is separated by commas
       schema:
         type: string
-      example: attributes
+      example: filters
   responses:
     200:
       description: response for successful request
