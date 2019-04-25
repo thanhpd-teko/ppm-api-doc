@@ -1,0 +1,27 @@
+required:
+  - code
+  - result
+  - extra
+properties:
+  code:
+    type: string
+    description: error code, should different from 00
+    example: '00'
+  result:
+    $ref: '#/components/schemas/ListingSearchData'
+  extra:
+    type: object
+    properties:
+      totalItems:
+        type: integer
+        description: total products
+        example: 102
+      page:
+        type: integer
+        description: current page
+        example: 2
+      pageSize:
+        type: integer
+        description: maximum products in 1 page
+        example: 10
+

@@ -1,0 +1,10 @@
+required:
+  - keyword
+  - highlight
+properties:
+  keyword:
+    type: string
+    description: relative keyword with defination query of user
+  highlight:
+    type: string
+    description: highlight keyword

@@ -28,7 +28,7 @@ tags:
       These grant types (or workflows) are:
       1. Authorization Code Grant.
       2. The Implicit Grant.
-      3. The Resource Owner Password Credentials Grant. 
+      3. The Resource Owner Password Credentials Grant.
       4. The Client Credentials Grant.
 
       For OAuth2, you can see example to connect with OAuth2 [here](https://requests-oauthlib.readthedocs.io/en/latest/oauth2_workflow.html).
@@ -79,6 +79,8 @@ tags:
   - name: External Promotion
     description: Provide apis for other services to get promotion info
 
+  - name: Product Listing
+    description: Provides apis for Product Listing APIs
 servers:
   - url: "http://example.com/api/v1"
   - url: "https://example.com/api/v1"
@@ -89,6 +91,9 @@ x-tagGroups:
   - name: Identity Platform
     tags:
       - IAM API
+  - name: Product Search
+    tags:
+      - Search
   - name: Price And Promotions
     tags:
       - Price & Promotion API

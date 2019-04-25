@@ -1,0 +1,28 @@
+required:
+  - code
+  - name
+  - values
+properties:
+  total:
+    type: integer
+    description: total products has this attribute
+  code:
+    type: string
+    description: attribute code
+  name:
+    type: string
+    description: attribute name for display
+  values:
+    type: array
+    items:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: total products have this value for attribute
+        option:
+          type: integer
+          description: optional id of this value
+        value:
+          type: string
+          description: display name for this attribute
