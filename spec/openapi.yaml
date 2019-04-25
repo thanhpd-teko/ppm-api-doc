@@ -38,6 +38,8 @@ tags:
       OAuth 2.0 is a specification as to how to issue `access tokens`. It is defined in RFC 6749 (The OAuth 2.0 Authorization Framework).
 
       OpenID Connect is a specification as to how to issue ID tokens. The main part is defined in OpenID Connect Core 1.0.
+  - name: External Promotion
+    description: Provide apis for other services to get promotion info
 
 
       **Access Token**
@@ -87,3 +89,6 @@ x-tagGroups:
   - name: Identity Platform
     tags:
       - IAM API
+  - name: Price And Promotions
+    tags:
+      - Price & Promotion API

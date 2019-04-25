@@ -1,0 +1,17 @@
+properties:
+  id:
+    type: string
+    description: Order line id
+  sku:
+    type: string
+  price:
+    type: integer
+    description: giá gốc
+  quantity:
+    type: integer
+    description: Số lượng sản phẩm
+required:
+  - id
+  - sku
+  - price
+  - quantity

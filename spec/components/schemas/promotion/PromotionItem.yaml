@@ -1,0 +1,40 @@
+properties:
+  promotionId:
+    type: integer
+    description: Id của promotions
+  uuid:
+    type: string
+    description: Mã uuid của gói khuyến mãi
+  type:
+    type: string
+    enum:
+      - promotion
+      - extra
+    description: Loại khuyến mãi
+  applyType:
+    type: string
+    enum:
+      - product
+      - coupon
+      - order
+  applyOn:
+    type: array
+    items:
+      $ref: '#/components/schemas/PromotionApplyOnItem'
+  discount:
+    type: integer
+  gifts:
+    type: array
+    items:
+      $ref: '#/components/schemas/Gift'
+  vouchers:
+    type: array
+    items:
+      type: string
+  coupon:
+    type: string
+    description: Truyền lên coupon code nếu ctkm này ăn theo coupon
+required:
+  - type
+  - applyType
+  - applyOn
