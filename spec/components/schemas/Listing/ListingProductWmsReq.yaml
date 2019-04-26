@@ -1,0 +1,38 @@
+required:
+  - sku
+  - stocks
+properties:
+  sku:
+    type: string
+    description: product sku
+  stocks:
+    type: array
+    description: stock status each store of this product
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+          description: store name
+        available:
+          type: number
+          description: onHand - reserved
+        warehouse:
+          type: string
+          description: warehouse code
+        onHand:
+          type: number
+          description: Real in stock
+        productBizType:
+          type: string
+          description: type of bussiness product
+        location:
+          type: string
+          description: branch
+        storeCode:
+          type: string
+          description: store code
+        reserved:
+          type: number
+          description: number of hold
+

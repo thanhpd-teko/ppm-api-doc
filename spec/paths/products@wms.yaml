@@ -1,0 +1,60 @@
+post:
+  tags:
+    - Search
+  summary: Products stock update API
+  description: |
+    API for Warehouse Management System to update stock information list products
+  requestBody:
+    description: SKU of product (example 19030321)
+    required: true
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListingProductWmsReq'
+        example:
+          - sku: 18101023
+            stocks:
+              - name: asdfsa
+                available: 10
+                warehouse: WH1
+                onHand: 24
+                proudctBizType: NEW
+                location: Thai Ha
+                storeCode: B
+                reserved: 14
+              - name: abcd
+                available: 8
+                warehouse: WH10
+                onHand: 10
+                proudctBizType: NEW
+                location: Tran Dai Nghia
+                storeCode: B
+                reserved: 2
+          - sku: 18101056
+            stocks:
+              - name: asdfsa
+                available: 10
+                warehouse: WH1
+                onHand: 24
+                proudctBizType: NEW
+                location: Thai Ha
+                storeCode: B
+                reserved: 14
+              - name: abcd
+                available: 8
+                warehouse: WH10
+                onHand: 10
+                proudctBizType: NEW
+                location: Tran Dai Nghia
+                storeCode: B
+                reserved: 2
+
+  response:
+    200:
+      description: product's information object response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListingSearchResp'
