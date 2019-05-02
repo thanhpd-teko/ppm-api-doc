@@ -1,34 +1,34 @@
 post:
   description: ':return:'
-  operationId: post_stock_out
   requestBody:
     content:
       application/json:
         schema:
           $ref: '#/components/schemas/stock_out_request_req'
     required: true
-  summary: Yêu cầu lấy hàng
   responses:
     '200':
       description: Xác nhận yêu cầu lấy hàng
     '403':
       description: Đã hủy đơn
+  summary: Yêu cầu lấy hàng
+  operationId: post_stock_out
   tags:
-    - stockOut
+    - Stock Out
 put:
   description: ':return:'
-  operationId: put_stock_out
   requestBody:
     content:
       application/json:
         schema:
           $ref: '#/components/schemas/stock_out_confirm_req'
     required: true
-  summary: Xác nhận lấy hàng
   responses:
     '200':
       description: Xác nhận yêu cầu lấy hàng
     '403':
       description: Hàng thiếu
+  summary: Xác nhận lấy hàng
+  operationId: put_stock_out
   tags:
-    - stockOut
+    - Stock Out

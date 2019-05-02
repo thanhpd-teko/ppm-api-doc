@@ -24,18 +24,20 @@ tags:
     description: Provides apis for voucher service
   - name: IAM API
     description: Provives apis for Identity Platform API services
-  - name: branches
-    description: Branch operations
-  - name: warehouses
-    description: Warehouse operations
-  - name: locations
-    description: Location operations
-  - name: stockQuants
-    description: StockQuant operations
-  - name: stockOut
-    description: StockOut operations
-  - name: srmProducts
-    description: SRM product operations
+  - description: Branch operations
+    name: Branches
+  - description: Warehouse operations
+    name: Warehouses
+  - description: Location operations
+    name: Locations
+  - description: StockQuant operations
+    name: Stock Quantities
+  - description: StockOut operations
+    name: Stock Out
+  - description: SRM product operations
+    name: SRM Products
+  - description: Eton APIs
+    name: Eton
 servers:
   - url: "http://example.com/api/v1"
   - url: "https://example.com/api/v1"
@@ -49,11 +51,12 @@ x-tagGroups:
       - IAM API
   - name: WMS
     tags:
-      - branches
-      - warehouses
-      - locations
-      - stockQuants
-      - stockOut
+      - Branches
+      - Warehouses
+      - Locations
+      - Stock Quantities
+      - Stock Out
+      - Eton
   - name: SRM
     tags:
-      - srmProducts
+      - SRM Products

@@ -1,15 +1,7 @@
-parameters:
-  - name: id
-    in: path
-    required: true
-    schema:
-      type: integer
 put:
   description: ':return: feId[SrmProduct]'
-  operationId: put_srm_product_item
   requestBody:
     $ref: '#/components/requestBodies/srm_product_item_req'
-  summary: Update a product
   responses:
     '200':
       description: Successful Update
@@ -17,11 +9,15 @@ put:
         application/json:
           schema:
             $ref: '#/components/schemas/srm_product_item_res'
+  summary: Update a product
+  operationId: put_srm_product_item
   tags:
-    - srmProducts
+    - SRM Products
 delete:
-  description: ':return: feId[SrmProduct]'
+  tags:
+    - SRM Products
   operationId: delete_srm_product_item
+  description: ':return: feId[SrmProduct]'
   responses:
     '200':
       description: Successful Delete
@@ -30,5 +26,9 @@ delete:
           schema:
             $ref: '#/components/schemas/srm_product_item_res'
   summary: Delete a product
-  tags:
-    - srmProducts
+parameters:
+  - name: id
+    in: path
+    required: true
+    schema:
+      type: integer

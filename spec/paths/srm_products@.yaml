@@ -1,9 +1,7 @@
 post:
   description: ':return: feId[SrmProduct]'
-  operationId: post_srm_product_lists
   requestBody:
     $ref: '#/components/requestBodies/srm_product_item_req'
-  summary: Create a product
   responses:
     '200':
       description: Successful Creation
@@ -17,5 +15,7 @@ post:
       description: Insufficient permissions
     '500':
       description: Internal failure
+  summary: Create a product
+  operationId: post_srm_product_lists
   tags:
-    - srmProducts
+    - SRM Products

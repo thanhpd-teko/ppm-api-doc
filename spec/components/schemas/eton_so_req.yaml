@@ -1,0 +1,20 @@
+type: object
+properties:
+  items:
+    allOf:
+      - $ref: '#/components/schemas/eton_product'
+    description: Danh sách thông tin sản phẩm cần xử lý
+  type:
+    type: string
+    description: Loại return
+  eventType:
+    type: string
+    example: picked
+    description: 'event type value MUST be: `picked`, `packed`, `delivered`, `returned`'
+    enum:
+      - picked
+      - packed
+      - delivered
+      - returned
+required:
+  - items

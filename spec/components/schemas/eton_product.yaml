@@ -1,0 +1,17 @@
+type: object
+properties:
+  qty:
+    type: integer
+    description: Số lượng
+  sku:
+    type: string
+    description: Mã sản phẩm
+  serials:
+    items:
+      type: string
+    type: array
+    description: Danh sách serial
+required:
+  - qty
+  - serials
+  - sku

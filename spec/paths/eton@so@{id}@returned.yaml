@@ -1,0 +1,26 @@
+put:
+  operationId: put_external_so_return
+  requestBody:
+    $ref: '#/components/requestBodies/eton_so_req'
+  responses:
+    '200':
+      description: Successful updating
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/eton_success_res'
+    '500':
+      description: Operation failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/eton_fail_res'
+  tags:
+    - Eton
+parameters:
+  - name: id
+    in: path
+    description: ID phiếu Pick của stock.picking cần xử lý WMS
+    required: true
+    schema:
+      type: integer
