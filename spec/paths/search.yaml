@@ -1,7 +1,8 @@
 get:
   tags:
     - Search
-  summary: search and return product listing by query
+  summary: Search product API
+  description: search and return product listing by query
   servers:
     - url: 'http://listing.phongvu.com/{basePath}'
       variables:
