@@ -1,32 +1,34 @@
-type: object
 properties:
-  incoming:
-    type: integer
-    description: Số lượng sắp nhập kho
-  available:
-    type: number
-    description: Số lượng tồn kho thực tế - số đã giữ hàng = on_hand- reserved
-  warehouse:
-    type: string
-    description: Mã Kho
-  onHand:
-    type: number
-    description: Số lượng thực tế đang có trong kho
-  productBizType:
-    type: string
-    description: Loại hình kinh doanh sản phẩm
-  location:
-    type: string
-    description: Chi nhánh
-  storeCode:
-    type: string
-    description: loại khu vực Asia
-  outgoing:
-    type: integer
-    description: Số lượng sắp xuất kho
-  forecast:
-    type: number
-    description: No description
   reserved:
+    description: Stock held quantity
     type: number
-    description: Số lượng đã giữ
+  storeCode:
+    description: Asia region type
+    type: string
+  productBizType:
+    description: Type of product business
+    type: string
+  outgoing:
+    description: Stock outgoing quantity
+    type: integer
+  incoming:
+    description: Quantity about to enter stock
+    type: integer
+  warehouse:
+    description: Warehouse code
+    type: string
+  onHand:
+    description: Actual quantity in stock
+    type: number
+  available:
+    description: >-
+      Available quantity = Actual inventory number - stock held = onHand-
+      reserved
+    type: number
+  location:
+    description: Branch
+    type: string
+  forecast:
+    description: No description
+    type: number
+type: object

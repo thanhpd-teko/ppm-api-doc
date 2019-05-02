@@ -1,5 +1,4 @@
 post:
-  description: ':return:'
   requestBody:
     content:
       application/json:
@@ -8,15 +7,14 @@ post:
     required: true
   responses:
     '200':
-      description: Xác nhận yêu cầu lấy hàng
+      description: Confirm order request
     '403':
-      description: Đã hủy đơn
-  summary: Yêu cầu lấy hàng
-  operationId: post_stock_out
+      description: Order canceled
   tags:
     - Stock Out
+  operationId: post_stock_out
+  summary: Request to pick up product
 put:
-  description: ':return:'
   requestBody:
     content:
       application/json:
@@ -25,10 +23,10 @@ put:
     required: true
   responses:
     '200':
-      description: Xác nhận yêu cầu lấy hàng
+      description: Confirm order request
     '403':
-      description: Hàng thiếu
-  summary: Xác nhận lấy hàng
-  operationId: put_stock_out
+      description: Underselling
   tags:
     - Stock Out
+  operationId: put_stock_out
+  summary: Confirm pick up product

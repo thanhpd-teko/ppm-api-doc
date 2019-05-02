@@ -1,47 +1,4 @@
 get:
-  description: ':return: list[StockQuant]'
-  parameters:
-    - description: List sku
-      in: query
-      name: products
-      required: true
-      explode: true
-      schema:
-        type: array
-        items:
-          type: integer
-    - description: Vùng / miền
-      in: query
-      name: regions
-      explode: true
-      schema:
-        type: array
-        items:
-          type: integer
-    - description: Chi nhánh
-      in: query
-      name: branches
-      explode: true
-      schema:
-        type: array
-        items:
-          type: string
-    - description: Mã Kho
-      in: query
-      name: warehouses
-      explode: true
-      schema:
-        type: array
-        items:
-          type: string
-    - description: Địa điểm
-      in: query
-      name: locations
-      explode: true
-      schema:
-        type: array
-        items:
-          type: string
   responses:
     '200':
       description: Successful Return
@@ -51,7 +8,50 @@ get:
             items:
               $ref: '#/components/schemas/stock_quant_res'
             type: array
-  summary: Get list all stock quants
+  parameters:
+    - name: products
+      description: List sku
+      required: true
+      in: query
+      explode: true
+      schema:
+        type: array
+        items:
+          type: integer
+    - name: regions
+      description: Regions
+      in: query
+      explode: true
+      schema:
+        type: array
+        items:
+          type: integer
+    - name: branches
+      description: Branches
+      in: query
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
+    - name: warehouses
+      description: Warehouses code
+      in: query
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
+    - name: locations
+      description: Locations
+      in: query
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
+  description: ':return: list[StockQuant]'
   operationId: get_stock_quants
   tags:
     - Stock Quantities
+  summary: Get list all stock quants

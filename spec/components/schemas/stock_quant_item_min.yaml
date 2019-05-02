@@ -1,23 +1,25 @@
-type: object
 properties:
-  available:
-    type: number
-    description: Số lượng tồn kho thực tế - số đã giữ hàng = on_hand- reserved
-  warehouse:
-    type: string
-    description: Mã Kho
-  onHand:
-    type: number
-    description: Số lượng thực tế đang có trong kho
-  productBizType:
-    type: string
-    description: Loại hình kinh doanh sản phẩm
-  location:
-    type: string
-    description: Chi nhánh
-  storeCode:
-    type: string
-    description: loại khu vực Asia
   reserved:
+    description: Stock held quantity
     type: number
-    description: Số lượng đã giữ
+  storeCode:
+    description: Asia region type
+    type: string
+  productBizType:
+    description: Type of product business
+    type: string
+  onHand:
+    description: Actual quantity in stock
+    type: number
+  warehouse:
+    description: Warehouse code
+    type: string
+  available:
+    description: >-
+      Available quantity = Actual inventory number - stock held = onHand-
+      reserved
+    type: number
+  location:
+    description: Branch
+    type: string
+type: object

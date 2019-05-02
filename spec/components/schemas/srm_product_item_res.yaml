@@ -1,7 +1,7 @@
-type: object
-properties:
-  feId:
-    type: integer
-    description: Mã sản phẩm tạo tại seller_center
 required:
   - feId
+properties:
+  feId:
+    description: Product id generated at seller_center
+    type: integer
+type: object

@@ -1,5 +1,4 @@
 post:
-  description: ':return: feId[SrmProduct]'
   requestBody:
     $ref: '#/components/requestBodies/srm_product_item_req'
   responses:
@@ -10,12 +9,12 @@ post:
           schema:
             $ref: '#/components/schemas/srm_product_item_res'
     '400':
-      description: Nhóm sản phẩm không tồn tại
+      description: Category does not exist
     '403':
       description: Insufficient permissions
     '500':
       description: Internal failure
-  summary: Create a product
-  operationId: post_srm_product_lists
   tags:
     - SRM Products
+  operationId: post_srm_product_lists
+  summary: Create a product

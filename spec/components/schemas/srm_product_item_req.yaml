@@ -1,88 +1,3 @@
-type: object
-properties:
-  productBrandCode:
-    type: string
-    description: Thương hiệu
-  uomPoName:
-    type: string
-    description: Đơn vị đo lường mua hàng
-  supportDelivery:
-    type: boolean
-    default: false
-    description: Hỗ trợ giao hàng
-  tracking:
-    type: string
-    description: tracking
-  uomName:
-    type: string
-    description: Đơn vị tính
-  partNumber:
-    type: string
-    description: Part Number
-  saleOnlineOnly:
-    type: boolean
-    default: false
-    description: Chỉ bán online
-  categCode:
-    type: string
-    description: Nhóm sản phẩm
-  productStatus:
-    type: integer
-    description: Trạng thái
-  warrantyNote:
-    type: string
-    description: Ghi chú bảo hành
-  type:
-    example: consu
-    type: string
-    enum:
-      - consu
-      - product
-    description: >-
-      Loại sản phẩm:- consu: Sản phẩm không quản lý tồn kho (Cho phép bán âm)-
-      product: Sản phẩm có quản lý tồn & lưu kho
-  isUncounted:
-    type: boolean
-    default: false
-    description: Không kiểm đếm
-  costPriceCalc:
-    type: boolean
-    default: false
-    description: Tính giá thành
-  isService:
-    type: boolean
-    default: false
-    description: Sản phẩm dịch vụ
-  name:
-    type: string
-    description: Tên
-  exchangePeriod:
-    type: integer
-    description: Một đổi 1 trong (ngày)
-  warrantyPeriod:
-    type: number
-    description: Thời gian bảo hành
-  barcode:
-    type: string
-    description: Mã vạch
-  warrantyStamp_qty:
-    type: integer
-    description: Số lượng tem bảo hành
-  attributeValueCode:
-    type: string
-    description: Thuộc tính (màu sắc)
-  salePoint:
-    type: number
-    description: Điểm sản phẩm
-  shortName:
-    type: string
-    description: Tên tính năng
-  defaultCode:
-    type: string
-    description: Mã
-  note:
-    type: string
-    description: Ghi chú
 required:
   - barcode
   - categCode
@@ -98,3 +13,88 @@ required:
   - type
   - uomName
   - uomPoName
+properties:
+  partNumber:
+    description: Part Number
+    type: string
+  warrantyStampQty:
+    description: Number of warranty stamps
+    type: integer
+  tracking:
+    description: tracking
+    type: string
+  attributeValueCode:
+    description: Property (color)
+    type: string
+  uomPoName:
+    description: Purchase unit of measurement
+    type: string
+  note:
+    description: Note
+    type: string
+  name:
+    description: Name
+    type: string
+  isService:
+    description: Product service
+    default: false
+    type: boolean
+  salePoint:
+    description: Product points
+    type: number
+  warrantyNote:
+    description: Warranty notes
+    type: string
+  type:
+    description: >-
+      Product type:- consu: Product does not manage inventory (Allow to sell
+      negative)- product: Product with inventory management and storage
+    enum:
+      - consu
+      - product
+    example: consu
+    type: string
+  productStatus:
+    description: Status
+    type: integer
+  categCode:
+    description: Category
+    type: string
+  shortName:
+    description: Feature name
+    type: string
+  barcode:
+    description: Barcode
+    type: string
+  costPriceCalc:
+    description: Calculate cost price
+    default: false
+    type: boolean
+  isUncounted:
+    description: No tally
+    default: false
+    type: boolean
+  uomName:
+    description: Unit
+    type: string
+  saleOnlineOnly:
+    description: Sale online only
+    default: false
+    type: boolean
+  productBrandCode:
+    description: Brand code
+    type: string
+  defaultCode:
+    description: Default code
+    type: string
+  exchangePeriod:
+    description: 1-1 Exchange period (day)
+    type: integer
+  supportDelivery:
+    description: Support delivery
+    default: false
+    type: boolean
+  warrantyPeriod:
+    description: Warranty period
+    type: number
+type: object

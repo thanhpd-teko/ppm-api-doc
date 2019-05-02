@@ -1,5 +1,22 @@
+parameters:
+  - name: id
+    required: true
+    in: path
+    schema:
+      type: integer
+delete:
+  responses:
+    '200':
+      description: Successful Delete
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/srm_product_item_res'
+  tags:
+    - SRM Products
+  operationId: delete_srm_product_item
+  summary: Delete a product
 put:
-  description: ':return: feId[SrmProduct]'
   requestBody:
     $ref: '#/components/requestBodies/srm_product_item_req'
   responses:
@@ -9,26 +26,7 @@ put:
         application/json:
           schema:
             $ref: '#/components/schemas/srm_product_item_res'
-  summary: Update a product
+  tags:
+    - SRM Products
   operationId: put_srm_product_item
-  tags:
-    - SRM Products
-delete:
-  tags:
-    - SRM Products
-  operationId: delete_srm_product_item
-  description: ':return: feId[SrmProduct]'
-  responses:
-    '200':
-      description: Successful Delete
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/srm_product_item_res'
-  summary: Delete a product
-parameters:
-  - name: id
-    in: path
-    required: true
-    schema:
-      type: integer
+  summary: Update a product

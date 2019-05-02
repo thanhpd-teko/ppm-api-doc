@@ -1,7 +1,17 @@
+parameters:
+  - name: id
+    description: ID phiếu Pick của stock.picking cần xử lý WMS
+    required: true
+    in: path
+    schema:
+      type: integer
 put:
-  operationId: put_external_so_return
   requestBody:
-    $ref: '#/components/requestBodies/eton_so_req'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/eton_so_returned_req'
+    required: true
   responses:
     '200':
       description: Successful updating
@@ -17,10 +27,4 @@ put:
             $ref: '#/components/schemas/eton_fail_res'
   tags:
     - Eton
-parameters:
-  - name: id
-    in: path
-    description: ID phiếu Pick của stock.picking cần xử lý WMS
-    required: true
-    schema:
-      type: integer
+  operationId: put_external_so_return

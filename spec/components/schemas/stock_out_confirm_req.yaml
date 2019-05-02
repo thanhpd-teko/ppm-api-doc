@@ -1,20 +1,20 @@
-type: object
-properties:
-  orderID:
-    type: string
-    description: mã đơn hàng (nếu thuộc loại xuất khác thì orderID = 0)
-  createdAt:
-    type: string
-    format: date-time
-    description: Thời gian xác nhận
-  requestCode:
-    type: string
-    description: Mã phiếu xuất kho
-  staffId:
-    type: integer
-    description: Mã nhân viên nhận hàng
 required:
   - createdAt
   - orderID
   - requestCode
   - staffId
+properties:
+  orderID:
+    description: Order ID
+    type: string
+  createdAt:
+    description: Confirmation time
+    format: date-time
+    type: string
+  requestCode:
+    description: Request code
+    type: string
+  staffId:
+    description: Staff ID
+    type: integer
+type: object

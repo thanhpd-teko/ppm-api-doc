@@ -1,8 +1,8 @@
-type: object
 properties:
   items:
-    allOf:
-      - $ref: '#/components/schemas/eton_product'
-    description: Danh sách thông tin sản phẩm cần xử lý
-required:
-  - items
+    items:
+      description: List of product information to be processed
+      allOf:
+        - $ref: '#/components/schemas/eton_product'
+    type: array
+type: object

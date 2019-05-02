@@ -1,20 +1,20 @@
-type: object
-properties:
-  requestType:
-    type: integer
-    description: Loại xuất
-  orderID:
-    type: string
-    description: Mã đơn hàng (nếu thuộc loại xuất khác thì orderID = 0)
-  createdAt:
-    type: string
-    format: date-time
-    description: Thời gian yêu cầu
-  requestCode:
-    type: string
-    description: Mã phiếu xuất kho
 required:
   - createdAt
   - orderID
   - requestCode
   - requestType
+properties:
+  orderID:
+    description: 'Order code (if in other export type, orderID = 0)'
+    type: string
+  createdAt:
+    description: Request time
+    format: date-time
+    type: string
+  requestType:
+    description: Request type
+    type: integer
+  requestCode:
+    description: Request code
+    type: string
+type: object
