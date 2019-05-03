@@ -1,6 +1,16 @@
 type: object
 properties:
-  message:
+  success:
     type: string
+    description: Error message
   code:
     type: integer
+    example: 200
+  message:
+    type: string
+    description: Error message
+  data:
+    type: object
+    description: Error data
+required:
+  - message

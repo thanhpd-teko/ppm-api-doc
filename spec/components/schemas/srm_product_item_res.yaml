@@ -1,7 +1,0 @@
-required:
-  - feId
-properties:
-  feId:
-    description: Product id generated at seller_center
-    type: integer
-type: object

@@ -1,11 +1,5 @@
 put:
   operationId: put_external_po
-  requestBody:
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/eton_po_req'
-    required: true
   responses:
     '200':
       description: Operation succeed
@@ -13,18 +7,18 @@ put:
         application/json:
           schema:
             $ref: '#/components/schemas/eton_success_res'
-    '500':
-      description: Operation failed
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/eton_fail_res'
   tags:
     - Eton
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/eton_po_req'
+    required: true
 parameters:
-  - name: id
+  - description: The IN coupon ID of stock.picking needs to handle WMS
+    name: id
     in: path
-    description: ID phiếu IN của stock.picking cần xử lý WMS
     required: true
     schema:
       type: integer

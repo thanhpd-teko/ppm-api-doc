@@ -1,17 +1,5 @@
-parameters:
-  - name: id
-    description: ID phiếu Pick của stock.picking cần xử lý WMS
-    required: true
-    in: path
-    schema:
-      type: integer
 put:
-  requestBody:
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/eton_so_req'
-    required: true
+  operationId: put_external_so
   responses:
     '200':
       description: Successful updating
@@ -19,12 +7,18 @@ put:
         application/json:
           schema:
             $ref: '#/components/schemas/eton_success_res'
-    '500':
-      description: Operation failed
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/eton_fail_res'
   tags:
     - Eton
-  operationId: put_external_so
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/eton_so_req'
+    required: true
+parameters:
+  - description: The Pick coupon ID of stock.picking needs to handle WMS
+    name: id
+    in: path
+    required: true
+    schema:
+      type: integer

@@ -1,20 +1,26 @@
 post:
-  requestBody:
-    $ref: '#/components/requestBodies/srm_product_item_req'
+  operationId: post_srm_product_lists
   responses:
     '200':
       description: Successful Creation
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/srm_product_item_res'
+            $ref: '#/components/schemas/error_res'
     '400':
       description: Category does not exist
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error_res'
     '403':
       description: Insufficient permissions
-    '500':
-      description: Internal failure
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error_res'
   tags:
     - SRM Products
-  operationId: post_srm_product_lists
+  requestBody:
+    $ref: '#/components/requestBodies/srm_product_item_req'
   summary: Create a product

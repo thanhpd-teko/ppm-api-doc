@@ -1,57 +1,57 @@
 get:
+  description: ':return: list[StockQuant] - list all stock quants'
+  parameters:
+    - description: List sku
+      in: query
+      required: true
+      name: products
+      explode: true
+      schema:
+        type: array
+        items:
+          type: integer
+    - description: Regions
+      in: query
+      name: regions
+      explode: true
+      schema:
+        type: array
+        items:
+          type: integer
+    - description: Branches
+      in: query
+      name: branches
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
+    - description: Warehouses code
+      in: query
+      name: warehouses
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
+    - description: Locations
+      in: query
+      name: locations
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
+  tags:
+    - Stock Quantities
   responses:
     '200':
       description: Successful Return
       content:
         application/json:
           schema:
+            type: array
             items:
               $ref: '#/components/schemas/stock_quant_res'
-            type: array
-  parameters:
-    - name: products
-      description: List sku
-      required: true
-      in: query
-      explode: true
-      schema:
-        type: array
-        items:
-          type: integer
-    - name: regions
-      description: Regions
-      in: query
-      explode: true
-      schema:
-        type: array
-        items:
-          type: integer
-    - name: branches
-      description: Branches
-      in: query
-      explode: true
-      schema:
-        type: array
-        items:
-          type: string
-    - name: warehouses
-      description: Warehouses code
-      in: query
-      explode: true
-      schema:
-        type: array
-        items:
-          type: string
-    - name: locations
-      description: Locations
-      in: query
-      explode: true
-      schema:
-        type: array
-        items:
-          type: string
-  description: ':return: list[StockQuant]'
-  operationId: get_stock_quants
-  tags:
-    - Stock Quantities
   summary: Get list all stock quants
+  operationId: get_stock_quants

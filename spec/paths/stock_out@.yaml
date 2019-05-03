@@ -1,32 +1,48 @@
-post:
-  requestBody:
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/stock_out_request_req'
-    required: true
+put:
+  operationId: put_stock_out
   responses:
     '200':
       description: Confirm order request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error_res'
     '403':
-      description: Order canceled
-  tags:
-    - Stock Out
-  operationId: post_stock_out
-  summary: Request to pick up product
-put:
+      description: Underselling
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error_res'
   requestBody:
     content:
       application/json:
         schema:
           $ref: '#/components/schemas/stock_out_confirm_req'
     required: true
+  tags:
+    - Stock Out
+  summary: Confirm pick up product
+post:
+  operationId: post_stock_out
   responses:
     '200':
       description: Confirm order request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error_res'
     '403':
-      description: Underselling
+      description: Order canceled
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error_res'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/stock_out_request_req'
+    required: true
   tags:
     - Stock Out
-  operationId: put_stock_out
-  summary: Confirm pick up product
+  summary: Request to pick up product
