@@ -53,29 +53,13 @@ properties:
     description: product's statuses
     properties:
       selling:
-        type: object
-        description: product's selling status
-        properties:
-          code:
-            type: string
-            description: selling status code
-            example: 1
-          name:
-            type: string
-            description: selling status name
-            example: Trang thai 1
+        type: string
+        description: selling status code
+        example: 1
       pulished:
-        type: object
-        description: product's editing status
-        properties:
-          code:
-            type: string
-            description: editing status code
-            example: review
-          name:
-            type: string
-            description: editing status name
-            example: Chờ duyệt lại nội dung
+        type: boolean
+        description: status published
+        example: true
   prices:
     type: object
     properties:
@@ -97,18 +81,34 @@ properties:
         channel:
           type: string
           description: all type prices apply only this channel
-          example: online
+        terminal:
+          type: string
+          nullable: true
+          description: if channel is offline, only this terminal allow apply this promotion price
         promotionPrice:
           type: number
           format: double
           description: product price after apply some promotion campaigns
-          example: 4600000
         flashSalePrice:
           type: number
           format: double
           nullable: true
           description: product price with flash sale campaign. It can be null
-          example: 4500000
+        finalPrice:
+          type: number
+          format: double
+          description: final price
+    example:
+      - channel: online
+        terminal: null
+        promotionPrice: 4600000
+        flashSalePrice: null
+        finalPrice: 4600000
+      - channel: offline
+        terminal: CP04
+        promotionPrice: 4600000
+        flashSalePrice: 4500000
+        finalPrice: 4500000
   images:
     type: array
     items:
@@ -134,43 +134,43 @@ properties:
     items:
       type: object
       properties:
-        incoming:
-          type: integer
-          description: Số lượng sắp nhập kho
-          example: 2
-        productBizType:
+        name:
           type: string
-          description: Loại hình kinh doanh sản phẩm
-          example: 'NEW'
-        reserved:
-          type: integer
-          description: Số lượng đang giữ
-          example: 0
-        warehouse:
-          type: string
-          description: Mã kho
-          example: CH0000
+          description: Tên chi nhánh
+          example: 'Chi nhánh Thái Hà'
         storeCode:
           type: string
           description: Loại khu vực Asia
           example: B
-        outgoing:
-          type: integer
-          description: Số lượng sắp xuất kho
-          example: 0
-        location:
-          type: string
-          description: Khu vực chứa hàng
-          example: 000001
         available:
           type: integer
           description: Số lượng tồn kho thực tế - số đã giữ hàng = onHand - reserved
           example: 2
+        warehouseCode:
+          type: string
+          description: Mã kho
+          example: CH0000
+        warehouseName:
+          type: string
+          description: Tên kho
+          example: 'Kho tổng Thái Hà'
         onHand:
           type: integer
           description: Số lượng thực tế đang có trong kho
           example: 0
-        branch:
+        productBizType:
           type: string
-          description: Mã chi nhánh
-          example: CH0000
+          description: Loại hình kinh doanh sản phẩm
+          example: 'NEW'
+        locationCode:
+          type: string
+          description: Mã code khu vực chứa hàng
+          example: 000001
+        locationName:
+          type: string
+          description: Tên khu vực chứa hàng
+          example: Hàng bán
+        reserved:
+          type: integer
+          description: Số lượng đang giữ
+          example: 0

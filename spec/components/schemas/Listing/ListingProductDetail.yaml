@@ -1,0 +1,52 @@
+properties:
+  seoInfo:
+    type: object
+    properties:
+      metaKeyWord:
+        type: string
+        description: meta keyword (for SEO)
+      metaTitle:
+        type: string
+        description: meta title (for SEO)
+      metaDescription:
+        type: string
+        description: meta description (for SEO)
+      shortDescription:
+        type: string
+        description: short description of product
+      description:
+        type: string
+        description: full description of product
+  warranty:
+    type: object
+    properties:
+      months:
+        type: number
+        description: number of months for warranty
+      description:
+        type: string
+        description: detail condition warranty
+  attributeGroups:
+    type: array
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+          description: name of attribute group
+        value:
+          type: string
+          description: value to display
+        parentId:
+          type: integer
+          description: parent id of this group, equal 0 if it's one of main group
+        priority:
+          type: number
+          description: priority of attribute group
+        highlight:
+          type: boolean
+          description: true if this group need display highlight
+  createdAt:
+    type: string
+    format: date-time
+    description: created moment
