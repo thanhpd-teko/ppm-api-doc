@@ -1,4 +1,5 @@
 additionalProperties:
   type: array
+  description: this key must be product sku
   items:
     $ref: '#/components/schemas/ListingProductWmsStock'

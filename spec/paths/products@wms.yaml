@@ -4,6 +4,8 @@ post:
   summary: Products stock update API
   description: |
     API for Warehouse Management System to update stock information list products
+    >
+    Maximum count of products: 100
   requestBody:
     description: SKU of product (example 19030321)
     required: true
@@ -13,46 +15,46 @@ post:
           $ref: '#/components/schemas/ListingProductWmsReq'
         example:
           18101023:
-            - name: asdfsa
-              available: 10
+            - storeCode: B
+              storeName: asdfsa
               warehouseCode: WH1
               warehouseName: Kho tổng Thái Hà
-              onHand: 24
-              proudctBizType: NEW
               locationCode: TH1
               locationName: Thai Ha
-              storeCode: B
+              proudctBizType: NEW
+              available: 10
+              onHand: 24
               reserved: 14
-            - name: abcd
-              available: 8
+            - storeCode: B
+              storeName: abcd
               warehouseCode: WH10
               warehouseName: Kho ở Trần Đại Nghĩa
-              onHand: 10
-              proudctBizType: NEW
               locationCode: TDN1
               locationName: Tran Dai Nghia
-              storeCode: B
+              proudctBizType: NEW
+              available: 8
+              onHand: 10
               reserved: 2
           18101056:
-            - name: asdfsa
-              available: 10
+            - storeCode: B
+              storeName: asdfsa
               warehouseCode: WH1
               warehouseName: Kho tổng Thái Hà
-              onHand: 24
-              proudctBizType: NEW
               locationCode: TH1
               locationName: Thai Ha
-              storeCode: B
+              proudctBizType: NEW
+              available: 10
+              onHand: 24
               reserved: 14
-            - name: abcd
-              available: 8
+            - storeCode: B
+              storeName: abcd
               warehouseCode: WH10
               warehouseName: Kho ở Trần Đại Nghĩa
-              onHand: 10
-              proudctBizType: NEW
               locationCode: TDN1
               locationName: Tran Dai Nghia
-              storeCode: B
+              proudctBizType: NEW
+              onHand: 10
+              available: 8
               reserved: 2
 
   responses:
@@ -61,4 +63,25 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ListingSearchResp'
+            $ref: '#/components/schemas/ListingError'
+          example:
+            code: 'SUCCESS'
+            message: 'Update successfully'
+    400:
+      description: error response when invalid data
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListingError'
+          example:
+            code: 'INVALID_INPUT'
+            message: 'onHand property must be number, not string'
+    500:
+      description: response when server has error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListingError'
+          example:
+            code: 'INTERNAL_SERVER'
+            message: 'Connection to elasticsearch has troubles'
