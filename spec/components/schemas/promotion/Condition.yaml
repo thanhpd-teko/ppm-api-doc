@@ -1,9 +1,9 @@
 properties:
   orderValueMin:
-    type: number
+    type: double
     description: Điều kiện giá trị đơn hàng min
   orderValueMax:
-    type: number
+    type: double
     description: Điều kiện giá trị đơn hàng max
   coupon:
     type: string
