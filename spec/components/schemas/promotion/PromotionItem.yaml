@@ -22,7 +22,8 @@ properties:
     items:
       $ref: '#/components/schemas/PromotionApplyOnItem'
   discount:
-    type: double
+    type: number
+    format: double
   gifts:
     type: array
     items:

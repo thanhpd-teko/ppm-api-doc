@@ -15,10 +15,12 @@ properties:
     type: integer
     description: Số % được giảm (trong TH giảm giá theo %)
   money:
-    type: double
+    type: number
+    format: double
     description: Số tiền được giảm (trong TH giảm giá theo tiền)
   maxDiscount:
-    type: double
+    type: number
+    format: double
     description: Số tiền được giảm giá tối đa (trong TH giảm giá theo %)
   budgetStatus:
     type: string
