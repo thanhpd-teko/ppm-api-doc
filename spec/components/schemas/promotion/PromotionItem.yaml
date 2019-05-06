@@ -27,6 +27,9 @@ properties:
     type: array
     items:
       $ref: '#/components/schemas/Gift'
+  quantity:
+    type: integer
+    description: Số lần promotion được apply
   vouchers:
     type: array
     items:
@@ -38,3 +41,4 @@ required:
   - type
   - applyType
   - applyOn
+  - quantity
