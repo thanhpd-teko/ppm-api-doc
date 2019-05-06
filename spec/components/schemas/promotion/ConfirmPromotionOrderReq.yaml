@@ -30,5 +30,5 @@ properties:
   paymentMethod:
     $ref: '#/components/schemas/PaymentMethod'
   grandTotal:
-    type: integer
+    type: double
     description: Tổng giá trị đơn hàng
