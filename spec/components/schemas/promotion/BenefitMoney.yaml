@@ -12,7 +12,8 @@ properties:
       - money
       - percent
   percent:
-    type: integer
+    type: number
+    format: double
     description: Số % được giảm (trong TH giảm giá theo %)
   money:
     type: number
