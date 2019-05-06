@@ -1,0 +1,14 @@
+required:
+  - code
+properties:
+  code:
+    type: string
+  messsage:
+    type: string
+  result:
+    required:
+      - transactionId
+    properties:
+      transactionId:
+        type: string
+        description: Mã giao dịch trừ ngân sách

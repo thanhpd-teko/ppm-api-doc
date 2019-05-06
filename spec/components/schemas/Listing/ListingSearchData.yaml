@@ -1,0 +1,48 @@
+properties:
+  products:
+    type: array
+    items:
+      $ref: '#/components/schemas/ListingProductData'
+  keywords:
+    type: array
+    items:
+      $ref: '#/components/schemas/ListingKeywordData'
+    example:
+      - keyword: laptop dell
+        highlight: '<em>laptop</em> dell'
+      - keyword: laptop acer
+        highlight: '<em>laptop</em> acer'
+  filters:
+    type: array
+    items:
+      $ref: '#/components/schemas/ListingAttributeFilterData'
+    example:
+      - code: brand
+        name: Thương hiệu
+        values:
+          - count: 100
+            option: 25
+            value: ASUS
+          - count: 97
+            option: 83
+            value: Acer
+      - code: category
+        name: Danh mục
+        values:
+          - count: 18
+            option: 715
+            value: Laptop acer
+          - count: 20
+            option: 716
+            value: Laptop asus
+      - total: 270
+        code: attributes.laptop_chipdohoaroi
+        name: Chip đồ họa rời
+        values:
+          - count: 10
+            option: 125
+            value: NVIDIA GeForce MX150
+          - count: 25
+            option: 145
+            value: AMD Radeon R5 M420
+

@@ -1,0 +1,7 @@
+required:
+  - error
+properties:
+  error:
+    type: string
+    description: invalid error message (status code 400)
+    example: invalid_request

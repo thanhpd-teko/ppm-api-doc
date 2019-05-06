@@ -2,6 +2,39 @@ post:
   tags:
     - IAM API
   summary: Get Token API
+  description: |
+    This API is **Token Endpoint** which help you to issue `access_tokens`.
+    1. **Authorization Code Grant** flow with following parameters:
+
+      - `grant_type=authorization_code` - This tells the token endpoint that the application is using the Authorization Code grant type.
+      - `code` - The application includes the authorization code it was given in the redirect.
+      - `redirect_uri` - The same redirect URI that was used when requesting the code.
+      - `client_id` - The application’s client ID.
+      - client_secret - The application’s client secret. This ensures that the request to get the access token is made only from the application, and not from a potential attacker that may have intercepted the authorization code.
+
+    2. **Implicit Grant** flow. We don't need to call token endpoint.
+
+    3. **Password Grant** flow with following parameters:
+
+      - `grant_type=password` - This tells the server we’re using the Password grant type.
+      - `username` - The user’s username that they entered in the application.
+      - `password` - The user’s password that they entered in the application.
+      - `client_id` - The public identifier of the application that the developer obtained during registration.
+      - `client_secret` - (optional) -  If the application is a “confidential client” (not a mobile or JavaScript app), then the secret is included as well.
+      - `scope` - (optional) - If the application is requesting a token with limited scope, it should provide the requested scopes here.
+
+    4. **Client Credientials Grant** flow folow with following parameters: 
+      - `grant_type=client_credentials` (required) - The grant_type parameter must be set to client_credentials.
+      - `scope` (optional) - Your service can support different scopes for the client credentials grant. In practice, not many services actually support this.
+      - `client_id` (required) - The public identifier of the application that the developer obtained during registration.
+      - `client_secret` (required) - The application’s client secret. This ensures that the request to get the access token is made only from the application.
+
+    5. **Refresh Token Grant** flow with following parameters (take `access_token` from `refresh_token`).
+      - `grant_type=refresh_token` - This tells the token endpoint that the application is using the Refresh Token grant type.
+      - `refresh_token` - The application includes the authorization code it was given in the redirect.
+      - `client_id` - The application’s client ID.
+      - `client_secret` (required) - The application’s client secret. This ensures that the request to get the access token is made only from the application.
+
   parameters:
     - name: grant_type
       in: query
@@ -29,7 +62,7 @@ post:
       description: |
         Client Secret Information.
         Used in `grant_type`:
-          - `authorizetion_code`
+          - `authorization_code`
           - `client_credentials`
           - `refresh_token`
     - name: code
@@ -40,7 +73,7 @@ post:
         Used in `grant_type`: 
           - `authorization_code`.
 
-        Authorization code will be received after calling `GET /oauth/authorization`.
+        Authorization code will be received after calling authorization endpoint.
     - name: redirect_uri
       in: query
       schema:

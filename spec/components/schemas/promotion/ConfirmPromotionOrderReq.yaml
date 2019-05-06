@@ -1,0 +1,35 @@
+required:
+  - orderId
+  - orderCode
+  - products
+  - channel
+  - orderPromotionIds
+  - grandTotal
+  - paymentMethod
+  - orderLines
+  - promotions
+properties:
+  orderId:
+    type: string
+    description: Order uuid
+  orderCode:
+    type: string
+    description: Order Code
+  orderLines:
+    type: array
+    items:
+      $ref: '#/components/schemas/OrderLine'
+  promotions:
+    type: array
+    items:
+      $ref: '#/components/schemas/PromotionItem'
+  channel:
+    $ref: '#/components/schemas/Channel'
+  terminal:
+    type: string
+  paymentMethod:
+    $ref: '#/components/schemas/PaymentMethod'
+  grandTotal:
+    type: number
+    format: double
+    description: Tổng giá trị đơn hàng
