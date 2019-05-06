@@ -1,10 +1,12 @@
 properties:
   products:
     type: array
+    description: khối kết quả sản phẩm
     items:
       $ref: '#/components/schemas/ListingProductData'
   keywords:
     type: array
+    description: khối kết quả từ khóa gần đúng/liên quan
     items:
       $ref: '#/components/schemas/ListingKeywordData'
     example:
@@ -14,6 +16,7 @@ properties:
         highlight: '<em>laptop</em> acer'
   filters:
     type: array
+    description: khối kết quả thuộc tính dùng để lọc sản phẩm
     items:
       $ref: '#/components/schemas/ListingAttributeFilterData'
     example:

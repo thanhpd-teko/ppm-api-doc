@@ -1,33 +1,351 @@
 properties:
+  promotions:
+    type: array
+    description: Khối thông tin khuyến mại cho sản phẩm
+    items:
+      type: object
+      properties:
+        channel:
+          type: string
+          description: kênh bán được áp dụng khuyến mại
+        terminal:
+          type: string
+          nullable: true
+          description: điểm bán hàng được áp dụng khuyến mại
+        definations:
+          type: array
+          description: khối thông tin chi tiết các chương trình khuyến mại
+          items:
+            type: object
+            properties:
+              id:
+                type: number
+                description: id chương trình khuyến mại
+              name:
+                type: string
+                description: tên chương trình khuyến mại
+              description:
+                type: string
+                description: mô tả chương trình khuyến mại
+              startedAt:
+                type: string
+                format: datetime
+                description: ngày bắt đầu chương trình
+              endedAt:
+                type: string
+                format: datetime
+                description: ngày kết thúc chương trình
+              type:
+                type: string
+                enum: [order, product, coupon]
+                description: loại chương trình khuyến mại
+              partner:
+                type: string
+                description: đối tác tài trợ chương trình khuyến mại
+              timeRanges:
+                type: array
+                nullable: true
+                description: các khoảng thời gian hiệu lực trong ngày được áp dụng khuyến mại
+                items:
+                  type: object
+                  properties:
+                    start:
+                      type: string
+                      description: thời điểm bắt đầu
+                    end:
+                      type: string
+                      description: thời điểm kết thúc
+              isDefault:
+                type: boolean
+                description: khuyến mại mặc định
+              condition:
+                type: object
+                description: điều kiện được hưởng khuyến mại
+                properties:
+                  paymentMethods:
+                    type: array
+                    description: các phương thức thanh toán được quyền áp dụng chương trình
+                    items:
+                      type: string
+                  orderValueMin:
+                    type: number
+                    format: double
+                    nullable: true
+                    description: giá trị đơn hàng tối thiếu
+                  orderValueMax:
+                    type: number
+                    format: double
+                    nullable: true
+                    description: giá trị đơn hàng tối đa
+                  coupon:
+                    type: string
+                    nullable: true
+                    description: coupon áp dụng. CTKM có loại là coupon và có coupon chỉ định được public
+              benefit:
+                type: object
+                description: khối thông tin quyền lợi khuyến mại
+                properties:
+                  money:
+                    type: array
+                    nullable: true
+                    description: quyền lợi tặng tiền
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                          description: id của quyền lợi
+                        money:
+                          type: number
+                          format: double
+                          nullable: true
+                          description: số tiền được giảm
+                        percent:
+                          type: number
+                          format: double
+                          nullable: true
+                          description: phần trăm được giảm
+                        applyOn:
+                          type: string
+                          enum: [order, product]
+                          description: đơn vị tính quyền lợi
+                        maxDiscount:
+                          type: number
+                          format: double
+                          nullable: true
+                          description: số tiền tối đa được giảm
+                        discountType:
+                          type: string
+                          enum: [money, percent]
+                          description: Loại giảm giá
+                  items:
+                    type: array
+                    nullable: true
+                    description: quyền lợi quà tặng
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                          description: id của quyền lợi
+                        sku:
+                          type: string
+                          description: sku sản phẩm được tặng quà
+                        name:
+                          type: string
+                          description: tên sản phẩm quà tặng
+                        applyOn:
+                          type: string
+                          enum: [order, product]
+                          description: đơn vị tính quyền lợi
+                        quantity:
+                          type: number
+                          description: số lượng tặng mỗi lần
+    example:
+      - channel: online
+        terminal: null
+        definitions:
+          - id: 1
+            name: VNPAYQR10
+            description: Giảm thêm 10% tối đa 200K khi nhập mã VNPAYQR10
+            type: order
+            startedAt: 2019-01-02T10:00:00Z
+            endedAt: 2019-02-02T10:00:00Z
+            partner: VNPAY
+            isDefault: false
+            timeRanges:
+              - start: "11:00:00"
+                end: "14:00:00"
+              - start: "20:00:00"
+                end: "23:00:00"
+            condition:
+              paymentMethods:
+                - online
+                - offline
+              orderValueMin: 90000.00
+              orderValueMax: null
+              coupon: VNPAYQR10
+            benefit:
+              money:
+                - id: 39
+                  money: null
+                  percent: 10.00
+                  applyOn: order
+                  maxDiscount: 200000.00
+                  discountType: percent
+              items: null
+      - channel: showroom
+        terminal: CP00
+        definitions:
+          - id: 1
+            name: CTKM 1
+            description: Mô tả cho CTKM 1
+            type: product
+            startedAt: 2019-04-01T10:00:00Z
+            endedAt: 2019-08-01T10:00:00Z
+            partner: PHONGVU
+            isDefault: false
+            timeRanges:
+              - start: "11:00:00"
+                end: "14:00:00"
+              - start: "20:00:00"
+                end: "23:00:00"
+            condition:
+              paymentMethods:
+                - all
+              orderValueMin: 90000.00
+              orderValueMax: 900000.00
+              coupon: null
+            benefit:
+              money:
+                - id: 1
+                  money: null
+                  percent: 10.00
+                  applyOn: product
+                  maxDiscount: 200000.00
+                  discountType: percent
+                - id: 2
+                  money: 100000.00
+                  percent: 10.00
+                  applyOn: order
+                  maxDiscount: null
+                  discountType: money
+              items:
+                - id: 30
+                  sku: 1602062
+                  name: Loa sonic
+                  applyOn: product
+                  quantity: 1
+  flashSales:
+    type: array
+    description: Khối thông tin về flash sale
+    items:
+      type: object
+      properties:
+        channel:
+          type: string
+          description: kênh bán được áp dụng
+        terminal:
+          type: string
+          nullable: true
+          description: điểm bán hàng được áp dụng
+        used:
+          type: number
+          description: số lượng đã sử dụng
+        total:
+          type: number
+          description: tổng số lượng sản phẩm
+        discountPercent:
+          type: number
+          format: double
+        defination:
+          type: object
+          description: định nghĩa thông tin flash sale
+          properties:
+            name:
+              type: string
+              description: tên chương trình flash sale
+            description:
+              type: string
+              description: mô tả chương trình
+            startedAt:
+              type: string
+              format: datetime
+              description: thời gian bắt đầu
+            endedAt:
+              type: string
+              format: datetime
+              description: thời gian kết thúc
+            timeRanges:
+              type: array
+              nullable: true
+              description: các khoảng thời gian hiệu lực
+              items:
+                type: object
+                properties:
+                  start:
+                    type: string
+                    description: thời điểm bắt đầu
+                  end:
+                    type: string
+                    description: thời điểm kết thúc
+            paymentMethods:
+              type: array
+              description: hình thức thanh toán được áp dụng giá flashsale
+              items:
+                type: string
+            type:
+              type: object
+              description: loại flash sale
+              properties:
+                id:
+                  type: number
+                  description: id loại flashsale
+                code:
+                  type: string
+                  description: mã loại
+                name:
+                  type: string
+                  description: tên loại
+    example:
+      - channel: all
+        terminal: null
+        total: 5
+        used: 0
+        discountPercent: 3
+        definition:
+          name: Flash sale 4
+          description: ""
+          startedAt: 2019-04-01T04:00:00Z
+          endedAt: 2019-04-01T06:00:00Z
+          timeRanges:
+            - start: "11:00:00"
+              end: "13:00:00"
+          type:
+            id: 4
+            code: "DEAL_CUOI_TUAN"
+            name: Deal cuoi tuan
+          paymentMethods:
+            - all
   seoInfo:
     type: object
+    description: khối thông tin dành cho SEO
     properties:
       metaKeyWord:
         type: string
-        description: meta keyword (for SEO)
+        description: meta keyword (dành cho SEO)
+        example: Lorem ipsum dolor sit amet, consectetur adipiscing elit
       metaTitle:
         type: string
-        description: meta title (for SEO)
+        description: meta title (dành cho SEO)
+        example: Lorem ipsum dolor sit amet, consectetur adipiscing elit
       metaDescription:
         type: string
-        description: meta description (for SEO)
+        description: meta description (dành cho SEO)
+        example: Lorem ipsum dolor sit amet, consectetur adipiscing elit
       shortDescription:
         type: string
-        description: short description of product
+        description: mô tả ngắn
+        example: Lorem ipsum dolor sit amet, consectetur adipiscing elit
       description:
         type: string
-        description: full description of product
+        description: mô tả dài
+        example: Lorem ipsum dolor sit amet, consectetur adipiscing elit
   warranty:
     type: object
+    description: khối thông tin bảo hành
     properties:
       months:
         type: number
-        description: number of months for warranty
+        description: số tháng sản phẩm được bảo hành
+        example: 12
       description:
         type: string
-        description: detail condition warranty
+        description: thông tin chi tiết bảo hành
+        example: sản phẩm phải còn nguyên tem
   attributeGroups:
     type: array
+    description: khối thông tin hiển thị thuộc tính sản phẩm
     items:
       type: object
       properties:
@@ -36,17 +354,23 @@ properties:
           description: name of attribute group
         value:
           type: string
-          description: value to display
+          description: tên hiển thị nhóm thuộc tính
         parentId:
           type: integer
-          description: parent id of this group, equal 0 if it's one of main group
+          description: Id nhóm thuộc tính cha. Nếu bằng 0 thì sẽ là nhóm thuộc tính to nhất
         priority:
           type: number
-          description: priority of attribute group
-        highlight:
-          type: boolean
-          description: true if this group need display highlight
+          description: Thứ tự ưu tiên
+    example:
+      - name: Màn hình
+        value: "13.3\" ( 1920 x 1080 ) không cảm ứng , Màn hình chống lóa"
+        parentId: 128
+        priority: 31
+      - name: Thế hệ CPU
+        value: Intel Core thế hệ thứ 8
+        parentId: 128
+        priority: 33
   createdAt:
     type: string
     format: date-time
-    description: created moment
+    description: thời điểm tạo sản phẩm

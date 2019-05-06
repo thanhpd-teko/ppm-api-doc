@@ -4,7 +4,7 @@ required:
 properties:
   keyword:
     type: string
-    description: relative keyword with defination query of user
+    description: từ khóa liên quan với keyword của người dùng
   highlight:
     type: string
-    description: highlight keyword
+    description: từ khóa đã được nổi bật (dùng thẻ `<em></em>`)

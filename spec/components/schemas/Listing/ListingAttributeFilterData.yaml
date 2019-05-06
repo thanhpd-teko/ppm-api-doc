@@ -5,24 +5,25 @@ required:
 properties:
   total:
     type: integer
-    description: total products has this attribute
+    description: tổng số sản phẩm có thuộc tình này
   code:
     type: string
-    description: attribute code
+    description: mã thuộc tính
   name:
     type: string
-    description: attribute name for display
+    description: tên thuộc tính
   values:
     type: array
+    description: danh sách các giá trị của thuộc tính được filter
     items:
       type: object
       properties:
         count:
           type: integer
-          description: total products have this value for attribute
+          description: số lượng sản phẩm có giá trị bằng với option
         option:
           type: integer
-          description: optional id of this value
+          description: id lựa chọn
         value:
           type: string
-          description: display name for this attribute
+          description: tên hiển thị cho giá trị

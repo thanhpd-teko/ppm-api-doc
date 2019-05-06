@@ -6,98 +6,100 @@ required:
 properties:
   sku:
     type: string
-    description: product sku
+    description: sku của sản phẩm
     example: 1810912
   name:
     type: string
-    description: product name
+    description: tên sản phẩm
     example: "Máy tính xách tay/ Laptop Asus A510UF-EJ587T (i5-8250U)"
   displayName:
     type: string
-    description: name for displaying on web
+    description: tên hiển thị của sản phẩm
     example: "Laptop ASUS VivoBook A510UF-EJ587T (15.6\"/i5-8250U 1.6 GHz - 3.4 GHz/4GB RAM/1TB HDD/NVIDIA GeForce MX130 2GB/Windows 10 Home SL 64-bit/1.7kg)"
   url:
     type: string
-    description: product url on web
+    description: url sản phẩm
     example: "https://phongvu.vn/may-tinh-xach-tay-laptop-asus-a510uf-ej587t-i5-8250u-vang-p35635.html"
   brand:
     type: object
-    description: product's brand
+    description: khối thông tin thương hiệu sản phẩm
     properties:
       code:
         type: string
-        description: brand code
+        description: mã thương hiệu
         example: Asus
       id:
         type: integer
-        description: brand id
+        description: id thương hiệu
         example: 1
       name:
         type: string
-        description: brand name
+        description: tên thương hiệu
         example: ASUS
   color:
     type: object
-    description: product's color data
+    description: khối dữ liệu màu sắc
     properties:
       code:
         type: string
-        description: color code
+        description: mã màu
         example: BLK
       name:
         type: string
-        description: color name
+        description: tên màu
         example: Đen
   status:
     type: object
-    description: product's statuses
+    description: khối trạng thái sản phẩm
     properties:
       selling:
         type: string
-        description: selling status code
+        description: trạng thái bán hàng
         example: 1
-      pulished:
+      pulish:
         type: boolean
-        description: status published
+        description: trạng thái kiểm duyệt sản phẩm
         example: true
   prices:
     type: object
+    description: khối giá gốc
     properties:
       supplierSalePrice:
         type: number
         format: double
-        description: sale price from supplier
+        description: giá niêm yết với nhà cung cấp
         example: 5000000
       sellPrice:
         type: number
         format: double
-        description: sell price
+        description: giá bán
         example: 4700000
   promotionPrices:
     type: array
+    description: khối giá khuyến mại
     items:
       type: object
       properties:
         channel:
           type: string
-          description: all type prices apply only this channel
+          description: kênh bán hàng
         terminal:
           type: string
           nullable: true
-          description: if channel is offline, only this terminal allow apply this promotion price
+          description: điểm bán hàng của kênh bán
         promotionPrice:
           type: number
           format: double
-          description: product price after apply some promotion campaigns
+          description: giá khuyến mại của sản phẩm
         flashSalePrice:
           type: number
           format: double
           nullable: true
-          description: product price with flash sale campaign. It can be null
+          description: giá flash sale nếu sản phẩm chạy chương trình Flashsale
         finalPrice:
           type: number
           format: double
-          description: final price
+          description: giá bán cuối cùng
     example:
       - channel: online
         terminal: null
@@ -111,66 +113,71 @@ properties:
         finalPrice: 4500000
   images:
     type: array
+    description: danh sách ảnh của sản phẩm
     items:
       type: object
       properties:
         url:
           type: string
-          description: image url
+          description: đường dẫn ảnh
           example: "https://phongvu.vn/media/catalog/product/cache/23/small_image/60x60/9df78eab33525d08d6e5fb8d27136e95//d/e/dell_vostro_5568_1.jpg"
         priority:
           type: integer
-          description: priority for this image
+          description: thứ tự hiển thị
           example: 1
   tags:
     type: array
-    description: list of tags
+    description: danh sách các tag sản phẩm được gắn
     items:
       type: string
     example: ['tag_1', 'tag_2']
   stocks:
     type: array
-    description: instock of product
+    description: khối dữ liệu tồn kho
     items:
       type: object
       properties:
-        name:
+        branch:
+          type: string
+          description: Mã chi nhánh
+          example: 'CP02'
+        branchName:
           type: string
           description: Tên chi nhánh
-          example: 'Chi nhánh Thái Hà'
-        storeCode:
-          type: string
-          description: Loại khu vực Asia
-          example: B
-        available:
-          type: integer
-          description: Số lượng tồn kho thực tế - số đã giữ hàng = onHand - reserved
-          example: 2
-        warehouseCode:
+          example: 'KINH DOANH 8'
+        warehouse:
           type: string
           description: Mã kho
-          example: CH0000
+          example: 'CP02'
         warehouseName:
           type: string
           description: Tên kho
-          example: 'Kho tổng Thái Hà'
-        onHand:
-          type: integer
-          description: Số lượng thực tế đang có trong kho
-          example: 0
-        productBizType:
-          type: string
-          description: Loại hình kinh doanh sản phẩm
-          example: 'NEW'
-        locationCode:
+          example: 'Kho'
+        location:
           type: string
           description: Mã code khu vực chứa hàng
-          example: 000001
+          example: '0201'
         locationName:
           type: string
           description: Tên khu vực chứa hàng
-          example: Hàng bán
+          example: 'Kho a1ng'
+        storeCode:
+          type: string
+          description: Loại kho
+          example: 'B'
+        productBizType:
+          type: string
+          description: Loại hình kinh doanh sản phẩm
+          example: 'Biz'
+        available:
+          type: integer
+          description: Số lượng tồn kho thực tế - số đã giữ hàng = onHand - reserved
+          example: 5
         reserved:
           type: integer
           description: Số lượng đang giữ
           example: 0
+        onHand:
+          type: integer
+          description: Số lượng thực tế đang có trong kho
+          example: 5
