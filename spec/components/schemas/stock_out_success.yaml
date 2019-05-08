@@ -1,10 +1,10 @@
 properties:
-  code:
-    type: integer
   message:
     type: string
   result:
     $ref: '#/components/schemas/stock_out_result'
+  code:
+    type: string
 required:
   - code
 type: object

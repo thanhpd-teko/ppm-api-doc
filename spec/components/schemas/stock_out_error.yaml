@@ -1,13 +1,13 @@
-required:
-  - code
-  - message
 properties:
   message:
-    description: error message
     type: string
+    description: error message
   extra:
     type: object
   code:
+    type: string
     description: error code
-    type: integer
+required:
+  - code
+  - message
 type: object

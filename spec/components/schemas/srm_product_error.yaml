@@ -1,12 +1,12 @@
 properties:
-  code:
-    description: error code
-    type: integer
   message:
-    description: error message
     type: string
+    description: error message
   extra:
     type: object
+  code:
+    type: string
+    description: error code
 required:
   - code
   - message

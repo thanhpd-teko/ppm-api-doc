@@ -1,10 +1,10 @@
-required:
-  - code
 properties:
   message:
     type: string
   result:
     type: object
   code:
-    type: integer
+    type: string
+required:
+  - code
 type: object
