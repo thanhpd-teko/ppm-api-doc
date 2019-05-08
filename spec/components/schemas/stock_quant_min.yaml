@@ -1,9 +1,29 @@
 properties:
-  warehouseName:
-    description: Warehouse code
+  available:
+    description: >-
+      Available quantity = Actual inventory number - stock held = onHand-
+      reserved
+    type: number
+  branchName:
+    description: Branch name
     type: string
   locationName:
     description: Location name
+    type: string
+  productBizType:
+    description: Type of product business
+    type: string
+  storeCode:
+    description: Asia region type
+    type: string
+  onHand:
+    description: Actual quantity in stock
+    type: number
+  reserved:
+    description: Stock held quantity
+    type: number
+  warehouse:
+    description: Warehouse name
     type: string
   location:
     description: Location code
@@ -11,30 +31,10 @@ properties:
   branch:
     description: Branch code
     type: string
-  reserved:
-    description: Stock held quantity
-    type: number
-  warehouse:
-    description: Warehouse name
+  warehouseName:
+    description: Warehouse code
     type: string
-  storeCode:
-    description: Asia region type
-    type: string
-  serial:
-    description: Serial of Product
-    type: string
-  onHand:
-    description: Actual quantity in stock
-    type: number
-  branchName:
-    description: Branch name
-    type: string
-  productBizType:
-    description: Type of product business
-    type: string
-  available:
-    description: >-
-      Available quantity = Actual inventory number - stock held = onHand-
-      reserved
+  timestamp:
+    description: Time Stamp
     type: number
 type: object
