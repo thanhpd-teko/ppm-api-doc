@@ -4,7 +4,9 @@ properties:
   message:
     type: string
   result:
-    type: object
+    type: array
+    items:
+      $ref: '#/components/schemas/stock_quant_min_response'
   code:
     type: integer
 type: object

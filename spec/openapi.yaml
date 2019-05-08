@@ -87,8 +87,8 @@ tags:
     name: Stock Out
   - description: SRM product operations
     name: SRM Products
-  - description: Eton APIs
-    name: Eton
+  - description: External APIs
+    name: External
 
   - name: External Promotion
     description: Provide apis for other services to get promotion info
@@ -113,7 +113,7 @@ x-tagGroups:
       - Locations
       - Stock Quantities
       - Stock Out
-      - Eton
+      - External
   - name: SRM
     tags:
       - SRM Products

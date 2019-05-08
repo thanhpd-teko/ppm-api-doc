@@ -4,7 +4,9 @@ properties:
   message:
     type: string
   result:
-    type: object
+    type: array
+    items:
+      $ref: '#/components/schemas/branch'
   code:
     type: integer
 type: object

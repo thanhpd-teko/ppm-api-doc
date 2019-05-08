@@ -1,57 +1,55 @@
 get:
-  description: ':return: list[StockQuant] - list all stock quants'
   parameters:
     - description: List sku
-      in: query
-      required: true
       name: products
+      required: true
+      in: query
       explode: true
       schema:
         type: array
         items:
           type: integer
     - description: Regions
-      in: query
       name: regions
+      in: query
       explode: true
       schema:
         type: array
         items:
           type: integer
     - description: Branches
-      in: query
       name: branches
+      in: query
       explode: true
       schema:
         type: array
         items:
           type: string
     - description: Warehouses code
-      in: query
       name: warehouses
+      in: query
       explode: true
       schema:
         type: array
         items:
           type: string
     - description: Locations
-      in: query
       name: locations
+      in: query
       explode: true
       schema:
         type: array
         items:
           type: string
-  tags:
-    - Stock Quantities
+  operationId: get_stock_quants
   responses:
     '200':
       description: Successful Return
       content:
         application/json:
           schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/stock_quant_res'
+            $ref: '#/components/schemas/stock_quant_success'
+  description: ':return: list[StockQuant] - list all stock quants'
+  tags:
+    - Stock Quantities
   summary: Get list all stock quants
-  operationId: get_stock_quants
