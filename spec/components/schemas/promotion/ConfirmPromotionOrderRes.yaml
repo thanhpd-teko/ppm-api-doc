@@ -9,6 +9,8 @@ properties:
     required:
       - transactionId
     properties:
-      transactionId:
-        type: string
-        description: Mã giao dịch trừ ngân sách
+      transaction:
+        properties:
+          transactionId:
+            type: integer
+            description: Mã giao dịch trừ ngân sách
