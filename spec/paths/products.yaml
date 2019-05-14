@@ -3,6 +3,11 @@ get:
     - Search
   summary: Informations of list products API
   description: API to get all information about products by list skus
+  servers:
+    - url: 'http://listing.teko.com/{basePath}'
+      variables:
+        basePath:
+          default: api
   parameters:
     - name: skus
       in: query

@@ -3,6 +3,11 @@ get:
     - Search
   summary: Product's detail API
   description: API to get all information about product by sku
+  servers:
+    - url: 'http://listing.teko.com/{basePath}'
+      variables:
+        basePath:
+          default: api
   parameters:
     - name: sku
       in: path
