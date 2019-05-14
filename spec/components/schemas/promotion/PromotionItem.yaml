@@ -10,6 +10,7 @@ properties:
     enum:
       - promotion
       - extra
+      - flash_sale
     description: Loại khuyến mãi
   applyType:
     type: string

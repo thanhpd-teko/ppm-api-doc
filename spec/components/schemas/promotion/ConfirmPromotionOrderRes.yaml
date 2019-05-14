@@ -7,8 +7,12 @@ properties:
     type: string
   result:
     required:
-      - transactionId
+      - transaction
     properties:
-      transactionId:
-        type: string
-        description: Mã giao dịch trừ ngân sách
+      transaction:
+        properties:
+          id:
+            type: integer
+            description: Mã giao dịch trừ ngân sách
+        required:
+          - id
