@@ -10,7 +10,7 @@ properties:
     enum:
       - order
       - product
-      - coupon
+      - combo
   isDefault:
     type: boolean
   startedAt:
