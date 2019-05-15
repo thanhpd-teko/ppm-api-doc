@@ -2,6 +2,9 @@ properties:
   uuid:
     type: string
     description: uuid của gói khuyến mãi bị lỗi
+  orderLineId:
+    type: string
+    description: id của order line bị lỗi
   code:
     type: string
     description: mã lỗi
@@ -9,5 +12,4 @@ properties:
     type: string
     description: Mô tả lỗi
 required:
-  - uuid
   - code
