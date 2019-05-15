@@ -1,0 +1,12 @@
+properties:
+  message:
+    type: string
+  result:
+    type: array
+    items:
+      $ref: '#/components/schemas/branch'
+  code:
+    type: string
+required:
+  - code
+type: object

@@ -1,0 +1,19 @@
+properties:
+  createdAt:
+    format: date-time
+    description: Confirmation time
+    type: string
+  orderID:
+    description: Order ID
+    type: string
+  staffId:
+    description: Receive goods staff ID
+    type: string
+  requestCode:
+    description: 'CKNB receipt code, stock out receipt code'
+    type: string
+required:
+  - createdAt
+  - orderID
+  - requestCode
+type: object

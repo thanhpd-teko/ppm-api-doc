@@ -6,9 +6,9 @@ info:
     email: tien.dv@teko.vn
   license:
     name: Apache 2.0
-    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
   x-logo:
-    url: "https://teko-vn.github.io/api-docs/Teko-Logo-01.svg"
+    url: 'https://teko-vn.github.io/api-docs/Teko-Logo-01.svg'
   description: >
     This documentation describes APIs used in/exposed from Teko micro-services ecosystem
 
@@ -75,15 +75,30 @@ tags:
         `RSASHA56(base64UrlEncode(header) + "." + base64UrlEncode(payload), <your public key>, <your private key>)`.
 
       See [here](https://tools.ietf.org/html/rfc7519#section-4) for more information.
-
-  - name: External Promotion
+  - description: Branch operations
+    name: Branches
+  - description: Warehouse operations
+    name: Warehouses
+  - description: Location operations
+    name: Locations
+  - description: StockQuant operations
+    name: Stock Quantities
+  - description: StockOut operations
+    name: Stock Out
+  - description: SRM product operations
+    name: SRM Products
+  - description: External APIs
+    name: External
+  - name: Promotion API
     description: Provide apis for other services to get promotion info
-
+  - name: Promotion Confirm/Validation API
+    description: Provide apis for other services to get promotion info
   - name: Product Listing
     description: Provides apis for Product Listing APIs
 servers:
-  - url: "http://example.com/api/v1"
-  - url: "https://example.com/api/v1"
+  - url: 'http://example.com/api/v1'
+  - url: 'https://example.com/api/v1'
+  - url: /api/v2
 x-tagGroups:
   - name: Offline Sales
     tags:
@@ -91,9 +106,21 @@ x-tagGroups:
   - name: Identity Platform
     tags:
       - IAM API
+  - name: WMS
+    tags:
+      - Branches
+      - Warehouses
+      - Locations
+      - Stock Quantities
+      - Stock Out
+      - External
+  - name: SRM
+    tags:
+      - SRM Products
   - name: Product Search
     tags:
       - Search
   - name: Price And Promotions
     tags:
-      - Price & Promotion API
+      - Promotion API
+      - Promotion Confirm/Validation API

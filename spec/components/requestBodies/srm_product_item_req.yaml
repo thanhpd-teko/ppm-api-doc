@@ -1,0 +1,5 @@
+content:
+  application/json:
+    schema:
+      $ref: '#/components/schemas/srm_product_item_req'
+required: true
