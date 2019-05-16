@@ -1,0 +1,16 @@
+properties:
+  eventType:
+    description: update SO by type
+    enum:
+      - picked
+      - packed
+      - delivered
+    example: picked
+    type: string
+  items:
+    type: array
+    items:
+      description: List of product information to be processed
+      allOf:
+        - $ref: '#/components/schemas/eton_product'
+type: object

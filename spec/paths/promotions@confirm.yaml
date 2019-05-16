@@ -3,7 +3,7 @@ post:
   description: Xác nhận đơn hàng và trừ ngân sách
   operationId: confirm-order-promotions
   tags:
-    - Price & Promotion API
+    - Promotion Confirm/Validation API
   requestBody:
     description: Dữ liệu khuyến mãi của đơn hàng
     required: true
@@ -12,15 +12,15 @@ post:
         schema:
           $ref: '#/components/schemas/ConfirmPromotionOrderReq'
   responses:
-    "200":
+    '200':
       description: Xác nhận đơn, trừ ngân sách thành công
       content:
-        "*/*":
+        '*/*':
           schema:
             $ref: '#/components/schemas/ConfirmPromotionOrderRes'
-    "400":
+    '400':
       description: Xác nhận đơn lỗi
       content:
-        "*/*":
+        '*/*':
           schema:
             $ref: '#/components/schemas/PromotionError'
