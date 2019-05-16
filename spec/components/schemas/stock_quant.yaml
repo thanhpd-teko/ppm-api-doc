@@ -1,0 +1,37 @@
+properties:
+  outgoing:
+    description: Stock outgoing quantity
+    type: integer
+  reserved:
+    description: Stock held quantity
+    type: number
+  onHand:
+    description: Actual quantity in stock
+    type: number
+  location:
+    description: Location code
+    type: string
+  productBizType:
+    description: Type of product business
+    type: string
+  incoming:
+    description: Quantity about to enter stock
+    type: integer
+  forecast:
+    description: No description
+    type: number
+  branch:
+    description: Branch code
+    type: string
+  available:
+    description: >-
+      Available quantity = Actual inventory number - stock held = onHand-
+      reserved
+    type: number
+  storeCode:
+    description: Asia region type
+    type: string
+  warehouse:
+    description: Warehouse code
+    type: string
+type: object

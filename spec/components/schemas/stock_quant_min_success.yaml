@@ -1,0 +1,12 @@
+properties:
+  message:
+    type: string
+  result:
+    type: array
+    items:
+      $ref: '#/components/schemas/stock_quant_min_response'
+  code:
+    type: string
+required:
+  - code
+type: object

@@ -10,6 +10,7 @@ properties:
     enum:
       - promotion
       - extra
+      - flash_sale
     description: Loại khuyến mãi
   applyType:
     type: string
@@ -22,11 +23,15 @@ properties:
     items:
       $ref: '#/components/schemas/PromotionApplyOnItem'
   discount:
-    type: integer
+    type: number
+    format: double
   gifts:
     type: array
     items:
       $ref: '#/components/schemas/Gift'
+  quantity:
+    type: integer
+    description: Số lần promotion được apply
   vouchers:
     type: array
     items:
@@ -38,3 +43,4 @@ required:
   - type
   - applyType
   - applyOn
+  - quantity

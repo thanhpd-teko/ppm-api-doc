@@ -1,0 +1,20 @@
+properties:
+  requestType:
+    description: Export type
+    type: string
+  createdAt:
+    format: date-time
+    description: Request time
+    type: string
+  orderID:
+    description: 'Order code (if in other export type, orderID = 0)'
+    type: string
+  requestCode:
+    description: 'CKNB receipt code, stock out receipt code'
+    type: string
+required:
+  - createdAt
+  - orderID
+  - requestCode
+  - requestType
+type: object

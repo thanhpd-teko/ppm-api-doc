@@ -1,9 +1,9 @@
 post:
   tags:
     - IAM API
-  summary: Introspect Token API
+  summary: Revoke Token API
   description: |
-    Introspection Token API in OAuth2 help you to get information from your access or refresh token.
+    Revoke Token API in OAuth2 help you to revoke your access or refresh token.
   parameters:
     - in: header
       name: Authorization
@@ -12,7 +12,7 @@ post:
         type: string
       required: false
     - name: token
-      description: your access or refresh token which is used for introspect.
+      description: your access or refresh token which is used for revoke.
       in: query
       schema:
         type: string
@@ -29,16 +29,23 @@ post:
       required: false
   responses:
     "200":
-      description: token introspection object response
+      description: token revocation success response
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/OAuthIntrospectToken"
+            type: object
+    "400":
+      description: token revocation error response
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/TokenInvalidResp"
     "401":
-      description: token introspection unauthorized error response
+      description: token revocation unauthorized error response
       content:
         application/json:
           schema:
             $ref: "#/components/schemas/TokenUnauthorizedResp"
+
   servers:
     - url: "http://id.teko.vn"

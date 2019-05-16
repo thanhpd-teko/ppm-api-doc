@@ -1,0 +1,7 @@
+required:
+  - error
+properties:
+  error:
+    type: string
+    description: unauthorized error message (status code 401)
+    example: unsupported_token_type
