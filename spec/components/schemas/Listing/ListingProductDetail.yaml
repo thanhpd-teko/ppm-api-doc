@@ -1,4 +1,9 @@
 properties:
+  taxOut:
+    type: number
+    format: float
+    description: "Thuế bán ra (đơn vị: %)"
+    example: 10
   seoInfo:
     type: object
     description: khối thông tin dành cho SEO
