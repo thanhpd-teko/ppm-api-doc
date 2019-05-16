@@ -1,9 +1,10 @@
 get:
   tags:
     - Search
-  summary: search and return product listing by query
+  summary: Search product API
+  description: search and return product listing by query
   servers:
-    - url: 'http://listing.phongvu.com/{basePath}'
+    - url: 'http://listing.teko.com/{basePath}'
       variables:
         basePath:
           default: api
@@ -16,9 +17,17 @@ get:
       schema:
         type: string
         enum:
-          - offline
+          - showroom
           - online
+          - agent
       example: offline
+    - name: terminal
+      in: query
+      description: |
+        terminal if channel is showroom
+      schema:
+        type: string
+      example: CP01
     - name: visitorId
       in: query
       required: true
@@ -91,7 +100,7 @@ get:
         type: number
         format: double
       example: 10000000
-    - name: sellingStatus
+    - name: saleStatuses
       required: false
       in: query
       description: |
@@ -101,7 +110,7 @@ get:
       style: form
       explode: false
       example: code_1,code_2
-    - name: brand
+    - name: brands
       in: query
       required: false
       description: |
@@ -109,7 +118,7 @@ get:
       schema:
         type: string
       example: "ASUS,ACER"
-    - name: category
+    - name: categories
       in: query
       required: false
       description: |
@@ -125,6 +134,14 @@ get:
       schema:
         type: string
       example: new,hot,flashsale
+    - name: attributeSets
+      in: query
+      required: false
+      description: |
+        filter product by list attribute set, separated by commas
+      schema:
+        type: string
+      example: 123,245
     - name: attributes.<attribute_code>
       in: query
       required: false

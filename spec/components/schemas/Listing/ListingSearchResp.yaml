@@ -5,23 +5,25 @@ required:
 properties:
   code:
     type: string
-    description: error code, should different from 00
+    description: Mã kết quả
     example: '00'
   result:
+    description: khối dữ liệu kết quả
     $ref: '#/components/schemas/ListingSearchData'
   extra:
     type: object
+    description: khối dữ liệu thêm phục vụ cho client
     properties:
       totalItems:
         type: integer
-        description: total products
+        description: tổng số sản phẩm
         example: 102
       page:
         type: integer
-        description: current page
+        description: trang hiện tại
         example: 2
       pageSize:
         type: integer
-        description: maximum products in 1 page
+        description: số lượng sản phẩm tối đa trong 1 trang
         example: 10
 
