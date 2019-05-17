@@ -14,48 +14,58 @@ post:
         schema:
           $ref: '#/components/schemas/ListingProductWmsReq'
         example:
-          18101023:
-            - storeCode: B
-              storeName: asdfsa
-              warehouseCode: WH1
-              warehouseName: Kho tổng Thái Hà
-              locationCode: TH1
-              locationName: Thai Ha
-              proudctBizType: NEW
-              available: 10
-              onHand: 24
-              reserved: 14
-            - storeCode: B
-              storeName: abcd
-              warehouseCode: WH10
-              warehouseName: Kho ở Trần Đại Nghĩa
-              locationCode: TDN1
-              locationName: Tran Dai Nghia
-              proudctBizType: NEW
-              available: 8
-              onHand: 10
-              reserved: 2
-          18101056:
-            - storeCode: B
-              storeName: asdfsa
-              warehouseCode: WH1
-              warehouseName: Kho tổng Thái Hà
-              locationCode: TH1
-              locationName: Thai Ha
-              proudctBizType: NEW
-              available: 10
-              onHand: 24
-              reserved: 14
-            - storeCode: B
-              storeName: abcd
-              warehouseCode: WH10
-              warehouseName: Kho ở Trần Đại Nghĩa
-              locationCode: TDN1
-              locationName: Tran Dai Nghia
-              proudctBizType: NEW
-              onHand: 10
-              available: 8
-              reserved: 2
+          - sku: 18101023
+            items:
+              - branch: CP02
+                branchName: KINH DOANH 8
+                warehouse: CP02
+                warehouseName: Kho
+                location: 0201
+                locationName: Kho a1ng
+                storeCode: B
+                proudctBizType: Biz
+                available: 10
+                onHand: 24
+                reserved: 14
+                timestamp: 1558066889283.962
+              - branch: CP69
+                branchName: KINH DOANH 888
+                warehouse: CP69
+                warehouseName: Kho Trần Đại Nghĩa
+                location: 0320
+                locationName: Kho a1ng
+                storeCode: B
+                proudctBizType: NEW
+                available: 8
+                onHand: 10
+                reserved: 2
+                timestamp: 1558066889283.962
+          - sku: 18101056
+            items:
+              - branch: CP02
+                branchName: KINH DOANH 8
+                warehouse: CP02
+                warehouseName: Kho
+                location: 0201
+                locationName: Kho a1ng
+                storeCode: B
+                proudctBizType: Biz
+                available: 10
+                onHand: 24
+                reserved: 14
+                timestamp: 1558066889283.962
+              - branch: CP69
+                branchName: KINH DOANH 888
+                warehouse: CP69
+                warehouseName: Kho Trần Đại Nghĩa
+                location: 0320
+                locationName: Kho a1ng
+                storeCode: B
+                proudctBizType: NEW
+                available: 8
+                onHand: 10
+                reserved: 2
+                timestamp: 1558066889283.962
 
   responses:
     200:

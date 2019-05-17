@@ -1,5 +1,13 @@
-additionalProperties:
-  type: array
-  description: this key must be product sku
-  items:
-    $ref: '#/components/schemas/ListingProductWmsStock'
+type: array
+description: Danh sách sản phẩm và tồn kho tương ứng
+items:
+  type: object
+  properties:
+    sku:
+      type: string
+      description: SKU của sản phẩm
+    items:
+      type: array
+      description: danh sách tồn kho của sản phẩm
+      items:
+        $ref: '#/components/schemas/ListingProductWmsStock'
