@@ -44,6 +44,30 @@ properties:
         type: string
         description: tên màu
         example: Đen
+  attributeSet:
+    type: object
+    description: khối dữ liệu nhóm thuộc tính sản phẩm
+    properties:
+      id:
+        type: string
+        description: id nhóm thuộc tính
+        example: 61
+      name:
+        type: string
+        description: tên nhóm thuộc tính
+        example: Linh phụ kiện Laptop
+  productLine:
+    type: object
+    description: khối dữ liệu ngành hàng
+    properties:
+      code:
+        type: string
+        description: mã ngành hàng
+        example: NGH01
+      name:
+        type: string
+        description: tên ngành hàng
+        example: Laptop / Apple
   status:
     type: object
     description: khối trạng thái sản phẩm
