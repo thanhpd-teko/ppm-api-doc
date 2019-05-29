@@ -1,0 +1,16 @@
+properties:
+  orderValueMin:
+    type: number
+    format: double
+    description: Điều kiện giá trị đơn hàng min
+  orderValueMax:
+    type: number
+    format: double
+    description: Điều kiện giá trị đơn hàng max
+  coupon:
+    type: string
+    description: Mã coupon được áp dụng cho CTKM
+  paymentMethods:
+    type: array
+    items:
+      type: string

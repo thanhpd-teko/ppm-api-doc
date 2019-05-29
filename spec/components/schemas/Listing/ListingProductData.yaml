@@ -1,0 +1,487 @@
+required:
+  - sku
+  - name
+  - displayName
+  - url
+properties:
+  sku:
+    type: string
+    description: sku của sản phẩm
+    example: 1810912
+  name:
+    type: string
+    description: tên sản phẩm
+    example: "Máy tính xách tay/ Laptop Asus A510UF-EJ587T (i5-8250U)"
+  displayName:
+    type: string
+    description: tên hiển thị của sản phẩm
+    example: "Laptop ASUS VivoBook A510UF-EJ587T (15.6\"/i5-8250U 1.6 GHz - 3.4 GHz/4GB RAM/1TB HDD/NVIDIA GeForce MX130 2GB/Windows 10 Home SL 64-bit/1.7kg)"
+  url:
+    type: string
+    description: url sản phẩm
+    example: "https://phongvu.vn/may-tinh-xach-tay-laptop-asus-a510uf-ej587t-i5-8250u-vang-p35635.html"
+  brand:
+    type: object
+    description: khối thông tin thương hiệu sản phẩm
+    properties:
+      code:
+        type: string
+        description: mã thương hiệu
+        example: Asus
+      name:
+        type: string
+        description: tên thương hiệu
+        example: ASUS
+  color:
+    type: object
+    description: khối dữ liệu màu sắc
+    properties:
+      code:
+        type: string
+        description: mã màu
+        example: BLK
+      name:
+        type: string
+        description: tên màu
+        example: Đen
+  status:
+    type: object
+    description: khối trạng thái sản phẩm
+    properties:
+      sale:
+        type: string
+        description: trạng thái bán hàng
+        example: 1
+      publish:
+        type: boolean
+        description: trạng thái kiểm duyệt sản phẩm
+        example: true
+  prices:
+    type: object
+    description: khối giá gốc
+    properties:
+      supplierSalePrice:
+        type: number
+        format: double
+        description: giá niêm yết với nhà cung cấp
+        example: 5000000
+      sellPrice:
+        type: number
+        format: double
+        description: giá bán
+        example: 4700000
+  promotionPrices:
+    type: array
+    description: khối giá khuyến mại
+    items:
+      type: object
+      properties:
+        channel:
+          type: string
+          description: kênh bán hàng
+        terminal:
+          type: string
+          nullable: true
+          description: điểm bán hàng của kênh bán
+        promotionPrice:
+          type: number
+          format: double
+          description: giá khuyến mại của sản phẩm
+        flashSalePrice:
+          type: number
+          format: double
+          nullable: true
+          description: giá flash sale nếu sản phẩm chạy chương trình Flashsale
+        finalPrice:
+          type: number
+          format: double
+          description: giá bán cuối cùng
+    example:
+      - channel: online
+        terminal: null
+        promotionPrice: 4600000
+        flashSalePrice: null
+        finalPrice: 4600000
+      - channel: offline
+        terminal: CP04
+        promotionPrice: 4600000
+        flashSalePrice: 4500000
+        finalPrice: 4500000
+  images:
+    type: array
+    description: danh sách ảnh của sản phẩm
+    items:
+      type: object
+      properties:
+        url:
+          type: string
+          description: đường dẫn ảnh
+          example: "https://phongvu.vn/media/catalog/product/cache/23/small_image/60x60/9df78eab33525d08d6e5fb8d27136e95//d/e/dell_vostro_5568_1.jpg"
+        priority:
+          type: integer
+          description: thứ tự hiển thị
+          example: 1
+  tags:
+    type: array
+    description: danh sách các tag sản phẩm được gắn
+    items:
+      type: string
+    example: ['tag_1', 'tag_2']
+  stocks:
+    type: array
+    description: khối dữ liệu tồn kho
+    items:
+      type: object
+      properties:
+        branch:
+          type: string
+          description: Mã chi nhánh
+          example: 'CP02'
+        branchName:
+          type: string
+          description: Tên chi nhánh
+          example: 'KINH DOANH 8'
+        warehouse:
+          type: string
+          description: Mã kho
+          example: 'CP02'
+        warehouseName:
+          type: string
+          description: Tên kho
+          example: 'Kho'
+        location:
+          type: string
+          description: Mã code khu vực chứa hàng
+          example: '0201'
+        locationName:
+          type: string
+          description: Tên khu vực chứa hàng
+          example: 'Kho a1ng'
+        storeCode:
+          type: string
+          description: Loại kho
+          example: 'B'
+        productBizType:
+          type: string
+          description: Loại hình kinh doanh sản phẩm
+          example: 'Biz'
+        available:
+          type: integer
+          description: Số lượng tồn kho thực tế - số đã giữ hàng = onHand - reserved
+          example: 5
+        reserved:
+          type: integer
+          description: Số lượng đang giữ
+          example: 0
+        onHand:
+          type: integer
+          description: Số lượng thực tế đang có trong kho
+          example: 5
+  promotions:
+    type: array
+    description: Khối thông tin khuyến mại cho sản phẩm
+    items:
+      type: object
+      properties:
+        channel:
+          type: string
+          description: kênh bán được áp dụng khuyến mại
+        terminal:
+          type: string
+          nullable: true
+          description: điểm bán hàng được áp dụng khuyến mại
+        definitions:
+          type: array
+          description: khối thông tin chi tiết các chương trình khuyến mại
+          items:
+            type: object
+            properties:
+              id:
+                type: number
+                description: id chương trình khuyến mại
+              name:
+                type: string
+                description: tên chương trình khuyến mại
+              description:
+                type: string
+                description: mô tả chương trình khuyến mại
+              startedAt:
+                type: string
+                format: datetime
+                description: ngày bắt đầu chương trình
+              endedAt:
+                type: string
+                format: datetime
+                description: ngày kết thúc chương trình
+              type:
+                type: string
+                enum: [order, product, coupon]
+                description: loại chương trình khuyến mại
+              partner:
+                type: string
+                description: đối tác tài trợ chương trình khuyến mại
+              timeRanges:
+                type: array
+                nullable: true
+                description: các khoảng thời gian hiệu lực trong ngày được áp dụng khuyến mại
+                items:
+                  type: object
+                  properties:
+                    start:
+                      type: string
+                      description: thời điểm bắt đầu
+                    end:
+                      type: string
+                      description: thời điểm kết thúc
+              isDefault:
+                type: boolean
+                description: khuyến mại mặc định
+              condition:
+                type: object
+                description: điều kiện được hưởng khuyến mại
+                properties:
+                  paymentMethods:
+                    type: array
+                    description: các phương thức thanh toán được quyền áp dụng chương trình
+                    items:
+                      type: string
+                  orderValueMin:
+                    type: number
+                    format: double
+                    nullable: true
+                    description: giá trị đơn hàng tối thiếu
+                  orderValueMax:
+                    type: number
+                    format: double
+                    nullable: true
+                    description: giá trị đơn hàng tối đa
+                  coupon:
+                    type: string
+                    nullable: true
+                    description: coupon áp dụng. CTKM có loại là coupon và có coupon chỉ định được public
+              benefit:
+                type: object
+                description: khối thông tin quyền lợi khuyến mại
+                properties:
+                  money:
+                    type: array
+                    nullable: true
+                    description: quyền lợi tặng tiền
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                          description: id của quyền lợi
+                        money:
+                          type: number
+                          format: double
+                          nullable: true
+                          description: số tiền được giảm
+                        percent:
+                          type: number
+                          format: double
+                          nullable: true
+                          description: phần trăm được giảm
+                        applyOn:
+                          type: string
+                          enum: [order, product]
+                          description: đơn vị tính quyền lợi
+                        maxDiscount:
+                          type: number
+                          format: double
+                          nullable: true
+                          description: số tiền tối đa được giảm
+                        discountType:
+                          type: string
+                          enum: [money, percent]
+                          description: Loại giảm giá
+                  items:
+                    type: array
+                    nullable: true
+                    description: quyền lợi quà tặng
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                          description: id của quyền lợi
+                        sku:
+                          type: string
+                          description: sku sản phẩm được tặng quà
+                        name:
+                          type: string
+                          description: tên sản phẩm quà tặng
+                        applyOn:
+                          type: string
+                          enum: [order, product]
+                          description: đơn vị tính quyền lợi
+                        quantity:
+                          type: number
+                          description: số lượng tặng mỗi lần
+    example:
+      - channel: online
+        terminal: null
+        definitions:
+          - id: 1
+            name: VNPAYQR10
+            description: Giảm thêm 10% tối đa 200K khi nhập mã VNPAYQR10
+            type: order
+            startedAt: 2019-01-02T10:00:00Z
+            endedAt: 2019-02-02T10:00:00Z
+            partner: VNPAY
+            isDefault: false
+            timeRanges:
+              - start: "11:00:00"
+                end: "14:00:00"
+              - start: "20:00:00"
+                end: "23:00:00"
+            condition:
+              paymentMethods:
+                - online
+                - offline
+              orderValueMin: 90000.00
+              orderValueMax: null
+              coupon: VNPAYQR10
+            benefit:
+              money:
+                - id: 39
+                  money: null
+                  percent: 10.00
+                  applyOn: order
+                  maxDiscount: 200000.00
+                  discountType: percent
+              items: null
+      - channel: showroom
+        terminal: CP00
+        definitions:
+          - id: 1
+            name: CTKM 1
+            description: Mô tả cho CTKM 1
+            type: product
+            startedAt: 2019-04-01T10:00:00Z
+            endedAt: 2019-08-01T10:00:00Z
+            partner: PHONGVU
+            isDefault: false
+            timeRanges:
+              - start: "11:00:00"
+                end: "14:00:00"
+              - start: "20:00:00"
+                end: "23:00:00"
+            condition:
+              paymentMethods:
+                - all
+              orderValueMin: 90000.00
+              orderValueMax: 900000.00
+              coupon: null
+            benefit:
+              money:
+                - id: 1
+                  money: null
+                  percent: 10.00
+                  applyOn: product
+                  maxDiscount: 200000.00
+                  discountType: percent
+                - id: 2
+                  money: 100000.00
+                  percent: 10.00
+                  applyOn: order
+                  maxDiscount: null
+                  discountType: money
+              items:
+                - id: 30
+                  sku: 1602062
+                  name: Loa sonic
+                  applyOn: product
+                  quantity: 1
+  flashSales:
+    type: array
+    description: Khối thông tin về flash sale
+    items:
+      type: object
+      properties:
+        channel:
+          type: string
+          description: kênh bán được áp dụng
+        terminal:
+          type: string
+          nullable: true
+          description: điểm bán hàng được áp dụng
+        used:
+          type: number
+          description: số lượng đã sử dụng
+        total:
+          type: number
+          description: tổng số lượng sản phẩm
+        discountPercent:
+          type: number
+          format: double
+        definition:
+          type: object
+          description: định nghĩa thông tin flash sale
+          properties:
+            name:
+              type: string
+              description: tên chương trình flash sale
+            description:
+              type: string
+              description: mô tả chương trình
+            startedAt:
+              type: string
+              format: datetime
+              description: thời gian bắt đầu
+            endedAt:
+              type: string
+              format: datetime
+              description: thời gian kết thúc
+            timeRanges:
+              type: array
+              nullable: true
+              description: các khoảng thời gian hiệu lực
+              items:
+                type: object
+                properties:
+                  start:
+                    type: string
+                    description: thời điểm bắt đầu
+                  end:
+                    type: string
+                    description: thời điểm kết thúc
+            paymentMethods:
+              type: array
+              description: hình thức thanh toán được áp dụng giá flashsale
+              items:
+                type: string
+            type:
+              type: object
+              description: loại flash sale
+              properties:
+                id:
+                  type: number
+                  description: id loại flashsale
+                code:
+                  type: string
+                  description: mã loại
+                name:
+                  type: string
+                  description: tên loại
+    example:
+      - channel: all
+        terminal: null
+        total: 5
+        used: 0
+        discountPercent: 3
+        definition:
+          name: Flash sale 4
+          description: ""
+          startedAt: 2019-04-01T04:00:00Z
+          endedAt: 2019-04-01T06:00:00Z
+          timeRanges:
+            - start: "11:00:00"
+              end: "13:00:00"
+          type:
+            id: 4
+            code: "DEAL_CUOI_TUAN"
+            name: Deal cuoi tuan
+          paymentMethods:
+            - all

@@ -1,0 +1,10 @@
+properties:
+  message:
+    type: string
+  result:
+    $ref: '#/components/schemas/srm_product_result'
+  code:
+    type: string
+required:
+  - code
+type: object

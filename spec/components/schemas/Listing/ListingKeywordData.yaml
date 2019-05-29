@@ -1,0 +1,20 @@
+required:
+  - keyword
+  - highlight
+properties:
+  keyword:
+    type: string
+    description: từ khóa liên quan với keyword của người dùng
+  highlight:
+    type: string
+    description: từ khóa đã được nổi bật (dùng thẻ `<em></em>`)
+  brands:
+    type: array
+    description: danh sách thương hiệu nổi bật đi kèm với từ khóa
+    items:
+      type: string
+  categories:
+    type: array
+    description: danh sách danh mục nổi bật có các sản phẩm chứa từ khóa
+    items:
+      type: string

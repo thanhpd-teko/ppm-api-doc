@@ -1,0 +1,80 @@
+properties:
+  taxOut:
+    type: number
+    format: float
+    description: "Thuế bán ra (đơn vị: %)"
+    example: 10
+  seoInfo:
+    type: object
+    description: khối thông tin dành cho SEO
+    properties:
+      metaKeyWord:
+        type: string
+        description: meta keyword (dành cho SEO)
+        example: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+      metaTitle:
+        type: string
+        description: meta title (dành cho SEO)
+        example: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+      metaDescription:
+        type: string
+        description: meta description (dành cho SEO)
+        example: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+      shortDescription:
+        type: string
+        description: mô tả ngắn
+        example: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+      description:
+        type: string
+        description: mô tả dài
+        example: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  warranty:
+    type: object
+    description: khối thông tin bảo hành
+    properties:
+      months:
+        type: number
+        description: số tháng sản phẩm được bảo hành
+        example: 12
+      description:
+        type: string
+        description: thông tin chi tiết bảo hành
+        example: sản phẩm phải còn nguyên tem
+  attributeGroups:
+    type: array
+    description: khối thông tin hiển thị thuộc tính sản phẩm
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+          nullable: true
+          description: id nhóm thuộc tính
+        name:
+          type: string
+          description: name of attribute group
+        value:
+          type: string
+          description: tên hiển thị nhóm thuộc tính
+        parentId:
+          type: integer
+          nullable: true
+          description: Id nhóm thuộc tính cha. Nếu bằng 0 thì sẽ là nhóm thuộc tính to nhất
+        priority:
+          type: number
+          description: Thứ tự ưu tiên
+    example:
+      - id: 1350
+        name: Cấu hình chi tiết
+        value: ""
+        parentId: 0
+        priority: 15
+      - id: 1355
+        name: Thế hệ CPU
+        value: Intel Core thế hệ thứ 8
+        parentId: 1350
+        priority: 32
+  createdAt:
+    type: string
+    format: date-time
+    description: thời điểm tạo sản phẩm

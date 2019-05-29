@@ -1,0 +1,13 @@
+get:
+  description: ':return: list[Warehouse]'
+  operationId: get_warehouses
+  tags:
+    - Warehouses
+  responses:
+    '200':
+      description: Successful Return
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/warehouse_success'
+  summary: Get list all warehouses

@@ -1,0 +1,13 @@
+properties:
+  message:
+    type: string
+    description: error message
+  extra:
+    type: object
+  code:
+    type: string
+    description: error code
+required:
+  - code
+  - message
+type: object

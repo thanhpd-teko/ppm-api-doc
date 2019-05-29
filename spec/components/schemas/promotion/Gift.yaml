@@ -1,0 +1,11 @@
+properties:
+  sku:
+    type: string
+  quantity:
+    type: integer
+  name:
+    type: string
+required:
+  - sku
+  - quantity
+  - name
