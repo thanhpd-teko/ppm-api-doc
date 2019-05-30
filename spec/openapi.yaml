@@ -126,5 +126,10 @@ x-tagGroups:
       - Promotion Confirm/Validation API
   - name: Payment service
     tags:
-      - Methods
+      - Methods/order
+      - Method/cart
+      - Order/get_payment_history
       - Transaction
+      - Transaction/request_payment
+      - Transaction/save_payment
+      - Qrcode/generator

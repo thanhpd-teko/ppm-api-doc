@@ -1,0 +1,65 @@
+properties:
+  client_code:
+    type: string
+    description: Code for client query payment transaction history of Order
+    example: ABC123XYZ
+
+  order_id:
+    type: string
+    description: Order Id to query transaction
+    example: '17123456'
+
+  payment_trans:
+    type: array
+    description: List of Payment transaction histrory of Order ID
+    items:
+      properties:
+        payment_id:
+          type: string
+          description: Transaction code in Payment service
+          example: '17052212345678'
+        client_code:
+          type: string
+          description: Code of client made the payment transaction
+          example: 'PHONGVU_WEBSITE'
+        client_name:
+          type: string
+          description: Name of client made the payment transaction
+          example: 'Website Phong vũ'
+        client_trans_code:
+          type: string
+          description: Transaction code of client
+          example: '172215Ye235345'        
+        payment_method:
+          type: string
+          description: Payment method  code of the transaction
+          example: 'QRcode'
+        payment_method_name:
+          type: string
+          description: Payment method's name of the transaction
+          example: 'Cổng thanh toán trực tuyến'
+        payment_partner:
+          type: string
+          description: code of payment partner of the transaction
+          example: 'VNPAY'
+        payment_partner_name:
+          type: string
+          description: code of payment partner of the transaction
+          example: 'Công ty thanht toán quốc gia Việt Nam'
+        amount:
+          type: float
+          description: amount of transaction
+          example: '1000000'
+        request_date:
+          type: string
+          description: request Time client request  payment, format yyyymmdd hh24miss
+          example: '20170522152521' 
+        response_Date:
+          type: string
+          description: response Time Payment service return transaction result, format yyyymmdd hh24miss
+          example: '20170522152521'        
+        success_date_partner:
+          type: string
+          description: response Time Payment partner response transaction result, format yyyymmdd hh24miss
+          example: '20170522152521'     
+

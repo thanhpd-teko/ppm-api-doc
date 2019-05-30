@@ -1,0 +1,196 @@
+get:
+  tags:
+    - Transaction/request_payment
+  summary: Make request payment
+  parameters:
+    - name: client_code
+      in: query
+      schema:
+        type: string
+      description: Code for client to connect to Payment service
+      required: true
+
+    - name: bank_code
+      in: query
+      description: Code of the bank Customer using to make payment
+      schema:
+        type: string
+      required: false
+
+    - name: locale
+      in: query
+      schema:
+        type: string
+      description: Payment Service support 2 languages are vn and en, default is vn
+      required: false
+
+    - name: client_trans_code
+      in: query
+      schema:
+        type: string
+      description: Client's Transaction code. This code must be unique in Client system.
+      required: true
+
+    - name: order_id
+      in: query
+      schema:
+        type: string
+      description: Order ID in Merchant system. With Phong Vu, It is order Id in OM
+      required: true
+
+    - name: service_code 
+      in: query
+      schema:
+        type: string
+      description: Service of the payment bill  such as Retail(sample - Phong vu's Order), telecom bill, Electric...
+
+        - `sku`
+      required: true
+
+    - name: order_des
+      in: query
+      schema:
+        type: string
+      description: Order description
+      required: false
+
+    - name: amount 
+      in: query
+      schema:
+        type: float
+      description: Amount to be paid. Amount must contain only 2 zero after decimal
+      required: true
+
+    - name: return_url  
+      in: query
+      schema:
+        type: string
+      description: Client'URL that Payment service will return the result of transaction, required if payment_method is CTT(cổng thanh toán)
+      required: false
+
+    - name: ip_addr   
+      in: query
+      schema:
+        type: string
+      description: IP address of Customer performing the payment transaction
+      required: false
+
+    - name: create_date   
+      in: query
+      schema:
+        type: string
+      description:  Time of transaction on website merchant GMT+7, with Format yyyyMMddHHmmss
+      required: true
+
+    - name: month    
+      in: query
+      schema:
+        type: string
+      description: Payment term of installment, required if payment_method is installment
+      required: false
+
+    - name: payment_method   
+      in: query
+      schema:
+        type: string
+      description: Payment method of transaction such as CTT, installment. This code is define by Payment service
+      required: true
+
+    - name: payment_partner    
+      in: query
+      schema:
+        type: string
+      description: Payment partner such as Vnpay, alepay...
+      required: true
+
+    - name: cancel_url    
+      in: query
+      schema:
+        type: string
+      description: Client's URL to return the result if customer cancel transaction.
+      required: true
+
+    - name: buyer_name    
+      in: query
+      schema:
+        type: string
+      description: Buyer Name, not required if payment method is retail, got it from OM
+      required: false
+
+    - name: buyer_email    
+      in: query
+      schema:
+        type: string
+      description: Buyer Email, not required if payment method is retail, got it from OM.
+      required: false
+
+    - name: buyer_address    
+      in: query
+      schema:
+        type: string
+      description: Buyer Email, not required if payment method is retail, got it from OM.
+      required: false
+
+    - name: buyer_city    
+      in: query
+      schema:
+        type: string
+      description: Buyer City, not required if payment method is retail, got it from OM.
+      required: false
+
+    - name: buyer_country    
+      in: query
+      schema:
+        type: string
+      description: Buyer country, not required if payment method is retail, got it from OM.
+      required: false
+
+    - name: payment_hours    
+      in: query
+      schema:
+        type: string
+      description: payment time available (hour)
+      required: false
+
+    - name: card_type    
+      in: query
+      schema:
+        type: string
+      description: The payment card type 
+
+        - `0-ATM dosmetic`
+
+        - `1-international card such as visa, master`
+
+        - `2-Mobile banking or E-wallet`
+
+      required: false
+ 
+    - name: hash_secret
+      in: query
+      schema:
+        type: string
+      description: secret string encrypted by secret key and all parameters for checksum
+      required: true
+
+  responses:
+    "200":
+      description: Methods list response
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/PaymentMethodRes"
+    "400":
+      description: Invalid request response
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/PaymentMethodError"
+    "403":
+      description: Forbiden
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/PaymentMethodError"
+  servers:
+    - url: "http://payment.teko.vn"
