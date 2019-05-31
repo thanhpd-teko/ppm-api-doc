@@ -1,6 +1,8 @@
 properties:
   sku:
     type: string
+  orderLineId:
+    type: integer
   quantity:
     type: integer
   name:
@@ -9,3 +11,4 @@ required:
   - sku
   - quantity
   - name
+  - orderLineId
