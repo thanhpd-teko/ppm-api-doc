@@ -3,6 +3,7 @@ properties:
     type: string
   orderLineId:
     type: integer
+    description: Id của order line converted từ gift này
   quantity:
     type: integer
   name:
