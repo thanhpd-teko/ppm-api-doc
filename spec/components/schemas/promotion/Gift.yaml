@@ -2,7 +2,7 @@ properties:
   sku:
     type: string
   orderLineId:
-    type: integer
+    type: string
     description: Id của order line converted từ gift này
   quantity:
     type: integer
