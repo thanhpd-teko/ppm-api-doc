@@ -16,7 +16,7 @@ properties:
     type: string
     enum:
       - product
-      - coupon
+      - combo
       - order
   applyOn:
     type: array
@@ -44,3 +44,4 @@ required:
   - applyType
   - applyOn
   - quantity
+  - promotionId
