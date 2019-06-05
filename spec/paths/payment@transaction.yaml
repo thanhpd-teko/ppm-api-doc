@@ -21,4 +21,4 @@ get:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TransactionError'
+            $ref: '#/components/schemas/PaymentError'

@@ -86,22 +86,22 @@ get:
  
   responses:
     "200":
-      description: Methods list response
+      description: Save payment sucessfully
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/PaymentMethodRes"
+            $ref: '#/components/schemas/PaymentError'
     "400":
       description: Invalid request response
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/PaymentMethodError"
+            $ref: '#/components/schemas/PaymentError'
     "403":
       description: Forbiden
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/PaymentMethodError"
+            $ref: '#/components/schemas/PaymentError'
   servers:
     - url: "http://payment.teko.vn"

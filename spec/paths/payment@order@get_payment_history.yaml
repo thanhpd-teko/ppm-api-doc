@@ -44,10 +44,13 @@ get:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Transaction'
+            $ref: '#/components/schemas/OrderHistoryPayment'
     '404':
-      description: Transaction not found
+      description: Client code not found
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TransactionError'
+            $ref: '#/components/schemas/PaymentError'
+  servers:
+    - url: "http://dev-payment.teko.vn/api"
+

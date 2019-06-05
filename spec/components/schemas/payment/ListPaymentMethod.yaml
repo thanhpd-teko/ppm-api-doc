@@ -1,0 +1,49 @@
+properties:
+  client_code:
+    type: string
+    description: Code for client to get list payment method for the cart
+    example: ABC123XYZ
+
+  branch_code:
+    type: string
+    description: Code for branch creates the cart
+    example: ABC123XYZ
+
+  response_code:
+    type: string
+    description: response code
+    example: 898
+
+  response_message:
+    type: string
+    description: The description of response code
+    example: Order not exist
+
+  method_list:
+    type: array
+    description: List of Payment method are suitable for the cart 
+    items:
+      properties:
+     
+        payment_method:
+          type: string
+          description: Payment method code 
+          example: 'QRcode'
+        payment_method_name:
+          type: string
+          description: Payment method's name 
+          example: 'QR code'
+        payment_partner:
+          type: string
+          description: code of payment partner 
+          example: 'VNPAY'
+        payment_partner_name:
+          type: string
+          description: Name of payment partner 
+          example: 'Công ty thanht toán quốc gia Việt Nam'
+      
+        Type:
+          type: string
+          description: its value is 0 or 1. 1 mean Payment service must connect to partner system to make payment, 0 mean opposite of 1
+          example: 1     
+

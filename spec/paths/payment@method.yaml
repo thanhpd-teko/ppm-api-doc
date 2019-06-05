@@ -81,12 +81,12 @@ post:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/PaymentMethodError"
+            $ref: "#/components/schemas/PaymentError"
     "403":
       description: Forbiden
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/PaymentMethodError"
+            $ref: "#/components/schemas/PaymentError"
   servers:
     - url: "http://payment.teko.vn"
