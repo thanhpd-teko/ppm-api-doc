@@ -1,10 +1,6 @@
 required:
-- id
 - transaction_code
 properties:
-  id:
-    type: string
-    description: Transaction ID
   transaction_code:
     type: string
     description: transaction code

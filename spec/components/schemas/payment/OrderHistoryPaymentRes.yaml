@@ -1,0 +1,3 @@
+properties:
+  transactions:
+    $ref: '#/components/schemas/TransactionRes'

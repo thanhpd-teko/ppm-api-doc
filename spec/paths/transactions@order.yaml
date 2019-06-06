@@ -44,7 +44,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/OrderHistoryPayment'
+            $ref: '#/components/schemas/OrderHistoryPaymentRes'
     '404':
       description: Client code not found
       content:
