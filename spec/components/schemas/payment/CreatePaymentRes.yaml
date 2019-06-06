@@ -1,5 +1,6 @@
 required:
   - client_code
+  - transaction_code
   - merchant_code
   - service_code
   - order_code
@@ -9,6 +10,10 @@ properties:
     type: string
     description: Code for client to connect to Payment service
     example: ABC123XYZ
+  transaction_code:
+    type: string
+    description: Code of transaction
+    example: QHR7349
   merchant_code:
     type: string
     description: Merchant code defined in Payment service

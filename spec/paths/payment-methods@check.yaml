@@ -9,12 +9,6 @@ post:
         type: string
       description: Code for client to connect to Payment service
       required: true
-    - name: merchant_code
-      in: query
-      description: Merchant code defined in Payment service
-      schema:
-        type: string
-      required: true
     - name: branch_code
       in: query
       schema:

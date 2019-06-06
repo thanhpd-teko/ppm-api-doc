@@ -31,7 +31,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Transaction'
+            $ref: '#/components/schemas/TransactionRes'
     '404':
       description: Transaction not found
       content:
@@ -71,7 +71,7 @@ post:
       description: Order ID in Merchant system. With Phong Vu, It is order Id in OM
       required: true
 
-    - name: totalamount 
+    - name: total_amount 
       in: query
       schema:
         type: float
@@ -130,7 +130,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PaymentError'
+            $ref: '#/components/schemas/CreatePaymentRes'
     "400":
       description: Invalid request response
       content:

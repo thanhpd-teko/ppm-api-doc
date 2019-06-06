@@ -1,10 +1,72 @@
+required:
+  - client_code
+  - merchant_code
+  - service_code
+  - order_code
+  - amount
 properties:
-  code:
-    type: integer
-    example: 200 
-  message:
+  client_code:
     type: string
-    example: 'OK'
-  result:
-    $ref: '#/components/schemas/PaymentMethodData'
-        
+    description: Code for client to connect to Payment service
+    example: ABC123XYZ
+  merchant_code:
+    type: string
+    description: Merchant code defined in Payment service
+    example: 'pv_online_sale'
+  branch_code:
+    type: string
+    description: Branch code of the order
+    example: 'PV009'
+  service_code:
+    type: string
+    description: Service code in Payment service. In this case, this is retail service
+    example: 'RETAIL'
+  order_code:
+    type: string
+    description: Order code in OM system
+    example: '17123456'
+  amount:
+    type: number
+    description: Total paid of the order
+    example: 10500000
+  methods:
+    type: array
+    description: Available payment methods
+    items:
+      properties:
+        method_code:
+          type: string
+          description: Code of method defined in Payment service
+          example: 'VNPAY_QR'
+        method_name:
+          type: string
+          description: Name of method defined in Payment service
+          example: 'VNPAY QR code method'
+        partner_code:
+          type: string
+          description: Code of payment method defined in Payment service
+          example: 'VNPAY'
+        partner_name:
+          type: string
+          description: Name of method defined in Payment service
+          example: 'VNPAY company'        
+        installment_term:
+          type: integer
+          description: Months for installment term
+          example: 6
+        bank_code:
+          type: string
+          description: Code of bank
+          example: 'VCB'
+        bank_name:
+          type: string
+          description: Name of bank
+          example: 'VietComBank'
+        code:
+          type: string
+          example: '002' 
+        message:
+          type: string
+          example: 'Amount is not enough'        
+
+

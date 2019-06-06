@@ -1,0 +1,147 @@
+required:
+- id
+- transaction_code
+properties:
+  id:
+    type: string
+    description: Transaction ID
+  transaction_code:
+    type: string
+    description: transaction code
+  agent_code:
+    type: string
+    description: agent code
+  agent_name:
+    type: string
+    description: agent name
+  channel_code:
+    type: string
+    description: channel code
+  channel_name:
+    type: string
+    description: channel name
+  service_code:
+    type: string
+    description: service code
+  service_name:
+    type: string
+    description: service name
+  order_code:
+    type: string
+    description: order code
+  branch_code:
+    type: string
+    description: branch code
+  branch_name:
+    type: string
+    description: branch name
+  amount:
+    type: integer
+    description: amount of money
+  partner_code:
+    type: string
+    description: partner code
+  partner_name:
+    type: string
+    description: partner name
+  method_code:
+    type: string
+    description: method code
+  method_name:
+    type: string
+    description: method name
+  return_url:
+    type: string
+    description: return url
+  partner_response_code:
+    type: string
+    description: partner response code
+  status:
+    type: string
+    description: status
+  status_name:
+    type: string
+    description: status description
+  ps_response_code:
+    type: string
+    description: ps response code
+  ps_response_message:
+    type: string
+    description: ps response message
+  currency:
+    type: string
+    description: currency
+  card_number:
+    type: string
+    description: card number
+  buyer_email:
+    type: string
+    description: buyer email
+  buyer_phone:
+    type: string
+    description: buyer phone
+  message:
+    type: string
+    description: message
+  installment:
+    type: integer
+    description: installment
+  is3D:
+    type: integer
+    description: is 3D
+  month:
+    type: integer
+    description: month
+  bank_code:
+    type: string
+    description: bank code
+  bank_name:
+    type: string
+    description: bank name
+  order_description:
+    type: string
+    description: order description
+  card_type:
+    type: string
+    description: card type
+  bank_hotline:
+    type: string
+    description: bank hot line
+  merchant_fee:
+    type: number
+    description: merchant fee
+  payer_fee:
+    type: number
+    description: payer fee
+  partner_transaction_code:
+    type: string
+    description: partner trans code
+  client_transaction_code:
+    type: string
+    description: client trans code
+  client_request_time:
+    type: string
+    format: date-time
+    description: client request time
+  client_response_time:
+    type: string
+    format: date-time
+    description: client response time
+  ps_request_time:
+    type: string
+    format: date-time
+    description: time ps make request to partner
+  ps_response_time:
+    type: string
+    format: date-time
+    description: time partner reply to ps
+  ops_time:
+    type: string
+    format: date-time
+    description: Ops time
+  client_retry_count:
+    type: integer
+    description: client retry count
+  ps_retry_count:
+    type: integer
+    description: partner retry count
