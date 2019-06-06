@@ -1,6 +1,6 @@
 get:
   tags:
-    - Transaction/request_payment
+    - Transactions
   summary: Make request payment
   parameters:
     - name: client_code

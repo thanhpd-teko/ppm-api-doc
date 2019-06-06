@@ -1,7 +1,7 @@
-get:
+post:
   tags:
-    - Qrcode/generator
-  summary: Get available payment methods for order
+    - Qrcode
+  summary: Generate VNPay Qrcode
   parameters:
     - name: client_code
       in: query

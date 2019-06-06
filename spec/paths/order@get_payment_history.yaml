@@ -1,6 +1,6 @@
 get:
   tags:
-    - Order/get_payment_history
+    - Orders
   summary: Filter transaction by transaction's code
   parameters:
     - name: client_code

@@ -1,7 +1,7 @@
 get:
   tags:
-    - Transaction/save_payment
-  summary: save the payment
+    - Transactions
+  summary: Save the payment
   parameters:
     - name: client_code
       in: query

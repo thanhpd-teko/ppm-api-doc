@@ -1,7 +1,8 @@
 post:
   tags:
-    - Method/cart
+    - Methods
   summary: Get available payment methods for cart
+  description: asdasdasd
   parameters:
     - name: client_code
       in: query

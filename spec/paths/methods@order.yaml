@@ -1,7 +1,8 @@
 post:
   tags:
-    - Methods/order
+    - Methods
   summary: Get available payment methods for order
+  description: fsdfsdf
   parameters:
     - name: client_code
       in: query
