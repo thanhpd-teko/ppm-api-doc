@@ -1,7 +1,7 @@
 get:
   tags:
-    - Orders
-  summary: Filter transaction by transaction's code
+    - Transactions
+  summary: Get all transactions of order
   parameters:
     - name: client_code
       in: query

@@ -1,8 +1,7 @@
 post:
   tags:
     - Methods
-  summary: Get available payment methods for cart
-  description: asdasdasd
+  summary: Check available payment methods for order
   parameters:
     - name: client_code
       in: query
@@ -10,60 +9,59 @@ post:
         type: string
       description: Code for client to connect to Payment service
       required: true
-
     - name: merchant_code
       in: query
       description: Merchant code defined in Payment service
       schema:
         type: string
       required: true
-
     - name: branch_code
       in: query
       schema:
         type: string
       description: Branch code of this order
       required: true
-
     - name: service_code
       in: query
       schema:
         type: string
       description: Service code in Payment service. In this case, this is retail service
       required: true
-
+    - name: order_code
+      in: query
+      schema:
+        type: string
+      description: Order code in OM system
+      required: true
     - name: order_items
       in: query
       schema:
         type: array
       description: Items of this order
 
-        - `sku (required)`
-
-        - `sku_name`
-
-        - `quantity (required)` 
-
-        - `unit_price` 
-
-        - `price` 
-
+        - `sku`
       required: true
-
-    - name: total_amount
+    - name: total_paid
       in: query
       schema:
         type: number
-      description: Total amount of order
+      description: Total money must pay for this order
       required: true
-
-    - name: amount
+    - name: methods
       in: query
       schema:
-        type: number
-      description: amount to paid
-      required: true
-  
+        type: array
+      description: Methods need to check
+
+        - `method_code`
+
+        - `partner_code`
+
+        - `amount`
+
+        - `installment_term`
+
+        - `bank_code`
     - name: hash_secret
       in: query
       schema:
@@ -77,7 +75,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/ListPaymentMethod"
+            $ref: "#/components/schemas/PaymentMethodRes"
     "400":
       description: Invalid request response
       content:
@@ -91,5 +89,4 @@ post:
           schema:
             $ref: "#/components/schemas/PaymentError"
   servers:
-    - url: "http://dev-payment.teko.vn/api"
-
+    - url: "http://payment.teko.vn"
