@@ -77,7 +77,7 @@ post:
       description: Order ID in Merchant system. With Phong Vu, It is order Id in OM
       required: true
 
-    - name: total_amount 
+    - name: amount 
       in: query
       schema:
         type: float
