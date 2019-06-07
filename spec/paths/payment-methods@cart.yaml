@@ -88,7 +88,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/PaymentError"
+            $ref: "#/components/schemas/PaymentForbiddenError"
   servers:
     - url: "http://dev-payment.teko.vn/api"
 

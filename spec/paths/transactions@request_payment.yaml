@@ -174,12 +174,11 @@ get:
       required: true
 
   responses:
-    "200":
-      description: Sucessfully Request 
+    "302":
+      description: Redirect to VNpay payment gateway
       content:
         application/json:
-          schema:
-            $ref: "#/components/schemas/PaymentError"
+          schema: {}
     "400":
       description: Invalid request response
       content:
@@ -191,6 +190,6 @@ get:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/PaymentError"
+            $ref: "#/components/schemas/PaymentForbiddenError"
   servers:
     - url: "http://dev-payment.teko.vn/api"
