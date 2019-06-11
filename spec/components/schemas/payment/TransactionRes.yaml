@@ -51,19 +51,19 @@ properties:
     description: return url
   partner_response_code:
     type: string
-    description: partner response code
+    description: the reponse code from partner like Vnpay, Alepay, ..
   status:
     type: string
-    description: status
+    description: status of transaction
   status_name:
     type: string
     description: status description
   ps_response_code:
     type: string
-    description: ps response code
+    description: the response code from payment service
   ps_response_message:
     type: string
-    description: ps response message
+    description: the response message from payment service
   currency:
     type: string
     description: currency
@@ -78,7 +78,7 @@ properties:
     description: buyer phone
   message:
     type: string
-    description: message
+    description: message of client
   installment:
     type: integer
     description: installment
@@ -111,10 +111,10 @@ properties:
     description: payer fee
   partner_transaction_code:
     type: string
-    description: partner trans code
+    description: the transaction code from payment partner (Vnpay, Alepay)
   client_transaction_code:
     type: string
-    description: client trans code
+    description: the transaction code from client
   client_request_time:
     type: string
     format: date-time
@@ -122,7 +122,7 @@ properties:
   client_response_time:
     type: string
     format: date-time
-    description: client response time
+    description: time payment service reply to client
   ps_request_time:
     type: string
     format: date-time
@@ -131,13 +131,3 @@ properties:
     type: string
     format: date-time
     description: time partner reply to ps
-  ops_time:
-    type: string
-    format: date-time
-    description: Ops time
-  client_retry_count:
-    type: integer
-    description: client retry count
-  ps_retry_count:
-    type: integer
-    description: partner retry count
