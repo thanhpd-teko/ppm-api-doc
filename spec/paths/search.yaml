@@ -8,6 +8,10 @@ get:
       variables:
         basePath:
           default: api
+    - url: 'http://listing-dev.teko.com/{basePath}'
+      variables:
+        basePath:
+          default: api
   parameters:
     - name: channel
       in: query
@@ -24,8 +28,9 @@ get:
       example: pv_showroom
     - name: terminal
       in: query
+      required: true
       description: |
-        terminal if channel is showroom
+        terminal to identified client
       schema:
         type: string
       example: CP01
@@ -167,6 +172,26 @@ get:
       schema:
         type: string
       example: NGH01,NGH02
+    - name: saleCategories
+      in: query
+      required: false
+      description: |
+        filter product by sale category ids, separated by commas
+      schema:
+        type: string
+      example: 715,1056
+    - name: responses
+      in: query
+      required: false
+      description: |
+        Default, response has only data for products. Filters and keywords are empty array.
+        >
+        If client needs any data, set value for this parameter, seperated by comma.
+        >
+        Values: [`filters`, `keywords`].
+      schema:
+        type: string
+      example: filters
     - name: attributes.<attribute_code>
       in: query
       required: false

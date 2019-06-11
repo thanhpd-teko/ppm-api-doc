@@ -8,6 +8,10 @@ get:
       variables:
         basePath:
           default: api
+    - url: 'http://listing-dev.teko.com/{basePath}'
+      variables:
+        basePath:
+          default: api
   parameters:
     - name: channel
       in: query
@@ -25,7 +29,7 @@ get:
     - name: terminal
       in: query
       description: |
-        terminal if channel is showroom
+        terminal to identified client
       schema:
         type: string
       example: CP01
@@ -98,6 +102,15 @@ put:
     API for Warehouse Management System to update stock information list products
     >
     Maximum count of products: 100
+  servers:
+    - url: 'http://listing.teko.com/{basePath}'
+      variables:
+        basePath:
+          default: api
+    - url: 'http://listing-dev.teko.com/{basePath}'
+      variables:
+        basePath:
+          default: api
   requestBody:
     description: SKU of product (example 19030321)
     required: true
@@ -115,7 +128,7 @@ put:
                 location: 0201
                 locationName: Kho a1ng
                 storeCode: B
-                proudctBizType: Biz
+                productBizType: Biz
                 available: 10
                 onHand: 24
                 reserved: 14
@@ -127,7 +140,7 @@ put:
                 location: 0320
                 locationName: Kho a1ng
                 storeCode: B
-                proudctBizType: NEW
+                productBizType: NEW
                 available: 8
                 onHand: 10
                 reserved: 2
@@ -141,7 +154,7 @@ put:
                 location: 0201
                 locationName: Kho a1ng
                 storeCode: B
-                proudctBizType: Biz
+                productBizType: Biz
                 available: 10
                 onHand: 24
                 reserved: 14
@@ -153,7 +166,7 @@ put:
                 location: 0320
                 locationName: Kho a1ng
                 storeCode: B
-                proudctBizType: NEW
+                productBizType: NEW
                 available: 8
                 onHand: 10
                 reserved: 2
