@@ -103,7 +103,7 @@ post:
 
       required: true
 
-    - name: payment_method_lst
+    - name: methods
       in: query
       schema:
         type: array
