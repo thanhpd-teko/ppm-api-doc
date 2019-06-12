@@ -47,7 +47,7 @@ get:
 post:
   tags:
     - Transactions
-  summary: Save a payment transaction
+  summary: Save a payment transaction and return the valid payment methods for this transaction
   parameters:
     - name: client_code
       in: query
@@ -85,7 +85,7 @@ post:
       required: true
     
 
-    - name: sku_lst
+    - name: order_items
       in: query
       schema:
         type: array
