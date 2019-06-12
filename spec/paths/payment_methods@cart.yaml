@@ -1,7 +1,7 @@
 post:
   tags:
     - Methods
-  summary: Get available payment methods for cart
+  summary: Get available payment methods for cart. Refer to payment_methods/check api for valid payment methods definition
   parameters:
     - name: client_code
       in: query
@@ -60,7 +60,7 @@ post:
       in: query
       schema:
         type: string
-      description: secret string encrypted by secret key and all parameters for checksum
+      description: Secret string encrypted by secret key and all parameters for checksum
       required: true
 
   responses:

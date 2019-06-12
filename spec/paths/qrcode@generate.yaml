@@ -98,7 +98,7 @@ post:
       in: query
       schema:
         type: string
-      description: secret string encrypted by secret key and all parameters for checksum
+      description: Secret string encrypted by secret key and all parameters for checksum
       required: true
     
   responses:

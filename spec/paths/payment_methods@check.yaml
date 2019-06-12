@@ -1,7 +1,23 @@
 post:
   tags:
     - Methods
-  summary: Check available payment methods for order
+  summary: Check available payment methods for order with order items and expected payment methods.
+    
+  description: This api check some conditions with these payment methods
+
+    - Client code is existed and checksum is valid
+
+    - The format of inputs must be valid, follow the description
+
+    - Branch_code, service_code, method_code, partner_code must be existed
+
+    - With items in payment methods need to check, a method must be supported by this partner. The `INSTALL_CREDIT` method has some special validations.
+      It check that the partner must support the `POS` method, and the bank is not empty, and this bank must be a payment partner support the `INSTALL_CREDIT` method
+
+    - The service must be supported by this method on the channel
+
+    - The last checks are the rules with price rules, the terminal rules, product rules. They are defined by seller
+
   parameters:
     - name: client_code
       in: query
@@ -33,7 +49,13 @@ post:
         type: array
       description: Items of this order
 
-        - `sku`
+        - `sku (required)` string
+
+        - `quantity` number
+
+        - `unit_price` number
+
+        - `price` number
       required: true
     - name: amount
       in: query
@@ -47,20 +69,21 @@ post:
         type: array
       description: Methods need to check
 
-        - `method_code`
+        - `method_code (required)`
 
-        - `partner_code`
+        - `partner_code (required)`
 
-        - `amount`
+        - `amount (required)`
 
         - `installment_term`
 
-        - `bank_code`
+        - `bank_code (required if method code is INSTALL_CREDIT)`
+      required: true
     - name: hash_secret
       in: query
       schema:
         type: string
-      description: secret string encrypted by secret key and all parameters for checksum
+      description: Secret string encrypted by secret key and all parameters for checksum
       required: true
 
   responses:

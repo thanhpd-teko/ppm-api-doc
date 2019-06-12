@@ -23,7 +23,7 @@ get:
       in: query
       schema:
         type: string
-      description: secret string encrypted by secret key and all parameters for checksum
+      description: Secret string encrypted by secret key and all parameters for checksum
       required: true
   responses:
     '200':
@@ -47,7 +47,7 @@ get:
 post:
   tags:
     - Transactions
-  summary: Save a payment transaction and return the valid payment methods for this transaction
+  summary: Save a payment transaction and return the valid payment methods for this transaction. Refer to payment_methods/check api for valid payment methods definition
   parameters:
     - name: client_code
       in: query
@@ -119,7 +119,7 @@ post:
 
         - `payment_term (required if payment method is installment)`
 
-        - `Bankcode`
+        - `bank_code (required if method code is INSTALL_CREDIT)`
 
       required: true
 
@@ -127,7 +127,7 @@ post:
       in: query
       schema:
         type: string
-      description: secret string encrypted by secret key and all parameters for checksum
+      description: Secret string encrypted by secret key and all parameters for checksum
       required: true
  
   responses:
