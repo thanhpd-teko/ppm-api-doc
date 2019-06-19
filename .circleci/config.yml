@@ -6,6 +6,9 @@ jobs:
       - image: circleci/node:8
     steps:
       - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "f3:c2:96:f0:9c:73:60:ea:49:5f:bc:bc:e2:ef:c9:68"
       - run:
           name: update npm
           command: sudo npm install -g npm@latest
