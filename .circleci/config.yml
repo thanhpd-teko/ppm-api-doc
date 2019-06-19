@@ -10,20 +10,20 @@ jobs:
           name: update npm
           command: sudo npm install -g npm@latest
       - restore_cache:
-        key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
-        name: install dependencies
-        command: npm install  
+          name: install dependencies
+          command: npm install  
       - save_cache:
-        key: dependency-cache-{{ checksum "package.json" }}
-        paths:
-          - ./node_modules    
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules    
       - run:
-        name: build repo
-        command: npm run build
+          name: build repo
+          command: npm run build
       - run:
-        name: deploy to github pages
-        command: npm run gh-pages
+          name: deploy to github pages
+          command: npm run gh-pages
 workflows:
   version: 2
   nightly:
