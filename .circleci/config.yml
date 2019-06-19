@@ -1,29 +1,32 @@
-version: 2.1
+version: 2
 jobs:
   deploy:
-    working_directory: ~/mern-starter
+    working_directory: ~/code
     docker:
-      - image: circleci/node:4.8.2
+      - image: circleci/node:8
     steps:
       - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "f3:c2:96:f0:9c:73:60:ea:49:5f:bc:bc:e2:ef:c9:68"
       - run:
-        name: update npm
-        command: 'sudo npm install -g npm@latest'
+          name: update npm
+          command: sudo npm install -g npm@latest
       - restore_cache:
-        key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
-        name: install dependencies
-        command: npm install  
+          name: install dependencies
+          command: npm install  
       - save_cache:
-        key: dependency-cache-{{ checksum "package.json" }}
-        paths:
-          - ./node_modules    
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules    
       - run:
-        name: build repo
-        command: npm run build
+          name: build repo
+          command: npm run build
       - run:
-        name: deploy to github pages
-        command: npm run gh-pages
+          name: deploy to github pages
+          command: npm run gh-pages
 workflows:
   version: 2
   nightly:
