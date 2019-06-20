@@ -95,6 +95,8 @@ tags:
     description: Provide apis for other services to get promotion info
   - name: Product Listing
     description: Provides apis for Product Listing APIs
+  - name: Competitor API
+    description: Provides api to get a list of competitors
 servers:
   - url: 'http://example.com/api/v1'
   - url: 'https://example.com/api/v1'
@@ -124,7 +126,8 @@ x-tagGroups:
     tags:
       - Promotion API
       - Promotion Confirm/Validation API
-  - name: Payment service
+      - Competitor API
+- name: Payment service
     tags:
       - Methods
       - Transactions

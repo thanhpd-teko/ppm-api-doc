@@ -1,0 +1,13 @@
+get:
+  tags:
+    - Competitor API
+  summary: Get Competitors API
+  description: Lấy danh sách các đối thủ của Phong Vũ
+  operationId: get-competitors
+  responses:
+    '200':
+      description: Lấy danh sách các đối thủ thành công
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/CompetitorResp'
