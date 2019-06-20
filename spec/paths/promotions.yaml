@@ -13,7 +13,7 @@ get:
         $ref: '#/components/schemas/Channel'
     - name: terminal
       in: query
-      description: Địa điểm bán hàng (đi kèm khi channel = showroom)
+      description: Địa điểm bán hàng
       required: false
       schema:
         type: string
