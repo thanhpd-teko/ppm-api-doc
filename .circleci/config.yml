@@ -1,29 +1,51 @@
 version: 2
-jobs:
-  deploy:
+references:
+  job_config: &job_config
     working_directory: ~/code
     docker:
-      - image: circleci/node:8
+      - image: circleci/node:8    
+  update_npm: &update_npm
+    run:
+      name: update npm
+      command: sudo npm install -g npm@latest
+  restore_cache: &restore_cache    
+    restore_cache:
+      key: dependency-cache-{{ checksum "package.json" }}
+  install_dependencies: &install_dependencies
+    run:
+      name: install dependencies
+      command: npm install
+  save_cache: &save_cache
+    save_cache:
+      key: dependency-cache-{{ checksum "package.json" }}
+      paths:
+        - ./node_modules        
+  validate_repo: &validate_repo
+    run:
+      name: validate repo
+      command: npm run test
+jobs:
+  validate:
+    <<: *job_config
+    steps:
+      - checkout
+      - *update_npm
+      - *restore_cache
+      - *install_dependencies
+      - *save_cache  
+      - *validate_repo
+  deploy:
+    <<: *job_config
     steps:
       - checkout
       - add_ssh_keys:
           fingerprints:
             - "f3:c2:96:f0:9c:73:60:ea:49:5f:bc:bc:e2:ef:c9:68"
-      - run:
-          name: update npm
-          command: sudo npm install -g npm@latest
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - run:
-          name: install dependencies
-          command: npm install  
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules    
-      - run:
-          name: validate repo
-          command: npm run test
+      - *update_npm
+      - *restore_cache
+      - *install_dependencies
+      - *save_cache  
+      - *validate_repo
       - run:
           name: build repo
           command: npm run build
@@ -34,4 +56,11 @@ workflows:
   version: 2
   nightly:
     jobs:
-      - deploy
+      - validate
+      - deploy:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - validate
