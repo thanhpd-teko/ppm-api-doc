@@ -58,9 +58,9 @@ workflows:
     jobs:
       - validate
       - deploy:
-        filters:
-          branches:
-            only:
-              - master
-        requires:
-          - validate
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - validate
