@@ -44,6 +44,30 @@ properties:
         type: string
         description: tên màu
         example: Đen
+  attributeSet:
+    type: object
+    description: khối dữ liệu nhóm thuộc tính sản phẩm
+    properties:
+      id:
+        type: string
+        description: id nhóm thuộc tính
+        example: 61
+      name:
+        type: string
+        description: tên nhóm thuộc tính
+        example: Linh phụ kiện Laptop
+  productLine:
+    type: object
+    description: khối dữ liệu ngành hàng
+    properties:
+      code:
+        type: string
+        description: mã ngành hàng
+        example: NGH01
+      name:
+        type: string
+        description: tên ngành hàng
+        example: Laptop / Apple
   status:
     type: object
     description: khối trạng thái sản phẩm
@@ -51,7 +75,7 @@ properties:
       sale:
         type: string
         description: trạng thái bán hàng
-        example: 1
+        example: hang_ban
       publish:
         type: boolean
         description: trạng thái kiểm duyệt sản phẩm
@@ -485,3 +509,35 @@ properties:
             name: Deal cuoi tuan
           paymentMethods:
             - all
+  seoInfo:
+    type: object
+    description: khối thông tin dành cho SEO
+    properties:
+      metaKeyWord:
+        type: string
+        nullable: true
+        description: meta keyword (dành cho SEO)
+        example: null
+      metaTitle:
+        type: string
+        nullable: true
+        description: meta title (dành cho SEO)
+        example: null
+      metaDescription:
+        type: string
+        nullable: true
+        description: meta description (dành cho SEO)
+        example: null
+      shortDescription:
+        type: string
+        description: mô tả ngắn
+        example: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+      description:
+        type: string
+        nullable: true
+        description: mô tả dài
+        example: null
+  magentoId:
+    type: number
+    description: product id in magento for collecting rating and comments
+    example: 235

@@ -2,7 +2,7 @@ required:
   - orderId
   - orderCode
   - products
-  - channel
+  - terminal
   - orderPromotionIds
   - grandTotal
   - paymentMethod
@@ -23,8 +23,6 @@ properties:
     type: array
     items:
       $ref: '#/components/schemas/PromotionItem'
-  channel:
-    $ref: '#/components/schemas/Channel'
   terminal:
     type: string
   paymentMethod:
