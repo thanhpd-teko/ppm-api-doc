@@ -40,7 +40,7 @@ properties:
           type: string
           description: Name of payment partner 
           example: 'Công ty thanht toán quốc gia Việt Nam'
-        Type:
+        type:
           type: string
           description: Its value is 0 or 1. 1 mean Payment service must connect to partner system to make payment, 0 mean opposite of 1
           example: 1     
