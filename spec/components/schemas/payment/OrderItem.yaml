@@ -1,0 +1,21 @@
+required:
+  - sku
+  - quantity
+properties:
+  sku:
+    type: string
+    description: Sku of this item
+  product_name:
+    type: string
+    description: Name of product
+  quantity:
+    type: integer
+    description: Quantity of this item
+  unit_price:
+    type: number
+    format: double
+    description: Price per unit
+  price:
+    type: number
+    format: double
+    description: Price of all items

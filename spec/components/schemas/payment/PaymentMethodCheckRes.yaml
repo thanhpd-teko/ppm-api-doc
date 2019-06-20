@@ -67,6 +67,6 @@ properties:
           example: '002' 
         message:
           type: string
-          example: 'Amount is not enough'        
+          example: 'Amount is not enough'   
 
 

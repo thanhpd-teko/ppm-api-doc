@@ -7,7 +7,9 @@ get:
       in: query
       schema:
         type: string
-      description: Code for client to connect to Payment service. PS provide this code to client before deploying
+      description: >-
+        Code for client to connect to Payment service. PS provide this code to
+        client before deploying
       required: true
     - name: transaction_code
       in: query
@@ -32,7 +34,7 @@ get:
         application/json:
           schema:
             $ref: '#/components/schemas/TransactionRes'
-    "403":
+    '403':
       description: Forbiden
       content:
         application/json:
@@ -47,111 +49,82 @@ get:
 post:
   tags:
     - Transactions
-  summary: Save a payment transaction and return the valid payment methods for this transaction. Refer to payment_methods/check api for valid payment methods definition
+  summary: >-
+    Save a payment transaction and return the valid payment methods for this
+    transaction. Refer to payment_methods/check api for valid payment methods
+    definition
   parameters:
     - name: client_code
       in: query
       schema:
         type: string
-      description: Code for client to connect to Payment service. PS provide this code to client before deploying
+      description: >-
+        Code for client to connect to Payment service. PS provide this code to
+        client before deploying
       required: true
-
     - name: branch_code
       in: query
       description: branch code get the payment
       schema:
         type: string
       required: false
-
-    - name: service_code 
+    - name: service_code
       in: query
       schema:
         type: string
-      description: Service of the payment bill  such as Retail(sample - Phong vu's Order), telecom bill, Electric...
+      description: >-
+        Service of the payment bill  such as Retail(sample - Phong vu's Order),
+        telecom bill, Electric...
       required: true
-
     - name: order_id
       in: query
       schema:
         type: string
-      description: Order ID in Merchant system. With Phong Vu, It is order Id in OM
+      description: 'Order ID in Merchant system. With Phong Vu, It is order Id in OM'
       required: true
-
-    - name: amount 
+    - name: amount
       in: query
       schema:
-        type: float
+        type: number
+        format: double
       description: Total amount of order
       required: true
-    
-
     - name: order_items
       in: query
       schema:
-        type: array
-      description: list of SKU in order
-      
-        - `sku (required)`
-
-        - `sku_name`
-
-        - `quantity (required)`
-
-        - `unitPrice`
-
-        - `price`
-
+        $ref: '#/components/schemas/OrderItem'
+      description: Items of this order
       required: true
-
     - name: methods
       in: query
       schema:
-        type: array
-      description: list of payment method of order
-      
-        - `transactionCode (require if paid by POS, INSTALLMENT_CREDIT, INSTALLMENT. It is partner's transaction Code if paid by POS, INSTALLMENT_CREDIT or contractNo if paid by INSTALLMENT)`
-
-        - `cust_name_card  (required if paid by INSTALLMENT_CREDIT. It is customer name on card using to pay)`
-
-        - `card_no  (required if paid by INSTALLMENT_CREDIT. It is only 6 first number and 4 last numbers of card No, format 548566...1234)`
-
-        - `payment_method  (required)`
-
-        - `payment_partner (required)`
-
-        - `amount (required) `
-
-        - `payment_term (required if payment method is installment)`
-
-        - `bank_code (required if method code is INSTALL_CREDIT)`
-
+        $ref: '#/components/schemas/PaymentMethodReq'
+      description: Payment methods of order are paid
       required: true
-
     - name: hash_secret
       in: query
       schema:
         type: string
       description: Secret string encrypted by secret key and all parameters for checksum
       required: true
- 
   responses:
-    "200":
+    '200':
       description: Save payment sucessfully
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/CreatePaymentRes'
-    "400":
+    '400':
       description: Invalid request response
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/PaymentError'
-    "403":
+    '403':
       description: Forbiden
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/PaymentError'
   servers:
-    - url: "http://payment.teko.vn"
+    - url: 'http://payment.teko.vn'

@@ -1,0 +1,38 @@
+required:
+  - method_code
+  - partner_code
+  - amount
+properties:
+  transaction_code:
+    type: string
+    description: It is partner's transaction Code if paid by POS, INSTALLMENT_CREDIT or contractNo if paid by INSTALLMENT. It is required if paid by POS, INSTALLMENT_CREDIT, INSTALLMENT
+    example: 'ABC123'
+  method_code:
+    type: string
+    description: Code of method defined in Payment service
+    example: 'QRCODE'
+  partner_code:
+    type: string
+    description: Code of payment method defined in Payment service
+    example: 'VNPAY'
+  amount:
+    type: number
+    format: double
+    description: Amount of money pays for this partner and method
+    example: 100000
+  installment_term:
+    type: integer
+    description: Months for installment term (Required if payment method is installment)
+    example: 6
+  bank_code:
+    type: string
+    description: Code of bank (Required if method code is INSTALLMENT_CREDIT)
+    example: 'VCB'
+  cust_name_card:
+    type: string
+    description: Customer name on card using to pay, it is required if paid by INSTALLMENT_CREDIT
+    example: 'Nguyen Van A'
+  card_no:
+    type: string
+    description: It is only 6 first number and 4 last numbers of card No, format 548566...1234, required if paid by INSTALLMENT_CREDIT
+    example: '548566...1234'

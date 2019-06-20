@@ -1,7 +1,9 @@
 post:
   tags:
     - Methods
-  summary: Get available payment methods for cart. Refer to payment_methods/check api for valid payment methods definition
+  summary: >-
+    Get available payment methods for cart. Refer to payment_methods/check api
+    for valid payment methods definition
   parameters:
     - name: client_code
       in: query
@@ -9,79 +11,61 @@ post:
         type: string
       description: Code for client to connect to Payment service
       required: true
-
     - name: merchant_code
       in: query
       description: Merchant code defined in Payment service
       schema:
         type: string
       required: true
-
     - name: branch_code
       in: query
       schema:
         type: string
       description: Branch code of this order
       required: true
-
     - name: service_code
       in: query
       schema:
         type: string
-      description: Service code in Payment service. In this case, this is retail service
+      description: 'Service code in Payment service. In this case, this is retail service'
       required: true
-
     - name: order_items
       in: query
       schema:
-        type: array
+        $ref: '#/components/schemas/OrderItem'
       description: Items of this order
-
-        - `sku (required)`
-
-        - `sku_name`
-
-        - `quantity (required)` 
-
-        - `unit_price` 
-
-        - `price` 
-
       required: true
-
     - name: amount
       in: query
       schema:
         type: number
+        format: double
       description: Total amount of order
       required: true
-  
     - name: hash_secret
       in: query
       schema:
         type: string
       description: Secret string encrypted by secret key and all parameters for checksum
       required: true
-
   responses:
-    "200":
-      description: Methods list response
+    '200':
+      description: Methods response
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/ListPaymentMethod"
-    "400":
+            $ref: '#/components/schemas/PaymentMethodCartRes'
+    '400':
       description: Invalid request response
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/PaymentError"
-    "403":
+            $ref: '#/components/schemas/PaymentError'
+    '403':
       description: Forbiden
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/PaymentForbiddenError"
+            $ref: '#/components/schemas/PaymentForbiddenError'
   servers:
-    - url: "http://dev-payment.teko.vn/api"
-
+    - url: 'http://dev-payment.teko.vn/api'

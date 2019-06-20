@@ -1,9 +1,11 @@
 post:
   tags:
     - Methods
-  summary: Check available payment methods for order with order items and expected payment methods.
-    
-  description: This api check some conditions with these payment methods
+  summary: >-
+    Check available payment methods for order with order items and expected
+    payment methods.
+  description: >-
+    This api check some conditions with these payment methods
 
     - Client code is existed and checksum is valid
 
@@ -11,13 +13,16 @@ post:
 
     - Branch_code, service_code, method_code, partner_code must be existed
 
-    - With items in payment methods need to check, a method must be supported by this partner. The `INSTALL_CREDIT` method has some special validations.
-      It check that the partner must support the `POS` method, and the bank is not empty, and this bank must be a payment partner support the `INSTALL_CREDIT` method
+    - With items in payment methods need to check, a method must be supported by
+    this partner. The `INSTALLMENT_CREDIT` method has some special validations.
+    It check that the partner must support the `POS` method, and the bank is not
+    empty, and this bank must be a payment partner support the
+    `INSTALLMENT_CREDIT` method
 
     - The service must be supported by this method on the channel
 
-    - The last checks are the rules with price rules, the terminal rules, product rules. They are defined by seller
-
+    - The last checks are the rules with price rules, the terminal rules,
+    product rules. They are defined by seller
   parameters:
     - name: client_code
       in: query
@@ -35,7 +40,7 @@ post:
       in: query
       schema:
         type: string
-      description: Service code in Payment service. In this case, this is retail service
+      description: 'Service code in Payment service. In this case, this is retail service'
       required: true
     - name: order_code
       in: query
@@ -46,38 +51,21 @@ post:
     - name: order_items
       in: query
       schema:
-        type: array
+        $ref: '#/components/schemas/OrderItem'
       description: Items of this order
-
-        - `sku (required)` string
-
-        - `quantity` number
-
-        - `unit_price` number
-
-        - `price` number
       required: true
     - name: amount
       in: query
       schema:
         type: number
+        format: double
       description: Total money must pay for this order
       required: true
     - name: methods
       in: query
       schema:
-        type: array
+        $ref: '#/components/schemas/PaymentMethodReq'
       description: Methods need to check
-
-        - `method_code (required)`
-
-        - `partner_code (required)`
-
-        - `amount (required)`
-
-        - `installment_term`
-
-        - `bank_code (required if method code is INSTALL_CREDIT)`
       required: true
     - name: hash_secret
       in: query
@@ -85,25 +73,24 @@ post:
         type: string
       description: Secret string encrypted by secret key and all parameters for checksum
       required: true
-
   responses:
-    "200":
+    '200':
       description: Methods list response
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/PaymentMethodRes"
-    "400":
+            $ref: '#/components/schemas/PaymentMethodCheckRes'
+    '400':
       description: Invalid request response
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/PaymentError"
-    "403":
+            $ref: '#/components/schemas/PaymentError'
+    '403':
       description: Forbiden
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/PaymentForbiddenError"
+            $ref: '#/components/schemas/PaymentForbiddenError'
   servers:
-    - url: "http://payment.teko.vn"
+    - url: 'http://payment.teko.vn'
