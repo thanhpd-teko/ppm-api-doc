@@ -109,7 +109,11 @@ post:
         type: array
       description: list of payment method of order
       
-        - `paymentID (required if payment_method's type =1. With payment_method's type=1, client don't need to send infor to PS)`
+        - `transactionCode (require if paid by POS, INSTALLMENT_CREDIT, INSTALLMENT. It is partner's transaction Code if paid by POS, INSTALLMENT_CREDIT or contractNo if paid by INSTALLMENT)`
+
+        - `cust_name_card  (required if paid by INSTALLMENT_CREDIT. It is customer name on card using to pay)`
+
+        - `card_no  (required if paid by INSTALLMENT_CREDIT. It is only 6 first number and 4 last numbers of card No, format 548566...1234)`
 
         - `payment_method  (required)`
 
