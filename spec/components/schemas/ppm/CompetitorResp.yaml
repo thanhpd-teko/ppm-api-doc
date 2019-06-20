@@ -1,0 +1,11 @@
+required:
+  - code
+properties:
+  code:
+    type: string
+  result:
+    properties:
+      competitors:
+        type: array
+        items:
+          $ref: '#/components/schemas/Competitor'
