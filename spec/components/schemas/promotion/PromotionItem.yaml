@@ -41,6 +41,7 @@ properties:
     description: Truyền lên coupon code nếu ctkm này ăn theo coupon
 required:
   - type
+  - uuid
   - applyType
   - applyOn
   - quantity

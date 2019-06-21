@@ -11,5 +11,4 @@ properties:
 required:
   - sku
   - quantity
-  - name
   - orderLineId
