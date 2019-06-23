@@ -3,6 +3,7 @@ required:
 properties:
   code:
     type: string
+    description: Mã trả về, thành công nếu code==success.
   messsage:
     type: string
   result:
@@ -16,3 +17,22 @@ properties:
             description: Mã giao dịch trừ ngân sách
         required:
           - id
+  extra:
+    description: Trả về thông tin lỗi của promotions hoặc của đơn hàng
+    properties:
+      promotions:
+        type: array
+        items:
+          $ref: '#/components/schemas/PromotionErrorItem'
+      order:
+        type: array
+        items:
+          properties:
+            code:
+              type: string
+              description: Mã lỗi đơn hàng
+            message:
+              type: string
+              description: Mô tả lỗi
+          required:
+            - code

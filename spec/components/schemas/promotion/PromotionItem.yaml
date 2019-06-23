@@ -20,6 +20,7 @@ properties:
       - order
   applyOn:
     type: array
+    description: Mảng các order line mà ctkm áp dụng, với ctkm cho đơn hàng thì không cần truyền lên.
     items:
       $ref: '#/components/schemas/PromotionApplyOnItem'
   discount:
@@ -41,7 +42,7 @@ properties:
     description: Truyền lên coupon code nếu ctkm này ăn theo coupon
 required:
   - type
+  - uuid
   - applyType
-  - applyOn
   - quantity
   - promotionId

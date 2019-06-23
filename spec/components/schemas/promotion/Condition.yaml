@@ -14,3 +14,8 @@ properties:
     type: array
     items:
       type: string
+  skus:
+    type: array
+    description: Mảng các sku mà chương trình khuyến mãi áp dụng
+    items:
+      type: string
