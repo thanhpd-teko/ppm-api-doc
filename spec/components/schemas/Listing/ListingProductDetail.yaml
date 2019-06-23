@@ -40,6 +40,26 @@ properties:
         type: string
         description: thông tin chi tiết bảo hành
         example: sản phẩm phải còn nguyên tem
+  attributes:
+    type: array
+    description: danh sách các thuộc tính sản phẩm
+    items:
+      type: object
+      properties:
+        code:
+          type: string
+          description: mã thuộc tính
+          example: phanmem_digitallicense
+        values:
+          type: array
+          description: danh sách giá trị của thuộc tính
+          items:
+            type: object
+            properties:
+              optionId:
+                type: number
+              value:
+                type: string
   attributeGroups:
     type: array
     description: khối thông tin hiển thị thuộc tính sản phẩm

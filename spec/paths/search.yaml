@@ -8,6 +8,10 @@ get:
       variables:
         basePath:
           default: api
+    - url: 'http://listing-dev.teko.com/{basePath}'
+      variables:
+        basePath:
+          default: api
   parameters:
     - name: channel
       in: query
@@ -17,14 +21,16 @@ get:
       schema:
         type: string
         enum:
-          - showroom
-          - online
-          - agent
-      example: offline
+          - pv_showroom
+          - pv_online
+          - pv_agent
+          - vnshop_online
+      example: pv_showroom
     - name: terminal
       in: query
+      required: true
       description: |
-        terminal if channel is showroom
+        terminal to identified client
       schema:
         type: string
       example: CP01
@@ -109,7 +115,7 @@ get:
         type: string
       style: form
       explode: false
-      example: code_1,code_2
+      example: hang_ban,ngung_kinh_doanh
     - name: brands
       in: query
       required: false
@@ -142,6 +148,50 @@ get:
       schema:
         type: string
       example: 123,245
+    - name: types
+      in: query
+      required: false
+      description: |
+        filter product by list product's type, separated by commas
+      schema:
+        type: string
+      example: product,service
+    - name: objectives
+      in: query
+      required: false
+      description: |
+        filter product by list product's objective, separated by commas
+      schema:
+        type: string
+      example: sale,gift
+    - name: productLines
+      in: query
+      required: false
+      description: |
+        filter product by list product lines, separated by commas
+      schema:
+        type: string
+      example: NGH01,NGH02
+    - name: saleCategories
+      in: query
+      required: false
+      description: |
+        filter product by sale category ids, separated by commas
+      schema:
+        type: string
+      example: 715,1056
+    - name: responses
+      in: query
+      required: false
+      description: |
+        Default, response has only data for products. Filters and keywords are empty array.
+        >
+        If client needs any data, set value for this parameter, seperated by comma.
+        >
+        Values: [`filters`, `keywords`].
+      schema:
+        type: string
+      example: filters
     - name: attributes.<attribute_code>
       in: query
       required: false
@@ -151,18 +201,6 @@ get:
         oneOf:
           - type: string
           - type: integer
-    - name: resp_ne
-      in: query
-      required: false
-      description: |
-        Using for exclude any data of response
-        >
-        Default, response has 3 main blocks: ***products***, ***keywords***, ***filters***.
-        >
-        Using parameter to get necessary response. Each value is separated by commas
-      schema:
-        type: string
-      example: filters
   responses:
     200:
       description: response for successful request

@@ -8,6 +8,10 @@ get:
       variables:
         basePath:
           default: api
+    - url: 'http://listing-dev.teko.com/{basePath}'
+      variables:
+        basePath:
+          default: api
   parameters:
     - name: sku
       in: path
