@@ -1,0 +1,51 @@
+required:
+  - branch
+  - branchName
+  - warehouse
+  - warehouseName
+  - location
+  - locationName
+  - storeCode
+  - productBizType
+  - available
+  - onHand
+  - reserved
+  - timestamp
+properties:
+  branch:
+    type: string
+    description: Mã chi nhánh
+  storeName:
+    type: string
+    description: Tên chi nhánh
+  warehouse:
+    type: string
+    description: Mã kho
+  warehouseName:
+    type: string
+    description: Tên kho
+  location:
+    type: string
+    description: Mã code khu vực chưa hàng (dmkho)
+  locationName:
+    type: string
+    description: Tên khu vực chứa hàng (dmkho)
+  storeCode:
+    type: string
+    description: Loại kho
+  productBizType:
+    type: string
+    description: Loại hình kinh doanh sản phẩm
+  available:
+    type: number
+    description: available = onHand - reserved. Số lượng có thể bán
+  onHand:
+    type: number
+    description: Số lượng thực tế có trong kho
+  reserved:
+    type: number
+    description: Số lượng hàng đang giữ
+  timestamp:
+    type: number
+    format: double
+    description: thời gian cập nhật tồn kho

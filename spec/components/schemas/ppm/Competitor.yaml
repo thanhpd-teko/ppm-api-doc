@@ -1,0 +1,10 @@
+properties:
+  id:
+    type: integer
+    description: Id shop
+  name:
+    type: string
+    description: Tên shop
+  website:
+    type: string
+    description: Website của shop
