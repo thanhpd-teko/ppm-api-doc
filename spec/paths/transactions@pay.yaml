@@ -2,6 +2,7 @@ get:
   tags:
     - Transactions
   summary: Make request payment
+  description: This api is used for payment methods that connect directly to payment partner
   parameters:
     - name: client_code
       in: query
