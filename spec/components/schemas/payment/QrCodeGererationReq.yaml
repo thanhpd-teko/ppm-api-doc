@@ -12,7 +12,7 @@ properties:
     type: string
     example: 'PHONGVU01'
   branch_code:
-    description: Branch code of the order
+    description: Branch/terminal code of the order
     type: string
     example: 'CP09'
   service_code:

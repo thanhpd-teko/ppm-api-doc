@@ -6,7 +6,7 @@ properties:
 
   branch_code:
     type: string
-    description: Code for branch creates the cart
+    description: Branch/terminal code of the order
     example: ABC123XYZ
 
   response_code:

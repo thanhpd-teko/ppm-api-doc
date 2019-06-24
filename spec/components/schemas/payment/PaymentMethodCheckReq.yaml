@@ -14,7 +14,7 @@ properties:
     example: 'PHONGVU01'
   branch_code:
     type: string
-    description: Branch code of this order
+    description: Branch/terminal code of the order
     example: 'CP09'
   service_code:
     type: string
