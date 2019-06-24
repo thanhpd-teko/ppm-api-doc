@@ -1,0 +1,75 @@
+required:
+  - client_code
+  - branch_code
+  - service_code
+  - pay_type
+  - grand_total
+  - exp_date
+  - hash_secret
+properties:
+  client_code:
+    description: Code for client to connect to Payment service. PS provide this code to client before deploying
+    type: string
+    example: 'PHONGVU01'
+  branch_code:
+    description: Branch/terminal code of the order
+    type: string
+    example: 'CP09'
+  service_code:
+    type: string
+    description: Service code of the transaction to be paid. Default value is RETAIL
+    example: 'RETAIL'
+  pay_type:
+    type: string
+    enum:
+    - '01'
+    - '02'
+    - '03'
+    - '04'
+    description: |-
+      QR Type
+      - `01-QR of online Payment gateway`
+      - `02 QR Billing`
+      - `03 QR Invoice`
+      - `04 QR Offline terrminal`
+    example: '01'
+  product_code:
+    type: string
+    description: Code of product want to generate QR code, empty when pay type is in 01, 03, 04
+    example: '183620'
+  order_id:
+    type: string
+    description: >-
+      Order ID in merchant system. With PhongVu merchant, it is id in OM system
+    example: '19YTFS20'
+  grand_total:
+    type: number
+    format: double
+    description: Amount to payment by QR method
+    example: 2500000
+  curr_code:
+    type: string
+    description: Code of Currency to make payment. Default value=704
+    example: '074'
+  desc:
+    type: string
+    description: additional information
+    example: 'Generate QR code for order payment'
+  exp_date:
+    type: string
+    description: Expire time for QRcode with the format yyMMddHHmm
+    example: '1908201600'
+  tip_and_fee:
+    type: number
+    format: double
+    description: Tip and fee of transaction. Default value=0
+    example: 0
+  comsumer_code:
+    type: string
+    description: Customer Code if Pay type is 04
+    example: 'ASIA_123456'
+  hash_secret:
+    type: string
+    description: Secret string encrypted by secret key and all parameters for checksum
+    example: '4fb75072afc5bc29ad00f71a11c127d9'
+type: object

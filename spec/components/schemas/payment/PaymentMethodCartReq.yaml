@@ -1,0 +1,39 @@
+required:
+  - client_code
+  - branch_code
+  - service_code
+  - order_items
+  - grand_total
+  - hash_secret
+properties:
+  client_code:
+    type: string
+    description: Code for client to connect to Payment service. PS provide this code to client before deploying
+    example: 'PHONGVU01'
+  branch_code:
+    type: string
+    description: Branch/terminal code of the order
+    example: 'CP09'
+  service_code:
+    type: string
+    description: 'Service code in Payment service, for examples: Retail, payment for electric, water service. With Phong Vu, this is the retail'
+    example: 'RETAIL'
+  cart_id:
+    type: string
+    description: ID of cart in merchant system
+    example: '19ZXR20'
+  order_items:
+    type: array
+    items:
+      $ref: '#/components/schemas/OrderItem'
+    description: Items of this order
+  grand_total:
+    type: number
+    format: double
+    description: Total money must pay for this order
+    example: 2500000
+  hash_secret:
+    type: string
+    description: Secret string encrypted by secret key and all parameters for checksum
+    example: '4fb75072afc5bc29ad00f71a11c127d9'
+type: object

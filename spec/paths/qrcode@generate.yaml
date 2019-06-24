@@ -2,102 +2,13 @@ post:
   tags:
     - Qrcode
   summary: Generate VNPay Qrcode
-  parameters:
-    - name: client_code
-      description: >-
-        It is provided by PS to Merchant when they want to deploy payment on
-        every their client
-      in: query
-      schema:
-        type: string
-      required: true
-    - name: branch_code
-      in: query
-      description: Branch code of the order
-      schema:
-        type: string
-      required: true
-    - name: pay_type
-      in: query
-      schema:
-        type: string
-      description: |-
-        QR Type
-        - `01-QR of online Payment gateway`
-        - `02 QR Billing`
-        - `03 QR Invoice`
-        - `04 QR Offline terrminal`
-      required: true
-    - name: SKU
-      in: query
-      schema:
-        type: string
-      description: SKU of product to gen QR.
-      required: true
-    - name: order_id
-      in: query
-      schema:
-        type: string
-      description: >-
-        Order ID in merchant system. With PhongVu merchant, it is id in OM
-        system
-      required: true
-    - name: amount
-      in: query
-      schema:
-        type: number
-        format: double
-      description: Amount to payment by QR method
-      required: true
-    - name: curr_code
-      in: query
-      schema:
-        type: string
-      description: Code of Currency to make payment. Default value=704
-      required: false
-    - name: desc
-      in: query
-      schema:
-        type: string
-      description: additional information
-      required: false
-    - name: exp_date
-      in: query
-      schema:
-        type: string
-      description: Expire time for QRcode with the format yyMMddHHmm
-      required: true
-    - name: tip_and_fee
-      in: query
-      schema:
-        type: number
-        format: double
-      description: Tip and fee of transaction. Default value=0
-      required: false
-    - name: comsumer_code
-      in: query
-      schema:
-        type: string
-      description: Customer Code if Pay type is 02
-      required: false
-    - name: qr_service
-      in: query
-      schema:
-        type: string
-      description: The type of QR
-      required: false
-    - name: service_code
-      in: query
-      schema:
-        type: string
-      description: Service code of the transaction to be paid. Default value = Retail
-      required: true
-    - name: hash_secret
-      in: query
-      schema:
-        type: string
-      description: Secret string encrypted by secret key and all parameters for checksum
-      required: true
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/QrCodeGererationReq'
+    required: true
+  operationId: post_qr_code_generation
   responses:
     '200':
       description: Successfully

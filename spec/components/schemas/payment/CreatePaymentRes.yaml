@@ -20,7 +20,7 @@ properties:
     example: 'pv_online_sale'
   branch_code:
     type: string
-    description: Branch code of the order
+    description: Branch/terminal code of the order
     example: 'PV009'
   service_code:
     type: string
