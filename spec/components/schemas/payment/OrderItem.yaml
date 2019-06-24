@@ -22,5 +22,5 @@ properties:
   price:
     type: number
     format: double
-    description: Price of all items. Usually, price = quantity*unit_price-promotion_price
+    description: Price of all items. Usually, price = quantity*unit_price-promotion_price. If this field is null or empty, payment service will not check this item for rules or other info
     example: 50000000
