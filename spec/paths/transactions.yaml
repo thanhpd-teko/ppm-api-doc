@@ -53,60 +53,13 @@ post:
     Save a payment transaction and return the valid payment methods for this
     transaction. Refer to payment_methods/check api for valid payment methods
     definition
-  parameters:
-    - name: client_code
-      in: query
-      schema:
-        type: string
-      description: >-
-        Code for client to connect to Payment service. PS provide this code to
-        client before deploying
-      required: true
-    - name: branch_code
-      in: query
-      description: branch code get the payment
-      schema:
-        type: string
-      required: false
-    - name: service_code
-      in: query
-      schema:
-        type: string
-      description: >-
-        Service of the payment bill  such as Retail(sample - Phong vu's Order),
-        telecom bill, Electric...
-      required: true
-    - name: order_id
-      in: query
-      schema:
-        type: string
-      description: 'Order ID in Merchant system. With Phong Vu, It is order Id in OM'
-      required: true
-    - name: amount
-      in: query
-      schema:
-        type: number
-        format: double
-      description: Total amount of order
-      required: true
-    - name: order_items
-      in: query
-      schema:
-        $ref: '#/components/schemas/OrderItem'
-      description: Items of this order
-      required: true
-    - name: methods
-      in: query
-      schema:
-        $ref: '#/components/schemas/PaymentMethodReq'
-      description: Payment methods of order are paid
-      required: true
-    - name: hash_secret
-      in: query
-      schema:
-        type: string
-      description: Secret string encrypted by secret key and all parameters for checksum
-      required: true
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/TransactionCreateReq'
+    required: true
+  operationId: post_transaction
   responses:
     '200':
       description: Save payment sucessfully

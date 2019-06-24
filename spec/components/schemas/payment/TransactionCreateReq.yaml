@@ -1,0 +1,46 @@
+required:
+  - client_code
+  - branch_code
+  - service_code
+  - order_id
+  - grand_total
+  - order_items
+  - methods
+  - hash_secret
+properties:
+  client_code:
+    description: Code for client to connect to Payment service. PS provide this code to client before deploying
+    type: string
+    example: 'PHONGVU01'
+  branch_code:
+    description: Branch code of the order
+    type: string
+    example: 'CP09'
+  service_code:
+    type: string
+    description: Service of the payment bill such as Retail(sample - Phong vu's Order), telecom bill, Electric...
+    example: 'RETAIL'
+  order_id:
+    type: string
+    description: 'Order ID in Merchant system. With Phong Vu, It is order Id in OM'
+    example: '19YTFS20'
+  grand_total:
+    type: number
+    format: double
+    description: Total amount of order
+    example: 2500000
+  order_items:
+    type: array
+    items:
+      $ref: '#/components/schemas/OrderItem'
+    description: Items of this order
+  methods:
+    type: array
+    items:
+      $ref: '#/components/schemas/PaymentMethodReq'
+    description: Payment methods of order are paid
+  hash_secret:
+    type: string
+    description: Secret string encrypted by secret key and all parameters for checksum
+    example: '4fb75072afc5bc29ad00f71a11c127d9'
+type: object

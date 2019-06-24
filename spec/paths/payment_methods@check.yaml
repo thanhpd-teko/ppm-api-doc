@@ -23,56 +23,13 @@ post:
 
     - The last checks are the rules with price rules, the terminal rules,
     product rules. They are defined by seller
-  parameters:
-    - name: client_code
-      in: query
-      schema:
-        type: string
-      description: Code for client to connect to Payment service
-      required: true
-    - name: branch_code
-      in: query
-      schema:
-        type: string
-      description: Branch code of this order
-      required: true
-    - name: service_code
-      in: query
-      schema:
-        type: string
-      description: 'Service code in Payment service. In this case, this is retail service'
-      required: true
-    - name: order_code
-      in: query
-      schema:
-        type: string
-      description: Order code in OM system
-      required: true
-    - name: order_items
-      in: query
-      schema:
-        $ref: '#/components/schemas/OrderItem'
-      description: Items of this order
-      required: true
-    - name: amount
-      in: query
-      schema:
-        type: number
-        format: double
-      description: Total money must pay for this order
-      required: true
-    - name: methods
-      in: query
-      schema:
-        $ref: '#/components/schemas/PaymentMethodReq'
-      description: Methods need to check
-      required: true
-    - name: hash_secret
-      in: query
-      schema:
-        type: string
-      description: Secret string encrypted by secret key and all parameters for checksum
-      required: true
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/PaymentMethodCheckReq'
+    required: true
+  operationId: post_payment_method_check
   responses:
     '200':
       description: Methods list response
