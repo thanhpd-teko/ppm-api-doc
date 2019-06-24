@@ -3,9 +3,11 @@ post:
     - Methods
   summary: >-
     Check available payment methods for an order with order items and expected
-    payment methods. System will check and return all payment methods with detaill description for each method
+    payment methods
   description: >-
-    This api check some conditions with these payment methods
+    This api will check and return all payment methods with detaill description for each method.
+    This help clients check whether an order can pay with a pair of payment method and partner. 
+    There are some rules with these payment methods
 
     - Client code is existed and checksum is valid
 
