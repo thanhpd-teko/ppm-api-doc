@@ -20,7 +20,7 @@ properties:
     example: 'RETAIL'
   cart_id:
     type: string
-    description: ID of cart
+    description: ID of cart in merchant system
     example: '19ZXR20'
   order_items:
     type: array

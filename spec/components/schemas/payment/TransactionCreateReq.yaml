@@ -22,7 +22,7 @@ properties:
     example: 'RETAIL'
   order_id:
     type: string
-    description: 'Order ID in Merchant system. With Phong Vu, It is order Id in OM'
+    description: 'Order ID in merchant system. With Phong Vu, It is order Id in OM'
     example: '19YTFS20'
   grand_total:
     type: number
