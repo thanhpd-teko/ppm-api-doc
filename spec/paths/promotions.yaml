@@ -49,6 +49,14 @@ get:
       required: false
       schema:
         type: string
+    - name: skus
+      in: query
+      schema:
+        type: string
+      description: |
+        List các sku trong đơn hàng tách nhau bởi dấu phẩy, để lấy thêm thông tin promotion áp
+        dụng cho sản phẩm nào. Nên truyền lên trong trường hợp lấy coupon promotion cho sản phẩm
+      example: 1807447,1807448,1807449
   responses:
     '200':
       description: Lấy thông tin chương trình khuyến mãi thành công

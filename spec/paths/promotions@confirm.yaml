@@ -19,8 +19,9 @@ post:
           schema:
             $ref: '#/components/schemas/ConfirmPromotionOrderRes'
     '400':
-      description: Xác nhận đơn lỗi
+      description: Truyền lên sai tham số
       content:
         '*/*':
           schema:
             $ref: '#/components/schemas/PromotionError'
+
