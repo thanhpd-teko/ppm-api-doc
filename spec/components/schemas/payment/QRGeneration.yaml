@@ -1,0 +1,13 @@
+required:
+  - qrcode
+  - transaction_code
+properties:
+  qrcode:
+    type: string
+    description: The text data of QR code if sucessfull, client using this data to generate QR
+    example: '000201010211021644038470007469080415522024070007469061661000307000746960825HDFC0000001502000185532265204581453033565802IN5910Ajai'  
+  transaction_code:
+    type: string
+    description: Code of transaction
+    example: QHR7349
+   

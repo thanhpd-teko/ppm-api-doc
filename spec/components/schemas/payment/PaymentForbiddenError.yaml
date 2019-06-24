@@ -1,0 +1,10 @@
+required:
+  - code
+  - message
+properties:
+  code:
+    type: integer
+    example: 403
+  message:
+    type: string
+    example: 'Access denied'   

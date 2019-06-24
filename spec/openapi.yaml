@@ -127,3 +127,8 @@ x-tagGroups:
       - Promotion API
       - Promotion Confirm/Validation API
       - Competitor API
+  - name: Payment service
+    tags:
+      - Methods
+      - Transactions
+      - Qrcode
