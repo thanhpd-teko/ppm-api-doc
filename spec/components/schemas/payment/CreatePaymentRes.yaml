@@ -1,10 +1,3 @@
-required:
-  - client_code
-  - transaction_code
-  - merchant_code
-  - service_code
-  - order_code
-  - amount
 properties:
   client_code:
     type: string
@@ -26,52 +19,29 @@ properties:
     type: string
     description: Service code in Payment service. In this case, this is retail service
     example: 'RETAIL'
+  order_id:
+    type: string
+    description: Order id in OM system
+    example: '17123456AXDF93483'
   order_code:
     type: string
     description: Order code in OM system
     example: '17123456'
-  amount:
+  grand_total:
     type: number
     description: Total paid of the order
     example: 10500000
+  status:
+    type: string
+    description: Response message. SUCCESS if all payment methods are valid else FAILURE
+    enum:
+      - SUCCESS
+      - FAILURE
+    example: SUCCESS
   methods:
     type: array
     description: Available payment methods
     items:
-      properties:
-        method_code:
-          type: string
-          description: Code of method defined in Payment service
-          example: 'VNPAY_QR'
-        method_name:
-          type: string
-          description: Name of method defined in Payment service
-          example: 'VNPAY QR code method'
-        partner_code:
-          type: string
-          description: Code of payment method defined in Payment service
-          example: 'VNPAY'
-        partner_name:
-          type: string
-          description: Name of method defined in Payment service
-          example: 'VNPAY company'        
-        installment_term:
-          type: integer
-          description: Months for installment term
-          example: 6
-        bank_code:
-          type: string
-          description: Code of bank
-          example: 'VCB'
-        bank_name:
-          type: string
-          description: Name of bank
-          example: 'VietComBank'
-        code:
-          type: string
-          example: '002' 
-        message:
-          type: string
-          example: 'Amount is not enough'        
+      $ref: '#/components/schemas/PaymentMethodCheckRes'
 
 

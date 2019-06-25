@@ -1,18 +1,8 @@
-required:
-  - client_code
-  - merchant_code
-  - service_code
-  - order_code
-  - amount
 properties:
   client_code:
     type: string
     description: Code for client to connect to Payment service
-    example: ABC123XYZ
-  merchant_code:
-    type: string
-    description: Merchant code defined in Payment service
-    example: 'pv_online_sale'
+    example: 'ABC123XYZ'
   branch_code:
     type: string
     description: Branch/terminal code of the order
@@ -21,11 +11,11 @@ properties:
     type: string
     description: Service code in Payment service. In this case, this is retail service
     example: 'RETAIL'
-  order_code:
+  order_id:
     type: string
     description: Order code in OM system
     example: '17123456'
-  amount:
+  grand_total:
     type: number
     description: Total paid of the order
     example: 10500000
@@ -62,11 +52,21 @@ properties:
           type: string
           description: Name of bank
           example: 'VietComBank'
-        code:
+        cust_name_card:
           type: string
+          description: Customer name on card using to pay, it is required if paid by INSTALLMENT_CREDIT
+          example: 'Nguyen Van A'
+        card_no:
+          type: string
+          description: It is only 6 first number and 4 last numbers of card No, format 548566...1234, required if paid by INSTALLMENT_CREDIT
+          example: '548566...1234'
+        response_code:
+          type: string
+          description: Response code of this payment method. 000 is successfull, else failed
           example: '002' 
-        message:
+        response_message:
           type: string
-          example: 'Amount is not enough'   
+          description: The detail response message of this payment method
+          example: 'Amount is not enough'
 
 

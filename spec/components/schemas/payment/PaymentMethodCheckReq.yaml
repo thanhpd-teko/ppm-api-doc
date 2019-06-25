@@ -2,7 +2,7 @@ required:
   - client_code
   - branch_code
   - service_code
-  - order_code
+  - order_id
   - order_items
   - grand_total
   - methods
@@ -20,9 +20,9 @@ properties:
     type: string
     description: 'Service code in Payment service, for examples: Retail, payment for electric, water service. With Phong Vu, this is the retail'
     example: 'RETAIL'
-  order_code:
+  order_id:
     type: string
-    description: Order code in OM system
+    description: Order id in OM system
     example: '19ZXR20'
   order_items:
     type: array
@@ -33,7 +33,7 @@ properties:
     type: number
     format: double
     description: Total money must pay for this order
-    example: '2500000'
+    example: 2500000
   methods:
     type: array
     items:
