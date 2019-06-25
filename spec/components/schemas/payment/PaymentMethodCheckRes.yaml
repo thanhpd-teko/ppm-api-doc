@@ -62,9 +62,11 @@ properties:
           example: '548566...1234'
         response_code:
           type: string
+          description: Response code of this payment method. 000 is successfull, else failed
           example: '002' 
         response_message:
           type: string
-          example: 'Amount is not enough'   
+          description: The detail response message of this payment method
+          example: 'Amount is not enough'
 
 
