@@ -3,12 +3,12 @@ references:
   job_config: &job_config
     working_directory: ~/code
     docker:
-      - image: circleci/node:8    
+      - image: circleci/node:8
   update_npm: &update_npm
     run:
       name: update npm
       command: sudo npm install -g npm@latest
-  restore_cache: &restore_cache    
+  restore_cache: &restore_cache
     restore_cache:
       key: dependency-cache-{{ checksum "package.json" }}
   install_dependencies: &install_dependencies
@@ -19,7 +19,7 @@ references:
     save_cache:
       key: dependency-cache-{{ checksum "package.json" }}
       paths:
-        - ./node_modules        
+        - ./node_modules
   validate_repo: &validate_repo
     run:
       name: validate repo
@@ -32,7 +32,7 @@ jobs:
       - *update_npm
       - *restore_cache
       - *install_dependencies
-      - *save_cache  
+      - *save_cache
       - *validate_repo
   deploy:
     <<: *job_config
@@ -44,8 +44,12 @@ jobs:
       - *update_npm
       - *restore_cache
       - *install_dependencies
-      - *save_cache  
+      - *save_cache
       - *validate_repo
+      - run:
+          command: |
+            git config --global user.email "tien.dv@teko.vn"
+            git config --global user.name "Đinh Văn Tiến"
       - run:
           name: build repo
           command: npm run build
