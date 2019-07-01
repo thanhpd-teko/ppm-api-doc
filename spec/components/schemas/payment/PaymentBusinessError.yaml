@@ -1,0 +1,14 @@
+required:
+  - type
+  - code
+  - message
+properties:
+  type:
+    type: string
+    example: 'DataConstrain'  
+  code:
+    type: integer
+    example: 898
+  message:
+    type: string
+    example: 'Order is not existed'        

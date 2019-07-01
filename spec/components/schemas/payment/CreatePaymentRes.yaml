@@ -1,0 +1,47 @@
+properties:
+  client_code:
+    type: string
+    description: Code for client to connect to Payment service
+    example: ABC123XYZ
+  transaction_code:
+    type: string
+    description: Code of transaction
+    example: QHR7349
+  merchant_code:
+    type: string
+    description: Merchant code defined in Payment service
+    example: 'pv_online_sale'
+  branch_code:
+    type: string
+    description: Branch/terminal code of the order
+    example: 'PV009'
+  service_code:
+    type: string
+    description: Service code in Payment service. In this case, this is retail service
+    example: 'RETAIL'
+  order_id:
+    type: string
+    description: Order id in OM system
+    example: '17123456AXDF93483'
+  order_code:
+    type: string
+    description: Order code in OM system
+    example: '17123456'
+  grand_total:
+    type: number
+    description: Total paid of the order
+    example: 10500000
+  status:
+    type: string
+    description: Response message. SUCCESS if all payment methods are valid else FAILURE
+    enum:
+      - SUCCESS
+      - FAILURE
+    example: SUCCESS
+  methods:
+    type: array
+    description: Available payment methods
+    items:
+      $ref: '#/components/schemas/PaymentMethodCheckRes'
+
+
