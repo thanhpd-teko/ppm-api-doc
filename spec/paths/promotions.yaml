@@ -37,6 +37,13 @@ get:
       required: false
       schema:
         type: string
+    - name: grand_total
+      in: query
+      description: Giá trị đơn hàng
+      required: false
+      schema:
+        type: number
+        format: double
     - name: start_time
       in: query
       description: Thời điểm bắt đầu theo format yyyy-MM-dd'T'HH:mm:ssZ
