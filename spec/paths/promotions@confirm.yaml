@@ -1,7 +1,7 @@
 post:
   summary: Promotion Confirm API
   description: Xác nhận đơn hàng và trừ ngân sách
-  operationId: confirm-order-promotions
+  operationId: promotions/confirm
   tags:
     - Promotion Confirm/Validation API
   requestBody:

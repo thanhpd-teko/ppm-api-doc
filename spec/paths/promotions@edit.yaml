@@ -1,7 +1,7 @@
-post:
+put:
   summary: Promotion Edit API
-  description: Xác nhận đơn hàng và trừ ngân sách
-  operationId: confirm-order-promotions
+  description: Chỉnh sửa đơn hàng
+  operationId: promotions/edit
   tags:
     - Promotion Confirm/Validation API
   requestBody:
