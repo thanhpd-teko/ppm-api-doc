@@ -10,7 +10,7 @@ properties:
     items:
       $ref: '#/components/schemas/ListingKeywordData'
     example:
-      - keyword: laptop gaming
+      - query: laptop gaming
         highlight: '<em>laptop</em> gaming'
         brands:
           - ACER
@@ -18,7 +18,7 @@ properties:
         categories:
           - Laptop Gaming
           - Laptop
-      - keyword: laptop acer
+      - query: laptop acer
         highlight: '<em>laptop</em> acer'
         brands:
           - ACER
