@@ -1,10 +1,10 @@
 properties:
-  id:
+  lineItemId:
     type: string
     description: order line id
   quantity:
     type: integer
     description: Ví dụ nếu mua 3 tặng 1 thì quantity trong này sẽ là 3, hiện tại default = 1
 required:
-  - id
+  - lineItemId
   - quantity
