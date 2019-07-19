@@ -1,8 +1,8 @@
 required:
-  - keyword
+  - query
   - highlight
 properties:
-  keyword:
+  query:
     type: string
     description: từ khóa liên quan với keyword của người dùng
   highlight:
