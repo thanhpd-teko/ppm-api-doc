@@ -1,7 +1,7 @@
 properties:
   sku:
     type: string
-  orderLineId:
+  lineItemId:
     type: string
     description: Id của order line converted từ gift này
   quantity:
@@ -10,4 +10,4 @@ properties:
 required:
   - sku
   - quantity
-  - orderLineId
+  - lineItemId

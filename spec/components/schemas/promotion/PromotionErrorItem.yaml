@@ -2,7 +2,7 @@ properties:
   uuid:
     type: string
     description: uuid của gói khuyến mãi bị lỗi
-  orderLineId:
+  lineItemId:
     type: string
     description: id của order line bị lỗi
   code:
