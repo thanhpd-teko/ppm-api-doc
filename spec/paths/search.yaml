@@ -106,6 +106,32 @@ get:
         type: number
         format: double
       example: 10000000
+    - name: flashSale_gte
+      in: query
+      required: false
+      description: |
+        date start of flashsale (timestamp)
+      schema:
+        type: number
+        format: double
+      example: 1561683600
+    - name: flashSale_lte
+      in: query
+      required: false
+      description: |
+        date end of flashsale (timestamp)
+      schema:
+        type: number
+        format: double
+      example: 1561701600
+    - name: flashSaleType
+      in: query
+      required: false
+      description: |
+        code type of flashsale
+      schema:
+        type: string
+      example: HOT_DEAL
     - name: saleStatuses
       required: false
       in: query
@@ -188,7 +214,7 @@ get:
         >
         If client needs any data, set value for this parameter, seperated by comma.
         >
-        Values: [`filters`, `keywords`].
+        Values: [`products`,`filters`, `keywords`].
       schema:
         type: string
       example: filters

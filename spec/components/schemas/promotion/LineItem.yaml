@@ -1,0 +1,20 @@
+properties:
+  lineItemId:
+    type: string
+    description: Order line id. Trong trường hợp cùng 1 sku mà khác giá, khuyến mãi, trạng thái... thì sẽ tách thành
+      các order line khác nhau.
+  sku:
+    type: string
+  price:
+    type: number
+    format: double
+    description: giá trước khi apply khuyến mãi
+  quantity:
+    type: integer
+    description: Số lượng sản phẩm
+
+required:
+  - lineItemId
+  - sku
+  - price
+  - quantity

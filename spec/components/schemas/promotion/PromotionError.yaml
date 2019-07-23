@@ -5,3 +5,22 @@ properties:
     type: string
   messsage:
     type: string
+  extra:
+    description: Trả về thông tin lỗi của promotions hoặc của đơn hàng
+    properties:
+      promotions:
+        type: array
+        items:
+          $ref: '#/components/schemas/PromotionErrorItem'
+      order:
+        type: array
+        items:
+          properties:
+            code:
+              type: string
+              description: Mã lỗi đơn hàng
+            message:
+              type: string
+              description: Mô tả lỗi
+          required:
+            - code

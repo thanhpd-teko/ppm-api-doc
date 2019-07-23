@@ -6,7 +6,7 @@ required:
   - orderPromotionIds
   - grandTotal
   - paymentMethod
-  - orderLines
+  - items
   - promotions
 properties:
   orderId:
@@ -15,10 +15,10 @@ properties:
   orderCode:
     type: string
     description: Order Code
-  orderLines:
+  items:
     type: array
     items:
-      $ref: '#/components/schemas/OrderLine'
+      $ref: '#/components/schemas/LineItem'
   promotions:
     type: array
     items:

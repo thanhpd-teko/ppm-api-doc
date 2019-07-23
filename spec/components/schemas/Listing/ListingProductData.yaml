@@ -420,7 +420,7 @@ properties:
                   quantity: 1
   flashSales:
     type: array
-    description: Khối thông tin về flash sale
+    description: Khối thông tin về flash sale đang chạy
     items:
       type: object
       properties:
@@ -541,3 +541,69 @@ properties:
     type: number
     description: product id in magento for collecting rating and comments
     example: 235
+  allActiveFlashSales:
+    type: array
+    description: Thông tin flashsale đang và sẽ chạy của sản phẩm
+    items:
+      type: object
+      properties:
+        channel:
+          type: string
+          description: kênh áp dụng chương trình
+          example: pv_showroom
+        terminals:
+          type: array
+          description: các terminal trong channel được áp dụng chương trình
+          items:
+            type: string
+          example:
+            - CP00
+            - CP09
+        type:
+          type: object
+          description: loại flash sale
+          properties:
+            id:
+              type: number
+              description: id loại flashsale
+            code:
+              type: string
+              description: mã loại
+            name:
+              type: string
+              description: tên loại
+        total:
+          type: number
+          description: tổng số lượng trong chương trình
+          example: 10
+        used:
+          type: number
+          description: số lượng đã bán trong chương trình
+          example: 4
+        flashSalePrice:
+          type: number
+          description: giá flashsale
+          example: 399000
+        discountPercent:
+          type: number
+          description: tỉ lệ phần trăm đã giảm
+          example: 5%
+        status:
+          type: string
+          enum: [active, inactive ]
+          description: trạng thái chương trình
+          example: active
+        timeRanges:
+          type: array
+          description: các khoảng thời gian
+          items:
+            type: object
+            properties:
+              start:
+                type: string
+                description: thời gian bắt đầu (UTC)
+                example: 2019-07-03T01:00:00Z
+              end:
+                type: string
+                description: thời gian kết thúc (UTC)
+                example: 2019-07-03T03:00:00Z
