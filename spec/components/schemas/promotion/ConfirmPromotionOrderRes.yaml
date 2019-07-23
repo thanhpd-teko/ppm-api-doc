@@ -24,7 +24,7 @@ properties:
         type: array
         items:
           $ref: '#/components/schemas/PromotionErrorItem'
-      order:
+      orders:
         type: array
         items:
           properties:
