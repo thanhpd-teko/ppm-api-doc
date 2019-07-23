@@ -18,9 +18,7 @@ properties:
 #        type: number
 #        description: Giá trị giảm giá tối đa
   money:
-    type: array
-    items:
-      $ref: "#/components/schemas/BenefitMoney"
+    $ref: "#/components/schemas/BenefitMoney"
   items:
     type: array
     items:
