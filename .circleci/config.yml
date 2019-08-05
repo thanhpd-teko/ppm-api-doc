@@ -60,11 +60,17 @@ workflows:
   version: 2
   nightly:
     jobs:
-      - validate
+      - validate:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
       - deploy:
           filters:
             branches:
               only:
                 - master
+              ignore:
+                - gh-pages
           requires:
             - validate
