@@ -13,6 +13,11 @@ properties:
       - combo
   isDefault:
     type: boolean
+  applyOn:
+    type: string
+    enum:
+      - product
+      - order
   startedAt:
     type: string
     example: '2019-01-02T10:00:00Z'
