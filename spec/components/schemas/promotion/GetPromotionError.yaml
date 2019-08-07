@@ -1,0 +1,24 @@
+required:
+  - code
+properties:
+  code:
+    type: string
+  messsage:
+    type: string
+  extra:
+    description: Trả về thông tin của coupon
+    properties:
+      coupon:
+        properties:
+          channels:
+            type: array
+            items:
+              type: string
+          terminals:
+            type: array
+            items:
+              type: string
+          usedOrders:
+            type: array
+            items:
+              type: string
