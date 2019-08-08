@@ -71,3 +71,9 @@ get:
         '*/*':
           schema:
             $ref: '#/components/schemas/PromotionResp'
+    '400':
+      description: Sai thông tin, mã coupon không tồn tại hoặc đã được sử dụng
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/GetPromotionError'
