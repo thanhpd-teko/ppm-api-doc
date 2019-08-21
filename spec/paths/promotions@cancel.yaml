@@ -1,4 +1,4 @@
-post:
+put:
   summary: Promotion Cancel API
   description: Hủy đơn hàng và cộng ngân sách
   operationId: promotions/cancel
