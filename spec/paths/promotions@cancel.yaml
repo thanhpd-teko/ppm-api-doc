@@ -1,0 +1,27 @@
+put:
+  summary: Promotion Cancel API
+  description: Hủy đơn hàng và cộng ngân sách
+  operationId: promotions/cancel
+  tags:
+    - Promotion Confirm/Validation API
+  requestBody:
+    description: OrderId và OrderCode
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/PromotionCancelOrderReq'
+  responses:
+    '200':
+      description: Hủy đơn thành công
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/PromotionOrderRes'
+    '400':
+      description: Truyền lên sai tham số
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/PromotionCancelError'
+

@@ -1,0 +1,7 @@
+required:
+  - code
+properties:
+  code:
+    type: string
+  messsage:
+    type: string

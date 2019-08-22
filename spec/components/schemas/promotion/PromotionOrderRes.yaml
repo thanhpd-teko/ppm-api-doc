@@ -14,6 +14,6 @@ properties:
         properties:
           id:
             type: integer
-            description: Mã giao dịch trừ ngân sách
+            description: Mã giao dịch ngân sách
         required:
           - id
