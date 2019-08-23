@@ -1,0 +1,9 @@
+properties:
+  sku:
+    type: string
+  quantity:
+    type: integer
+    description: Số lượng quà removed cho 1 ctkm
+required:
+  - sku
+  - quantity
