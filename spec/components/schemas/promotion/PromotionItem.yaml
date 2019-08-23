@@ -31,6 +31,10 @@ properties:
     type: array
     items:
       $ref: '#/components/schemas/Gift'
+  removedGifts:
+    type: array
+    items:
+      $ref: '#/components/schemas/RemovedGift'
   quantity:
     type: integer
     description: |
