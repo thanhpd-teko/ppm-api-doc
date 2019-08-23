@@ -18,11 +18,7 @@ properties:
   name:
     type: string
   budgetStatus:
-    type: string
-    enum:
-      - active
-      - inactive
-    description: Trạng thái ngân sách
+    $ref: "#/components/schemas/BudgetStatus"
   budgetId:
     type: integer
     description: Id của ngân sách

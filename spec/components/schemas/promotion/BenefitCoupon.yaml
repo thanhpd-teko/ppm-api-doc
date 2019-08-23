@@ -14,14 +14,16 @@ properties:
     type: integer
     description: Số coupon được tặng tối đa trên 1 đơn hàng
   budgetStatus:
-    type: string
-    enum:
-      - active
-      - inactive
-    description: Trạng thái ngân sách
+    $ref: "#/components/schemas/BudgetStatus"
   quantity:
     type: integer
     description: Số lượng tặng
   outOfBudget:
     type: boolean
     description: Ngân sách còn hay hết
+required:
+  - appliedPromotion
+  - quantity
+  - maxQuantity
+  - outOfBudget
+  - budgetStatus
