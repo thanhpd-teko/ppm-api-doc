@@ -1,0 +1,29 @@
+properties:
+  appliedPromotion:
+    properties:
+      id:
+        type: integer
+        description: Id của CTKM được áp dụng coupon
+      name:
+        type: string
+        description: Tên của CTKM được áp dụng
+      description:
+        type: string
+        description: Mô tả của CTKM được áp dụng
+  maxQuantity:
+    type: integer
+    description: Số coupon được tặng tối đa trên 1 đơn hàng
+  budgetStatus:
+    $ref: "#/components/schemas/BudgetStatus"
+  quantity:
+    type: integer
+    description: Số lượng tặng
+  outOfBudget:
+    type: boolean
+    description: Ngân sách còn hay hết
+required:
+  - appliedPromotion
+  - quantity
+  - maxQuantity
+  - outOfBudget
+  - budgetStatus
