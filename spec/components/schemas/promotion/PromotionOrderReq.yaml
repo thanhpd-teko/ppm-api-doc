@@ -31,3 +31,6 @@ properties:
     type: number
     format: double
     description: Tổng giá trị đơn hàng
+  billingType:
+    type: string
+    description: Loại hóa đơn, truyền lên 02 nếu là đơn miễn thuế, default là 01
