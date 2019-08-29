@@ -41,11 +41,12 @@ properties:
       Số lần promotion được apply. Ví dụ nếu chương trình mua 3A tặng 2B mà đơn hàng có 7A thì sẽ chia
       thành 2 order lines. 1 order line có 6A có khuyến mãi với quantity này = 2 (7/3), quantity trong applyOn sẽ là
       3, quantity trong gift sẽ là 2. Order line còn lại có 1A không có khuyến mãi
-  vouchers:
-    type: array
-    description: Chưa dùng đến
-    items:
-      type: string
+  voucher:
+    type: object
+    properties:
+      quantity:
+        type: integer
+        description: Số lượng voucher thực tế được tặng cho 1 ctkm
   coupon:
     type: string
     description: Truyền lên coupon code nếu ctkm này ăn theo coupon
