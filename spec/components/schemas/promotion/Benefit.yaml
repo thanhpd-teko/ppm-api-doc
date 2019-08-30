@@ -26,5 +26,5 @@ properties:
     items:
       $ref: "#/components/schemas/BenefitItems"
 
-  coupon:
-    $ref: "#/components/schemas/BenefitCoupon"
+  voucher:
+    $ref: "#/components/schemas/BenefitVoucher"

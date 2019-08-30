@@ -46,7 +46,9 @@ properties:
     properties:
       quantity:
         type: integer
-        description: Số lượng voucher thực tế được tặng cho 1 ctkm
+        description: |
+          Số lượng voucher thực tế được tặng cho 1 ctkm. Ví dụ với CTKM mua 1 sp được tặng 1 voucher, nhưng max_quantity là 3,
+          thì khi KH mua 5 sản phẩm, số lượng voucher sản phẩm là quantity=min(5*1, 3) = 3
   coupon:
     type: string
     description: Truyền lên coupon code nếu ctkm này ăn theo coupon
