@@ -1,0 +1,14 @@
+type: object
+required:
+  - id
+  - code
+properties:
+  id:
+    type: string
+    format: uuid
+    description: ID of created order
+    example: d0ba7d48-2038-4600-93ea-221750d18346
+  code:
+    type: string
+    description: Order Code of created order
+    example: RI5VFPNXT7

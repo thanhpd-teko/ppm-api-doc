@@ -1,0 +1,25 @@
+type: object
+description: Thông tin sản phẩm trong đơn hàng
+required:
+  - paymentMethod
+  - amount
+properties:
+  paymentMethod:
+    description: |
+      Hình thức thanh toán. 
+      Tham khảo ở https://confluence.teko.vn/pages/viewpage.action?pageId=144048230#IntergrationGuid(new)-II.Danhs%C3%A1chc%C3%A1ch%C3%ACnhth%E1%BB%A9cthanhto%C3%A1n
+    type: string
+  paymentDuration:
+    description: Thời hạn thanh toán (ngày)
+    type: integer
+    default: 0
+  amount:
+    description: Tiền thanh toán
+    type: string
+    format: decimal
+  debtorId:
+    description: Đối tượng chuyển nợ.
+    type: integer
+  debtorAsiaId:
+    description: Asia ID đối tượng chuyển nợ
+    type: string

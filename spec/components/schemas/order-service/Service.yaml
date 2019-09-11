@@ -1,0 +1,12 @@
+type: object
+description: Dịch vụ theo đơn
+properties:
+  installation:
+    description: Có lắp đặt
+    type: boolean
+  technicalSupport:
+    description: Có hỗ trợ kỹ thuật
+    type: boolean
+  delivery:
+    description: Có giao hàng
+    type: boolean

@@ -1,0 +1,12 @@
+type: object
+required:
+  - lineItemId
+  - quantity
+properties:
+  lineItemId:
+    type: string
+    format: uuid
+    description: ID của dòng hàng được áp dụng (trong items)
+  quantity:
+    type: integer
+    description: Số lượng được áp dụng

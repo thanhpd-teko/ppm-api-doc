@@ -1,0 +1,53 @@
+type: object
+description: Thông tin giao hàng
+required:
+  - name
+  - phone
+  - expectedDate
+  - address
+  - wardId
+  - districtId
+  - provinceId
+properties:
+  name:
+    type: string
+    description: Tên khách hàng
+  phone:
+    type: string
+    description: Số điện thoại
+  expectedDate:
+    type: string
+    format: iso8601
+    description: Ngày giờ mong muốn nhận hàng
+  address:
+    type: string
+    description: Địa chỉ
+  wardId:
+    type: string
+    description: Mã phường xã
+  districtId:
+    type: string
+    description: Mã quận huyện
+  provinceId:
+    type: string
+    description: Mã tỉnh thành
+  country:
+    type: string
+    description: Quốc gia
+  type:
+    type: integer
+    description: Loại giao hàng
+  note:
+    type: string
+    description: Ghi chú đơn hàng
+  email:
+    type: string
+    description: Email
+  lat:
+    type: number
+    format: double
+    description: Kinh độ
+  lon:
+    type: number
+    format: double
+    description: Vĩ độ
