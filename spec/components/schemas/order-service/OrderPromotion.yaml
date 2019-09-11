@@ -1,0 +1,46 @@
+type: object
+required:
+  - id
+  - promotionId
+  - type
+  - applyType
+  - quantity
+properties:
+  id:
+    type: integer
+    description: id của chương trình khuyến mãi
+  promotionId:
+    type: string
+    format: uuid
+    description: Mã uuid của gói khuyến mãi
+  type:
+    type: string
+    description: "Loại khuyến mãi: promotion, extra, flash_sale"
+  applyType:
+    type: string
+    description: "Hình thức áp dụng: product/combo/order"
+  applyOn:
+    type: array
+    items:
+      $ref: "#/components/schemas/OrderPromotionApplyOnItem"
+    description: "Chi tiết áp dụng cho các dòng đơn hàng. Nếu applyType=order thì không cần truyền lên:"
+  discount:
+    type: string
+    format: decimal
+    description: Số tiền được giảm giá
+  gifts:
+    type: array
+    items:
+      $ref: "#/components/schemas/OrderPromotionGift"
+    description: Danh sách quà tặng
+  quantity:
+    type: integer
+    description: Số lần promotion được apply
+  vouchers:
+    type: array
+    items:
+      type: string
+    description: Danh sách mã chương trình vouchers
+  coupon:
+    type: string
+    description: Mã coupon áp dụng cho khuyến mãi

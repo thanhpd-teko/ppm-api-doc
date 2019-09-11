@@ -97,6 +97,8 @@ tags:
     description: Provides apis for Product Listing APIs
   - name: Competitor API
     description: Provides api to get a list of competitors
+  - name: Orders
+    description: Provides APIs to create and manage Orders
 servers:
   - url: 'http://example.com/api/v1'
   - url: 'https://example.com/api/v1'
@@ -132,3 +134,6 @@ x-tagGroups:
       - Methods
       - Transactions
       - Qrcode
+  - name: Order Service
+    tags:
+      - Orders

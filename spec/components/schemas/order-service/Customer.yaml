@@ -1,0 +1,34 @@
+type: object
+description: Thông tin khách hàng
+required:
+  - id
+  - name
+properties:
+  id:
+    description: ID khách hàng. Tham chiếu từ CRM.
+    type: integer
+  name:
+    description: Tên khách hàng
+    type: string
+  email:
+    description: Email
+    type: string
+    format: email
+  phone:
+    description: Điện thoại
+    type: string
+  address:
+    description: Địa chỉ
+    type: string
+  wardId:
+    description: Mã phường xã
+    type: string
+  districtId:
+    description: Mã quận huyện
+    type: string
+  provinceId:
+    description: Mã tỉnh thành
+    type: string
+  asiaCrmId:
+    description: Asia ID
+    type: string

@@ -1,0 +1,44 @@
+post:
+  tags:
+    - Orders
+  summary: Create New Order
+  description: Create new Order
+  requestBody:
+    description: Data for create an order
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/CreateOrderRequest"
+  responses:
+    200:
+      description: Created order information
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - code
+              - data
+            properties:
+              code:
+                type: integer
+                description: Status Code của hệ thống
+                example: 0
+              data:
+                $ref: "#/components/schemas/NewCreatedOrderInfo"
+    400:
+      description: Failed result of 4xx HTTP's status code
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - code
+              - error
+            properties:
+              code:
+                type: integer
+                description: Status Code của hệ thống
+              error:
+                type: object
+                description:  Thông tin lỗi cụ thể
