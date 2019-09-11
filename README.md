@@ -1,6 +1,6 @@
 # Teko Open API OpenAPI Specification
 
-[![Build Status](https://travis-ci.com/teko-vn/api-docs.svg?token=9i8z2rrAK7dzCRPGv6yq&branch=master)](https://travis-ci.com/teko-vn/api-docs)
+[![CircleCI](https://circleci.com/gh/teko-vn/api-docs/tree/master.svg?style=svg)](https://circleci.com/gh/teko-vn/api-docs/tree/master)
 
 ## Working on specification
 
