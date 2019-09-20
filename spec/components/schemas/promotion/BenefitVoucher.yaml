@@ -10,6 +10,16 @@ properties:
       description:
         type: string
         description: Mô tả của CTKM được áp dụng
+      benefit:
+        properties:
+          money:
+            type: array
+            items:
+              $ref: "#/components/schemas/BenefitMoney"
+          items:
+            type: array
+            items:
+              $ref: "#/components/schemas/BenefitItems"
   maxQuantity:
     type: integer
     description: Số coupon được tặng tối đa trên 1 đơn hàng
