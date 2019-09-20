@@ -1,8 +1,3 @@
-required:
-  - sku
-  - name
-  - price
-  - total
 properties:
   id:
     type: integer
@@ -25,3 +20,17 @@ properties:
   outOfBudget:
     type: boolean
     description: Ngân sách còn hay hết
+  maxQuantityPerOrder:
+    type: integer
+    description: Số lượng tặng tối đa trên 1 đơn hàng
+
+required:
+  - maxQuantityPerOrder
+  - outOfBudget
+  - budgetId
+  - budgetStatus
+  - name
+  - quantity
+  - sku
+  - applyOn
+  - id

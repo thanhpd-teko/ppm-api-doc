@@ -18,4 +18,19 @@ properties:
     type: array
     description: Mảng các sku mà chương trình khuyến mãi áp dụng, chỉ trả về nếu request truyền lên list skus
     items:
-      type: string
+      properties:
+        minQuantity:
+          type: integer
+          description: Số lượng tối thiểu cần mua
+        blockSize:
+          type: ineteger
+          description: block tính
+        sku:
+          type: string
+          description: sku
+
+required:
+  - orderValueMin
+  - orderValueMax
+  - coupon
+  - paymentMethods

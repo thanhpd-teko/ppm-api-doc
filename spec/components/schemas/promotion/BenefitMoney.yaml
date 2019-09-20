@@ -31,3 +31,19 @@ properties:
   outOfBudget:
     type: boolean
     description: Ngân sách còn hay hết
+  maxDiscountPerOrder:
+    type: number
+    format: double
+    description: Số tiền giảm tối đa trên 1 đơn hàng
+
+required:
+  - maxDiscountPerOrder
+  - outOfBudget
+  - budgetId
+  - budgetStatus
+  - maxDiscount
+  - money
+  - percent
+  - discountType
+  - applyOn
+  - id
