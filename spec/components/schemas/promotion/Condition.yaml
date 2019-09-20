@@ -23,7 +23,7 @@ properties:
           type: integer
           description: Số lượng tối thiểu cần mua
         blockSize:
-          type: ineteger
+          type: integer
           description: block tính
         sku:
           type: string
