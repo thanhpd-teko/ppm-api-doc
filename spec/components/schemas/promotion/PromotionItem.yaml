@@ -21,26 +21,36 @@ properties:
       - order
   applyOn:
     type: array
-    description: Mảng các order line mà ctkm áp dụng, với ctkm cho đơn hàng thì không cần truyền lên.
+    description: |
+      Mảng các order line mà ctkm áp dụng, với ctkm cho đơn hàng thì không cần truyền lên. Nếu ctkm là
+      mua 2A tặng 1B, tối thiểu phải có 5A. Đơn hàng có 5A thì applyOn là mảng chứa 5A, khối gifts có 2B.
     items:
       $ref: '#/components/schemas/PromotionApplyOnItem'
   discount:
     type: number
     format: double
+    description: |
+      Tổng khuyến mãi được nhận cho chương trình khuyến mãi. Nếu mua 1A được giảm 10k, đơn hàng cho 3A
+      thì discount = 30k
+  originalDiscount:
+    type: number
+    format: double
+    description: Giá trị discount gốc, truyền lên trong trường hợp đơn miễn thuế
   gifts:
     type: array
     items:
       $ref: '#/components/schemas/Gift'
+    description: Mảng các quà được tặng từ ctkm. Ví dụ mua 1A được tặng 2B. Đơn hàng có 3A thì gifts = 6B
   removedGifts:
     type: array
     items:
       $ref: '#/components/schemas/RemovedGift'
+    description: Mảng các quà được trả lại
   quantity:
     type: integer
     description: |
-      Số lần promotion được apply. Ví dụ nếu chương trình mua 3A tặng 2B mà đơn hàng có 7A thì sẽ chia
-      thành 2 order lines. 1 order line có 6A có khuyến mãi với quantity này = 2 (7/3), quantity trong applyOn sẽ là
-      3, quantity trong gift sẽ là 2. Order line còn lại có 1A không có khuyến mãi
+      Số lần promotion được apply. Ví dụ nếu chương trình mua 3A tặng 2B mà đơn hàng có 7A thì quanity = 2. Nếu ctkm
+       là mua 1A tặng 1B, đơn hàng có 4A thì quantity = 4
   voucher:
     type: object
     properties:

@@ -1,6 +1,6 @@
 type: string
 enum:
-  - cash_on_delivery
-  - payment_online
-  - installment
-  - bank_transfer
+  - COD
+  - VNPAY
+  - INSTALLMENT
+  - BANK
