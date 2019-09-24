@@ -34,3 +34,7 @@ properties:
   billingType:
     type: string
     description: Loại hóa đơn, truyền lên 02 nếu là đơn miễn thuế, default là 01
+  confirmType:
+    type: number
+    format: int
+    description: Loại confirm - truyền lên 1 nếu validate và trừ ngân sách, 2 nếu chỉ validate ko trừ NS
