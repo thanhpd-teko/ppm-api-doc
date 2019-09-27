@@ -5,6 +5,9 @@ properties:
       các order line khác nhau.
   sku:
     type: string
+  parentSku:
+    type: string
+    description: Sku của bundle cha, truyền lên nếu sku này thuộc bundle
   price:
     type: number
     format: double
