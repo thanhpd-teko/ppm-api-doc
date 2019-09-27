@@ -1,0 +1,26 @@
+post:
+  summary: Promotion Validate API
+  description: Validate đơn hàng nhưng không trừ ngân sách
+  operationId: promotions/validate
+  tags:
+    - Promotion Confirm/Validation API
+  requestBody:
+    description: Dữ liệu khuyến mãi của đơn hàng
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/PromotionOrderReq'
+  responses:
+    '200':
+      description: Xác nhận đơn thành công
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/PromotionOrderRes'
+    '400':
+      description: Truyền lên sai tham số
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/PromotionError'
