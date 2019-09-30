@@ -1,5 +1,10 @@
 type: object
-description: Thông tin giao hàng
+description: |
+  Thông tin giao hàng.
+
+  Bắt buộc với khi thỏa một trong các điều kiện là 
+  - service[].delivery = true
+  - service[].delivery = false && channel là Online/Agent
 required:
   - name
   - phone
@@ -51,3 +56,6 @@ properties:
     type: number
     format: double
     description: Vĩ độ
+  storeCode:
+    type: string
+    description: Mã showroom nhận hàng

@@ -1,0 +1,11 @@
+type: object
+required:
+  - sku
+  - quantity
+properties:
+  sku:
+    type: string
+    description: Mã sản phẩm
+  quantity:
+    type: integer
+    description: Số lượng sản phẩm tặng KH không nhận

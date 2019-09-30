@@ -33,6 +33,11 @@ properties:
     items:
       $ref: "#/components/schemas/OrderPromotionGift"
     description: Danh sách quà tặng
+  removedGifts:
+    type: array
+    items:
+      $ref: "#/components/schemas/OrderPromotionRemovedGift"
+    description: Danh sách quà tặng KH không nhận.
   quantity:
     type: integer
     description: Số lần promotion được apply

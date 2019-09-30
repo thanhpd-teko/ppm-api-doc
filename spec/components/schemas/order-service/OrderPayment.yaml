@@ -1,16 +1,24 @@
 type: object
-description: Thông tin sản phẩm trong đơn hàng
+description: Thông tin thanh toán cho đơn.
 required:
   - paymentMethod
   - amount
 properties:
+  transactionId:
+    type: string
+    format: uuid
+    description: |
+      psTransactionCode nếu có.
+      OM tự generate cho các hình thức COD, DEBT, POSTPAID.
   paymentMethod:
     description: |
       Hình thức thanh toán. 
       Tham khảo ở https://confluence.teko.vn/pages/viewpage.action?pageId=144048230#IntergrationGuid(new)-II.Danhs%C3%A1chc%C3%A1ch%C3%ACnhth%E1%BB%A9cthanhto%C3%A1n
     type: string
   paymentDuration:
-    description: Thời hạn thanh toán (ngày)
+    description: |
+      Thời hạn thanh toán (ngày)
+      Bắt buộc với paymentMethod = POSTPAID
     type: integer
     default: 0
   amount:
@@ -18,7 +26,9 @@ properties:
     type: string
     format: decimal
   debtorId:
-    description: Đối tượng chuyển nợ.
+    description: | 
+      Đối tượng chuyển nợ.
+      Bắt buộc với paymentMethod = DEBT
     type: integer
   debtorAsiaId:
     description: Asia ID đối tượng chuyển nợ

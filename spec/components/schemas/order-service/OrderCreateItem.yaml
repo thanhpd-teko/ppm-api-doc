@@ -22,7 +22,11 @@ properties:
     description: Số lượng
     type: integer
   bizType:
-    description: Loại hình kinh doanh sản phẩm
+    description: |
+      Loại hình kinh doanh sản phẩm
+      - "Biz": Hàng bán
+      - "Disp":	Hàng trưng bày
+      - "Outlet": Hàng thanh lý
     type: string
   vatRate:
     description: Thuế

@@ -1,8 +1,10 @@
+servers:
+  - url: /command
 post:
   tags:
     - Orders
   summary: Create New Order
-  description: Create new Order
+  description: Create new Order (confluence version 100)
   requestBody:
     description: Data for create an order
     content:
