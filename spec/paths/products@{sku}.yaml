@@ -19,9 +19,32 @@ get:
       required: true
       schema:
         type: string
+    - name: channel
+      in: query
+      description: channel want to get product
+      required: true
+      schema:
+        type: string
+    - name: terminal
+      in: query
+      description: terminal want to get product
+      required: true
+      schema:
+        type: string
+    - name: DISABLE_SIGN
+      in: query
+      description: key to get private infomation of product
+      required: false
+      schema:
+        type: string
   responses:
     200:
       description: product object response
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
       content:
         application/json:
           schema:
@@ -43,6 +66,11 @@ get:
                       - $ref: '#/components/schemas/ListingProductDetail'
     404:
       description: product not found response
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
       content:
         application/json:
           schema:

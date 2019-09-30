@@ -34,14 +34,6 @@ get:
       schema:
         type: string
       example: CP01
-    - name: visitorId
-      in: query
-      required: true
-      description: |
-        user identified, usage for tracking
-      schema:
-        type: string
-      example: c8kjs98922fsd
     - name: q
       in: query
       description: |
@@ -206,18 +198,57 @@ get:
       schema:
         type: string
       example: 715,1056
+    - name: publishStatus
+      in: query
+      required: false
+      description: |
+        Lọc các sản phẩm đã hoặc chưa biên tập xong
+      schema:
+        type: string
+        enum: [true, false]
+      example: false
+    - name: hasPromotions
+      in: query
+      required: false
+      description: |
+        Lọc các sản phẩm có khuyến mại của kênh bán hoặc toàn quốc
+      schema:
+        type: string
+        enum: [true, false]
+      example: true
+    - name: isBundle
+      in: query
+      required: false
+      description: |
+        Lọc các sản phẩm là bundle
+      schema:
+        type: string
+        enum: [true, false]
+      example: true
     - name: responses
       in: query
       required: false
       description: |
-        Default, response has only data for products. Filters and keywords are empty array.
+        Default, response has only data for products. Keywords are empty array.
         >
         If client needs any data, set value for this parameter, seperated by comma.
         >
-        Values: [`products`,`filters`, `keywords`].
+        Values: [`products`, `keywords`].
       schema:
         type: string
-      example: filters
+      example: products
+    - name: filters
+      in: query
+      required: false
+      description: |
+        Default, response don't return filters data. Data filters includes: brands, attributeSets, attributes
+        >
+        If client needs any data, set value for this parameter, seperated by comma.
+        >
+        Values: [`brands`, `attributeSets`, `attributes`].
+      schema:
+        type: string
+      example: brands,attributeSets
     - name: attributes.<attribute_code>
       in: query
       required: false
@@ -230,12 +261,22 @@ get:
   responses:
     200:
       description: response for successful request
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ListingSearchResp'
     400:
       description: invalid parameters
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
       content:
         application/json:
           schema:

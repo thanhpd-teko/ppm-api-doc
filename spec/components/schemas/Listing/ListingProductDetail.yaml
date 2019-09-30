@@ -98,3 +98,12 @@ properties:
     type: string
     format: date-time
     description: thời điểm tạo sản phẩm
+  salePoint:
+    type: number
+    description: điểm số bán hàng
+    example: 10
+  importPrice:
+    type: number
+    format: float
+    description: Giá nhập của sản phẩm
+    example: 680000

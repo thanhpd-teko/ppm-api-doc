@@ -28,6 +28,7 @@ get:
       example: pv_showroom
     - name: terminal
       in: query
+      required: true
       description: |
         terminal to identified client
       schema:
@@ -42,6 +43,12 @@ get:
         type: integer
         default: 1
       example: 1
+    - name: DISABLE_SIGN
+      in: query
+      description: key for getting secret product's data
+      schema:
+        type: string
+      example: secret
     - name: _limit
       in: query
       description: |
@@ -60,6 +67,11 @@ get:
   responses:
     200:
       description: products object response
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
       content:
         application/json:
           schema:
@@ -83,6 +95,11 @@ get:
                         - $ref: '#/components/schemas/ListingProductDetail'
     404:
       description: product not found response
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
       content:
         application/json:
           schema:
@@ -174,6 +191,11 @@ put:
   responses:
     200:
       description: response for updating warehouse
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
       content:
         application/json:
           schema:
@@ -183,6 +205,11 @@ put:
             message: 'Update successfully'
     400:
       description: error response when invalid data
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
       content:
         application/json:
           schema:
@@ -192,6 +219,11 @@ put:
             message: 'onHand property must be number, not string'
     500:
       description: response when server has error
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
       content:
         application/json:
           schema:

@@ -201,6 +201,63 @@ properties:
           type: integer
           description: Số lượng thực tế đang có trong kho
           example: 5
+  totalAvailableByStocks:
+    type: array
+    description: Khối thông tin tồn kho theo từng loại kho
+    items:
+      type: object
+      properties:
+        type:
+          type: string
+          description: loại kho
+        total:
+          type: number
+          description: tổng tồn kho của loại kho đó
+  isBundle:
+    type: boolean
+    description: sản phẩm là bundle hay không
+  bundleProducts:
+    type: array
+    description: danh sách sản phẩm con trong trường hợp sản phẩm là bundle
+    items:
+      type: object
+      properties:
+        sku:
+          type: string
+          description: sản phẩm con
+        quantity:
+          type: number
+          description: số lượng sản phẩm con trong bundle
+        priority:
+          type: number
+          description: thứ tự ưu tiên của sản phẩm con trong bundle
+        name:
+          type: string
+          description: tên sản phẩm con
+        displayName:
+          type: string
+          description: tên hiển thị của sản phẩm con
+        url:
+          type: string
+          description: url của sản phẩm con
+        imageUrl:
+          type: string
+          description: 1 ảnh đại diện của sản phẩm con
+  parentBundles:
+    type: array
+    description: danh sách các sản phẩm bundle cha có chứa sản phẩm hiện tại nếu sản phẩm không phải bunble
+    items:
+      type: object
+      properties:
+        sku:
+          type: string
+          description: sku của sản phẩm cha
+        name:
+          type: string
+          description: tên sản phẩm cha
+        displayName:
+          type: string
+          description: tên hiển thị của sản phẩm cha
   promotions:
     type: array
     description: Khối thông tin khuyến mại cho sản phẩm
@@ -283,66 +340,16 @@ properties:
                     type: string
                     nullable: true
                     description: coupon áp dụng. CTKM có loại là coupon và có coupon chỉ định được public
+                  blockSize:
+                    type: number
+                    description: Điều kiện ap dụng dựa trên block số lượng sản phẩm
+                  minQuantity:
+                    type: number
+                    description: Số lượng sản phẩm tối đa cần mua
               benefit:
                 type: object
                 description: khối thông tin quyền lợi khuyến mại
-                properties:
-                  money:
-                    type: array
-                    nullable: true
-                    description: quyền lợi tặng tiền
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: number
-                          description: id của quyền lợi
-                        money:
-                          type: number
-                          format: double
-                          nullable: true
-                          description: số tiền được giảm
-                        percent:
-                          type: number
-                          format: double
-                          nullable: true
-                          description: phần trăm được giảm
-                        applyOn:
-                          type: string
-                          enum: [order, product]
-                          description: đơn vị tính quyền lợi
-                        maxDiscount:
-                          type: number
-                          format: double
-                          nullable: true
-                          description: số tiền tối đa được giảm
-                        discountType:
-                          type: string
-                          enum: [money, percent]
-                          description: Loại giảm giá
-                  items:
-                    type: array
-                    nullable: true
-                    description: quyền lợi quà tặng
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: number
-                          description: id của quyền lợi
-                        sku:
-                          type: string
-                          description: sku sản phẩm được tặng quà
-                        name:
-                          type: string
-                          description: tên sản phẩm quà tặng
-                        applyOn:
-                          type: string
-                          enum: [order, product]
-                          description: đơn vị tính quyền lợi
-                        quantity:
-                          type: number
-                          description: số lượng tặng mỗi lần
+                $ref: '#/components/schemas/ListingPromotionsBenefit'
     example:
       - channel: online
         terminal: null
@@ -375,6 +382,7 @@ properties:
                   applyOn: order
                   maxDiscount: 200000.00
                   discountType: percent
+                  maxDiscountPerOrder: 200000.00
               items: null
       - channel: showroom
         terminal: CP00
@@ -406,18 +414,21 @@ properties:
                   applyOn: product
                   maxDiscount: 200000.00
                   discountType: percent
+                  maxDisCountPerOrder: 200000.00
                 - id: 2
                   money: 100000.00
                   percent: 10.00
                   applyOn: order
                   maxDiscount: null
                   discountType: money
+                  maxDiscountPerOrder: 100000.00
               items:
                 - id: 30
                   sku: 1602062
                   name: Loa sonic
                   applyOn: product
                   quantity: 1
+                  maxQuantityPerOrder: 1
   flashSales:
     type: array
     description: Khối thông tin về flash sale đang chạy
@@ -541,6 +552,19 @@ properties:
     type: number
     description: product id in magento for collecting rating and comments
     example: 235
+  rating:
+    type: object
+    description: Thông tin bình chọn, số lượng vote của sản phẩm
+    properties:
+      avaragePoint:
+        type: number
+        format: float
+        description: Điểm trung bình
+        example: 4.8
+      voteCount:
+        type: number
+        description: Số lượng bình chọn
+        example: 200
   allActiveFlashSales:
     type: array
     description: Thông tin flashsale đang và sẽ chạy của sản phẩm
