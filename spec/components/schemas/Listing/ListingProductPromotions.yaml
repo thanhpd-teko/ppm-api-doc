@@ -1,0 +1,87 @@
+properties:
+  channel:
+    type: string
+    description: kênh bán được áp dụng khuyến mại
+  terminal:
+    type: string
+    nullable: true
+    description: điểm bán hàng được áp dụng khuyến mại
+  definitions:
+    type: array
+    description: khối thông tin chi tiết các chương trình khuyến mại
+    items:
+      type: object
+      properties:
+        id:
+          type: number
+          description: id chương trình khuyến mại
+        name:
+          type: string
+          description: tên chương trình khuyến mại
+        description:
+          type: string
+          description: mô tả chương trình khuyến mại
+        startedAt:
+          type: string
+          format: datetime
+          description: ngày bắt đầu chương trình
+        endedAt:
+          type: string
+          format: datetime
+          description: ngày kết thúc chương trình
+        type:
+          type: string
+          enum: [order, product, coupon]
+          description: loại chương trình khuyến mại
+        partner:
+          type: string
+          description: đối tác tài trợ chương trình khuyến mại
+        timeRanges:
+          type: array
+          nullable: true
+          description: các khoảng thời gian hiệu lực trong ngày được áp dụng khuyến mại
+          items:
+            type: object
+            properties:
+              start:
+                type: string
+                description: thời điểm bắt đầu
+              end:
+                type: string
+                description: thời điểm kết thúc
+        isDefault:
+          type: boolean
+          description: khuyến mại mặc định
+        condition:
+          type: object
+          description: điều kiện được hưởng khuyến mại
+          properties:
+            paymentMethods:
+              type: array
+              description: các phương thức thanh toán được quyền áp dụng chương trình
+              items:
+                type: string
+            orderValueMin:
+              type: number
+              format: double
+              nullable: true
+              description: giá trị đơn hàng tối thiếu
+            orderValueMax:
+              type: number
+              format: double
+              nullable: true
+              description: giá trị đơn hàng tối đa
+            coupon:
+              type: string
+              nullable: true
+              description: coupon áp dụng. CTKM có loại là coupon và có coupon chỉ định được public
+            blockSize:
+              type: number
+              description: Điều kiện ap dụng dựa trên block số lượng sản phẩm
+            minQuantity:
+              type: number
+              description: Số lượng sản phẩm tối đa cần mua
+        benefit:
+          type: object
+          description: khối thông tin quyền lợi khuyến mại
+          $ref: '#/components/schemas/ListingPromotionsBenefit'
