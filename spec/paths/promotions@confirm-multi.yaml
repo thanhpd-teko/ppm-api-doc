@@ -1,7 +1,7 @@
 post:
-  summary: Promotion Confirm API
-  description: Xác nhận đơn hàng và trừ ngân sách
-  operationId: promotions/confirm
+  summary: Promotion Confirm Multi API
+  description: Xác nhận nhiều đơn hàng cùng lúc và trừ ngân sách
+  operationId: promotions/confirm-multi
   tags:
     - Promotion Confirm/Validation API
   parameters:
@@ -25,17 +25,17 @@ post:
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/PromotionOrderReq'
+          $ref: '#/components/schemas/PromotionMultiOrderReq'
   responses:
     '200':
       description: Xác nhận đơn, trừ ngân sách thành công
       content:
         '*/*':
           schema:
-            $ref: '#/components/schemas/PromotionOrderRes'
+            $ref: '#/components/schemas/PromotionConfirmSuccess'
     '400':
       description: Truyền lên sai tham số
       content:
         '*/*':
           schema:
-            $ref: '#/components/schemas/PromotionError'
+            $ref: '#/components/schemas/PromotionConfirmError'

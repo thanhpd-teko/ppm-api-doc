@@ -1,0 +1,26 @@
+post:
+  summary: Promotion Validate Multi API
+  description: Xác nhận nhiều đơn hàng cùng lúc không trừ ngân sách
+  operationId: promotions/validate-multi
+  tags:
+    - Promotion Confirm/Validation API
+  requestBody:
+    description: Dữ liệu khuyến mãi của đơn hàng
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/PromotionMultiOrderReq'
+  responses:
+    '200':
+      description: Xác nhận đơn, trừ ngân sách thành công
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/PromotionConfirmSuccess'
+    '400':
+      description: Truyền lên sai tham số
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/PromotionConfirmError'

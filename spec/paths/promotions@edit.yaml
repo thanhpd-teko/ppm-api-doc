@@ -6,7 +6,7 @@ put:
     - Promotion Confirm/Validation API
   parameters:
     - in: header
-      name: Authorization
+      name: PPM-Authorization
       schema:
         type: string
         format: Bearer Token
