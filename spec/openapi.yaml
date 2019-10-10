@@ -103,6 +103,9 @@ servers:
   - url: 'http://example.com/api/v1'
   - url: 'https://example.com/api/v1'
   - url: /api/v2
+  - url: https://orders.dev.svc.5kbps.io
+    description: Order Development Server
+
 x-tagGroups:
   - name: Offline Sales
     tags:

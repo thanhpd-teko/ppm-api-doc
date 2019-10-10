@@ -1,0 +1,85 @@
+---
+- hosts: worker
+  vars:
+    username: "{{ansible_user}}"
+    gitlab_user: "{{ lookup('env', 'CI_DEPLOY_USER') }}" # must gitlab-deploy-token for Gitlab CI
+    gitlab_pass: "{{ lookup('env', 'CI_DEPLOY_PASSWORD') }}"
+
+    app_repo: "https://{{ gitlab_user }}:{{ gitlab_pass }}@git.teko.vn/order-management/api-docs.git"
+    app_root: "{{ lookup('env', 'DEPLOY_DIR') }}"
+    app_rev:  "{{ lookup('env', 'CI_COMMIT_REF_NAME')  | default('master', true) }}"
+    domain_name:  "{{ lookup('env', 'DOMAIN_NAME') }}"
+
+  tasks:
+  - name: Install APT packages
+    become: yes
+    run_once: true
+    apt:
+      update_cache: yes
+      name: [
+        "git",
+        "nginx"
+      ]
+      state: present
+
+  - name: Checkout repository
+    git:
+      repo: "{{app_repo}}"
+      dest: "{{app_root}}"
+      force: true
+      version: "{{app_rev}}"
+      accept_hostkey: true
+
+  - name: Create /etc/nginx/ssl/ directory
+    become: yes
+    run_once: yes
+    file:
+      dest: "/etc/nginx/ssl/"
+      force: yes
+      state: directory
+
+  - name: Copy SSL keys and certificates
+    become: yes
+    copy:
+      src:  "ssl/{{item}}"
+      dest: "/etc/nginx/ssl/{{item}}"
+      force: yes
+      mode: 0644
+    ignore_errors: True
+    with_items:
+    - wildcard.teko.vn.crt
+    - wildcard.teko.vn.key
+    notify:
+    - "restart nginx"
+  
+  - name: Config nginx PVIS
+    become: yes
+    template:
+      src:  "nginx/order-docs.teko.vn.j2"
+      dest: "/etc/nginx/sites-available/{{ domain_name }}.conf"
+      force: yes
+    notify:
+    - "restart nginx"
+  
+  - name: Create nginx symbolic link
+    become: yes
+    run_once: yes
+    file:
+      src: "/etc/nginx/sites-available/{{ domain_name }}.conf"
+      dest: "/etc/nginx/sites-enabled/{{ domain_name }}.conf"
+      force: yes
+      state: link
+    notify:
+    - "restart nginx"
+
+  - name: Build API Docs
+    command: chdir={{ app_root }} yarn build
+
+  handlers:
+  - name: Restart nginx for API
+    become: yes
+    service:
+      name: nginx
+      state: restarted
+    listen:
+    - "restart nginx"

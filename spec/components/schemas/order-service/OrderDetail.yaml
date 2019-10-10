@@ -1,0 +1,175 @@
+required:
+  - id
+  - code
+  - createdAt
+  - updatedAt
+  - state
+  - customer
+  - items
+  - terminal
+  - channel
+  - service
+  - grandTotal
+  - creator
+  - sellerId
+properties:
+  id:
+    description: Mã đơn hàng
+    type: string
+    format: uuid
+    example: "00273466-7be7-46d3-8566-f050b405ca26"
+    nullable: false
+    minLength: 40
+    maxLength: 40
+  code:
+    description: Mã hiển thị của đơn hàng
+    type: string
+    example: "19515OB223"
+    nullable: false
+    minLength: 1
+  originalId:
+    description: Mã của đơn hàng gốc
+    type: string
+    format: uuid
+    nullable: true
+    minLength: 1
+  createdAt:
+    description: Thời gian tạo đơn
+    type: string
+    format: date-time
+    nullable: false
+  updatedAt:
+    description: Thời gian tạo đơn
+    type: string
+    format: date-time
+    nullable: false
+  state:
+    description: Trạng thái hiện tại của đơn hàng
+    type: integer
+    example: 0
+    nullable: false
+  salesman:
+    description: |
+      Thông tin nhân viên bán hàng. Bắt buộc theo kênh bán hàng:
+      - Kênh Online: không bắt buộc.
+      - Kênh đại lý: không bắt buộc.
+      - Showroom: bắt buộc.
+    $ref: "#/components/schemas/OrderOperator"
+  customer:
+    description: Thông tin khách hàng
+    $ref: "#/components/schemas/Customer"
+    nullable: false
+  items:
+    description: Thông tin chi tiết các dòng hàng
+    type: array
+    items:
+      $ref: "#/components/schemas/FullItem"
+    nullable: false
+    minLength: 1
+  note:
+    description: Thông tin ghi chú của đơn hàng
+    type: string
+    nullable: false
+    minLength: 1
+    example: "Gọi điện trước khi giao hàng"
+  terminal:
+    $ref: "#/components/schemas/OrderTerminal"
+    nullable: false
+  channel:
+    $ref: "#/components/schemas/OrderChannel"
+    nullable: false
+  totalDiscount:
+    description: Giảm giá trên tổng đơn (không phải tổng giảm giá)
+    type: string
+    format: decimal
+    nullable: false
+    minLength: 1
+    example: "10000"
+  inventoryCode:
+    description: Mã kho xuất hàng hóa.
+    type: string
+    nullable: true
+    minLength: 1
+    example: "CH0000"
+  service:
+    $ref: "#/components/schemas/OrderService"
+    nullable: false
+  shippingInfo:
+    $ref: "#/components/schemas/OrderShippingInfo"
+    nullable: true
+  referralCode:
+    description: Mã người giới thiệu (nếu có)
+    type: string
+    nullable: true
+    minLength: 1
+    example: "9999"
+  payments:
+    description: Thông tin thanh toán của đơn hàng
+    type: array
+    items:
+      $ref: "#/components/schemas/OrderPayment"
+  billingInfo:
+    $ref: "#/components/schemas/BillingInfo"
+  invoice:
+    $ref: "#/components/schemas/OrderInvoice"
+  grandTotal:
+    description: Tổng tiền trên đơn, giá trị cuối cùng.
+    type: string
+    format: decimal
+    nullable: false
+    example: "200000"
+  creator:
+    description: Thông tin người tạo đơn hàng.
+    $ref: "#/components/schemas/OrderOperator"
+  confirmer:
+    description: Thông tin người xác nhận đơn hàng nếu đơn hàng có sự xác nhận.
+    $ref: "#/components/schemas/OrderOperator"
+  locker:
+    description: Thông tin của người đang giữ quyền thay đổi đơn.
+    $ref: "#/components/schemas/OrderOperator"
+  cancelRequests:
+    description: Thông tin yêu cầu hủy
+    type: array
+    items:
+      $ref: "#/components/schemas/OrderCancelRequest"
+  revertRequests:
+    description: Thông tin yêu cầu hoàn hàng (trả hàng trước khi giao cho khách)
+    type: array
+    items:
+      $ref: "#/components/schemas/OrderRevertRequest"
+  returnRequests:
+    description: Thông tin yêu cầu trả hàng (trả hàng sau khi giao cho khách)
+    type: array
+    items:
+      $ref: "#/components/schemas/OrderReturnRequest"
+  imported:
+    description: Thông tin của các phiếu nhập hàng.
+    type: array
+    items:
+      $ref: "#/components/schemas/OrderImported"
+  memberCard:
+    description: Thông tin thẻ thành viên của khách hàng (nếu có)
+    type: string
+    nullable: false
+    minLength: 1
+  sellerId:
+    description: Mã của doanh nghiệp, người bán hàng.
+    type: integer
+    nullable: false
+    example: 1
+  opsAssignee:
+    description: Thông tin về nhân viên xử lý đơn hàng
+    $ref: "#/components/schemas/OrderOperator"
+  opsTeam:
+    description: Thông tin của team xử lý đơn hàng
+    $ref: "#/components/schemas/OrderOperatorTeam"
+  promotions:
+    description: Chương trình khuyến mãi
+    type: array
+    items:
+      $ref: "#/components/schemas/OrderPromotion"
+  approvals:
+    description: Danh sách các thông tin duyệt đơn hàng
+    type: array
+    items:
+      $ref: "#/components/schemas/OrderApproval"

@@ -1,0 +1,37 @@
+type: object
+required:
+  - id
+  - name
+properties:
+  id:
+    description: ID của người dùng
+    type: string
+    format: uuid
+    nullable: false
+    minLength: 40
+    maxLength: 40
+    example: "9a03ea07-6163-4c25-b327-65c45df13419"
+  name:
+    description: Tên người dùng
+    type: string
+    nullable: false
+    minLength: 1
+    example: "John Doe"
+  email:
+    description: Email
+    type: string
+    format: email
+    minLength: 1
+    example: "john.doe@example.com"
+  phone:
+    description: Điện thoại
+    type: string
+    nullable: false
+    minLength: 1
+    example: "0939xxxxxx"
+  asiaUsername:
+    description: Asia Username, dùng để tích hợp hệ thống cũ của Phong Vũ
+    type: string
+    nullable: false
+    minLength: 1
+    example: "MINHGDD"

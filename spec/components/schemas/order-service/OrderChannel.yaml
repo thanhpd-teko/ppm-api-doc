@@ -1,0 +1,32 @@
+type: object
+description: Thông tin Kênh bán hàng
+required:
+  - id
+  - code
+  - name
+  - type
+properties:
+  id:
+    description: ID của channel
+    type: integer
+    nullable: false
+    example: 1
+  code:
+    description: Mã của Kênh bán hàng
+    type: string
+    nullable: false
+    minLength: 1
+    example: "pv_showroom"
+  name:
+    description: Tên của Kênh bán hàng
+    type: string
+    nullable: false
+    minLength: 1
+    example: "Showroom Phong Vũ"
+  type:
+    description: Loại của Kênh bán hàng
+    type: string
+    nullable: false
+    minLength: 1
+    enum: ["online", "agent", "showroom", "telesales"]
+    example: "online"

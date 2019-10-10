@@ -1,0 +1,73 @@
+type: object
+description: Thông tin giao hàng
+required:
+  - name
+  - phone
+  - expectedDate
+  - address
+  - wardId
+  - districtId
+  - provinceId
+properties:
+  name:
+    description: Tên khách nhận hàng
+    type: string
+    nullable: false
+    minLength: 1
+    example: "Giã Dương Đức Minh"
+  phone:
+    description: Số điện thoại nhận hàng
+    type: string
+    nullable: false
+    minLength: 1
+  expectedDate:
+    description: Thời gian mong muốn nhận hàng
+    type: string
+    format: date-time
+  address:
+    description: Địa chỉ nhận hàng chi tiết
+    type: string
+    nullable: false
+    minLength: 1
+    example: "Số 17, đuờng Bà Huyện Thanh Quan"
+  wardId:
+    description: Mã phuờng xã
+    type: string
+    example: "790306"
+  districtId:
+    description: Mã quận huyện
+    type: string
+    example: "7903"
+  provinceId:
+    description: Mã tỉnh thành
+    type: string
+    example: "79"
+  country:
+    description: Mã quốc gia
+    type: string
+    default: "VN"
+    example: "VN"
+  type:
+    description: Loại giao hàng
+    type: integer
+    example: 0
+  note:
+    description: Ghi chú khi giao hàng
+    type: string
+    nullable: true
+    minLength: 1
+    example: Giao hàng cho lễ tân.
+  email:
+    description: Email của người nhận hàng hoặc email liên lạc.
+    type: string
+    format: email
+    nullable: false
+    example: minh.gdd@teko.vn
+  lat:
+    description: Kinh độ
+    type: number
+    format: float
+  lon:
+    description: Vĩ độ
+    type: number
+    format: float

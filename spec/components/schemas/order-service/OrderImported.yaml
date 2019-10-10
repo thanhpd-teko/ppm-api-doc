@@ -1,0 +1,49 @@
+description: Thông tin của các phiếu nhập thu hồi theo đơn
+type: object
+required:
+  - importCode
+  - inventoryCode
+  - exportCode
+  - createdAt
+  - isFullReturn
+  - cancelId
+properties:
+  importCode:
+    description: Mã phiếu nhập của WMS
+    type: string
+    nullable: false
+    minLength: 1
+    example: d3a287f0-8018-4852-91ed-9f7bc8f614a5
+  inventoryCode:
+    description: Mã kho xuất hàng của WMS
+    type: string
+    nullable: false
+    minLength: 1
+    example: "CH000"
+  exportCode:
+    description: Mã phiếu xuất của WMS
+    type: string
+    nullable: false
+    minLength: 1
+    example: 29ee776f-dd6c-438d-87c5-c39f6f1dbc12
+  createdAt:
+    description: Thời gian tạo phiếu nhập thu hồi, chuẩn ISO8601
+    type: string
+    format: date-time
+    nullable: false
+  isFullReturn:
+    description: Nhập hàng toàn phần hay một phần. `True` là nhập hàng toàn phần, `False` là nhập hàng một phần.
+    type: boolean
+    default: false
+    nullable: false
+  cancelId:
+    description: ID của phiếu yêu cầu hủy
+    type: string
+    nullable: false
+    minLength: 1
+    example: e8ea0051-92fc-4d93-ab21-8dddcfe2dfc3
+  items:
+    description: Danh sách các món hàng nhập vào.
+    type: array
+    items:
+      $ref: "#/components/schemas/OrderImportedItem"

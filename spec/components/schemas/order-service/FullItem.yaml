@@ -1,0 +1,112 @@
+type: object
+description: Thông tin sản phẩm trong đơn hàng
+required:
+  - lineItemId
+  - sku
+  - name
+  - quantity
+  - bizType
+  - vatRate
+  - unitPrice
+  - price
+  - rowTotal
+  - unitPriceBeforeTax
+  - sellerId
+properties:
+  lineItemId:
+    description: ID của line item
+    type: string
+    format: uuid
+    nullable: false
+    minLength: 40
+    maxLength: 40
+    example: "2ba213ae-455d-4fc7-8e5f-0a7d58e31e6d"
+  sku:
+    description: SKU sản phẩm
+    type: string
+    nullable: false
+    minLength: 1
+    example: "1900002"
+  name:
+    description: Tên sản phẩm
+    type: string
+    nullable: false
+    minLength: 1
+    example: "Bàn phím Logitech"
+  quantity:
+    description: Số lượng
+    type: integer
+    nullable: false
+    example: 2
+  bizType:
+    description: Loại hình kinh doanh sản phẩm
+    type: string
+    nullable: false
+    minLength: 1
+    example: "normal"
+  vatRate:
+    description: Thuế
+    type: string
+    format: decimal
+    nullable: false
+    minLength: 1
+    example: "10.5"
+  unitPrice:
+    description: Đơn giá
+    type: string
+    format: decimal
+    nullable: false
+    minLength: 1
+    example: "1000000"
+  unitDiscount:
+    description: Giá giảm
+    type: string
+    format: decimal
+    nullable: false
+    minLength: 1
+    example: "0"
+  discountReason:
+    description: Lý do giảm giá
+    type: string
+    nullable: false
+    minLength: 1
+    example: "Back to school"
+  unitAdd:
+    description: Số tiền được thêm vào trên mỗi sản phẩm nếu có (hoa hồng,...)
+    type: string
+    format: decimal
+    nullable: false
+    minLength: 1
+    example: "1000000"
+  addReason:
+    description: Lý do thêm tiền
+    type: string
+    nullable: false
+    minLength: 1
+    example: "Bù tiền ship"
+  price:
+    description: Tổng tiền trên một sản phẩm đã cộng tiền, trừ tiền và đã tính thuế
+    type: string
+    format: decimal
+    nullable: false
+    minLength: 1
+    example: "1000000"
+  warranty:
+    description: Số tháng bảo hành
+    type: integer
+    example: 0
+  rowTotal:
+    description: Tổng tiền trên dòng quantity x price
+    type: string
+    format: decimal
+  unitPriceBeforeTax:
+    description: Giá trước thuế trên một đơn vị sản phẩm
+    type: string
+    format: decimal
+    nullable: false
+    minLength: 1
+    example: "1000000"
+  sellerId:
+    description: Người bán hàng
+    type: integer
+    example: 2

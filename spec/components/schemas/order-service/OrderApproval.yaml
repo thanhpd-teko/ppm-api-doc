@@ -1,0 +1,31 @@
+required:
+  - id
+  - name
+properties:
+  id:
+    description: |
+      Mã ID của loại duyệt
+        - `1`: Duyệt giảm giá
+        - `2`: Duyệt tồn kho
+        - `3`: Duyệt miễn thuế
+        - `4`: Duyệt nâng giá
+        - `5`: Duyệt công nợ
+        - `6`: Duyệt khuyến mãi
+    type: integer
+    enum: [1,2,3,4,5,6]
+    example: 1
+  name:
+    description: Tên loại duyệt
+    type: string
+    example: Duyệt giảm giá
+  isApproved:
+    description: Đã được duyệt hay chưa?
+    type: boolean
+    example: true
+  approvedBy:
+    description: Người duyệt
+    $ref: "#/components/schemas/OrderOperator"
+  updatedAt:
+    description: Thời gian ghi nhận duyệt
+    type: string
+    format: date-time

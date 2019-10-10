@@ -1,0 +1,45 @@
+description: Thông tin của các yêu cầu hủy đơn
+type: object
+required:
+  - id
+  - reason
+  - createdBy
+  - createdAt
+properties:
+  id:
+    description: Mã yêu cầu hủy
+    type: string
+    nullable: false
+    minLength: 1
+    example: d3a287f0-8018-4852-91ed-9f7bc8f614a5
+  reason:
+    description: Lý do hủy đơn hàng
+    type: string
+    nullable: false
+    minLength: 1
+    example: "Khách đổi ý"
+  createdBy:
+    description: Thông tin người thực hiện yêu cầu hủy
+    nullable: false
+    type: object
+    required:
+      - id
+      - name
+    properties:
+      id:
+        description: ID của người dùng/hệ thống yêu cầu
+        nullable: false
+        type: string
+        minLength: 1
+        example: "ID-001"
+      name:
+        description: Tên của người dùng/hệ thống yêu cầu
+        nullable: false
+        type: string
+        minLength: 1
+        example: "System 001"
+  createdAt:
+    description: Thời gian tạo yêu cầu
+    nullable: false
+    type: string
+    format: date-time

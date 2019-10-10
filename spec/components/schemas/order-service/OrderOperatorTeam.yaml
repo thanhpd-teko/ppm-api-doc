@@ -1,0 +1,23 @@
+type: object
+required:
+  - id
+  - name
+  - region
+properties:
+  id:
+    description: ID của team
+    type: integer
+    nullable: false
+    example: 1
+  name:
+    description: Tên của team
+    type: string
+    nullable: false
+    minLength: 1
+    example: "Miền Trung"
+  region:
+    description: Mã miền của team
+    type: string
+    nullable: false
+    minLength: 1
+    example: "central"
