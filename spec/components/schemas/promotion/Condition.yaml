@@ -2,13 +2,16 @@ properties:
   orderValueMin:
     type: number
     format: double
+    nullable: true
     description: Điều kiện giá trị đơn hàng min
   orderValueMax:
     type: number
     format: double
+    nullable: true
     description: Điều kiện giá trị đơn hàng max
   coupon:
     type: string
+    nullable: true
     description: Mã coupon được áp dụng cho CTKM
   paymentMethods:
     type: array
