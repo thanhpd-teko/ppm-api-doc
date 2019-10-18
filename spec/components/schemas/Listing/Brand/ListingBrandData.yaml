@@ -1,0 +1,13 @@
+properties:
+  id:
+    type: integer
+    description: id của thương hiệu
+    example: 1
+  name:
+    type: string
+    description: tên của thương hiệu
+    example: B1
+  code:
+    type: string
+    description: code của thương hiệu
+    example: 57D79A3A1581

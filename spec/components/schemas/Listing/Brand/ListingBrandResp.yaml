@@ -1,0 +1,17 @@
+required:
+  - code
+  - result
+properties:
+  code:
+    type: string
+    description: Mã kết quả
+    example: '00'
+  result:
+    type: object
+    description: khối dữ liệu kết quả
+    properties:
+      brands:
+        type: array
+        description: khối kết quả thương hiệu
+        items:
+          $ref: '#/components/schemas/ListingBrandData'

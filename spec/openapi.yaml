@@ -128,6 +128,7 @@ x-tagGroups:
     tags:
       - Search
       - v2
+      - Brand
   - name: Price And Promotions
     tags:
       - Promotion API
