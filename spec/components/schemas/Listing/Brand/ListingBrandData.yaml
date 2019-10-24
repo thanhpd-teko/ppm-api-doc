@@ -11,3 +11,6 @@ properties:
     type: string
     description: code của thương hiệu
     example: 57D79A3A1581
+  imageURL:
+    type: string
+    description: 1 ảnh đại diện của thương hiệu
