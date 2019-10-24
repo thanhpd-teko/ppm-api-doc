@@ -64,6 +64,18 @@ get:
       required: true
       schema:
         type: string
+    - name: relatedSku
+      in: query
+      description: related sku to get recommend products
+      required: false
+      schema:
+        type: string
+    - name: visitorId
+      in: query
+      description: visitor id from tracking to get personalize recommend products
+      required: false
+      schema:
+        type: string
   responses:
     200:
       description: products object response
