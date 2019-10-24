@@ -89,7 +89,6 @@ get:
                   products:
                     type: array
                     items:
-                      type: object
                       allOf:
                         - $ref: '#/components/schemas/ListingProductData'
                         - $ref: '#/components/schemas/ListingProductDetail'

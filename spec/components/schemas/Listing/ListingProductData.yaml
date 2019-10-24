@@ -218,7 +218,7 @@ properties:
     description: sản phẩm là bundle hay không
   bundleProducts:
     type: array
-    description: danh sách sản phẩm con trong trường hợp sản phẩm là bundle
+    description: danh sách sản phẩm con trong trường hợp sản phẩm là bundle (obsoleted)
     items:
       type: object
       properties:
@@ -237,12 +237,6 @@ properties:
         displayName:
           type: string
           description: tên hiển thị của sản phẩm con
-        url:
-          type: string
-          description: url của sản phẩm con
-        imageUrl:
-          type: string
-          description: 1 ảnh đại diện của sản phẩm con
   parentBundles:
     type: array
     description: danh sách các sản phẩm bundle cha có chứa sản phẩm hiện tại nếu sản phẩm không phải bunble

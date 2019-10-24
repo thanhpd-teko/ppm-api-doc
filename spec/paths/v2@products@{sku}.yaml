@@ -19,12 +19,6 @@ get:
       required: true
       schema:
         type: string
-    - name: channel
-      in: query
-      description: channel want to get product
-      required: true
-      schema:
-        type: string
     - name: terminal
       in: query
       description: terminal want to get product
@@ -60,7 +54,14 @@ get:
                 type: object
                 properties:
                   product:
-                    type: object
+                    properties:
+                      bundleProducts:
+                        type: array
+                        description: danh sách sản phẩm con trong trường hợp sản phẩm là bundle
+                        items:
+                          allOf:
+                            - $ref: '#/components/schemas/ListingProductData'
+                            - $ref: '#/components/schemas/ListingProductDetail'
                     allOf:
                       - $ref: '#/components/schemas/ListingProductData'
                       - $ref: '#/components/schemas/ListingProductDetail'

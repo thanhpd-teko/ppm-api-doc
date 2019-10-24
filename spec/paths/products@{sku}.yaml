@@ -60,7 +60,18 @@ get:
                 type: object
                 properties:
                   product:
-                    type: object
+                    properties:
+                      bundleProducts:
+                        type: array
+                        description: danh sách sản phẩm con trong trường hợp sản phẩm là bundle
+                        items:
+                          properties:
+                            imageUrl:
+                              type: string
+                              description: 1 ảnh đại diện của sản phẩm con
+                          allOf:
+                            - $ref: '#/components/schemas/ListingProductData'
+                            - $ref: '#/components/schemas/ListingProductDetail'
                     allOf:
                       - $ref: '#/components/schemas/ListingProductData'
                       - $ref: '#/components/schemas/ListingProductDetail'
