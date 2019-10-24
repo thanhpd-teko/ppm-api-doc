@@ -1,6 +1,6 @@
 get:
   tags:
-    - Search
+    - Search/Listing
   summary: Informations of list products API
   description: API to get all information about products by list skus
   servers:
@@ -61,7 +61,7 @@ get:
     - name: skus
       in: query
       description: list sku, separated by commas
-      required: true
+      required: false
       schema:
         type: string
     - name: relatedSku
@@ -124,7 +124,7 @@ get:
 
 put:
   tags:
-    - Search
+    - Search/Listing
   summary: Products stock update API
   description: |
     API for Warehouse Management System to update stock information list products

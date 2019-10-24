@@ -124,10 +124,10 @@ x-tagGroups:
   - name: SRM
     tags:
       - SRM Products
-  - name: Product Search
+  - name: Product Listing
     tags:
-      - Search
-      - v2
+      - Search/Listing
+      - Version 2
       - Brand
   - name: Price And Promotions
     tags:

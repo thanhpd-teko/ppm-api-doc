@@ -1,6 +1,6 @@
 get:
   tags:
-    - Search
+    - Search/Listing
   summary: Search product API
   description: search and return product listing by query
   servers:

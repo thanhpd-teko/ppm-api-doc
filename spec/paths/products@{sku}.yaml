@@ -1,6 +1,6 @@
 get:
   tags:
-    - Search
+    - Search/Listing
   summary: Product's detail API
   description: API to get all information about product by sku
   servers:

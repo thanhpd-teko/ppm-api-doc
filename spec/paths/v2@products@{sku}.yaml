@@ -1,6 +1,6 @@
 get:
   tags:
-    - v2
+    - Version 2
   summary: Product's detail API version 2
   description: API to get all information about product by sku
   servers:

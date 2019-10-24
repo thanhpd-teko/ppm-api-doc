@@ -1,6 +1,6 @@
 get:
   tags:
-    - v2
+    - Version 2
   summary: Search product API version 2
   description: search and return product listing by query
   servers:
