@@ -1,0 +1,12 @@
+required:
+  - code
+  - message
+properties:
+  code:
+    type: string
+    description: mã kết quả
+#    example: 400
+  message:
+    type: string
+    description: tin nhắn thông báo
+#    example: '400 Bad Request: Input payload validation failed'

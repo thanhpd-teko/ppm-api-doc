@@ -1,0 +1,103 @@
+properties:
+  id:
+    type: integer
+    description: Id của banner
+    example: 1
+  campaign_name:
+    type: string
+    description: Tên của chiến dịch
+    example: Khai giảng
+  image:
+    type: string
+    description: Địa chỉ url của ảnh banner
+    example: https://pagebuilder-dev.phongvu.vn/static/page-builder/images/1/1571215596.7829936_02.Product_00_AllProducts_Premium_large.png
+  priority:
+    type: string
+    description: Vị trí ưu tiên của các banner trong loại banner, độ ưu tiên cao nhất là 1
+    example: 1
+  zone:
+    type: integer
+    description: Mã code mô tả nơi vị trí các banner được đặt
+    example: homepage-top-100100
+  sale_categories:
+    type: array
+    nullable: true
+    description: Mã code của sale_categories, nếu trang hiện thị của banner type là "Home" hoặc "Landing" thì giá trị sẽ là null còn ngược lại sẽ là các mã code phân cách nhau bởi dấu phẩy
+    items:
+      type: integer
+      example: 1
+  start_date:
+    type: string
+    description: Thời điểm bắt đầu chiến dịch
+    example: 2019-10-25 00:00:00
+  end_date:
+    type: string
+    description: Thời điểm kết thúc chiến dịch
+    example: 2019-10-26 00:00:00
+  description:
+    type: string
+    description: Mô tả
+    example: null
+    nullable: true
+  target_path:
+    type: string
+    description: Đối tượng hướng đến của URL của Web
+    example: attributeSets=342,60&brands=TH000334,TH000036
+  action:
+    type: object
+    description: Dành cho mobile
+    properties:
+      trigger:
+        type: string
+        enum:
+          - onClick
+        example: onClick
+      type:
+        type: string
+        enum:
+          - goto
+        example: goto
+      target:
+        type: string
+        example: product-listing
+      extra:
+        type: array
+        description: Dữ liệu chi tiết
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+            config_name:
+              type: string
+              enum:
+                - brands
+                - categories
+                - SKU
+                - attribute_sets
+                - price
+                - sale_categories
+                - attribute
+              example: brands
+            attribute_id:
+              type: integer
+              nullable: true
+              description: Có giá trị null khi config name không phải là attribute
+              example: null
+            values_ids:
+              type: array
+              items:
+                type: integer
+                example: 1
+            value_codes:
+              type: array
+              items:
+                type: string
+                example: TH000334
+
+
+
+
+
+

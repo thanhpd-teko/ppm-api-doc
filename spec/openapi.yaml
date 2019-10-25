@@ -99,6 +99,8 @@ tags:
     description: Provides api to get a list of competitors
   - name: Orders
     description: Provides APIs to create and manage Orders
+  - name: Banners
+    description: Provide API to get banner info
 servers:
   - url: 'http://example.com/api/v1'
   - url: 'https://example.com/api/v1'
@@ -143,3 +145,6 @@ x-tagGroups:
   - name: Order Service
     tags:
       - Orders
+  - name: Page Builder
+    tags:
+      - Banners

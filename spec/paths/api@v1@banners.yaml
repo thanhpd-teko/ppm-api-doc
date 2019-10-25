@@ -1,0 +1,95 @@
+get:
+  tags:
+    - Banners
+  summary: Filter banners by params
+  description: API để tim kiếm các banner thoả mãn các điều kiện lọc
+  servers:
+    - url: https://pagebuilder-dev.phongvu.vn
+  parameters:
+    - name: terminals
+      in: query
+      description: |
+        Mã code của điểm bán
+      required: false
+      schema:
+        type: string
+      example: CP00
+    - name: displayPage
+      in: query
+      description: |
+        Trang hiển thị
+      required: false
+      schema:
+        type: string
+        enum:
+          - Home
+          - Detail
+          - Listing
+          - Landing
+      example: Home
+    - name: saleCategories
+      in: query
+      description: |
+        Id của danh mục
+      required: false
+      schema:
+        type: integer
+      example: 1
+    - name: page
+      in: query
+      description: |
+        page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+      example: 1
+    - name: pageSize
+      in: query
+      description: |
+        maximum number of banner in response
+      required: false
+      schema:
+        type: integer
+        default: 100
+      example: 100
+  responses:
+    200:
+      description: Thông tin chi tiết các banner
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - current_page
+              - page_size
+              - total_item
+              - banners
+            properties:
+              current_page:
+                type: integer
+                description: Current page
+              page_size:
+                type: integer
+                description: Size of page
+              total_item:
+                type: integer
+                description: Total of banner satisfy the search condition
+              banners:
+                type: array
+                description: Banner array satisfy the search condition
+                items:
+                  allOf:
+                    - $ref: '#/components/schemas/BannerDetail'
+    400:
+      description: Có lỗi xảy ra
+      content:
+       application/json:
+        schema:
+          $ref: '#/components/schemas/PageBuilderError'
+        examples:
+          error:
+            summary: An example of 400 ERROR
+            value:
+              code: "ERROR"
+              message: ""
