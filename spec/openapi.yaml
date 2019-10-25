@@ -129,6 +129,7 @@ x-tagGroups:
       - Search/Listing
       - Version 2
       - Brand
+      - DisplayCategory
   - name: Price And Promotions
     tags:
       - Promotion API

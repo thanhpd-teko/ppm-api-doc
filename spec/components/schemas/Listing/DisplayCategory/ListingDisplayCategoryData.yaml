@@ -1,0 +1,24 @@
+properties:
+  id:
+    type: integer
+    description: id của danh mục hiển thị
+    example: 1
+  name:
+    type: string
+    description: tên của danh mục hiển thị
+    example: Đồ chơi, mẹ và bé
+  sellerCategories:
+    type: array
+    description: danh sách master category tương ứng
+    items:
+      type: integer
+      description: id của master category
+    example: [1,2]
+  level:
+    type: integer
+    description: level của danh mục hiển thị
+    example: 1
+  icon:
+    type: string
+    description: ảnh của danh mục hiển thị
+    example: mm300_ext_01

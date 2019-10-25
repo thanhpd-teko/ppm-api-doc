@@ -1,0 +1,110 @@
+get:
+  tags:
+    - DisplayCategory
+  summary: List Display Category API
+  description: aggregate and return display category listing by query
+  servers:
+    - url: 'http://listing.teko.com/{basePath}'
+      variables:
+        basePath:
+          default: api
+    - url: 'http://listing-dev.teko.com/{basePath}'
+      variables:
+        basePath:
+          default: api
+  parameters:
+    - name: terminal
+      in: query
+      description: |
+        terminal calls to API
+        >only one value allowed
+      required: true
+      schema:
+        type: string
+      example: CP01
+    - name: level
+      in: query
+      description: |
+        filter theo level của danh mục hiển thị
+      required: false
+      schema:
+        type: integer
+      example: 1
+    - name: parentId
+      in: query
+      description: |
+        filter theo parentId của danh mục hiển thị
+      required: false
+      schema:
+        type: integer
+      example: 1
+    - name: _limit
+      in: query
+      description: |
+        maximum number of display categories in response
+      required: false
+      schema:
+        type: integer
+        default: 20
+      example: 20
+    - name: _sort
+      in: query
+      required: false
+      description: |
+        Listing conditions for sorting result.
+      schema:
+        type: string
+        default: quantity.last_3_month
+      example: quantity.last_2_week, view.last_60_day
+    - name: _order
+      in: query
+      required: false
+      description: |
+        Values: [`asc`, `desc`]
+      schema:
+        type: string
+        default: desc
+      example: asc,asc
+  responses:
+    200:
+      description: response for successful request
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListingDisplayCategoryResp'
+    400:
+      description: invalid parameters
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListingError'
+          examples:
+            error:
+              summary: An example of 400 error
+              value:
+                code: "BAD_REQUEST"
+                message: "400 Bad Request: Input payload validation failed. Display Categories limit, starting from 1 invalid literal for int() with base 10: 'b'"
+    500:
+      description: response when server has error
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListingError'
+          example:
+            code: 'INTERNAL_SERVER'
+            message: 'Connection to elasticsearch has troubles'
