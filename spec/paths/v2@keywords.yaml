@@ -1,0 +1,82 @@
+get:
+  tags:
+    - Version 2
+  summary: Informations of keyword recommenders API
+  description: API to get keyword recommenders based on visitorId and user's input
+  servers:
+    - url: "http://listing.teko.com/{basePath}"
+      variables:
+        basePath:
+          default: api
+    - url: "http://listing-dev.teko.com/{basePath}"
+      variables:
+        basePath:
+          default: api
+  parameters:
+    - name: channel
+      in: query
+      description: |
+        channel calls to API
+      required: true
+      schema:
+        type: string
+        enum:
+          - pv_showroom
+          - pv_online
+          - pv_agent
+          - vnshop_online
+      example: pv_showroom
+    - name: terminal
+      in: query
+      required: true
+      description: |
+        terminal to identified client
+      schema:
+        type: string
+      example: CP01
+    - name: visitorId
+      in: query
+      description: visitor id from tracking to get personalized recommended keyword
+      required: true
+      schema:
+        type: string
+    - name: q
+      in: query
+      description: |
+        user's input to get keyword recommenders
+      required: false
+      schema:
+        type: string
+      example: "laptop"
+    - name: _limit
+      in: query
+      description: |
+        maximum number of keyword recommenders in response
+      required: false
+      schema:
+        type: integer
+        default: 20
+      example: 20
+
+  responses:
+    200:
+      description: products object response
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - code
+              - result
+            properties:
+              code:
+                type: string
+                description: result code, should different from 00
+              result:
+                type: object
+                properties:
+                  keywords:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: "#/components/schemas/ListingKeywordRecommenderData"

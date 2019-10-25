@@ -1,0 +1,10 @@
+required:
+  - keyword
+  - highlight
+properties:
+  keyword:
+    type: string
+    description: từ khóa liên quan với input của người dùng
+  highlight:
+    type: string
+    description: từ khóa đã được nổi bật (dùng thẻ `<em></em>`)
