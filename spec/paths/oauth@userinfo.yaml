@@ -1,0 +1,23 @@
+post:
+  tags:
+    - IAM API
+  summary: User Info API
+  description: |
+    Get current user's general information.
+    Return object which includes current user's information.
+    - With `openid` scope, id_token will return with fields: sub, name, picture, updated_at.
+    - With addition `profile` scope, id_token will return with addition fields: email, phone_number, birthday, address.
+    - With addition `read:permissions` scope, id_token will return with addition fields: roles, permissions, meta_data.
+  parameters:
+    - in: header
+      name: Authorization
+      description: User's `Bearer {access_token}`.
+      schema:
+        type: string
+  responses:
+    "200":
+      description: User Info Response
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/UserInfo"

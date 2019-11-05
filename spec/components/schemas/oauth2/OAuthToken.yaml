@@ -8,7 +8,7 @@ properties:
   access_token:
     type: string
     description: access_token is JWT string token which is signed from Private Key of ID Service.
-    example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJqdGkiOiJFQVNJbENQZ3lSNjcwQ1Q5TTB2MVRrZms3TFJGbElxTDZnZkZPeG45WnY1Rm5ZTUQiLCJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE1NTI5ODUzNjMsImV4cCI6MTU1Mzg0OTM2MywiY2xpZW50X2lkIjoiY2xpZW50X2lkXzEiLCJzY29wZSI6InByb2ZpbGUiLCJ1c2VyIjp7InVzZXJuYW1lIjoidGVzdC11c2VyMSJ9fQ.MyOBP2cGXD7T-QnQu5cohhVtRf8znxWOhwMLVky50BNEeYOeZa1W4AKOZF0kUG0jE2FSADAZF7-frN-byAloHrR2t9Pzct-wCQhE1DtzZaAXzIEU2Ylwx_l2SR4LFjmiLMI-vvyYihhjQ_XEj54cI6spkPDh_jYUszreJI6g6fPsPXyipm6KaZP3RXnajn4H9CDq01HwdzblCf28G4_z_DTt0OoSNAdm_PmAQm2pclXk2NON32MA1ZFfeClFT3zrqzkWPZ1pDdgKBSvBlA6aOSdb8ohrO6iHv4N3-Xm4YoHbDpA7q8WcBaf_xn9-DUf2yEl0DTYAAJIzIYRBdOvkLQ"
+    example: "eyJ0eXAiOiJKV1QiLCJh...DUf2yEl0DTYAAJIzIYRBdOvkLQ"
   expires_in:
     type: integer
     format: int64
@@ -17,7 +17,7 @@ properties:
   refresh_token:
     type: string
     description: refresh_token (with grant_type is authorazation_code, password and refresh_token).
-    example: "UTiylovD1xiwVAPTtajsSGIyfTXddWCptx83PC249rpQOgh7"
+    example: "UTiylovD1xiwVA...rpQOgh7"
   scope:
     type: string
     description: scope with access_token.
