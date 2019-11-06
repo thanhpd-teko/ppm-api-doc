@@ -1,4 +1,4 @@
-post:
+get:
   tags:
     - IAM API
   summary: User Info API
