@@ -541,3 +541,107 @@ properties:
                 type: string
                 description: thời gian kết thúc (UTC)
                 example: 2019-07-03T03:00:00Z
+  productGroup:
+    type: object
+    description: trả về các sản biến thể của sản phẩm
+    properties:
+      id:
+        type: number
+        example: 1
+        description: id của productGroup
+      name:
+        type: string
+        description: tên của productGroup
+      visible:
+        type: string
+        example: "group" 
+        description: "Mô tả cách hiển thị của client(group: áo sơ mi XL, M, S là một group,\
+                     individual: áo sơ mi XL, M, S là 3 sản phẩm riêng biệt) "
+      configurations:
+        type: array
+        description: "Các cấu hình của variant"
+        items:
+          type: object
+          properties:
+            id: 
+              type: number
+              example: 1
+              description: id của một configuration
+            code:
+              type: string
+              example: KT
+              description: mã của một configuration
+            name:
+              type: string
+              example: Kích thước
+              description: tên của một configuration
+            options:
+              type: array
+              description: Các option trong một configuration
+              items:
+                type: object
+                properties:
+                  value:
+                    type: string
+                    description: giá trị của option
+                    example: 43 inch
+                  optionId:
+                    type: number
+                    description: id của option
+                    example: 3
+                  optionType:
+                    type: string
+                    enum:
+                      - code
+                      - text
+                      - image
+                    description: Mô tả cách hiển thị của cấu hình trên client
+                    example: code
+                  image:
+                    type: object
+                    nullable: true
+                    description: Sẽ có giá trị khác null khi sử dụng optionType là image
+                    properties:
+                      path: 
+                        type: string
+                        description: đường dẫn của hình ảnh
+                        example: "media/catalog/product/uploads/product/p_708/2017/06/05/708.jpg"
+                      priority:
+                        type: number
+                        description: độ ưu tiên của hình ảnh
+                        example: 1
+                      url:
+                        type: number
+                        description: url
+                        example: "https://img1.phongvu.vn/media/catalog/product/uploads/product/p_708/2017/06/05/708.jpg"
+      variants:
+        type: array
+        items:
+          type: object
+          properties:
+            sku:
+              type: string
+              example: 1703341
+              description: sku của sản phẩm biến thể                  
+            attributeValues:
+              type: array
+              description: tập giá trị của các thuộc tính
+              items:
+                type: object
+                properties:
+                  id: 
+                    type: number
+                    example: 1
+                  code:
+                    type: string
+                    example: KT
+                    description: giá trị của option tương ứng
+                  value:
+                    type: string
+                    example: "45 inch"
+                    description: giá trị của thuộc tính ứng với option
+                  optionId:
+                    type: number
+                    example: 1
+                    description: id của option tương ứng
+

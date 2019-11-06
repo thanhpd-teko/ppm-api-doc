@@ -2,7 +2,7 @@ required:
   - keyword
   - highlight
 properties:
-  keyword:
+  query:
     type: string
     description: từ khóa liên quan với input của người dùng
   highlight:
