@@ -251,11 +251,11 @@ get:
       in: query
       required: false
       description: |
-        Default, response don't return filters data. Data filters includes: brands, attributeSets, attributes
+        Default, response don't return filters data. Data filters includes: brands, attributeSets, ...
         >
         If client needs any data, set value for this parameter, seperated by comma.
         >
-        Values: [`brands`, `attributeSets`, `attributes`].
+        Values: [`brands`, `attributeSets`, `attributes`, `sellerCategories`, `displayCategories`].
       schema:
         type: string
       example: brands,attributeSets
