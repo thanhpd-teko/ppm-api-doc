@@ -575,6 +575,14 @@ properties:
               type: string
               example: Kích thước
               description: tên của một configuration
+            optionType:
+              type: string
+              enum:
+                - code
+                - text
+                - image
+              description: Mô tả cách hiển thị của cấu hình trên client
+              example: code
             options:
               type: array
               description: Các option trong một configuration
@@ -589,18 +597,10 @@ properties:
                     type: number
                     description: id của option
                     example: 3
-                  optionType:
-                    type: string
-                    enum:
-                      - code
-                      - text
-                      - image
-                    description: Mô tả cách hiển thị của cấu hình trên client
-                    example: code
                   image:
                     type: object
                     nullable: true
-                    description: Sẽ có giá trị khác null khi sử dụng optionType là image
+                    description: Nếu optionType khác image thì giá trị sẽ là null
                     properties:
                       path: 
                         type: string
