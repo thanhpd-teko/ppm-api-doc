@@ -149,14 +149,23 @@ get:
       description: |
         terminal to identify client
         >only one value allowed
-      required: true
+      required: false
       schema:
         type: string
       example: CP01
-    - name: cat_id
+    - name: channel
       in: query
       description: |
-        id of menu category to get brands list
+        channel to identify client
+        >only one value allowed
+      required: false
+      schema:
+        type: string
+      example: pv_online
+    - name: displayCategoryId
+      in: query
+      description: |
+        id of display category to get brands list
         >only one value allowed
       required: false
       schema:

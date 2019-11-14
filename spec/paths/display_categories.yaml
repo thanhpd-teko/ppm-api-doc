@@ -18,10 +18,19 @@ get:
       description: |
         terminal calls to API
         >only one value allowed
-      required: true
+      required: false
       schema:
         type: string
       example: CP01
+    - name: channel
+      in: query
+      description: |
+        channel to identify client
+        >only one value allowed
+      required: false
+      schema:
+        type: string
+      example: pv_online
     - name: level
       in: query
       description: |
