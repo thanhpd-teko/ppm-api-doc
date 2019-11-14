@@ -150,6 +150,16 @@ get:
       schema:
         type: string
       example: 04-N010-02,01-N020-03
+    - name: displayCategories
+      in: query
+      required: false
+      description: |
+        filter product in list display categories id, separated by commas
+      schema:
+        type: array
+        items:
+          type: integer
+        example: [1, 2]
     - name: tags
       in: query
       required: false
