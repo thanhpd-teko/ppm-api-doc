@@ -1,45 +1,52 @@
 required:
-  - client_code
-  - branch_code
-  - service_code
-  - order_id
-  - grand_total
-  - order_items
+  - clientCode
+  - terminalCode
+  - serviceCode
+  - asiaStaffId
+  - crmStaffId
+  - orderId
   - methods
-  - hash_secret
+  - checksum
 properties:
-  client_code:
+  clientCode:
     description: Code for client to connect to Payment service. PS provide this code to client before deploying
     type: string
     example: 'PHONGVU01'
-  branch_code:
+  terminalCode:
     description: Branch/terminal code of the order
     type: string
     example: 'CP09'
-  service_code:
+  serviceCode:
     type: string
     description: Service of the payment bill such as Retail(sample - Phong vu's Order), telecom bill, Electric...
     example: 'RETAIL'
-  order_id:
+  asiaStaffId:
     type: string
-    description: 'Order ID in merchant system. With Phong Vu, It is order Id in OM'
+    description: Staff id (in asia system) perform the transaction. PS only forward this infor to OM, LO, not validate the true/false of this ID
+    example: '50380'
+  crmStaffId:
+    type: string
+    description: Staff (in CRM system) perform the transaction. PS only forward this infor to OM, LO, not validate the true/false of this ID
+    example: '50380'
+  clientTransactionCode:
+    type: string
+    description: Transaction's code of client. This is private code for each client. Payment service support get a transaction by this code. This is unique code in month
+    example: '19606S11'
+  orderId:
+    type: string
+    description: Order ID in merchant system. With Phong Vu, It is order Id in OM
     example: '19YTFS20'
-  grand_total:
-    type: number
-    format: double
-    description: Total amount of order
-    example: 2500000
-  order_items:
-    type: array
-    items:
-      $ref: '#/components/schemas/OrderItem'
-    description: Items of this order
   methods:
     type: array
     items:
-      $ref: '#/components/schemas/PaymentMethodReq'
+      $ref: '#/components/schemas/PaymentMethodWithTransReq'
     description: Payment methods of order are paid
-  hash_secret:
+  addData:
+    type: string
+    description: Additional information from client
+    example: 'custName: Dau Thi Ngoc anh'
+  
+  checksum:
     type: string
     description: Secret string encrypted by secret key and all parameters for checksum
     example: '4fb75072afc5bc29ad00f71a11c127d9'

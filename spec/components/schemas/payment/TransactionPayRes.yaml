@@ -1,0 +1,4 @@
+properties:
+  url:
+    type: string
+    description: The Vnpay url for redirection

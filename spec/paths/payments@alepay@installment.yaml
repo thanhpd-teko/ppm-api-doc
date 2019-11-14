@@ -1,7 +1,7 @@
 get:
   tags:
-    - Transactions
-  summary: Get all transactions of order
+    - Payments
+  summary: Get all available payment installments from Alepay
   parameters:
     - name: client_code
       in: query
@@ -9,27 +9,29 @@ get:
       schema:
         type: string
       required: true
-      
-    - name: from_date
+
+    - name: amount
       in: query
       description: From date to query payment transaction. Format yyyymmdd
       schema:
-        type: string
+        type: number
+        format: double
+        description: Amount of money need to get info
+        example: 100000
       required: true
 
-    - name: to_date
+    - name: currency_code
       in: query
-      description: To date to query payment transaction. Format yyyymmdd
+      description: Currency code, if empty then set default is VND
       schema:
         type: string
-      required: true
+        example: VND
 
-    - name: order_id
+    - name: installment
       in: query
-      description: Order ID to get payment history
+      description: Payment installment (month)
       schema:
-        type: string
-      required: true
+        type: integer
 
     - name: checksum
       in: query
@@ -39,18 +41,17 @@ get:
       required: true
 
   responses:
-    '200':
+    "200":
       description: Successful query transaction
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/OrderHistoryPaymentRes'
+            $ref: "#/components/schemas/PaymentInstallmentRes"
     "403":
       description: Forbiden
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PaymentForbiddenError'
+            $ref: "#/components/schemas/PaymentForbiddenError"
   servers:
     - url: "http://dev-payment.teko.vn/api"
-

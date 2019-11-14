@@ -1,0 +1,66 @@
+properties:
+  bankCode:
+    type: string
+    description: Bank code
+    example: VCB
+  bankName:
+    type: string
+    description: Bank name
+    example: Vietcombank
+  paymentMethods:
+    type: array
+    description: List of payment methods are suitable
+    items:
+      properties:
+        paymentMethod:
+          type: string
+          description: Payment method code
+          example: VISA
+        periods:
+          type: array
+          description: List of periods are suitable
+          items:
+            properties:
+              paymentTerm:
+                type: integer
+                description: Installment months
+                example: 12
+              amountFee:
+                type: number
+                format: double
+                description: Total fee amount
+                example: 5000
+              amountFinal:
+                type: number
+                format: double
+                description: Total amount = amount + amountFee
+                example: 1005000
+              amountByMonth:
+                type: number
+                format: double
+                description: Amount must paid monthly
+                example: 100000
+              payerFlatFee:
+                type: number
+                format: double
+                description: Info from Alepay
+                example: 0.0
+              payerPercentFee:
+                type: number
+                format: double
+                description: Info from Alepay
+                example: 1.5
+              payerInstallmentFlatFee:
+                type: number
+                format: double
+                description: Info from Alepay
+                example: 2000.0
+              payerInstallmentPercentFee:
+                type: number
+                format: double
+                description: Info from Alepay
+                example: 1.0
+              currency:
+                type: string
+                description: Currency code
+                example: VND

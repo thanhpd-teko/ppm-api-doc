@@ -1,58 +1,60 @@
 properties:
-  client_code:
+  clientCode:
     type: string
     description: Code for client to get list payment method for the cart
-    example: 'ABC123XYZ'
-  branch_code:
+    example: ABC123XYZ
+  terminalCode:
     type: string
-    description: Branch/terminal code of the order
-    example: 'ONLINE'
-  service_code:
+    description: >-
+      Branch/terminal code create the cart or process order, receive in POS
+      channel
+    example: CP09
+  serviceCode:
     type: string
-    description: 'Service code in Payment service, for examples: Retail, payment for electric, water service. With Phong Vu, this is the retail'
-    example: 'RETAIL'
-  cart_id:
+    description: >-
+      Service code in Payment service, for examples: Retail, payment for
+      electric, water service. With Phong Vu, this is the retail
+    example: RETAIL
+  cartId:
     type: string
     description: ID of cart in merchant system
-    example: '19ZXR20'
-  grand_total:
+    example: 19ZXR20
+  grandTotal:
     type: number
     format: double
     description: Total money must pay for this order
     example: 2500000
-  response_code:
-    type: string
-    description: response code
-    example: 898
-
-  response_message:
-    type: string
-    description: The description of response code
-    example: Order not exist
 
   methods:
     type: array
-    description: List of payment methods are suitable for the cart 
+    description: List of payment methods are suitable for the cart
     items:
       properties:
-        method_code:
+        methodCode:
           type: string
-          description: Payment method code 
-          example: 'QRcode'
-        method_name:
+          description: Payment method code
+          example: QRcode
+        methodName:
           type: string
-          description: Payment method's name 
-          example: 'QR code'
-        partner_code:
+          description: Payment method's name
+          example: QR code
+        partnerCode:
           type: string
-          description: code of payment partner 
-          example: 'VNPAY'
-        partner_name:
+          description: code of payment partner
+          example: VNPAY
+        partnerName:
           type: string
-          description: Name of payment partner 
-          example: 'Công ty thanh toán quốc gia Việt Nam'
+          description: Name of payment partner
+          example: Công ty thanh toán quốc gia Việt Nam
+        paymentTerms:
+          description: available terms to pay for installment/installment credit method
+          items:
+            type: integer
+          type: array
         type:
           type: string
-          description: Its value is 0 or 1. 1 mean Payment service must connect to partner system to make payment, 0 mean opposite of 1
-          example: 1     
-
+          description: >-
+            Its value is 0,1,2 . 2 mean Payment service must connect to partner
+            system to make payment, 0 mean internal payment method, 1 mean
+            postpaid method such as COD, postpaid, debt
+          example: 1

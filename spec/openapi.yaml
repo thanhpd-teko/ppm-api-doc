@@ -141,6 +141,7 @@ x-tagGroups:
     tags:
       - Methods
       - Transactions
+      - Payments
       - Qrcode
   - name: Order Service
     tags:

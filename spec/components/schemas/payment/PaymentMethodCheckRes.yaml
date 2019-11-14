@@ -1,72 +1,28 @@
 properties:
-  client_code:
+  clientCode:
     type: string
     description: Code for client to connect to Payment service
     example: 'ABC123XYZ'
-  branch_code:
+  terminalCode:
     type: string
     description: Branch/terminal code of the order
     example: 'PV009'
-  service_code:
+  serviceCode:
     type: string
     description: Service code in Payment service. In this case, this is retail service
     example: 'RETAIL'
-  order_id:
+  orderId:
     type: string
     description: Order code in OM system
     example: '17123456'
-  grand_total:
+  grandTotal:
     type: number
     description: Total paid of the order
     example: 10500000
   methods:
     type: array
     description: Available payment methods
-    items:
-      properties:
-        method_code:
-          type: string
-          description: Code of method defined in Payment service
-          example: 'VNPAY_QR'
-        method_name:
-          type: string
-          description: Name of method defined in Payment service
-          example: 'VNPAY QR code method'
-        partner_code:
-          type: string
-          description: Code of payment method defined in Payment service
-          example: 'VNPAY'
-        partner_name:
-          type: string
-          description: Name of method defined in Payment service
-          example: 'VNPAY company'        
-        installment_term:
-          type: integer
-          description: Months for installment term
-          example: 6
-        bank_code:
-          type: string
-          description: Code of bank
-          example: 'VCB'
-        bank_name:
-          type: string
-          description: Name of bank
-          example: 'VietComBank'
-        cust_name_card:
-          type: string
-          description: Customer name on card using to pay, it is required if paid by INSTALLMENT_CREDIT
-          example: 'Nguyen Van A'
-        card_no:
-          type: string
-          description: It is only 6 first number and 4 last numbers of card No, format 548566...1234, required if paid by INSTALLMENT_CREDIT
-          example: '548566...1234'
-        response_code:
-          type: string
-          description: Response code of this payment method. 000 is successfull, else failed
-          example: '002' 
-        response_message:
-          type: string
-          description: The detail response message of this payment method
-          example: 'Amount is not enough'
+    items: 
+    $ref: '#/components/schemas/PaymentMethodCheckResMethodArray'
 
-
+     

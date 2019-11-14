@@ -1,23 +1,24 @@
 post:
   tags:
-    - Qrcode
-  summary: Generate VNPay Qrcode
+    - Transactions
+  summary: Refund a transaction
+  description: Make request for refunding a transaction to payment partner
   requestBody:
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/QrCodeGenerationReq'
+          $ref: '#/components/schemas/TransactionRefundReq'
     required: true
-  operationId: post_qr_code_generation
+  operationId: post_refund_transaction
   responses:
     '200':
-      description: Successfully
+      description: Make request transaction refund sucessfully
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/QRGenerationRes'
+            $ref: '#/components/schemas/TransactionRefundRes'
     '400':
-      description: Invalid request response
+      description: Invalid request or bussiness errors
       content:
         application/json:
           schema:
@@ -29,4 +30,4 @@ post:
           schema:
             $ref: '#/components/schemas/PaymentForbiddenError'
   servers:
-    - url: 'http://dev-payment.teko.vn/api'
+    - url: 'http://payment.teko.vn'

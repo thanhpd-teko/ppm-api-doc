@@ -7,7 +7,7 @@ references:
   update_npm: &update_npm
     run:
       name: update npm
-      command: sudo npm install -g npm@latest
+      command: sudo npm install -g npm@6.9.0
   restore_cache: &restore_cache
     restore_cache:
       key: dependency-cache-{{ checksum "package.json" }}

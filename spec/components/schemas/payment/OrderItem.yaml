@@ -1,20 +1,22 @@
 required:
   - sku
   - quantity
+  - unitPrice
+  - price
 properties:
   sku:
     type: string
     description: Sku of this item
     example: '183620'
-  product_name:
+  name:
     type: string
-    description: Name of product
+    description: Name of SKU
     example: 'Laptop LG Gram'
   quantity:
     type: integer
     description: Quantity of this item
     example: 2
-  unit_price:
+  unitPrice:
     type: number
     format: double
     description: Price per unit

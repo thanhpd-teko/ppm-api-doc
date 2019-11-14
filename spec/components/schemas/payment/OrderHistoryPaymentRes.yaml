@@ -1,3 +1,117 @@
 properties:
+  clientCode:
+    type: string
+    description: Client code
+  orderId:
+    type: string
+    description: Order id
   transactions:
-    $ref: '#/components/schemas/TransactionRes'
+    type: array
+    items:
+      properties:
+        psTransactionCode:
+          type: string
+          description: transaction code in Payment service
+        agentCode:
+          type: string
+          description: Code of Agent that request payment such as Phong Vu, Vnshop
+        agentName:
+          type: string
+          description: Name of Agent that request payment such as Phong Vu, Vnshop
+        channelCode:
+          type: string
+          description: channel code that request payment such as phongvu_online, vnshop_online
+        channelName:
+          type: string
+          description: channel name that request payment such as phongvu_online, vnshop_online
+        serviceCode:
+          type: string
+          description: service code of the transaction to request payment such as Retail
+        serviceName:
+          type: string
+          description: service name of the transaction to request payment such as Dịch vụ bán lẻ
+        orderId:
+          type: string
+          description: ID of the order in payment transaction
+        orderCode:
+          type: string
+          description: Code of the order in payment transaction
+        terminalCode:
+          type: string
+          description: terminal code that make  payment request
+        terminalName:
+          type: string
+          description: terminal name that make  payment request
+        partnerCode:
+          type: string
+          description: partner code of the payment transaction such as VNPAY, Alepay
+        partnerName:
+          type: string
+          description: partner name of the payment transaction such as VNPAY, Alepay
+        methodCode:
+          type: string
+          description: method code of the payment transaction such as CTT, QRcode, Installment
+        methodName:
+          type: string
+          description: method code of the payment transaction such as Cổng thanh toán , Trả góp 
+        amount:
+          type: integer
+          description: paid amount in payment transaction
+        status:
+          type: string
+          description: status of transaction such as PENDING, FAILURE, SUCCESS
+        statusName:
+          type: string
+          description:  description of status
+        psResponseCode:
+          type: string
+          description: the response code from payment service
+        psResponseMessage:
+          type: string
+          description: the response message from payment service
+        currency:
+          type: string
+          description: currency of the payment transaction 
+        cardNumber:
+          type: string
+          description: card number of customer to make payment
+        paymentTerm:
+          type: integer
+          description: installment term if customer use installment method 
+        bankCode:
+          type: string
+          description: bank code of transaction that customer use to make payment
+        bankName:
+          type: string
+          description: bank name of transaction that customer use to make payment
+        orderDescription:
+          type: string
+          description: order description
+        cardType:
+          type: string
+          description: card type of transaction that customer use to make payment such as ATM, VISA...
+        bankHotline:
+          type: string
+          description: hot line of customer's bank
+        partnerTransactionCode:
+          type: string
+          description: the transaction code of payment partner (Vnpay, Alepay)
+        clientTransactionCode:
+          type: string
+          description: the transaction code from client
+        clientRequestTime:
+          type: string
+          format: date-time
+          description: client request time to payment service
+        clientResponseTime:
+          type: string
+          format: date-time
+          description: time payment service response  to client
+        psRequestTime:
+          type: string
+          format: date-time
+          description: time ps make request to partner
+        psResponseTime:
+          type: string
+          format: date-time
+          description: time partner reply to ps
