@@ -1,6 +1,7 @@
 required:
-  - keyword
+  - query
   - highlight
+  - display_category
 properties:
   query:
     type: string
@@ -8,3 +9,13 @@ properties:
   highlight:
     type: string
     description: từ khóa đã được nổi bật (dùng thẻ `<em></em>`)
+  display_category:
+    type: object
+    description: Khối thông tin về display category của từ khóa (nếu có)
+    properties:
+      id: 
+        type: number 
+        description: Id của display category. Nếu không tồn tại, giá trị này sẽ bằng null
+      name: 
+        type: string 
+        description: Tên của display category. Nếu không tồn tại, giá trị này sẽ bằng null

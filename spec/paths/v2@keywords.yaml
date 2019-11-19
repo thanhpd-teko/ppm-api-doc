@@ -28,7 +28,7 @@ get:
       example: pv_showroom
     - name: terminal
       in: query
-      required: true
+      required: false
       description: |
         terminal to identified client
       schema:
@@ -37,7 +37,7 @@ get:
     - name: visitorId
       in: query
       description: visitor id from tracking to get personalized recommended keyword
-      required: true
+      required: false
       schema:
         type: string
     - name: q
