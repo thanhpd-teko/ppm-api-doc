@@ -218,6 +218,16 @@ get:
       schema:
         type: string
       example: 715,1056
+    - name: sellerCategories
+      in: query
+      required: false
+      description: |
+        filter product by seller categories code
+      schema:
+        type: array
+        items:
+          type: string
+        example: [001, 002]
     - name: publishStatus
       in: query
       required: false
@@ -278,6 +288,16 @@ get:
         oneOf:
           - type: string
           - type: integer
+    - name: skus
+      in: query
+      required: false
+      description: |
+        List product sku, separated by commas
+      schema:
+        type: array
+        items:
+          type: string
+        example: [11111, 221231]
   responses:
     200:
       description: response for successful request
