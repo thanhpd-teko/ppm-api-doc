@@ -160,6 +160,16 @@ get:
         items:
           type: integer
         example: [1, 2]
+    - name: campaigns
+      in: query
+      required: false
+      description: |
+        filter by campaigns id to get products belonged to those campaigns, separated by commas
+      schema:
+        type: array
+        items:
+          type: integer
+        example: [1, 2]
     - name: tags
       in: query
       required: false

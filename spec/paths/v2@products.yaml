@@ -61,7 +61,7 @@ get:
     - name: skus
       in: query
       description: list sku, separated by commas
-      required: false
+      required: true
       schema:
         type: string
     - name: relatedSku
