@@ -1,0 +1,36 @@
+title: profile
+type: object
+properties:
+  profileId:
+    type: string
+    maxLength: 255
+  userId:
+    type: string
+    maxLength: 255
+  clientCode:
+    type: string
+    maxLength: 255
+  name:
+    type: string
+    maxLength: 255
+  email:
+    type: string
+    format: email
+    maxLength: 255
+    pattern: "^[a-z][a-z0-9_\\.]{2,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,}){1,2}$"
+  telephone:
+    type: string
+    pattern: "^0[0-9]{8,10}$"
+  sex:
+    type: string
+    enum:
+      - Nam
+      - Nữ
+      - Giới tính khác
+  dob:
+    type: string
+    format: date
+required:
+  - profileId
+  - userId
+  - clientCode

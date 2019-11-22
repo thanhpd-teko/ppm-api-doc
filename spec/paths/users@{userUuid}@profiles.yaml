@@ -1,0 +1,35 @@
+get:
+  summary: Get 1 active profile
+  tags:
+    - Profiles
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              result:
+                type: object
+                properties:
+                  profiles:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/profile"
+  operationId: get_profiles
+  description: Get 1 active profile of an user per client system
+  parameters:
+    - schema:
+        type: string
+      in: query
+      name: clientCode
+      required: true
+      description: Code for client to connect to User service
+    - schema:
+        type: string
+      name: userUuid
+      in: path
+      required: true

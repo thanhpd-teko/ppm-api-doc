@@ -1,0 +1,27 @@
+title: profilePatchRequest
+type: object
+properties:
+  dob:
+    type: string
+    format: date
+  sex:
+    type: string
+    enum:
+      - Nam
+      - Nữ
+      - Giới tính khác
+  telephone:
+    type: string
+    pattern: "^0[0-9]{8,10}$"
+  email:
+    type: string
+    format: email
+    maxLength: 255
+    pattern: "^[a-z][a-z0-9_\\.]{2,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,}){1,2}$"
+  name:
+    type: string
+    maxLength: 255
+required:
+  - telephone
+  - email
+  - name

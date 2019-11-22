@@ -1,0 +1,79 @@
+get:
+  summary: "Get 10 lastest active addresses of an user for a client system"
+  parameters:
+    - name: userUuid
+      required: true
+      in: path
+      schema:
+        type: string
+    - name: clientCode
+      in: query
+      schema:
+        type: string
+      description: Code for client to connect to User service
+      required: true
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              result:
+                type: object
+                properties:
+                  addresses:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/address"
+    "204":
+      description: No Content
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              result:
+                type: object
+  operationId: "1"
+  description: Get 10 lastest active addresses of user
+  tags:
+    - Addresses
+post:
+  summary: "Add new address for a specific user"
+  parameters:
+    - name: userUuid
+      required: true
+      in: path
+      schema:
+        type: string
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              result:
+                type: object
+                properties:
+                  address:
+                    $ref: "#/components/schemas/address"
+              message:
+                type: string
+  description: Add new address for an user
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/addressRequest"
+  tags:
+    - Addresses

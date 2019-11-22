@@ -1,0 +1,53 @@
+patch:
+  tags:
+    - Profiles
+  summary: Update user profile
+  operationId: update_user_profile
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/profilePatchRequest"
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+  parameters:
+    - name: profileUuid
+      schema:
+        type: string
+      in: path
+      required: true
+get:
+  tags:
+    - Profiles
+  parameters:
+    - name: profileUuid
+      schema:
+        type: string
+      in: path
+      required: true
+  summary: "Get a profile by Id"
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              result:
+                type: object
+                properties:
+                  profile:
+                    $ref: "#/components/schemas/profile"

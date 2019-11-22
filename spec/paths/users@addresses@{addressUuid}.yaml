@@ -1,0 +1,132 @@
+get:
+  summary: Get an address
+  tags:
+    - Addresses
+  parameters:
+    - name: addressUuid
+      required: true
+      in: path
+      schema:
+        type: string
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              result:
+                type: object
+                properties:
+                  address:
+                    $ref: "#/components/schemas/address"
+          examples:
+            example-1:
+              value:
+                code: success
+                result:
+                  address:
+                    addressId: 15d1e6f2-ab70-41a4-b70a-9561d81e8ce8
+                    userId: 0f9ad68d489f47f4977185b55856d39
+                    address: '54 Nguyễn Chí Thanh, Láng Thượng, Đống Đa, Hà Nội'
+                    addressNote: Tầng 16 tòa nhà Vincom NCT
+                    isDefault: 'false'
+                    email: linh.dt@teko.vn
+                    name: Đỗ Trần Linh
+                    telephone: '012345667'
+                    longitude: '21.0239309'
+                    latitude: '105.8080925'
+                    provinceCode: '01'
+                    districtCode: '0101'
+                    wardCode: '010101'
+                    clientCode: 'vnshop'
+    "204":
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              result:
+                type: object
+  description: Get a address by address id
+  operationId: "2"
+patch:
+  summary: "Update address"
+  tags:
+    - Addresses
+  parameters:
+    - name: addressUuid
+      required: true
+      in: path
+      schema:
+        type: string
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+    "204":
+      description: No Content
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/addressPatchRequest"
+    description: ""
+delete:
+  summary: "Delete an address"
+  tags:
+    - Addresses
+  parameters:
+    - name: addressUuid
+      required: true
+      in: path
+      schema:
+        type: string
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+    "204":
+      description: No Content
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+  operationId: delete_address
+  description: Delete an address

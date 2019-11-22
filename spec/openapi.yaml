@@ -6,9 +6,9 @@ info:
     email: tien.dv@teko.vn
   license:
     name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
   x-logo:
-    url: 'https://teko-vn.github.io/api-docs/Teko-Logo-01.svg'
+    url: "https://teko-vn.github.io/api-docs/Teko-Logo-01.svg"
   description: >
     This documentation describes APIs used in/exposed from Teko micro-services ecosystem
 
@@ -101,9 +101,11 @@ tags:
     description: Provides APIs to create and manage Orders
   - name: Banners
     description: Provide API to get banner info
+  - name: User Services
+    description: Provide API for user service
 servers:
-  - url: 'http://example.com/api/v1'
-  - url: 'https://example.com/api/v1'
+  - url: "http://example.com/api/v1"
+  - url: "https://example.com/api/v1"
   - url: /api/v2
   - url: https://orders.dev.svc.5kbps.io
     description: Order Development Server
@@ -149,3 +151,7 @@ x-tagGroups:
   - name: Page Builder
     tags:
       - Banners
+  - name: User Service
+    tags:
+      - Addresses
+      - Profiles

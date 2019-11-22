@@ -1,0 +1,52 @@
+title: Address
+type: object
+description: Address of an user
+x-examples: {}
+properties:
+  addressId:
+    type: string
+    maxLength: 255
+  userId:
+    type: string
+    maxLength: 255
+  address:
+    type: string
+    maxLength: 255
+  addressNote:
+    type: string
+    maxLength: 255
+  isDefault:
+    type: boolean
+  email:
+    type: string
+    maxLength: 255
+    pattern: "^[a-z][a-z0-9_\\.]{2,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,}){1,2}$"
+  name:
+    type: string
+    maxLength: 255
+  telephone:
+    type: string
+    pattern: "^0[0-9]{8,10}$"
+  longitude:
+    type: string
+    maxLength: 255
+  latitude:
+    type: string
+    maxLength: 255
+  clientCode:
+    type: string
+    maxLength: 255
+  provinceCode:
+    type: string
+  districtCode:
+    type: string
+  wardCode:
+    type: string
+required:
+  - addressId
+  - userId
+  - street
+  - isDefault
+  - name
+  - telephone
+  - clientCode
