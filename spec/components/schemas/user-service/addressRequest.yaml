@@ -1,12 +1,10 @@
 title: addressRequest
 type: object
 properties:
-  street:
+  address:
     type: string
-    maxLength: 255
-  detailAddress:
+  addressNote:
     type: string
-    maxLength: 255
   isDefault:
     type: boolean
   email:
@@ -35,7 +33,7 @@ properties:
   wardCode:
     type: string
 required:
-  - street
+  - address
   - isDefault
   - name
   - telephone

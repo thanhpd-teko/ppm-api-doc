@@ -155,3 +155,6 @@ x-tagGroups:
     tags:
       - Addresses
       - Profiles
+  - name: Location Service
+    tags:
+      - Location API

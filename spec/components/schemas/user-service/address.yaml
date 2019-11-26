@@ -11,10 +11,8 @@ properties:
     maxLength: 255
   address:
     type: string
-    maxLength: 255
   addressNote:
     type: string
-    maxLength: 255
   isDefault:
     type: boolean
   email:
@@ -45,7 +43,7 @@ properties:
 required:
   - addressId
   - userId
-  - street
+  - address
   - isDefault
   - name
   - telephone
