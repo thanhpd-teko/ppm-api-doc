@@ -298,6 +298,17 @@ get:
         items:
           type: string
         example: [11111, 221231]
+    - name: random
+      in: query
+      required: false
+      description: |
+        To get random products response
+      schema:
+        type: string
+        enum:
+          - true
+          - false
+        example: 'true'
     - name: bestPrice_lte
       in: query
       required: false
