@@ -18,6 +18,9 @@ properties:
         name:
           type: string
           description: tên chương trình khuyến mại
+        govRegister:
+          type: boolean
+          description: thông tin khuyến mại đã đăng ký bộ công thương hay chưa
         description:
           type: string
           description: mô tả chương trình khuyến mại
