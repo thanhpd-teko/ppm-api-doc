@@ -1,11 +1,11 @@
 get:
   summary: "Get 10 lastest active addresses of an user for a client system"
   parameters:
-    - name: userUuid
-      required: true
-      in: path
-      schema:
+    - schema:
         type: string
+      in: header
+      name: X-User-ID
+      required: true
     - name: clientCode
       in: query
       schema:
@@ -47,11 +47,11 @@ get:
 post:
   summary: "Add new address for a specific user"
   parameters:
-    - name: userUuid
-      required: true
-      in: path
-      schema:
+    - schema:
         type: string
+      in: header
+      name: X-User-ID
+      required: true
   responses:
     "200":
       description: OK

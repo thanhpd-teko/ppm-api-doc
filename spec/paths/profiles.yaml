@@ -30,6 +30,6 @@ get:
       description: Code for client to connect to User service
     - schema:
         type: string
-      name: userUuid
-      in: path
+      in: header
+      name: X-User-ID
       required: true

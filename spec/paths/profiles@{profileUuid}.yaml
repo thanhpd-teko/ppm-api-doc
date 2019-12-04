@@ -26,28 +26,8 @@ patch:
         type: string
       in: path
       required: true
-get:
-  tags:
-    - Profiles
-  parameters:
-    - name: profileUuid
-      schema:
+    - schema:
         type: string
-      in: path
+      in: header
+      name: X-User-ID
       required: true
-  summary: "Get a profile by Id"
-  responses:
-    "200":
-      description: OK
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              code:
-                type: string
-              result:
-                type: object
-                properties:
-                  profile:
-                    $ref: "#/components/schemas/profile"
