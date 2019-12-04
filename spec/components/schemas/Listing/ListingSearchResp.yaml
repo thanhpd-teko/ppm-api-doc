@@ -26,4 +26,19 @@ properties:
         type: integer
         description: số lượng sản phẩm tối đa trong 1 trang
         example: 10
-
+      priceRanges:
+        type: array
+        description: các khoảng giá dùng đề filter (hiện tại chỉ có 1 chính là giá max và min)
+        items:
+          type: object
+          properties:
+            minPrice:
+              type: number
+              format: double
+              description: giá nhỏ nhất trong khoảng giá
+              example: 30000
+            maxPrice:
+              type: number
+              format: double
+              description: giá lớn nhất trong khoảng giá
+              example: 100000

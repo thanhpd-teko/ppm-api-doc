@@ -4,6 +4,10 @@ properties:
     format: float
     description: "Thuế bán ra (đơn vị: %)"
     example: 10
+  taxOutCode:
+    type: string
+    description: Mã loại thuế xuất
+    example: KT
   seoInfo:
     type: object
     description: khối thông tin dành cho SEO

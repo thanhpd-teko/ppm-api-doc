@@ -120,6 +120,10 @@ properties:
           type: number
           format: double
           description: giá bán cuối cùng
+        bestPrice:
+          type: number
+          format: double
+          description: giá tốt nhất sau khi áp dụng khuyến mại mặc định
     example:
       - channel: online
         terminal: null

@@ -66,7 +66,7 @@ get:
       description: |
         Listing conditions for sorting result.
         >
-        Values: [`price`, `stock`, `new`, `popular`].
+        Values: [`price`, `stock`, `new`, `bestPrice`, `discount`, `discountPercent`, `name`].
         >
         >> Specially, with sorting by stock, if you want to prioritize any branch, add branch code with underscore like **stock_CP01**
       schema:
@@ -298,6 +298,24 @@ get:
         items:
           type: string
         example: [11111, 221231]
+    - name: bestPrice_lte
+      in: query
+      required: false
+      description: |
+        filter product has best_price less than or equal
+      schema:
+        type: number
+        format: double
+      example: 10000000
+    - name: bestPrice_gte
+      in: query
+      required: false
+      description: |
+        filter product has price greater than or equal
+      schema:
+        type: number
+        format: double
+      example: 10000000
   responses:
     200:
       description: response for successful request
