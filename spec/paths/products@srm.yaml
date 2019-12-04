@@ -15,6 +15,19 @@ put:
       variables:
         basePath:
           default: api
+  parameters:
+    - in: header
+      name: access-token
+      schema:
+        type: string
+        description: Mã token để bảo mật api
+      required: true
+    - in: header
+      name: source
+      schema:
+        type: string
+        description: Nguồn dữ liệu (wms/srm)
+      required: true
   requestBody:
     description: SKU of product (example 19030321)
     required: true
