@@ -48,6 +48,9 @@ get:
                     districtCode: "0101"
                     wardCode: "010101"
                     clientCode: "vnshop"
+                    provinceName: "Hà Nội"
+                    districtName: "Ba Đình"
+                    wardName: "Phúc Xá"
     "204":
       description: Not Found
       content:

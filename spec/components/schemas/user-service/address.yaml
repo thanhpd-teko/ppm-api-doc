@@ -40,6 +40,12 @@ properties:
     type: string
   wardCode:
     type: string
+  provinceName:
+    type: string
+  districtName:
+    type: string
+  wardName:
+    type: string
 required:
   - addressId
   - userId
