@@ -12,6 +12,12 @@ get:
         type: string
       description: Code for client to connect to User service
       required: true
+    - name: isDefault
+      in: query
+      schema:
+        type: string
+      description: pass 1 to get default address
+      required: false
   responses:
     "200":
       description: OK
@@ -22,6 +28,7 @@ get:
             properties:
               code:
                 type: string
+                description: USI000S
               result:
                 type: object
                 properties:
@@ -40,6 +47,32 @@ get:
                 type: string
               result:
                 type: object
+    "400":
+      description: Not pass X-User-Id or clientCode
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                description: USI0001E
+              message:
+                type: string
+                description: Invalid user ID
+    "404":
+      description: Client not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                description: USI003E
+              message:
+                type: string
+                description: The requested client can not be found
   operationId: "1"
   description: Get 10 lastest active addresses of user
   tags:
@@ -62,6 +95,7 @@ post:
             properties:
               code:
                 type: string
+                description: USI000S
               result:
                 type: object
                 properties:
@@ -69,6 +103,32 @@ post:
                     $ref: "#/components/schemas/address"
               message:
                 type: string
+    "400":
+      description: Not pass X-User-Id
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                description: USI0001E
+              message:
+                type: string
+                description: Invalid user ID
+    "404":
+      description: Client not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                description: USI003E
+              message:
+                type: string
+                description: The requested client can not be found
   description: Add new address for an user
   requestBody:
     content:

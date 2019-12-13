@@ -23,6 +23,7 @@ get:
             properties:
               code:
                 type: string
+                description: USI000S
               result:
                 type: object
                 properties:
@@ -51,8 +52,8 @@ get:
                     provinceName: "Hà Nội"
                     districtName: "Ba Đình"
                     wardName: "Phúc Xá"
-    "204":
-      description: Not Found
+    "400":
+      description: Not pass X-User-Id
       content:
         application/json:
           schema:
@@ -60,8 +61,36 @@ get:
             properties:
               code:
                 type: string
-              result:
-                type: object
+                description: USI0001E
+              message:
+                type: string
+                description: Invalid user ID
+    "404":
+      description: Address not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                description: USI104E
+              message:
+                type: string
+                description: The requested address can not be found
+    "405":
+      description: Method Not Allowed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                description: USI106E
+              message:
+                type: string
+                description: The requested address only can change by the owner
   description: Get a address by address id
   operationId: "2"
 patch:
@@ -91,8 +120,8 @@ patch:
                 type: string
               message:
                 type: string
-    "204":
-      description: No Content
+    "400":
+      description: Not pass X-User-Id
       content:
         application/json:
           schema:
@@ -100,8 +129,36 @@ patch:
             properties:
               code:
                 type: string
+                description: USI0001E
               message:
                 type: string
+                description: Invalid user ID
+    "404":
+      description: Address not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                description: USI104E
+              message:
+                type: string
+                description: The requested address can not be found
+    "405":
+      description: Method Not Allowed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                description: USI106E
+              message:
+                type: string
+                description: The requested address only can change by the owner
   requestBody:
     content:
       application/json:
@@ -135,8 +192,8 @@ delete:
                 type: string
               message:
                 type: string
-    "204":
-      description: No Content
+    "404":
+      description: Address not found
       content:
         application/json:
           schema:
@@ -144,7 +201,22 @@ delete:
             properties:
               code:
                 type: string
+                description: USI104E
               message:
                 type: string
+                description: The requested address can not be found
+    "405":
+      description: Delete default address
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                description: USI105E
+              message:
+                type: string
+                description: The default address can not be delete
   operationId: delete_address
   description: Delete an address
