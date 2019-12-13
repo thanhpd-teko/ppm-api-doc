@@ -1,0 +1,12 @@
+title: comment
+required:
+  - productSku
+  - comment
+type: object
+properties:
+  sellerId:
+    type: string
+  comment:
+    type: string
+  productSku:
+    type: string

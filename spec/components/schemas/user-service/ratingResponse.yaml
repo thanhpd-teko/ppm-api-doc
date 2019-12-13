@@ -1,0 +1,26 @@
+title: ratingResponse
+type: object
+properties:
+  id:
+    type: string
+    maxLength: 255
+  productSku:
+    type: string
+    maxLength: 255
+  userId:
+    type: string
+    maxLength: 255
+  sellerId:
+    type: string
+    maxLength: 255
+  clientCode:
+    type: string
+    maxLength: 255
+  rating:
+    type: integer
+required:
+  - id
+  - productSku
+  - userId
+  - clientCode
+  - rating

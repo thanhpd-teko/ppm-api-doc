@@ -155,6 +155,8 @@ x-tagGroups:
     tags:
       - Addresses
       - Profiles
+      - Ratings
+      - Comments
       - Saved Cart
       - Wish List
       - App Setting

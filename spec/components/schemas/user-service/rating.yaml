@@ -1,0 +1,12 @@
+title: rating
+required:
+  - productSku
+  - rating
+type: object
+properties:
+  sellerId:
+    type: string
+  rating:
+    type: integer
+  productSku:
+    type: string

@@ -1,0 +1,28 @@
+get:
+  summary: "Get comment by Id"
+  tags:
+    - Comments
+  operationId: get_comment
+  parameters:
+    - name: comment_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    200:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+                properties:
+                  comment:
+                    $ref: '#/components/schemas/commentResponse'
