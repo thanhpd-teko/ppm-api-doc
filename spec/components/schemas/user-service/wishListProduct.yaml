@@ -1,0 +1,8 @@
+title: wishListProduct
+type: object
+properties:
+  productSku:
+    type: string
+    maxLength: 255
+required:
+  - productSku

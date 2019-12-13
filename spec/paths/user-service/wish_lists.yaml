@@ -1,0 +1,122 @@
+get:
+  summary: Get wish list by user
+  tags:
+    - Wish List
+  operationId: get_wish_lists
+  parameters:
+    - name: X-User-Id
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: clientCode
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    200:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+                properties:
+                  wishLists:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/wishListProduct"
+    204:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              result:
+                type: object
+put:
+  summary: create and update wish list for user
+  tags:
+    - Wish List
+  operationId: post_wish_lists
+  parameters:
+    - name: X-User-Id
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: clientCode
+      in: query
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            products:
+              type: array
+              items:
+                required:
+                  - productSku
+                type: object
+                properties:
+                  productSku:
+                    type: string
+    required: true
+  responses:
+    201:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+delete:
+  summary: Delete all wish list item by user
+  tags:
+    - Wish List
+  operationId: delete_wish_lists
+  parameters:
+    - name: X-User-Id
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: clientCode
+      in: query
+      required: true
+      schema:
+        type: string
+    - name: skus
+      in: query
+      schema:
+        type: string
+  responses:
+    200:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string

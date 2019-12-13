@@ -155,6 +155,9 @@ x-tagGroups:
     tags:
       - Addresses
       - Profiles
+      - Saved Cart
+      - Wish List
+      - App Setting
   - name: Location Service
     tags:
       - Location API

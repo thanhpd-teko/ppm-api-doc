@@ -1,0 +1,89 @@
+get:
+  summary: Get app settings by user
+  tags:
+    - App Setting
+  operationId: get_app_settings
+  parameters:
+  - name: X-User-Id
+    in: header
+    required: true
+    schema:
+      type: string
+  - name: clientCode
+    in: query
+    required: true
+    schema:
+      type: string
+  responses:
+    200:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+                properties:
+                  appSettings:
+                    $ref: "#/components/schemas/appSettings"
+    204:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              result:
+                type: object
+post:
+  summary: Create app settings by user
+  tags:
+    - App Setting
+  operationId: post_app_settings
+  parameters:
+  - name: X-User-Id
+    in: header
+    required: true
+    schema:
+      type: string
+  - name: clientCode
+    in: query
+    required: true
+    schema:
+      type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          required:
+            - key
+            - value
+          type: object
+          properties:
+            key:
+              type: string
+            value:
+              type: string
+    required: true
+  responses:
+    201:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+  x-codegen-request-body-name: payload
