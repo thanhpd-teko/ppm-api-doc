@@ -4,9 +4,10 @@ get:
     - Wish List
   operationId: get_wish_lists
   parameters:
-    - name: X-User-Id
+    - name: Authorization
       in: header
       required: true
+      description: "`Bearer {access token}`"
       schema:
         type: string
     - name: clientCode
@@ -50,7 +51,7 @@ put:
     - Wish List
   operationId: post_wish_lists
   parameters:
-    - name: X-User-Id
+    - name: Authorization
       in: header
       required: true
       schema:
@@ -94,7 +95,7 @@ delete:
     - Wish List
   operationId: delete_wish_lists
   parameters:
-    - name: X-User-Id
+    - name: Authorization
       in: header
       required: true
       schema:

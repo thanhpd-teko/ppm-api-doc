@@ -6,8 +6,9 @@ get:
     - schema:
         type: string
       in: header
-      name: X-User-ID
+      name: Authorization
       required: true
+      description: "`Bearer {access token}`"
     - name: addressUuid
       required: true
       in: path
@@ -53,7 +54,7 @@ get:
                     districtName: "Ba Đình"
                     wardName: "Phúc Xá"
     "400":
-      description: Not pass X-User-Id
+      description: Not pass Authorization
       content:
         application/json:
           schema:
@@ -101,8 +102,9 @@ patch:
     - schema:
         type: string
       in: header
-      name: X-User-ID
+      name: Authorization
       required: true
+      description: "`Bearer {access token}`"
     - name: addressUuid
       required: true
       in: path
@@ -121,7 +123,7 @@ patch:
               message:
                 type: string
     "400":
-      description: Not pass X-User-Id
+      description: Not pass Authorization
       content:
         application/json:
           schema:
@@ -173,8 +175,9 @@ delete:
     - schema:
         type: string
       in: header
-      name: X-User-ID
+      name: Authorization
       required: true
+      description: "`Bearer {access token}`"
     - name: addressUuid
       required: true
       in: path

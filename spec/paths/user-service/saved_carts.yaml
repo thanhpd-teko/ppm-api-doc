@@ -4,9 +4,10 @@ get:
     - Saved Cart
   operationId: get_saved_carts
   parameters:
-    - name: X-User-Id
+    - name: Authorization
       in: header
       required: true
+      description: "`Bearer {access token}`"
       schema:
         type: string
     - name: clientCode
@@ -51,7 +52,7 @@ put:
     - Saved Cart
   operationId: post_saved_carts
   parameters:
-    - name: X-User-Id
+    - name: Authorization
       in: header
       required: true
       schema:
@@ -101,7 +102,7 @@ delete:
     - Saved Cart
   operationId: delete_saved_carts
   parameters:
-    - name: X-User-Id
+    - name: Authorization
       in: header
       required: true
       schema:

@@ -10,9 +10,6 @@ properties:
       - Nam
       - Nữ
       - Giới tính khác
-  telephone:
-    type: string
-    pattern: "^0[0-9]{8,10}$"
   email:
     type: string
     format: email
@@ -22,6 +19,5 @@ properties:
     type: string
     maxLength: 255
 required:
-  - telephone
   - email
   - name

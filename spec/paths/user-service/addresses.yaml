@@ -4,8 +4,9 @@ get:
     - schema:
         type: string
       in: header
-      name: X-User-ID
+      name: Authorization
       required: true
+      description: "`Bearer {access token}`"
     - name: clientCode
       in: query
       schema:
@@ -48,7 +49,7 @@ get:
               result:
                 type: object
     "400":
-      description: Not pass X-User-Id or clientCode
+      description: Not pass Authorization or clientCode
       content:
         application/json:
           schema:
@@ -83,8 +84,9 @@ post:
     - schema:
         type: string
       in: header
-      name: X-User-ID
+      name: Authorization
       required: true
+      description: "`Bearer {access token}`"
   responses:
     "200":
       description: OK
@@ -104,7 +106,7 @@ post:
               message:
                 type: string
     "400":
-      description: Not pass X-User-Id
+      description: Not pass Authorization
       content:
         application/json:
           schema:

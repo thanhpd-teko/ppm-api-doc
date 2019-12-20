@@ -4,9 +4,10 @@ get:
     - App Setting
   operationId: get_app_settings
   parameters:
-  - name: X-User-Id
+  - name: Authorization
     in: header
     required: true
+    description: "`Bearer {access token}`"
     schema:
       type: string
   - name: clientCode
@@ -48,7 +49,7 @@ post:
     - App Setting
   operationId: post_app_settings
   parameters:
-  - name: X-User-Id
+  - name: Authorization
     in: header
     required: true
     schema:

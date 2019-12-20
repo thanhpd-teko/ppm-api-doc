@@ -4,8 +4,9 @@ get:
     - Ratings
   operationId: get_ratings
   parameters:
-    - name: X-User-Id
+    - name: Authorization
       in: header
+      description: "`Bearer {access token}`"
       schema:
         type: string
     - name: clientCode
@@ -67,7 +68,7 @@ post:
     - Ratings
   operationId: post_ratings
   parameters:
-    - name: X-User-Id
+    - name: Authorization
       in: header
       schema:
         type: string

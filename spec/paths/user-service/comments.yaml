@@ -4,8 +4,9 @@ get:
     - Comments
   operationId: get_comments
   parameters:
-    - name: X-User-Id
+    - name: Authorization
       in: header
+      description: "`Bearer {access token}`"
       schema:
         type: string
     - name: clientCode
@@ -67,7 +68,7 @@ post:
     - Comments
   operationId: post_comments
   parameters:
-    - name: X-User-Id
+    - name: Authorization
       in: header
       schema:
         type: string
