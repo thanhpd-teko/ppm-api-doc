@@ -24,9 +24,9 @@ properties:
   sex:
     type: string
     enum:
-      - Nam
-      - Nữ
-      - Giới tính khác
+      - M
+      - F
+      - O
   dob:
     type: string
     format: date

@@ -7,9 +7,9 @@ properties:
   sex:
     type: string
     enum:
-      - Nam
-      - Nữ
-      - Giới tính khác
+      - M
+      - F
+      - O
   email:
     type: string
     format: email
