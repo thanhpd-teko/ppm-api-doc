@@ -1,8 +1,8 @@
 get:
   tags:
-    - DisplayCategory
-  summary: List Display Category API
-  description: aggregate and return display category listing by query
+    - MenuItem
+  summary: List Menu Item API
+  description: Aggregate and return menu item listing by query
   servers:
     - url: 'http://listing.teko.com/{basePath}'
       variables:
@@ -13,28 +13,18 @@ get:
         basePath:
           default: api
   parameters:
-    - name: terminal
+    - name: zoneId
       in: query
       description: |
-        terminal calls to API
-        >only one value allowed
-      required: false
+        filter theo zone id của menu item
+      required: true
       schema:
-        type: string
-      example: CP01
-    - name: channel
-      in: query
-      description: |
-        channel to identify client
-        >only one value allowed
-      required: false
-      schema:
-        type: string
-      example: pv_online
+        type: integer
+      example: 1
     - name: level
       in: query
       description: |
-        filter theo level của danh mục hiển thị
+        filter theo level của menu item
       required: false
       schema:
         type: integer
@@ -42,7 +32,7 @@ get:
     - name: parentId
       in: query
       description: |
-        filter theo parentId của danh mục hiển thị
+        filter theo parentId của menu item
       required: false
       schema:
         type: integer
@@ -50,7 +40,7 @@ get:
     - name: _limit
       in: query
       description: |
-        maximum number of display categories in response
+        maximum number of menu items in response
       required: false
       schema:
         type: integer
@@ -69,11 +59,10 @@ get:
       in: query
       required: false
       description: |
-        Listing conditions for sorting result.
+        Listing conditions for sorting result.(Enum: ["priority"])
       schema:
         type: string
-        default: quantity.last_3_month
-      example: quantity.last_2_week, view.last_60_day
+      example: priority
     - name: _order
       in: query
       required: false
@@ -81,8 +70,7 @@ get:
         Values: [`asc`, `desc`]
       schema:
         type: string
-        default: desc
-      example: asc,asc
+      example: desc
   responses:
     200:
       description: response for successful request
@@ -94,7 +82,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ListingDisplayCategoryResp'
+            $ref: '#/components/schemas/ListingMenuItemResp'
     400:
       description: invalid parameters
       headers:
@@ -111,7 +99,7 @@ get:
               summary: An example of 400 error
               value:
                 code: "BAD_REQUEST"
-                message: "400 Bad Request: Input payload validation failed. Display Categories limit, starting from 1 invalid literal for int() with base 10: 'b'"
+                message: "400 Bad Request: Input payload validation failed. menu items limit, starting from 1 invalid literal for int() with base 10: 'b'"
     500:
       description: response when server has error
       headers:

@@ -134,6 +134,7 @@ x-tagGroups:
       - Version 2
       - Brand
       - DisplayCategory
+      - MenuItem
   - name: Price And Promotions
     tags:
       - Promotion API

@@ -1,0 +1,17 @@
+required:
+  - code
+  - result
+properties:
+  code:
+    type: string
+    description: Mã kết quả
+    example: '00'
+  result:
+    type: object
+    description: khối dữ liệu kết quả
+    properties:
+      menuItems:
+        type: array
+        description: khối kết quả menu item
+        items:
+          $ref: '#/components/schemas/ListingMenuItemData'
