@@ -13,14 +13,14 @@ get:
         basePath:
           default: api
   parameters:
-    - name: zoneId
+    - name: zone
       in: query
       description: |
-        filter theo zone id của menu item
+        filter theo zone code của menu item
       required: true
       schema:
-        type: integer
-      example: 1
+        type: string
+      example: top_brand
     - name: level
       in: query
       description: |

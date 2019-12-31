@@ -11,7 +11,7 @@ properties:
     type: integer
     description: Thứ tự ưu tiên của menu item
     example: 1
-  is_target_blank:
+  isTargetBlank:
     type: integer
     description: Có mở tab mới không? (0 hoặc 1)
     example: 0
@@ -22,7 +22,7 @@ properties:
   icon:
     type: string
     description: ảnh của danh mục hiển thị
-    example: mm300_ext_01
+    example: https://file.services.teko.vn/media/92/29/1567137562.1867676_Tivi-Samsung-32-inch-UA32N4000-1.jpg
   name:
     type: string
     description: Tên của menu item
