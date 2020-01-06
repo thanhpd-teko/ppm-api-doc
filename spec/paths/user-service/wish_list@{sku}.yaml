@@ -1,0 +1,70 @@
+post:
+  summary: Add product to wish list
+  tags:
+    - Wish List
+  operationId: post_products
+  parameters:
+    - name: Authorization
+      in: header
+      required: true
+      description: "`Bearer {access token}`"
+      schema:
+        type: string
+    - name: clientCode
+      in: query
+      required: true
+      schema:
+        type: string
+    - name: sku
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                description: USI000S
+              message:
+                type: string
+delete:
+  summary: Remove product from wish list
+  tags:
+    - Wish List
+  operationId: delete_products
+  parameters:
+    - name: Authorization
+      in: header
+      required: true
+      description: "`Bearer {access token}`"
+      schema:
+        type: string
+    - name: clientCode
+      required: true
+      in: query
+      schema:
+        type: string
+    - name: sku
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                description: USI000S
+              message:
+                type: string

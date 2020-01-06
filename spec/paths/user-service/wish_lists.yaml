@@ -34,7 +34,7 @@ get:
                     type: array
                     items:
                       $ref: "#/components/schemas/wishListProduct"
-    204:
+    404:
       description: Not Found
       content:
         application/json:

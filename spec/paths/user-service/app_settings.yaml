@@ -32,7 +32,7 @@ get:
                 properties:
                   appSettings:
                     $ref: "#/components/schemas/appSettings"
-    204:
+    404:
       description: Not Found
       content:
         application/json:

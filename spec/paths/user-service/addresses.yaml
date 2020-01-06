@@ -37,17 +37,6 @@ get:
                     type: array
                     items:
                       $ref: "#/components/schemas/address"
-    "204":
-      description: No Content
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              code:
-                type: string
-              result:
-                type: object
     "400":
       description: Not pass Authorization or clientCode
       content:
