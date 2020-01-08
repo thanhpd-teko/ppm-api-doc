@@ -5,12 +5,14 @@ properties:
     type: string
   addressNote:
     type: string
+    nullable: true
   isDefault:
     type: boolean
   email:
     type: string
     maxLength: 255
     pattern: "^[a-z][a-z0-9_\\.]{2,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,}){1,2}$"
+    nullable: true
   name:
     type: string
     maxLength: 255
@@ -20,27 +22,25 @@ properties:
   longitude:
     type: string
     maxLength: 255
+    nullable: true
   latitude:
     type: string
     maxLength: 255
-  clientCode:
-    type: string
-    maxLength: 255
+    nullable: true
   provinceCode:
     type: string
+    nullable: true
   districtCode:
     type: string
+    nullable: true
   wardCode:
     type: string
+    nullable: true
   provinceName:
     type: string
   districtName:
     type: string
+    nullable: true
   wardName:
     type: string
-required:
-  - address
-  - isDefault
-  - name
-  - telephone
-  - clientCode
+    nullable: true
