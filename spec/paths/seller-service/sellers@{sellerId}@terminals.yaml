@@ -1,0 +1,64 @@
+get:
+  tags:
+    - Sellers
+  summary: List of Terminals that Seller can selling on
+  description: API to get list of Terminals that Seller can selling on with pagination
+  parameters:
+    - name: sellerId
+      in: path
+      required: true
+      schema:
+        type: integer
+    - name: page
+      in: query
+      schema:
+        type: integer
+      description: page number use to paginate
+      required: false
+    - name: pageSize
+      in: query
+      schema:
+        type: integer
+      description: page size use to paginate
+      required: false
+    - name: query
+      in: query
+      schema:
+        type: string
+      description: string use to fitler by terminal name or code
+      required: false
+  responses:
+    200:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+
+              message:
+                type: string
+              result:
+                type: object
+                properties:
+                  page:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  total:
+                    type: integer
+                  terminals:
+                    $ref: '#/components/schemas/terminals'
+    404:
+      description: Seller not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
