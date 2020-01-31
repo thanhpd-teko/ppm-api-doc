@@ -1,8 +1,3 @@
-required:
-  - sku
-  - name
-  - displayName
-  - url
 properties:
   sku:
     type: string
@@ -22,6 +17,7 @@ properties:
     example: "https://phongvu.vn/may-tinh-xach-tay-laptop-asus-a510uf-ej587t-i5-8250u-vang-p35635.html"
   brand:
     type: object
+    nullable: true
     description: khối thông tin thương hiệu sản phẩm
     properties:
       code:
@@ -34,6 +30,7 @@ properties:
         example: ASUS
   color:
     type: object
+    nullable: true
     description: khối dữ liệu màu sắc
     properties:
       code:
@@ -46,6 +43,7 @@ properties:
         example: Đen
   attributeSet:
     type: object
+    nullable: true
     description: khối dữ liệu nhóm thuộc tính sản phẩm
     properties:
       id:
@@ -58,6 +56,7 @@ properties:
         example: Linh phụ kiện Laptop
   productLine:
     type: object
+    nullable: true
     description: khối dữ liệu ngành hàng
     properties:
       code:
@@ -70,6 +69,7 @@ properties:
         example: Laptop / Apple
   status:
     type: object
+    nullable: true
     description: khối trạng thái sản phẩm
     properties:
       sale:
@@ -82,6 +82,7 @@ properties:
         example: true
   prices:
     type: object
+    nullable: true
     description: khối giá gốc
     properties:
       supplierSalePrice:
@@ -137,6 +138,7 @@ properties:
         finalPrice: 4500000
   images:
     type: array
+    default: []
     description: danh sách ảnh của sản phẩm
     items:
       type: object
@@ -151,12 +153,14 @@ properties:
           example: 1
   tags:
     type: array
+    default: []
     description: danh sách các tag sản phẩm được gắn
     items:
       type: string
     example: ['tag_1', 'tag_2']
   stocks:
     type: array
+    default: []
     description: khối dữ liệu tồn kho
     items:
       type: object
@@ -207,6 +211,7 @@ properties:
           example: 5
   totalAvailableByStocks:
     type: array
+    default: []
     description: Khối thông tin tồn kho theo từng loại kho
     items:
       type: object
@@ -222,6 +227,7 @@ properties:
     description: sản phẩm là bundle hay không
   bundleProducts:
     type: array
+    default: []
     description: danh sách sản phẩm con trong trường hợp sản phẩm là bundle (obsoleted)
     items:
       type: object
@@ -243,6 +249,7 @@ properties:
           description: tên hiển thị của sản phẩm con
   parentBundles:
     type: array
+    default: []
     description: danh sách các sản phẩm bundle cha có chứa sản phẩm hiện tại nếu sản phẩm không phải bunble
     items:
       type: object
@@ -258,6 +265,7 @@ properties:
           description: tên hiển thị của sản phẩm cha
   promotions:
     type: array
+    default: []
     description: Khối thông tin khuyến mại cho sản phẩm. ListingProductPromotionsVer2 chỉ sử dụng khi gọi ở API ver 2 (host/api/v2/search - api search và host/api/v2/products/<sku> - api detail)
     items:
       type: object
@@ -346,6 +354,7 @@ properties:
                   maxQuantityPerOrder: 1
   flashSales:
     type: array
+    default: []
     description: Khối thông tin về flash sale đang chạy
     items:
       type: object
@@ -473,6 +482,7 @@ properties:
     example: 235
   rating:
     type: object
+    nullable: true
     description: Thông tin bình chọn, số lượng vote của sản phẩm
     properties:
       avaragePoint:
@@ -486,6 +496,7 @@ properties:
         example: 200
   allActiveFlashSales:
     type: array
+    default: []
     description: Thông tin flashsale đang và sẽ chạy của sản phẩm
     items:
       type: object
@@ -552,6 +563,7 @@ properties:
                 example: 2019-07-03T03:00:00Z
   productGroup:
     type: object
+    nullable: true
     description: trả về các sản biến thể của sản phẩm
     properties:
       id:

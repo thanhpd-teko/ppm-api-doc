@@ -1,18 +1,18 @@
 get:
   tags:
-    - Search Platform
-  summary: Search product API in Search Platform
+    - Search/Listing
+  summary: Search product API
   description: search and return product listing by query
   servers:
-    - url: 'http://search.develop.tekoapis.net/{basePath}'
+    - url: 'http://listing.develop.tekoapis.net/{basePath}'
       variables:
         basePath:
           default: api
-    - url: 'http://search.stage.tekoapis.net/{basePath}'
+    - url: 'http://listing.stage.tekoapis.net/{basePath}'
       variables:
         basePath:
           default: api
-    - url: 'http://search.tekoapis.com/{basePath}'
+    - url: 'http://listing.tekoapis.com/{basePath}'
       variables:
         basePath:
           default: api
@@ -70,10 +70,12 @@ get:
       description: |
         Listing conditions for sorting result.
         >
-        Values: [`price`, `new`, `bestPrice`, `discount`, `discountPercent`, `name`, `popular`].
+        Values: [`price`, `stock`, `new`, `bestPrice`, `discount`, `discountPercent`, `name`].
+        >
+        >> Specially, with sorting by stock, if you want to prioritize any branch, add branch code with underscore like **stock_CP01**
       schema:
         type: string
-      example: price,popular
+      example: stock_CP01,price
     - name: _order
       in: query
       required: false
@@ -100,21 +102,37 @@ get:
         type: number
         format: double
       example: 10000000
+    - name: flashSale_gte
+      in: query
+      required: false
+      description: |
+        date start of flashsale (timestamp)
+      schema:
+        type: number
+        format: double
+      example: 1561683600
+    - name: flashSale_lte
+      in: query
+      required: false
+      description: |
+        date end of flashsale (timestamp)
+      schema:
+        type: number
+        format: double
+      example: 1561701600
+    - name: flashSaleType
+      in: query
+      required: false
+      description: |
+        code type of flashsale
+      schema:
+        type: string
+      example: HOT_DEAL
     - name: saleStatuses
       required: false
       in: query
       description: |
         filter product has selling status in list, separated by commas
-      schema:
-        type: string
-      style: form
-      explode: false
-      example: hang_ban,ngung_kinh_doanh
-    - name: saleStatuses_ne
-      required: false
-      in: query
-      description: |
-        filter product has not selling status in list, separated by commas
       schema:
         type: string
       style: form
@@ -136,6 +154,26 @@ get:
       schema:
         type: string
       example: 04-N010-02,01-N020-03
+    - name: displayCategories
+      in: query
+      required: false
+      description: |
+        filter product in list display categories id, separated by commas
+      schema:
+        type: array
+        items:
+          type: integer
+        example: [1, 2]
+    - name: campaigns
+      in: query
+      required: false
+      description: |
+        filter by campaigns id to get products belonged to those campaigns, separated by commas
+      schema:
+        type: array
+        items:
+          type: integer
+        example: [1, 2]
     - name: tags
       in: query
       required: false
@@ -193,7 +231,7 @@ get:
         type: array
         items:
           type: string
-      example: [001, 002]
+        example: [001, 002]
     - name: publishStatus
       in: query
       required: false
@@ -245,6 +283,15 @@ get:
       schema:
         type: string
       example: brands,attributeSets
+    - name: attributes.<attribute_code>
+      in: query
+      required: false
+      description: |
+        filter product by attribute value, separated by commas
+      schema:
+        oneOf:
+          - type: string
+          - type: integer
     - name: skus
       in: query
       required: false
@@ -255,6 +302,17 @@ get:
         items:
           type: string
         example: [11111, 221231]
+    - name: random
+      in: query
+      required: false
+      description: |
+        To get random products response
+      schema:
+        type: string
+        enum:
+          - true
+          - false
+        example: 'true'
     - name: bestPrice_lte
       in: query
       required: false
