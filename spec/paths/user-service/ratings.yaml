@@ -4,9 +4,8 @@ get:
     - Ratings
   operationId: get_ratings
   parameters:
-    - name: Authorization
-      in: header
-      description: "`Bearer {access token}`"
+    - name: userId
+      in: query
       schema:
         type: string
     - name: clientCode
@@ -20,7 +19,7 @@ get:
     - name: sellerId
       in: query
       schema:
-        type: string
+        type: integer
     - name: page
       in: query
       schema:

@@ -11,16 +11,18 @@ properties:
     type: string
     maxLength: 255
   sellerId:
-    type: string
-    maxLength: 255
+    type: integer
   clientCode:
     type: string
     maxLength: 255
   rating:
     type: integer
+  comment:
+    type: string
 required:
   - id
   - productSku
   - userId
   - clientCode
   - rating
+  - sellerId

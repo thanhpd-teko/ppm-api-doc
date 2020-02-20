@@ -162,6 +162,7 @@ x-tagGroups:
       - Saved Cart
       - Wish List
       - App Setting
+      - Auth
   - name: Location Service
     tags:
       - Location API

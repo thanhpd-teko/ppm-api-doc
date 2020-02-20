@@ -2,11 +2,14 @@ title: rating
 required:
   - productSku
   - rating
+  - sellerId
 type: object
 properties:
   sellerId:
-    type: string
+    type: integer
   rating:
     type: integer
+  comment:
+    type: string
   productSku:
     type: string

@@ -1,0 +1,33 @@
+delete:
+  summary: Remove product from wish list
+  tags:
+    - Wish List
+  operationId: delete_products
+  parameters:
+    - name: Authorization
+      in: header
+      description: "`Bearer {access token}`"
+      schema:
+        type: string
+    - name: clientCode
+      in: query
+      schema:
+        type: string
+    - name: wish_list_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                description: USI000S
+              message:
+                type: string

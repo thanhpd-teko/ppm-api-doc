@@ -1,6 +1,8 @@
 title: wishListProduct
 type: object
 properties:
+  sellerId:
+    type: integer
   productSku:
     type: string
     maxLength: 255

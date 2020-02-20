@@ -74,6 +74,7 @@ put:
                 required:
                   - productSku
                   - quantity
+                  - sellerId
                 type: object
                 properties:
                   isSelected:
@@ -82,6 +83,8 @@ put:
                   productSku:
                     type: string
                   quantity:
+                    type: integer
+                  sellerId:
                     type: integer
     required: true
   responses:
@@ -112,7 +115,7 @@ delete:
       required: true
       schema:
         type: string
-    - name: skus
+    - name: ids
       in: query
       schema:
         type: string

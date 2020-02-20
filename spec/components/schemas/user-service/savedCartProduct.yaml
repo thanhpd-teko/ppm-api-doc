@@ -6,9 +6,12 @@ properties:
     maxLength: 255
   quantity:
     type: integer
+  sellerId:
+    type: integer
   isSelected:
     type: boolean
 required:
   - productSku
   - quantity
   - isSelected
+  - sellerId

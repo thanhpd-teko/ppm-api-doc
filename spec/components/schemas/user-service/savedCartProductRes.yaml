@@ -11,6 +11,8 @@ properties:
     type: integer
   isSelected:
     type: boolean
+  sellerId:
+    type: integer
 required:
   - id
   - productSku
