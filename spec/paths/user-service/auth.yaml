@@ -1,29 +1,22 @@
-get:
+post:
   summary: "Decrypt Data and Verify Signature"
   tags:
     - Auth
-  operationId: auth
-  parameters:
-    - name: data
-      in: query
-      schema:
-        type: string
-      required: true
-    - name: signature
-      in: query
-      schema:
-        type: string
-      required: true
-    - name: action
-      in: query
-      schema:
-        type: string
-      required: false
-    - name: lang
-      in: query
-      schema:
-        type: string
-      required: false
+  operationId: post_auth
+  requestBody:
+    content:
+      application/json:
+        schema:
+          required:
+            - data
+            - signature
+          type: object
+          properties:
+            data:
+              type: string
+            signature:
+              type: string
+    required: true
   responses:
     200:
       description: Success
