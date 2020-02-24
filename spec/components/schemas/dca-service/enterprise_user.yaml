@@ -1,0 +1,71 @@
+title: Enterprise User
+type: object
+description: Detail of an Enterprise User
+x-examples: {}
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  taxName:
+    type: string
+  taxAddress:
+    type: string
+  taxCode:
+    type: string
+  isActive:
+    type: boolean
+  telephone:
+    type: string
+  asiaId:
+    type: string
+  contacts:
+    type: array
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+        telephone:
+          type: string
+          pattern: "^0[0-9]{8,10}$"
+        email:
+          type: string
+          pattern: "^[a-z][a-z0-9_\\.]{2,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,}){1,2}$"
+        address:
+          type: object
+          properties:
+            address:
+              type: string
+            provinceCode:
+              type: string
+            districtCode:
+              type: string
+            wardCode:
+              type: string
+        dateOfBirth:
+          type: string
+          format: date
+          example: "29-01-1997"
+        identityCard:
+          type: string
+        issuedOn:
+          type: string
+          format: date
+          example: "29-01-1997"
+        issuedAt:
+          type: string
+        gender:
+          type: string
+          enum:
+            - Male
+            - Female
+required:
+  - id
+  - name
+  - taxName
+  - taxAddress
+  - taxCode
+  - isActive
+  - telephone
+  - asiaId

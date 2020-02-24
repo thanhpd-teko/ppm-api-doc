@@ -166,6 +166,11 @@ x-tagGroups:
   - name: Location Service
     tags:
       - Location API
+  - name: DCA Service
+    tags:
+      - IAM User
+      - User
+      - Enterprise
   - name: Seller Service
     tags:
       - Sellers

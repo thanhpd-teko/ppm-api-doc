@@ -1,0 +1,72 @@
+get:
+  summary: Get an IAM User Detail
+  tags:
+    - IAM User
+  parameters:
+    - name: iamUserId
+      required: true
+      in: path
+      schema:
+        type: string
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+                properties:
+                  iamUser:
+                    $ref: "#/components/schemas/iam_user"
+    "404":
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              result:
+                type: object
+  description: Get a IAM User by id
+patch:
+  summary: "Update IAM User"
+  tags:
+    - IAM User
+  parameters:
+    - name: iamUserId
+      required: true
+      in: path
+      schema:
+        type: string
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+                properties:
+                  iamUser:
+                    $ref: "#/components/schemas/iam_user"
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/iam_user_patch_request"
+    description: Update info IAM User

@@ -1,0 +1,72 @@
+get:
+  summary: Get an Enterprise User Detail
+  tags:
+    - Enterprise
+  parameters:
+    - name: enterpriseUserId
+      required: true
+      in: path
+      schema:
+        type: string
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+                properties:
+                  enterpriseUser:
+                    $ref: "#/components/schemas/enterprise_user"
+    "404":
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              result:
+                type: object
+  description: Get a Enterprise User by Id
+patch:
+  summary: "Update Enterprise User "
+  tags:
+    - Enterprise
+  parameters:
+    - name: enterpriseUserId
+      required: true
+      in: path
+      schema:
+        type: string
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+                properties:
+                  enterpriseUser:
+                    $ref: "#/components/schemas/enterprise_user"
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/enterprise_user_patch_request"
+    description: Update info Enterprise User

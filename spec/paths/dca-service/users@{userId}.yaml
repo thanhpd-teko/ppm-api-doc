@@ -1,0 +1,72 @@
+get:
+  summary: Get an normal User Detail
+  tags:
+    - User
+  parameters:
+    - name: userId
+      required: true
+      in: path
+      schema:
+        type: string
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+                properties:
+                  user:
+                    $ref: "#/components/schemas/user"
+    "404":
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              result:
+                type: object
+  description: Get a normal User by id
+patch:
+  summary: "Update User"
+  tags:
+    - User
+  parameters:
+    - name: userId
+      required: true
+      in: path
+      schema:
+        type: string
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+                properties:
+                  address:
+                    $ref: "#/components/schemas/user"
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/iam_user_patch_request"
+    description: Update info normal User
