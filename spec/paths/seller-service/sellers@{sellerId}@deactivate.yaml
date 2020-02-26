@@ -1,0 +1,46 @@
+patch:
+  summary: Deactivate Seller
+  tags:
+    - Sellers
+  description: API to change Seller state to inactive
+  parameters:
+    - name: sellerId
+      in: path
+      required: true
+      schema:
+        type: integer
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            code:
+              type: string
+          required:
+            - code
+  responses:
+    200:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+    404:
+      description: Seller not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string

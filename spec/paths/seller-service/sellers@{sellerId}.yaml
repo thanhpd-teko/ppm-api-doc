@@ -38,3 +38,50 @@ get:
                 type: string
               message:
                 type: string
+
+
+patch:
+    tags:
+      - Sellers
+    summary: Update a Seller API
+    description: API to update a Seller
+
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/seller_update'
+
+    parameters:
+      - name: sellerId
+        in: path
+        required: true
+        schema:
+          type: integer
+
+    responses:
+      200:
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+
+                message:
+                  type: string
+                result:
+                  type: object
+      404:
+        description: Seller not found
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                message:
+                  type: string

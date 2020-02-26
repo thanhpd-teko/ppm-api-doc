@@ -1,0 +1,44 @@
+patch:
+  summary: Deactivate Terminal
+  tags:
+    - Terminals
+  description: API to change Terminal state to inactive
+  parameters:
+    - name: terminalId
+      in: path
+      required: true
+      schema:
+        type: integer
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            code:
+              type: string
+  responses:
+    200:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+    404:
+      description: Terminal not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string

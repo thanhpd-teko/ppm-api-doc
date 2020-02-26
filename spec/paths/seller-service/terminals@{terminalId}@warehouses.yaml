@@ -1,0 +1,54 @@
+get:
+    tags:
+      - Terminals
+    summary: List of all Warehouses of the Terminal API
+    description: API to get all warehouses are mapping with the Terminal
+    parameters:
+      - name: terminalId
+        in: path
+        required: true
+        schema:
+          type: integer
+    responses:
+      200:
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                message:
+                  type: string
+                result:
+                  type: object
+                  properties:
+                    terminalsWarehouses:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          warehouseName:
+                            type: string
+                          warehouseCode:
+                            type: string
+                          warehouseFullAddress:
+                            type: string
+                          isActive:
+                            type: integer
+                            minimum: 0
+                            maximum: 1
+      404:
+        description: Terminal not found
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                message:
+                  type: string

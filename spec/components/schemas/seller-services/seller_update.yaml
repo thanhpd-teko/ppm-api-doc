@@ -1,15 +1,5 @@
-title: seller
 type: object
 properties:
-  id:
-    type: integer
-  code:
-    type: string
-    maxLength: 3
-  isActive:
-    type: integer
-    minimum: 0
-    maximum: 1
   name:
     type: string
     maxLength: 255

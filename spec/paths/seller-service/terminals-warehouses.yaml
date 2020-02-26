@@ -1,14 +1,9 @@
 get:
   tags:
-    - Sellers
-  summary: List of Terminals that Seller can selling on
-  description: API to get list of Terminals that Seller can selling on with pagination
+    - Terminals Warehouses Mapping
+  summary: List of all Terminals Warehouse Mapping
+  description: API to get list Terminals Warehouse Mapping with pagination
   parameters:
-    - name: sellerId
-      in: path
-      required: true
-      schema:
-        type: integer
     - name: page
       in: query
       schema:
@@ -21,41 +16,35 @@ get:
         type: integer
       description: page size use to paginate
       required: false
-    - name: query
+    - name: terminalQuery
       in: query
       schema:
         type: string
       description: string use to fitler by terminal name or code
       required: false
-    - name: type
+    - name: warehouseQuery
       in: query
       schema:
         type: string
-      description: '`AGE` `OLN` `SHR` `SCA` `TLS` Example: `AGE,OLN,SHR`'
+      description: string use to fitler by warehouse name or code
       required: false
-    - name: platform
+    - name: provinceCodes
       in: query
       schema:
         type: string
-      description: '`APP` `WEB` `IBK` Example: `APP,WEB,IBK`'
+      description: 'Terminal provinceCodes: Ex: `01,02,03`'
       required: false
-    - name: code
+    - name: isActive
       in: query
       schema:
-        type: string
-      description: 'Example: `PVU_SHR_WEB_0009,PVU_SHR_WEB_0009`'
+        type: boolean
+      description: filter if mapping is active
       required: false
-    - name: sellerID
+    - name: isAll
       in: query
       schema:
-        type: string
-      description: 'Example: `1,2,3`'
-      required: false
-    - name: provinceCode
-      in: query
-      schema:
-        type: string
-      description: 'provinceCode: Ex: `01,02,03`'
+        type: boolean
+      description: Get all records
       required: false
   responses:
     200:
@@ -78,10 +67,30 @@ get:
                     type: integer
                   total:
                     type: integer
-                  terminals:
-                    $ref: '#/components/schemas/terminals'
-    404:
-      description: Seller not found
+                  terminalsWarehouses:
+                    $ref: '#/components/schemas/terminals_warehouses'
+
+post:
+  summary: Create Mapping Terminal-Warehouse
+  tags:
+    - Terminals Warehouses Mapping
+  description: API to create Mapping Terminals Warehouse
+  requestBody:
+    content:
+      application/json:
+        schema:
+          required:
+            - terminalId
+            - warehouseCode
+          type: object
+          properties:
+            terminalId:
+              type: integer
+            warehouseCode:
+              type: string
+  responses:
+    200:
+      description: OK
       content:
         application/json:
           schema:
@@ -91,3 +100,8 @@ get:
                 type: string
               message:
                 type: string
+              result:
+                type: object
+                properties:
+                  id:
+                    type: integer
