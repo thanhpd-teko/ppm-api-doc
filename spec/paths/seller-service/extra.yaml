@@ -36,3 +36,56 @@ get:
                           type: string
                         code:
                           type: string
+                  deliveryMethods:
+                    type: object
+                    properties:
+                      OLN:
+                        type: object
+                        properties:
+                          handOver:
+                            type: integer
+                          pickupCounter:
+                            type: integer
+                          homeDelivery:
+                            type: integer
+
+                      AGE:
+                        type: object
+                        properties:
+                          handOver:
+                            type: integer
+                          pickupCounter:
+                            type: integer
+                          homeDelivery:
+                            type: integer
+
+                      SHR:
+                        type: object
+                        properties:
+                          handOver:
+                            type: integer
+                          pickupCounter:
+                            type: integer
+                          homeDelivery:
+                            type: integer
+
+                      SCA:
+                        type: object
+                        properties:
+                          handOver:
+                            type: integer
+                          pickupCounter:
+                            type: integer
+                          homeDelivery:
+                            type: integer
+
+                      TLS:
+                        type: object
+                        properties:
+                          handOver:
+                            type: integer
+                          pickupCounter:
+                            type: integer
+                          homeDelivery:
+                            type: integer
+
