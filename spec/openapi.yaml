@@ -138,6 +138,7 @@ x-tagGroups:
       - Search Platform
   - name: Price And Promotions
     tags:
+      - Promotion Coupon API
       - Promotion API
       - Promotion Confirm/Validation API
       - Competitor API

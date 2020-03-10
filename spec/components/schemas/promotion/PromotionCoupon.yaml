@@ -1,0 +1,56 @@
+required:
+  - id
+  - name
+  - description
+  - type
+  - isDefault
+  - applyOn
+  - startedAt
+  - endedAt
+  - timeRanges
+  - condition
+  - benefit
+  - govRegister
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  description:
+    type: string
+  type:
+    type: string
+    enum:
+      - coupon
+      - gift-code
+  isDefault:
+    type: boolean
+  applyOn:
+    type: string
+    enum:
+      - product
+      - order
+      - combo
+  startedAt:
+    type: string
+    example: '2019-01-02T10:00:00Z'
+  endedAt:
+    type: string
+    example: '2019-01-02T10:00:00Z'
+  timeRanges:
+    type: array
+    items:
+      properties:
+        start:
+          type: string
+          example: '10:00:00'
+        end:
+          type: string
+          example: '14:00:00'
+  condition:
+    $ref: "#/components/schemas/Condition"
+  benefit:
+    $ref: "#/components/schemas/Benefit"
+  govRegister:
+    type: boolean
+    description: Đăng ký với bộ công thương

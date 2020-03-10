@@ -9,39 +9,4 @@ properties:
     description: Trả về thông tin của coupon
     properties:
       coupon:
-        properties:
-          usedOrders:
-            description: Chỉ trả về tối đa 10 order codes
-            type: array
-            items:
-              type: string
-          channels:
-            description: Các kênh mà coupon áp dụng
-            type: array
-            items:
-              type: string
-          terminals:
-            description: Các điểm bán mà coupon áp dụng
-            type: array
-            items:
-              type: string
-          brands:
-            description: Các thương hiệu mà coupon áp dụng
-            type: array
-            items:
-              type: string
-          productLines:
-            description: Các ngành hàng mà coupon áp dụng
-            type: array
-            items:
-              type: string
-          categories:
-            description: Các danh mục mà coupon áp dụng
-            type: array
-            items:
-              type: string
-          skus:
-            type: array
-            description: Chỉ trả về tối đa 10 skus
-            items:
-              type: string
+        $ref: '#/components/schemas/GetCouponExtra'

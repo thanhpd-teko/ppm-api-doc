@@ -1,0 +1,75 @@
+get:
+  tags:
+    - Promotion Coupon API
+  summary: Get Promotion By Coupons API
+  description: Lấy list các chương trình khuyến mãi theo điều kiện filter
+  operationId: get-promotions-by-coupon
+  parameters:
+    - name: terminal
+      in: query
+      description: Địa điểm bán hàng
+      required: false
+      schema:
+        type: string
+    - name: coupons
+      in: query
+      description: |
+        Danh sách các mã coupon cần check
+      example: COUPON1,COUPON2
+      required: true
+      schema:
+        type: string
+    - name: type
+      in: query
+      description: Loại mã (theo mã giảm giá hay theo phiếu mua hàng)
+      schema:
+        type: string
+        enum:
+          - gift-code
+          - coupon
+    - name: payment_method
+      in: query
+      description: Hình thức thanh toán
+      required: false
+      schema:
+        type: string
+    - name: grand_total
+      in: query
+      description: Giá trị đơn hàng
+      required: false
+      schema:
+        type: number
+        format: double
+    - name: skus
+      in: query
+      schema:
+        type: string
+      description: |
+        List các sku trong đơn hàng tách nhau bởi dấu phẩy, để lấy thêm thông tin promotion áp
+        dụng cho sản phẩm nào. Nên truyền lên trong trường hợp lấy coupon promotion cho sản phẩm
+      example: 1807447,1807448,1807449
+    - name: apply_on
+      in: query
+      description: Đơn vị áp dụng
+      schema:
+        type: string
+        enum:
+          - combo
+          - product
+          - order
+    - name: has_condition_product
+      in: query
+      description: Có điều kiện sản phẩm áp dụng hay không
+      schema:
+        type: boolean
+        enum:
+          - true
+          - false
+
+  responses:
+    '200':
+      description: Lấy thông tin chương trình khuyến mãi thành công
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/PromotionByCouponResp'

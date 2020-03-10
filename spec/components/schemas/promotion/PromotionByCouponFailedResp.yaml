@@ -1,0 +1,14 @@
+properties:
+  coupon:
+    type: string
+    description: Mã coupon
+  code:
+    type: string
+    description: Mã lỗi
+  message:
+    type: string
+    description: Thông tin lỗi
+  extra:
+    description: Thông tin thêm
+    allOf:
+      - $ref: '#/components/schemas/GetCouponExtra'
