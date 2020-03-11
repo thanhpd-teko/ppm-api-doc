@@ -1,3 +1,7 @@
+required:
+  - coupon
+  - code
+  - message
 properties:
   coupon:
     type: string

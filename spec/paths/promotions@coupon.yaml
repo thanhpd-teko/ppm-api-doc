@@ -8,7 +8,7 @@ get:
     - name: terminal
       in: query
       description: Địa điểm bán hàng
-      required: false
+      required: true
       schema:
         type: string
     - name: coupons
@@ -57,7 +57,7 @@ get:
           - combo
           - product
           - order
-    - name: has_condition_product
+    - name: has_product_condition
       in: query
       description: Có điều kiện sản phẩm áp dụng hay không
       schema:
