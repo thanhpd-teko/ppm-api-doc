@@ -34,3 +34,7 @@ properties:
   billingType:
     type: string
     description: Loại hóa đơn, truyền lên 02 nếu là đơn miễn thuế, default là 01
+  payments:
+    type: array
+    items:
+      $ref: '#/components/schemas/PaymentItem'
