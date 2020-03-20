@@ -1,0 +1,61 @@
+post:
+  summary: "Filter Account on Elastic Search"
+  tags:
+    - Account Lookup
+  servers:
+    - url: 'https://search.develop.tekoapis.net/api/v1/dca-api/search'
+  parameters:
+    - name: x-tk-access-token
+      in: header
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            filter:
+              type: array
+              items:
+                type: object
+                properties:
+                  key:
+                    type: string
+                  value:
+                    type: string
+            page:
+              type: integer
+            page_size:
+              type: integer
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              page_response:
+                type: object
+                properties:
+                  current_page:
+                    type: integer
+                  total_page:
+                    type: integer
+                  total_items:
+                    type: integer
+                  page_size:
+                    type: integer
+              data:
+                type: object
+                properties:
+                  documents:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/account"
+
