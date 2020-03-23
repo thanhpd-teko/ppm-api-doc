@@ -15,6 +15,15 @@ post:
         schema:
           type: object
           properties:
+            query:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: "iamId or telephone or taxCode"
+                type:
+                  type: string
+                  description: "contain"
             filter:
               type: array
               items:
@@ -22,8 +31,10 @@ post:
                 properties:
                   key:
                     type: string
+                    description: "sellerId or roleId"
                   value:
                     type: string
+                    description: "sellerId value or roleId value"
             page:
               type: integer
             page_size:
