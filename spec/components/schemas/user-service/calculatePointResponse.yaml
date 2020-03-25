@@ -1,0 +1,16 @@
+title: calculatePointResponse
+type: object
+properties:
+  usablePointAmount:
+    type: integer
+  equivalentUsableAmount:
+    type: integer
+  remainingAmount:
+    type: integer
+  tempPointAmount:
+    type: integer
+required:
+  - usablePointAmount
+  - equivalentUsableAmount
+  - remainingAmount
+  - tempPointAmount

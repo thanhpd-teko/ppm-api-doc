@@ -1,0 +1,19 @@
+title: partnerPointBalanceResponse
+type: object
+properties:
+  merchantId:
+    type: integer
+  merchantName:
+    type: string
+  pointBalance:
+    type: integer
+  equivalentTokenAmount:
+    type: integer
+  equivalentAmount:
+    type: integer
+  nearExpirePointBalance:
+    type: integer
+  nearExpireEquivalentTokenAmount:
+    type: integer
+  nearExpireEquivalentAmount:
+    type: integer

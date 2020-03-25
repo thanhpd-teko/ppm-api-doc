@@ -1,0 +1,33 @@
+title: tempPointTransResponse
+type: object
+properties:
+  id:
+    type: string
+  time:
+    type: string
+  validDate:
+    type: string
+  expiryDate:
+    type: string
+  orderCode:
+    type: string
+  status:
+    type: string
+  actionCode:
+    type: string
+  nationalId:
+    type: string
+  actionName:
+    type: string
+  merchantId:
+    type: integer
+  merchantName:
+    type: string
+  memberId:
+    type: integer
+  actionType:
+    type: string
+  tempPointAmount:
+    type: integer
+  grantType:
+    type: string
