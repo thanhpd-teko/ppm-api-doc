@@ -3,7 +3,7 @@ post:
   tags:
     - Account Lookup
   servers:
-    - url: 'https://search.develop.tekoapis.net/api/v1/dca-api/search'
+    - url: 'https://search.develop.tekoapis.net/api/v1/suggest'
   parameters:
     - name: x-tk-access-token
       in: header
@@ -20,25 +20,32 @@ post:
               properties:
                 text:
                   type: string
-                  description: "iamId or telephone or taxCode"
+                  description: "telephone or taxCode"
                 type:
                   type: string
-                  description: "contain"
-            filter:
+                  description: "phrase_prefix"
+            suggestions:
               type: array
               items:
                 type: object
                 properties:
-                  key:
+                  suggestion_name:
                     type: string
-                    description: "sellerId or roleId"
-                  value:
-                    type: string
-                    description: "sellerId value or roleId value"
-            page:
+                    description: "dca-api"
+                  filters:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                          description: sellerId or roleId
+                        value:
+                          type: string
+            size:
               type: integer
-            page_size:
-              type: integer
+            enable_highlight:
+              type: boolean
   responses:
     "200":
       description: OK
@@ -51,22 +58,29 @@ post:
                 type: string
               message:
                 type: string
-              page_response:
-                type: object
-                properties:
-                  current_page:
-                    type: integer
-                  total_page:
-                    type: integer
-                  total_items:
-                    type: integer
-                  page_size:
-                    type: integer
               data:
                 type: object
                 properties:
-                  documents:
+                  dca-api:
                     type: array
                     items:
-                      $ref: "#/components/schemas/account"
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        address:
+                          type: string
+                        name:
+                          type: string
+                        taxCode:
+                          type: string
+                        telephone:
+                          type: string
+                        isCompany:
+                          type: boolean
+                        sellerId:
+                          type: integer
+                        roleId:
+                          type: string
+
 
