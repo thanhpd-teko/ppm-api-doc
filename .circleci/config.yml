@@ -48,8 +48,8 @@ jobs:
       - *validate_repo
       - run:
           command: |
-            git config --global user.email "tien.dv@teko.vn"
-            git config --global user.name "Đinh Văn Tiến"
+            git config --global user.email "thanh.pd@teko.vn"
+            git config --global user.name "Phan Thanh"
       - run:
           name: build repo
           command: npm run build
