@@ -1,0 +1,100 @@
+required:
+  - barcode
+  - categCode
+  - costPriceCalc
+  - defaultCode
+  - isService
+  - isUncounted
+  - name
+  - productBrandCode
+  - saleOnlineOnly
+  - supportDelivery
+  - tracking
+  - type
+  - uomName
+  - uomPoName
+properties:
+  partNumber:
+    description: Part Number
+    type: string
+  warrantyStampQty:
+    description: Number of warranty stamps
+    type: integer
+  tracking:
+    description: tracking
+    type: string
+  attributeValueCode:
+    description: Property (color)
+    type: string
+  uomPoName:
+    description: Purchase unit of measurement
+    type: string
+  note:
+    description: Note
+    type: string
+  name:
+    description: Name
+    type: string
+  isService:
+    description: Product service
+    default: false
+    type: boolean
+  salePoint:
+    description: Product points
+    type: number
+  warrantyNote:
+    description: Warranty notes
+    type: string
+  type:
+    description: >-
+      Product type:- consu: Product does not manage inventory (Allow to sell
+      negative)- product: Product with inventory management and storage
+    enum:
+      - consu
+      - product
+    example: consu
+    type: string
+  productStatus:
+    description: Status
+    type: integer
+  categCode:
+    description: Category
+    type: string
+  shortName:
+    description: Feature name
+    type: string
+  barcode:
+    description: Barcode
+    type: string
+  costPriceCalc:
+    description: Calculate cost price
+    default: false
+    type: boolean
+  isUncounted:
+    description: No tally
+    default: false
+    type: boolean
+  uomName:
+    description: Unit
+    type: string
+  saleOnlineOnly:
+    description: Sale online only
+    default: false
+    type: boolean
+  productBrandCode:
+    description: Brand code
+    type: string
+  defaultCode:
+    description: Default code
+    type: string
+  exchangePeriod:
+    description: 1-1 Exchange period (day)
+    type: integer
+  supportDelivery:
+    description: Support delivery
+    default: false
+    type: boolean
+  warrantyPeriod:
+    description: Warranty period
+    type: number
+type: object

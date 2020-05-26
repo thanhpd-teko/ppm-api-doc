@@ -1,0 +1,31 @@
+description: Thông tin các dòng hàng nhập vào
+type: object
+required:
+  - lineItemId
+  - sku
+  - quantity
+  - locationCode
+properties:
+  lineItemId:
+    description: ID của chỉ chi tiết dòng hàng
+    type: string
+    format: uuid
+    nullable: false
+    minLength: 1
+    example: "9a03ea07-6163-4c25-b327-65c45df13419"
+  sku:
+    description: Mã sản phẩm
+    type: string
+    nullable: false
+    minLength: 1
+    example: "19000002"
+  quantity:
+    description: Số lượng nhập vào
+    type: integer
+    nullable: false
+    example: 2
+  locationCode:
+    description: Vị trí nhập hàng
+    type: string
+    nullable: false
+    minLength: 1

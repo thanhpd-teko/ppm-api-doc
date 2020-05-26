@@ -1,0 +1,5 @@
+properties:
+  feId:
+    description: 'ID of record, empty if not exist'
+    type: string
+type: object

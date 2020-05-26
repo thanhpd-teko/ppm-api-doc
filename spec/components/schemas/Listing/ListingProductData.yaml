@@ -1,0 +1,668 @@
+properties:
+  sku:
+    type: string
+    description: sku của sản phẩm
+    example: 1810912
+  name:
+    type: string
+    description: tên sản phẩm
+    example: "Máy tính xách tay/ Laptop Asus A510UF-EJ587T (i5-8250U)"
+  displayName:
+    type: string
+    description: tên hiển thị của sản phẩm
+    example: "Laptop ASUS VivoBook A510UF-EJ587T (15.6\"/i5-8250U 1.6 GHz - 3.4 GHz/4GB RAM/1TB HDD/NVIDIA GeForce MX130 2GB/Windows 10 Home SL 64-bit/1.7kg)"
+  url:
+    type: string
+    description: url sản phẩm
+    example: "https://phongvu.vn/may-tinh-xach-tay-laptop-asus-a510uf-ej587t-i5-8250u-vang-p35635.html"
+  brand:
+    type: object
+    nullable: true
+    description: khối thông tin thương hiệu sản phẩm
+    properties:
+      code:
+        type: string
+        description: mã thương hiệu
+        example: Asus
+      name:
+        type: string
+        description: tên thương hiệu
+        example: ASUS
+  color:
+    type: object
+    nullable: true
+    description: khối dữ liệu màu sắc
+    properties:
+      code:
+        type: string
+        description: mã màu
+        example: BLK
+      name:
+        type: string
+        description: tên màu
+        example: Đen
+  attributeSet:
+    type: object
+    nullable: true
+    description: khối dữ liệu nhóm thuộc tính sản phẩm
+    properties:
+      id:
+        type: string
+        description: id nhóm thuộc tính
+        example: 61
+      name:
+        type: string
+        description: tên nhóm thuộc tính
+        example: Linh phụ kiện Laptop
+  productLine:
+    type: object
+    nullable: true
+    description: khối dữ liệu ngành hàng
+    properties:
+      code:
+        type: string
+        description: mã ngành hàng
+        example: NGH01
+      name:
+        type: string
+        description: tên ngành hàng
+        example: Laptop / Apple
+  status:
+    type: object
+    nullable: true
+    description: khối trạng thái sản phẩm
+    properties:
+      sale:
+        type: string
+        description: trạng thái bán hàng
+        example: hang_ban
+      publish:
+        type: boolean
+        description: trạng thái kiểm duyệt sản phẩm
+        example: true
+  prices:
+    type: object
+    nullable: true
+    description: khối giá gốc
+    properties:
+      supplierSalePrice:
+        type: number
+        format: double
+        description: giá niêm yết với nhà cung cấp
+        example: 5000000
+      sellPrice:
+        type: number
+        format: double
+        description: giá bán
+        example: 4700000
+  promotionPrices:
+    type: array
+    description: khối giá khuyến mại
+    items:
+      type: object
+      properties:
+        channel:
+          type: string
+          description: kênh bán hàng
+        terminal:
+          type: string
+          nullable: true
+          description: điểm bán hàng của kênh bán
+        promotionPrice:
+          type: number
+          format: double
+          description: giá khuyến mại của sản phẩm
+        flashSalePrice:
+          type: number
+          format: double
+          nullable: true
+          description: giá flash sale nếu sản phẩm chạy chương trình Flashsale
+        finalPrice:
+          type: number
+          format: double
+          description: giá bán cuối cùng
+        bestPrice:
+          type: number
+          format: double
+          description: giá tốt nhất sau khi áp dụng khuyến mại mặc định
+    example:
+      - channel: online
+        terminal: null
+        promotionPrice: 4600000
+        flashSalePrice: null
+        finalPrice: 4600000
+      - channel: offline
+        terminal: CP04
+        promotionPrice: 4600000
+        flashSalePrice: 4500000
+        finalPrice: 4500000
+  images:
+    type: array
+    default: []
+    description: danh sách ảnh của sản phẩm
+    items:
+      type: object
+      properties:
+        url:
+          type: string
+          description: đường dẫn ảnh
+          example: "https://phongvu.vn/media/catalog/product/cache/23/small_image/60x60/9df78eab33525d08d6e5fb8d27136e95//d/e/dell_vostro_5568_1.jpg"
+        priority:
+          type: integer
+          description: thứ tự hiển thị
+          example: 1
+  tags:
+    type: array
+    default: []
+    description: danh sách các tag sản phẩm được gắn
+    items:
+      type: string
+    example: ['tag_1', 'tag_2']
+  stocks:
+    type: array
+    default: []
+    description: khối dữ liệu tồn kho
+    items:
+      type: object
+      properties:
+        branch:
+          type: string
+          description: Mã chi nhánh
+          example: 'CP02'
+        branchName:
+          type: string
+          description: Tên chi nhánh
+          example: 'KINH DOANH 8'
+        warehouse:
+          type: string
+          description: Mã kho
+          example: 'CP02'
+        warehouseName:
+          type: string
+          description: Tên kho
+          example: 'Kho'
+        location:
+          type: string
+          description: Mã code khu vực chứa hàng
+          example: '0201'
+        locationName:
+          type: string
+          description: Tên khu vực chứa hàng
+          example: 'Kho a1ng'
+        storeCode:
+          type: string
+          description: Loại kho
+          example: 'B'
+        productBizType:
+          type: string
+          description: Loại hình kinh doanh sản phẩm
+          example: 'Biz'
+        available:
+          type: integer
+          description: Số lượng tồn kho thực tế - số đã giữ hàng = onHand - reserved
+          example: 5
+        reserved:
+          type: integer
+          description: Số lượng đang giữ
+          example: 0
+        onHand:
+          type: integer
+          description: Số lượng thực tế đang có trong kho
+          example: 5
+  totalAvailableByStocks:
+    type: array
+    default: []
+    description: Khối thông tin tồn kho theo từng loại kho
+    items:
+      type: object
+      properties:
+        type:
+          type: string
+          description: loại kho
+        total:
+          type: number
+          description: tổng tồn kho của loại kho đó
+  isBundle:
+    type: boolean
+    description: sản phẩm là bundle hay không
+  bundleProducts:
+    type: array
+    default: []
+    description: danh sách sản phẩm con trong trường hợp sản phẩm là bundle (obsoleted)
+    items:
+      type: object
+      properties:
+        sku:
+          type: string
+          description: sản phẩm con
+        quantity:
+          type: number
+          description: số lượng sản phẩm con trong bundle
+        priority:
+          type: number
+          description: thứ tự ưu tiên của sản phẩm con trong bundle
+        name:
+          type: string
+          description: tên sản phẩm con
+        displayName:
+          type: string
+          description: tên hiển thị của sản phẩm con
+  parentBundles:
+    type: array
+    default: []
+    description: danh sách các sản phẩm bundle cha có chứa sản phẩm hiện tại nếu sản phẩm không phải bunble
+    items:
+      type: object
+      properties:
+        sku:
+          type: string
+          description: sku của sản phẩm cha
+        name:
+          type: string
+          description: tên sản phẩm cha
+        displayName:
+          type: string
+          description: tên hiển thị của sản phẩm cha
+  promotions:
+    type: array
+    default: []
+    description: Khối thông tin khuyến mại cho sản phẩm. ListingProductPromotionsVer2 chỉ sử dụng khi gọi ở API ver 2 (host/api/v2/search - api search và host/api/v2/products/<sku> - api detail)
+    items:
+      type: object
+      oneOf:
+        - $ref: '#/components/schemas/ListingProductPromotions'
+        - $ref: '#/components/schemas/ListingProductPromotionsVer2'
+    example:
+      - channel: online
+        terminal: null
+        definitions:
+          - id: 1
+            name: VNPAYQR10
+            description: Giảm thêm 10% tối đa 200K khi nhập mã VNPAYQR10
+            govRegister: false
+            type: order
+            startedAt: 2019-01-02T10:00:00Z
+            endedAt: 2019-02-02T10:00:00Z
+            partner: VNPAY
+            isDefault: false
+            timeRanges:
+              - start: "11:00:00"
+                end: "14:00:00"
+              - start: "20:00:00"
+                end: "23:00:00"
+            condition:
+              paymentMethods:
+                - online
+                - offline
+              orderValueMin: 90000.00
+              orderValueMax: null
+              coupon: VNPAYQR10
+            benefit:
+              money:
+                - id: 39
+                  money: null
+                  percent: 10.00
+                  applyOn: order
+                  maxDiscount: 200000.00
+                  discountType: percent
+                  maxDiscountPerOrder: 200000.00
+              items: null
+      - channel: showroom
+        terminal: CP00
+        definitions:
+          - id: 1
+            name: CTKM 1
+            description: Mô tả cho CTKM 1
+            type: product
+            startedAt: 2019-04-01T10:00:00Z
+            endedAt: 2019-08-01T10:00:00Z
+            partner: PHONGVU
+            isDefault: false
+            timeRanges:
+              - start: "11:00:00"
+                end: "14:00:00"
+              - start: "20:00:00"
+                end: "23:00:00"
+            condition:
+              paymentMethods:
+                - all
+              orderValueMin: 90000.00
+              orderValueMax: 900000.00
+              coupon: null
+            benefit:
+              money:
+                - id: 1
+                  money: null
+                  percent: 10.00
+                  applyOn: product
+                  maxDiscount: 200000.00
+                  discountType: percent
+                  maxDisCountPerOrder: 200000.00
+                - id: 2
+                  money: 100000.00
+                  percent: 10.00
+                  applyOn: order
+                  maxDiscount: null
+                  discountType: money
+                  maxDiscountPerOrder: 100000.00
+              items:
+                - id: 30
+                  sku: 1602062
+                  name: Loa sonic
+                  applyOn: product
+                  quantity: 1
+                  maxQuantityPerOrder: 1
+  flashSales:
+    type: array
+    default: []
+    description: Khối thông tin về flash sale đang chạy
+    items:
+      type: object
+      properties:
+        channel:
+          type: string
+          description: kênh bán được áp dụng
+        terminal:
+          type: string
+          nullable: true
+          description: điểm bán hàng được áp dụng
+        used:
+          type: number
+          description: số lượng đã sử dụng
+        total:
+          type: number
+          description: tổng số lượng sản phẩm
+        discountPercent:
+          type: number
+          format: double
+        definition:
+          type: object
+          description: định nghĩa thông tin flash sale
+          properties:
+            name:
+              type: string
+              description: tên chương trình flash sale
+            description:
+              type: string
+              description: mô tả chương trình
+            govRegister:
+              type: boolean
+              description: thông tin flashsale đã đăng ký bộ công thương hay chưa
+            startedAt:
+              type: string
+              format: datetime
+              description: thời gian bắt đầu
+            endedAt:
+              type: string
+              format: datetime
+              description: thời gian kết thúc
+            timeRanges:
+              type: array
+              nullable: true
+              description: các khoảng thời gian hiệu lực
+              items:
+                type: object
+                properties:
+                  start:
+                    type: string
+                    description: thời điểm bắt đầu
+                  end:
+                    type: string
+                    description: thời điểm kết thúc
+            paymentMethods:
+              type: array
+              description: hình thức thanh toán được áp dụng giá flashsale
+              items:
+                type: string
+            type:
+              type: object
+              description: loại flash sale
+              properties:
+                id:
+                  type: number
+                  description: id loại flashsale
+                code:
+                  type: string
+                  description: mã loại
+                name:
+                  type: string
+                  description: tên loại
+    example:
+      - channel: all
+        terminal: null
+        total: 5
+        used: 0
+        discountPercent: 3
+        definition:
+          name: Flash sale 4
+          description: ""
+          govRegister: false
+          startedAt: 2019-04-01T04:00:00Z
+          endedAt: 2019-04-01T06:00:00Z
+          timeRanges:
+            - start: "11:00:00"
+              end: "13:00:00"
+          type:
+            id: 4
+            code: "DEAL_CUOI_TUAN"
+            name: Deal cuoi tuan
+          paymentMethods:
+            - all
+  seoInfo:
+    type: object
+    description: khối thông tin dành cho SEO
+    properties:
+      metaKeyWord:
+        type: string
+        nullable: true
+        description: meta keyword (dành cho SEO)
+        example: null
+      metaTitle:
+        type: string
+        nullable: true
+        description: meta title (dành cho SEO)
+        example: null
+      metaDescription:
+        type: string
+        nullable: true
+        description: meta description (dành cho SEO)
+        example: null
+      shortDescription:
+        type: string
+        description: mô tả ngắn
+        example: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+      description:
+        type: string
+        nullable: true
+        description: mô tả dài
+        example: null
+  magentoId:
+    type: number
+    description: product id in magento for collecting rating and comments
+    example: 235
+  rating:
+    type: object
+    nullable: true
+    description: Thông tin bình chọn, số lượng vote của sản phẩm
+    properties:
+      avaragePoint:
+        type: number
+        format: float
+        description: Điểm trung bình
+        example: 4.8
+      voteCount:
+        type: number
+        description: Số lượng bình chọn
+        example: 200
+  allActiveFlashSales:
+    type: array
+    default: []
+    description: Thông tin flashsale đang và sẽ chạy của sản phẩm
+    items:
+      type: object
+      properties:
+        channel:
+          type: string
+          description: kênh áp dụng chương trình
+          example: pv_showroom
+        terminals:
+          type: array
+          description: các terminal trong channel được áp dụng chương trình
+          items:
+            type: string
+          example:
+            - CP00
+            - CP09
+        type:
+          type: object
+          description: loại flash sale
+          properties:
+            id:
+              type: number
+              description: id loại flashsale
+            code:
+              type: string
+              description: mã loại
+            name:
+              type: string
+              description: tên loại
+        total:
+          type: number
+          description: tổng số lượng trong chương trình
+          example: 10
+        used:
+          type: number
+          description: số lượng đã bán trong chương trình
+          example: 4
+        flashSalePrice:
+          type: number
+          description: giá flashsale
+          example: 399000
+        discountPercent:
+          type: number
+          description: tỉ lệ phần trăm đã giảm
+          example: 5%
+        status:
+          type: string
+          enum: [active, inactive ]
+          description: trạng thái chương trình
+          example: active
+        timeRanges:
+          type: array
+          description: các khoảng thời gian
+          items:
+            type: object
+            properties:
+              start:
+                type: string
+                description: thời gian bắt đầu (UTC)
+                example: 2019-07-03T01:00:00Z
+              end:
+                type: string
+                description: thời gian kết thúc (UTC)
+                example: 2019-07-03T03:00:00Z
+  productGroup:
+    type: object
+    nullable: true
+    description: trả về các sản biến thể của sản phẩm
+    properties:
+      id:
+        type: number
+        example: 1
+        description: id của productGroup
+      name:
+        type: string
+        description: tên của productGroup
+      visible:
+        type: string
+        example: "group" 
+        description: "Mô tả cách hiển thị của client(group: áo sơ mi XL, M, S là một group,\
+                     individual: áo sơ mi XL, M, S là 3 sản phẩm riêng biệt) "
+      configurations:
+        type: array
+        description: "Các cấu hình của variant"
+        items:
+          type: object
+          properties:
+            id: 
+              type: number
+              example: 1
+              description: id của một configuration
+            code:
+              type: string
+              example: KT
+              description: mã của một configuration
+            name:
+              type: string
+              example: Kích thước
+              description: tên của một configuration
+            optionType:
+              type: string
+              enum:
+                - code
+                - text
+                - image
+              description: Mô tả cách hiển thị của cấu hình trên client
+              example: code
+            options:
+              type: array
+              description: Các option trong một configuration
+              items:
+                type: object
+                properties:
+                  value:
+                    type: string
+                    description: giá trị của option
+                    example: 43 inch
+                  optionId:
+                    type: number
+                    description: id của option
+                    example: 3
+                  image:
+                    type: object
+                    nullable: true
+                    description: Nếu optionType khác image thì giá trị sẽ là null
+                    properties:
+                      path: 
+                        type: string
+                        description: đường dẫn của hình ảnh
+                        example: "media/catalog/product/uploads/product/p_708/2017/06/05/708.jpg"
+                      priority:
+                        type: number
+                        description: độ ưu tiên của hình ảnh
+                        example: 1
+                      url:
+                        type: number
+                        description: url
+                        example: "https://img1.phongvu.vn/media/catalog/product/uploads/product/p_708/2017/06/05/708.jpg"
+      variants:
+        type: array
+        items:
+          type: object
+          properties:
+            sku:
+              type: string
+              example: 1703341
+              description: sku của sản phẩm biến thể                  
+            attributeValues:
+              type: array
+              description: tập giá trị của các thuộc tính
+              items:
+                type: object
+                properties:
+                  id: 
+                    type: number
+                    example: 1
+                  code:
+                    type: string
+                    example: KT
+                    description: giá trị của option tương ứng
+                  value:
+                    type: string
+                    example: "45 inch"
+                    description: giá trị của thuộc tính ứng với option
+                  optionId:
+                    type: number
+                    example: 1
+                    description: id của option tương ứng
+

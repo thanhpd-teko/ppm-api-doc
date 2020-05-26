@@ -1,0 +1,22 @@
+stages:
+  - deploy
+
+.deploy: &deploy
+  stage: deploy
+  image: dungdm93/ansible:ubuntu16.04
+  script:
+  - ansible-playbook -i ansible/inventory.ini -l ${CI_ENVIRONMENT_NAME} ansible/playbook.yml
+  allow_failure: false
+
+deploy:order-service:
+  <<: *deploy
+  variables:
+    DEPLOY_DIR: "/data/api-docs"
+    DOMAIN_NAME: order-docs.teko.vn
+  before_script:
+  - eval "$(ssh-agent -s)"
+  - ssh-add <(echo "$SSH_PRIVATE_KEY")
+  environment:
+    name: stag
+  only:
+  - order-service

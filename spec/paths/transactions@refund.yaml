@@ -1,0 +1,33 @@
+post:
+  tags:
+    - Transactions
+  summary: Refund a transaction
+  description: Make request for refunding a transaction to payment partner
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/TransactionRefundReq'
+    required: true
+  operationId: post_refund_transaction
+  responses:
+    '200':
+      description: Make request transaction refund sucessfully
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TransactionRefundRes'
+    '400':
+      description: Invalid request or bussiness errors
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PaymentError'
+    '403':
+      description: Forbiden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PaymentForbiddenError'
+  servers:
+    - url: 'http://payment.teko.vn'

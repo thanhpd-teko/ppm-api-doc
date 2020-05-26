@@ -1,0 +1,39 @@
+required:
+  - clientCode
+  - terminalCode
+  - serviceCode
+  - orderItems
+  - grandTotal
+  - checksum
+properties:
+  clientCode:
+    type: string
+    description: Code for client to connect to Payment service. PS provide this code to client before deploying
+    example: 'PHONGVU01'
+  terminalCode:
+    type: string
+    description: Branch/terminal code create the cart or process order, receipts in POS channel
+    example: 'CP09'
+  serviceCode:
+    type: string
+    description: 'Service code in Payment service, for examples: Retail, payment for electric, water service. With Phong Vu, this is the retail'
+    example: 'RETAIL'
+  cartId:
+    type: string
+    description: ID of cart in merchant system
+    example: '19ZXR20'
+  orderItems:
+    type: array
+    items:
+      $ref: '#/components/schemas/OrderItem'
+    description: Items of this order
+  grandTotal:
+    type: number
+    format: double
+    description: Total money must pay for this order
+    example: 2500000
+  checksum:
+    type: string
+    description: Secret string encrypted by secret key and all parameters for checksum
+    example: '4fb75072afc5bc29ad00f71a11c127d9'
+type: object

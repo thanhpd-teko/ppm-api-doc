@@ -1,0 +1,36 @@
+patch:
+  summary: Activate Terminal-Warehouse Mapping
+  tags:
+    - Terminals Warehouses Mapping
+  description: API to change Mapping Terminal Warehouse state to active
+  parameters:
+    - name: terminalWarehouseId
+      in: path
+      required: true
+      schema:
+        type: integer
+  responses:
+    200:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+    404:
+      description: Terminal Warehouse not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string

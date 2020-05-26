@@ -1,0 +1,34 @@
+properties:
+  voucher:
+    type: object
+    description: Quyền lợi tặng coupon
+    properties:
+      budgetStatus:
+        type: string
+        description: trạng thái ngân sách
+      maxQuantity:
+        type: number
+        description: số lượng coupon tặng quà tối đa trong 1 đơn hàng
+      quantity:
+        type: number
+        description: số lượng coupon tặng
+      outOfBudget:
+        type: boolean
+        description: trạng thái ngân sách
+      appliedPromotion:
+        type: object
+        description: CTKM áp dụng coupon được tặng
+        properties:
+          id:
+            type: number
+            description: id của CTKM áp dụng
+          name:
+            type: string
+            description: Tên CTKM áp dụng
+          description:
+            type: string
+            description: Mô tả của CTKM áp dụng
+          benefit:
+            type: object
+            description: quyền lợi của CTKM áp dụng (không có thông tin voucher)
+            $ref: '#/components/schemas/ListingPromotionsBenefit'

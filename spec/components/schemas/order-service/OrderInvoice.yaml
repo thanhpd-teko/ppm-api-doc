@@ -1,0 +1,67 @@
+description: Thông tin đã xuất hóa đơn của đơn hàng
+type: object
+required:
+  - name
+  - address
+  - taxCode
+  - type
+  - number
+properties:
+  name:
+    description: Tên của khách hàng trên hóa đơn
+    type: string
+    nullable: false
+    minLength: 1
+    example: "John Doe"
+  address:
+    description: Địa chỉ của khách hàng trên hóa 
+    type: string
+    nullable: false
+    minLength: 1
+    example: "San Francisco"
+  taxCode:
+    description: Mã số thuế
+    type: string
+    nullable: false
+    minLength: 0
+    example: ""
+  type:
+    description: Loại hóa đơn
+    type: string
+    nullable: false
+    example: "HD"
+  number:
+    description: Số hóa đơn
+    type: string
+    nullable: false
+    minLength: 1
+  printAfter:
+    description: In hóa đơn sau bao nhiêu ngày
+    type: integer
+    default: 0
+    nullable: false
+  printBeforeTaxPrice:
+    description: Có in giá trước thuế hay không?
+    type: boolean
+    default: false
+    nullable: false
+    example: false
+  issuedBy:
+    description: |
+      Được cấp bởi hệ thống nào. Ví dụ:
+      - `0`: Asia
+      - `1`: Thái Sơn
+    type: integer
+    nullable: false
+    example: 0
+  email:
+    description: Email nếu muốn nhận hóa đơn điện tử
+    type: string
+    nullable: true
+    format: email
+    example: "john.doe@example.com"
+  phone:
+    description: Số điện thoại liên lạc nếu cần.
+    type: string
+    format: phone
+    nullable: true

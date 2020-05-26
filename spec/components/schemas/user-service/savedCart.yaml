@@ -1,0 +1,7 @@
+title: saveCart
+type: object
+properties:
+  savedCart:
+    type: array
+    items:
+      $ref: "#/components/schemas/savedCartProduct"

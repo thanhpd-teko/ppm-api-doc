@@ -1,0 +1,14 @@
+required:
+  - code
+  - parentCode
+properties:
+  name:
+    description: location name
+    type: string
+  parentCode:
+    description: location parent code
+    type: string
+  code:
+    description: location code
+    type: string
+type: object

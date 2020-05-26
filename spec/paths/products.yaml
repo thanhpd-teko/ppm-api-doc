@@ -1,0 +1,257 @@
+get:
+  tags:
+    - Search/Listing
+  summary: Informations of list products API
+  description: API to get all information about products by list skus
+  servers:
+    - url: 'http://listing.teko.com/{basePath}'
+      variables:
+        basePath:
+          default: api
+    - url: 'http://listing-dev.teko.com/{basePath}'
+      variables:
+        basePath:
+          default: api
+  parameters:
+    - name: channel
+      in: query
+      description: |
+        channel calls to API
+      required: true
+      schema:
+        type: string
+        enum:
+          - pv_showroom
+          - pv_online
+          - pv_agent
+          - vnshop_online
+      example: pv_showroom
+    - name: terminal
+      in: query
+      required: true
+      description: |
+        terminal to identified client
+      schema:
+        type: string
+      example: CP01
+    - name: _page
+      in: query
+      description: |
+        page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+      example: 1
+    - name: DISABLE_SIGN
+      in: query
+      description: key for getting secret product's data
+      schema:
+        type: string
+      example: secret
+    - name: _limit
+      in: query
+      description: |
+        maximum number of products in response
+      required: false
+      schema:
+        type: integer
+        default: 10
+      example: 10
+    - name: skus
+      in: query
+      description: list sku, separated by commas
+      required: true
+      schema:
+        type: string
+    - name: relatedSku
+      in: query
+      description: related sku to get recommend products
+      required: false
+      schema:
+        type: string
+    - name: visitorId
+      in: query
+      description: visitor id from tracking to get personalize recommend products
+      required: false
+      schema:
+        type: string
+  responses:
+    200:
+      description: products object response
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - code
+              - result
+            properties:
+              code:
+                type: string
+                description: result code, should different from 00
+              result:
+                type: object
+                properties:
+                  products:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '#/components/schemas/ListingProductData'
+                        - $ref: '#/components/schemas/ListingProductDetail'
+    404:
+      description: product not found response
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListingError'
+          examples:
+            error:
+              summary: An example of 404 error
+              value:
+                code: "02"
+                message: "404 Not Found: Product with sku 123123 is not found"
+
+put:
+  tags:
+    - Search/Listing
+  summary: Products stock update API
+  description: |
+    API for Warehouse Management System to update stock information list products
+    >
+    Maximum count of products: 100
+  servers:
+    - url: 'http://listing.teko.com/{basePath}'
+      variables:
+        basePath:
+          default: api
+    - url: 'http://listing-dev.teko.com/{basePath}'
+      variables:
+        basePath:
+          default: api
+  parameters:
+    - in: header
+      name: access-token
+      schema:
+        type: string
+        description: Mã token để bảo mật api
+      required: true
+    - in: header
+      name: source
+      schema:
+        type: string
+        description: Nguồn dữ liệu (wms/srm)
+      required: true
+  requestBody:
+    description: SKU of product (example 19030321)
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ListingProductWmsReq'
+        example:
+          - sku: 18101023
+            items:
+              - branch: CP02
+                branchName: KINH DOANH 8
+                warehouse: CP02
+                warehouseName: Kho
+                location: 0201
+                locationName: Kho a1ng
+                storeCode: B
+                productBizType: Biz
+                available: 10
+                onHand: 24
+                reserved: 14
+                timestamp: 1558066889283.962
+              - branch: CP69
+                branchName: KINH DOANH 888
+                warehouse: CP69
+                warehouseName: Kho Trần Đại Nghĩa
+                location: 0320
+                locationName: Kho a1ng
+                storeCode: B
+                productBizType: NEW
+                available: 8
+                onHand: 10
+                reserved: 2
+                timestamp: 1558066889283.962
+          - sku: 18101056
+            items:
+              - branch: CP02
+                branchName: KINH DOANH 8
+                warehouse: CP02
+                warehouseName: Kho
+                location: 0201
+                locationName: Kho a1ng
+                storeCode: B
+                productBizType: Biz
+                available: 10
+                onHand: 24
+                reserved: 14
+                timestamp: 1558066889283.962
+              - branch: CP69
+                branchName: KINH DOANH 888
+                warehouse: CP69
+                warehouseName: Kho Trần Đại Nghĩa
+                location: 0320
+                locationName: Kho a1ng
+                storeCode: B
+                productBizType: NEW
+                available: 8
+                onHand: 10
+                reserved: 2
+                timestamp: 1558066889283.962
+  responses:
+    200:
+      description: response for updating warehouse
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListingError'
+          example:
+            code: 'SUCCESS'
+            message: 'Update successfully'
+    400:
+      description: error response when invalid data
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListingError'
+          example:
+            code: 'INVALID_INPUT'
+            message: 'onHand property must be number, not string'
+    500:
+      description: response when server has error
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListingError'
+          example:
+            code: 'INTERNAL_SERVER'
+            message: 'Connection to elasticsearch has troubles'

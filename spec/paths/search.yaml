@@ -1,0 +1,304 @@
+get:
+  tags:
+    - Search Platform
+  summary: Search product API in Search Platform
+  description: search and return product listing by query
+  servers:
+    - url: 'http://search.develop.tekoapis.net/{basePath}'
+      variables:
+        basePath:
+          default: api
+    - url: 'http://search.stage.tekoapis.net/{basePath}'
+      variables:
+        basePath:
+          default: api
+    - url: 'http://search.tekoapis.com/{basePath}'
+      variables:
+        basePath:
+          default: api
+  parameters:
+    - name: channel
+      in: query
+      description: |
+        channel calls to API
+      required: true
+      schema:
+        type: string
+        enum:
+          - pv_showroom
+          - pv_online
+          - pv_agent
+          - vnshop_online
+      example: pv_showroom
+    - name: terminal
+      in: query
+      required: true
+      description: |
+        terminal to identified client
+      schema:
+        type: string
+      example: CP01
+    - name: q
+      in: query
+      description: |
+        keyword for searching
+      required: false
+      schema:
+        type: string
+      example: 'laptop'
+    - name: _page
+      in: query
+      description: |
+        page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+      example: 1
+    - name: _limit
+      in: query
+      description: |
+        maximum number of products in response
+      required: false
+      schema:
+        type: integer
+        default: 10
+      example: 10
+    - name: _sort
+      in: query
+      required: false
+      description: |
+        Listing conditions for sorting result.
+        >
+        Values: [`price`, `new`, `bestPrice`, `discount`, `discountPercent`, `name`, `popular`].
+      schema:
+        type: string
+      example: price,popular
+    - name: _order
+      in: query
+      required: false
+      description: |
+        Values: [`asc`, `desc`]
+      schema:
+        type: string
+      example: asc,asc
+    - name: price_gte
+      in: query
+      required: false
+      description: |
+        filter product has price greater or equal than
+      schema:
+        type: number
+        format: double
+      example: 5000000
+    - name: price_lte
+      in: query
+      required: false
+      description: |
+        filter product has price less or equal than
+      schema:
+        type: number
+        format: double
+      example: 10000000
+    - name: saleStatuses
+      required: false
+      in: query
+      description: |
+        filter product has selling status in list, separated by commas
+      schema:
+        type: string
+      style: form
+      explode: false
+      example: hang_ban,ngung_kinh_doanh
+    - name: saleStatuses_ne
+      required: false
+      in: query
+      description: |
+        filter product has not selling status in list, separated by commas
+      schema:
+        type: string
+      style: form
+      explode: false
+      example: hang_ban,ngung_kinh_doanh
+    - name: brands
+      in: query
+      required: false
+      description: |
+        filter product in list brands, separated by commas
+      schema:
+        type: string
+      example: "ASUS,ACER"
+    - name: categories
+      in: query
+      required: false
+      description: |
+        filter product in list categories, separated by commas
+      schema:
+        type: string
+      example: 04-N010-02,01-N020-03
+    - name: tags
+      in: query
+      required: false
+      description: |
+        filter product in list tags, separated by commas
+      schema:
+        type: string
+      example: new,hot,flashsale
+    - name: attributeSets
+      in: query
+      required: false
+      description: |
+        filter product by list attribute set, separated by commas
+      schema:
+        type: string
+      example: 123,245
+    - name: types
+      in: query
+      required: false
+      description: |
+        filter product by list product's type, separated by commas
+      schema:
+        type: string
+      example: product,service
+    - name: objectives
+      in: query
+      required: false
+      description: |
+        filter product by list product's objective, separated by commas
+      schema:
+        type: string
+      example: sale,gift
+    - name: productLines
+      in: query
+      required: false
+      description: |
+        filter product by list product lines, separated by commas
+      schema:
+        type: string
+      example: NGH01,NGH02
+    - name: saleCategories
+      in: query
+      required: false
+      description: |
+        filter product by sale category ids, separated by commas
+      schema:
+        type: string
+      example: 715,1056
+    - name: sellerCategories
+      in: query
+      required: false
+      description: |
+        filter product by seller categories code
+      schema:
+        type: array
+        items:
+          type: string
+      example: [001, 002]
+    - name: publishStatus
+      in: query
+      required: false
+      description: |
+        Lọc các sản phẩm đã hoặc chưa biên tập xong
+      schema:
+        type: string
+        enum: [true, false]
+      example: false
+    - name: hasPromotions
+      in: query
+      required: false
+      description: |
+        Lọc các sản phẩm có khuyến mại của kênh bán hoặc toàn quốc
+      schema:
+        type: string
+        enum: [true, false]
+      example: true
+    - name: isBundle
+      in: query
+      required: false
+      description: |
+        Lọc các sản phẩm là bundle
+      schema:
+        type: string
+        enum: [true, false]
+      example: true
+    - name: responses
+      in: query
+      required: false
+      description: |
+        Default, response has only data for products. Keywords are empty array.
+        >
+        If client needs any data, set value for this parameter, seperated by comma.
+        >
+        Values: [`products`, `keywords`].
+      schema:
+        type: string
+      example: products
+    - name: filters
+      in: query
+      required: false
+      description: |
+        Default, response don't return filters data. Data filters includes: brands, attributeSets, ...
+        >
+        If client needs any data, set value for this parameter, seperated by comma.
+        >
+        Values: [`brands`, `attributeSets`, `attributes`, `sellerCategories`, `displayCategories`].
+      schema:
+        type: string
+      example: brands,attributeSets
+    - name: skus
+      in: query
+      required: false
+      description: |
+        List product sku, separated by commas
+      schema:
+        type: array
+        items:
+          type: string
+        example: [11111, 221231]
+    - name: bestPrice_lte
+      in: query
+      required: false
+      description: |
+        filter product has best_price less than or equal
+      schema:
+        type: number
+        format: double
+      example: 10000000
+    - name: bestPrice_gte
+      in: query
+      required: false
+      description: |
+        filter product has price greater than or equal
+      schema:
+        type: number
+        format: double
+      example: 10000000
+  responses:
+    200:
+      description: response for successful request
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListingSearchResp'
+    400:
+      description: invalid parameters
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListingError'
+          examples:
+            error:
+              summary: An example of 400 error
+              value:
+                code: "01"
+                message: "400 Bad Request: Input payload validation failed. Page number, starting from 1 invalid literal for int() with base 10: 'b'"

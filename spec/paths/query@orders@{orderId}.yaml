@@ -1,0 +1,46 @@
+get:
+  tags:
+    - Orders
+  summary: Get Order detail
+  description: Get Order detail
+  parameters:
+  - description: ID of order, format UUID
+    name: orderId
+    required: true
+    in: path
+    schema:
+      type: string
+      format: uuid
+  responses:
+    200:
+      description: Lấy thông tin đơn hàng thành công
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - code
+              - data
+            properties:
+              code:
+                type: integer
+                description: Status code của hệ thống
+                example: 0
+              data:
+                $ref: "#/components/schemas/OrderDetail"
+    404:
+      description: Đơn hàng không tồn tại
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - code
+              - data
+            properties:
+              code:
+                type: integer
+                description: Status code của hệ thống
+                default: 20
+              data:
+                type: object

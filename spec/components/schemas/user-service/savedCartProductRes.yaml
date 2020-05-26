@@ -1,0 +1,20 @@
+title: savedCartProductRes
+type: object
+properties:
+  id:
+    type: string
+    maxLength: 255
+  productSku:
+    type: string
+    maxLength: 255
+  quantity:
+    type: integer
+  isSelected:
+    type: boolean
+  sellerId:
+    type: integer
+required:
+  - id
+  - productSku
+  - quantity
+  - isSelected

@@ -1,0 +1,17 @@
+title: viewPointResponse
+type: object
+properties:
+  id:
+    type: string
+  partnerPointBalance:
+    type: array
+    items:
+      $ref: '#/components/schemas/partnerPointBalanceResponse'
+  tempPointBalance:
+    type: integer
+  tokenBalance:
+    type: integer
+  totalCount:
+    type: integer
+  totalEquivalentAmount:
+    type: integer

@@ -1,0 +1,56 @@
+required:
+  - active
+  - scope
+  - client_id
+  - user
+  - token_type
+  - exp
+  - iat
+  - sub
+  - aud
+  - iss
+properties:
+  active:
+    type: boolean
+    description: token status (activate or deactivate).
+    example: true
+  scope:
+    type: string
+    description: scope of token.
+    example: profile
+  client_id:
+    type: string
+    description: client id of token.
+    example: client_id_1
+  user:
+    type: integer
+    format: int64
+    description: user id of token or client id of token (if user is not found).
+    example: 1
+  token_type:
+    type: string
+    description: token_type is empty or null.
+    example: null
+  exp:
+    type: integer
+    format: int64
+    description: expire time of token (usually equal to `issued_at` + 3600 (1 hour))
+    example: 1556008363
+  iat:
+    type: integer
+    format: int64
+    description: issue time of token.
+    example: 1556004763
+  sub:
+    type: integer
+    format: int64
+    description: similar with user.
+    example: 1
+  aud:
+    type: string
+    description: equal to client id of token.
+    example: client_id_1
+  iss:
+    type: string
+    description: issue link of token.
+    example: "https://server.example.com"

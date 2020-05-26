@@ -1,0 +1,19 @@
+required:
+  - code
+  - result
+properties:
+  code:
+    type: string
+  result:
+    required:
+      - success
+      - failed
+    properties:
+      success:
+        type: array
+        items:
+          $ref: '#/components/schemas/PromotionCoupon'
+      failed:
+        type: array
+        items:
+          $ref: '#/components/schemas/PromotionByCouponFailedResp'

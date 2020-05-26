@@ -1,0 +1,18 @@
+properties:
+  paymentId:
+    type: string
+    description: Mã uuid payment
+  paymentMethod:
+    type: string
+    description: Phương thức thanh toán
+  amount:
+    type: number
+    description: Số tiền thanh toán tương ứng
+  ref:
+    type: string
+    description: Mã PHM - khi paymentMethod = 'PMH'
+
+required:
+  - paymentId
+  - paymentMethod
+  - amount

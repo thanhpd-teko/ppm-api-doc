@@ -1,0 +1,55 @@
+post:
+  tags:
+    - Methods
+  summary: >-
+    Check available payment methods for an order with order items and expected
+    payment methods
+  description: >-
+    This api will check and return all payment methods with detaill description for each method.
+    This help clients check whether an order can pay with a pair of payment method and partner. 
+    There are some rules with these payment methods
+
+    - Client code is existed and checksum is valid
+
+    - The format of inputs must be valid, follow the description
+
+    - Branch_code, service_code, method_code, partner_code must be existed
+
+    - With items in payment methods need to check, a method must be supported by
+    this partner. The `INSTALLMENT_CREDIT` method has some special validations.
+    It check that the partner must support the `POS` method, and the bank is not
+    empty, and this bank must be a payment partner support the
+    `INSTALLMENT_CREDIT` method
+
+    - The service must be supported by this method on the channel
+
+    - The last checks are the rules with price rules, the terminal rules,
+    product rules. They are defined by sellers
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/PaymentMethodCheckReq'
+    required: true
+  operationId: post_payment_method_check
+  responses:
+    '200':
+      description: Methods list response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PaymentMethodCheckRes'
+    '400':
+      description: Invalid request response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PaymentError'
+    '403':
+      description: Forbiden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PaymentForbiddenError'
+  servers:
+    - url: 'http://payment.teko.vn'

@@ -1,0 +1,36 @@
+properties:
+  id:
+    type: integer
+  applyOn:
+    type: string
+    enum:
+      - product
+      - order
+  sku:
+    type: string
+  quantity:
+    type: integer
+  name:
+    type: string
+  budgetStatus:
+    $ref: "#/components/schemas/BudgetStatus"
+  budgetId:
+    type: integer
+    description: Id của ngân sách
+  outOfBudget:
+    type: boolean
+    description: Ngân sách còn hay hết
+  maxQuantityPerOrder:
+    type: integer
+    description: Số lượng tặng tối đa trên 1 đơn hàng
+
+required:
+  - maxQuantityPerOrder
+  - outOfBudget
+  - budgetId
+  - budgetStatus
+  - name
+  - quantity
+  - sku
+  - applyOn
+  - id

@@ -1,0 +1,99 @@
+put:
+  tags:
+    - Search/Listing
+  summary: Products srm data update API
+  description: |
+    API for Supplier Relationship Management System to update srm data information list products
+    >
+    Maximum count of products: 100
+  servers:
+    - url: 'http://listing.teko.com/{basePath}'
+      variables:
+        basePath:
+          default: api
+    - url: 'http://listing-dev.teko.com/{basePath}'
+      variables:
+        basePath:
+          default: api
+  parameters:
+    - in: header
+      name: access-token
+      schema:
+        type: string
+        description: Mã token để bảo mật api
+      required: true
+    - in: header
+      name: source
+      schema:
+        type: string
+        description: Nguồn dữ liệu (wms/srm)
+      required: true
+  requestBody:
+    description: SKU of product (example 19030321)
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ListingProductSrmReq'
+        example:
+          - sku: 18101023
+            importPrice: 100000.0
+            salePoint: 1.0
+            timestamp: 1558066889283.962
+            tax:
+              - taxIn: 10
+                taxOut: 5
+                taxInCode: "10"
+                taxOutCode: "10"
+          - sku: 18101056
+            importPrice: 100000.0
+            salePoint: 1.0
+            timestamp: 1558066889283.962
+            tax:
+              - taxIn: 20
+                taxOut: 5
+                taxInCode: "20"
+                taxOutCode: "10"
+  responses:
+    200:
+      description: response for updating warehouse
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListingError'
+          example:
+            code: 'SUCCESS'
+            message: 'Update successfully'
+    400:
+      description: error response when invalid data
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListingError'
+          example:
+            code: 'INVALID_INPUT'
+            message: 'taxIn property must be number, not string'
+    500:
+      description: response when server has error
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListingError'
+          example:
+            code: 'INTERNAL_SERVER'
+            message: 'Connection to elasticsearch has troubles'

@@ -1,0 +1,56 @@
+get:
+  tags:
+    - Transactions
+  summary: Get all transactions of order
+  parameters:
+    - name: client_code
+      in: query
+      description: Code for client to connect to Payment service. PS provide this code to client before deploying
+      schema:
+        type: string
+      required: true
+      
+    - name: from_date
+      in: query
+      description: From date to query payment transaction. Format yyyymmdd
+      schema:
+        type: string
+      required: true
+
+    - name: to_date
+      in: query
+      description: To date to query payment transaction. Format yyyymmdd
+      schema:
+        type: string
+      required: true
+
+    - name: order_id
+      in: query
+      description: Order ID to get payment history
+      schema:
+        type: string
+      required: true
+
+    - name: checksum
+      in: query
+      schema:
+        type: string
+      description: Secret string encrypted by secret key and all parameters for checksum
+      required: true
+
+  responses:
+    '200':
+      description: Successful query transaction
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OrderHistoryPaymentRes'
+    "403":
+      description: Forbiden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PaymentForbiddenError'
+  servers:
+    - url: "http://dev-payment.teko.vn/api"
+

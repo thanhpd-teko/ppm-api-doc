@@ -1,0 +1,56 @@
+type: object
+description: Thông tin thanh toán cho đơn.
+required:
+  - paymentMethod
+  - amount
+properties:
+  transactionId:
+    type: string
+    format: uuid
+    description: |
+      psTransactionCode nếu có.
+      OM tự generate cho các hình thức COD, DEBT, POSTPAID.
+  paymentMethod:
+    description: |
+      Hình thức thanh toán. 
+      Tham khảo ở https://confluence.teko.vn/pages/viewpage.action?pageId=144048230#IntergrationGuid(new)-II.Danhs%C3%A1chc%C3%A1ch%C3%ACnhth%E1%BB%A9cthanhto%C3%A1n
+    type: string
+  paymentDuration:
+    description: |
+      Thời hạn thanh toán (ngày)
+      Bắt buộc với paymentMethod = POSTPAID
+    type: integer
+    default: 0
+  amount:
+    description: Tiền thanh toán
+    type: string
+    format: decimal
+    example: "100000.00"
+  debtorId:
+    description: | 
+      Đối tượng chuyển nợ.
+      Bắt buộc với paymentMethod = DEBT
+    type: integer
+  debtorAsiaId:
+    description: Asia ID đối tượng chuyển nợ
+    type: string
+  methodName:
+    description: Tên HTTT quy định bên Payment service
+    nullable: true
+    type: string
+  billNumber:
+    description: |
+      Mã chuẩn chi in khi thanh toán dùng máy quẹt thẻ hoặc mã hợp đồng nếu thanh toán theo trả góp qua công ty tín dụng
+      Nó có thể coi là mã GD phía đối tác
+    type: string
+    nullable: false
+    minLength: 1
+    example: vnpay-123
+  crmStaffId:
+    description: |
+      	Mã NV (trên hệ thống CRM )thực hiện Gd, có thể là mã NV thu ngân hoặc mã KTV
+        Bắt buộc đối với paymentMethod <> (COD, DEBT, POSTPAID)
+      type: string
+      nullable: false
+      minLength: 1
+      example: "9999"

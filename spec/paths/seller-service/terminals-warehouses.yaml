@@ -1,0 +1,107 @@
+get:
+  tags:
+    - Terminals Warehouses Mapping
+  summary: List of all Terminals Warehouse Mapping
+  description: API to get list Terminals Warehouse Mapping with pagination
+  parameters:
+    - name: page
+      in: query
+      schema:
+        type: integer
+      description: page number use to paginate
+      required: false
+    - name: pageSize
+      in: query
+      schema:
+        type: integer
+      description: page size use to paginate
+      required: false
+    - name: terminalQuery
+      in: query
+      schema:
+        type: string
+      description: string use to fitler by terminal name or code
+      required: false
+    - name: warehouseQuery
+      in: query
+      schema:
+        type: string
+      description: string use to fitler by warehouse name or code
+      required: false
+    - name: provinceCodes
+      in: query
+      schema:
+        type: string
+      description: 'Terminal provinceCodes: Ex: `01,02,03`'
+      required: false
+    - name: isActive
+      in: query
+      schema:
+        type: boolean
+      description: filter if mapping is active
+      required: false
+    - name: isAll
+      in: query
+      schema:
+        type: boolean
+      description: Get all records
+      required: false
+  responses:
+    200:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+                properties:
+                  page:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  total:
+                    type: integer
+                  terminalsWarehouses:
+                    $ref: '#/components/schemas/terminals_warehouses'
+
+post:
+  summary: Create Mapping Terminal-Warehouse
+  tags:
+    - Terminals Warehouses Mapping
+  description: API to create Mapping Terminals Warehouse
+  requestBody:
+    content:
+      application/json:
+        schema:
+          required:
+            - terminalId
+            - warehouseCode
+          type: object
+          properties:
+            terminalId:
+              type: integer
+            warehouseCode:
+              type: string
+  responses:
+    200:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+                properties:
+                  id:
+                    type: integer

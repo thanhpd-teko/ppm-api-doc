@@ -1,0 +1,49 @@
+properties:
+  id:
+    type: integer
+  applyOn:
+    type: string
+    enum:
+      - product
+      - order
+  discountType:
+    type: string
+    enum:
+      - money
+      - percent
+  percent:
+    type: number
+    format: double
+    description: Số % được giảm (trong TH giảm giá theo %)
+  money:
+    type: number
+    format: double
+    description: Số tiền được giảm (trong TH giảm giá theo tiền)
+  maxDiscount:
+    type: number
+    format: double
+    description: Số tiền được giảm giá tối đa (trong TH giảm giá theo %)
+  budgetStatus:
+    $ref: "#/components/schemas/BudgetStatus"
+  budgetId:
+    type: integer
+    description: Id của ngân sách
+  outOfBudget:
+    type: boolean
+    description: Ngân sách còn hay hết
+  maxDiscountPerOrder:
+    type: number
+    format: double
+    description: Số tiền giảm tối đa trên 1 đơn hàng
+
+required:
+  - maxDiscountPerOrder
+  - outOfBudget
+  - budgetId
+  - budgetStatus
+  - maxDiscount
+  - money
+  - percent
+  - discountType
+  - applyOn
+  - id

@@ -1,0 +1,53 @@
+required:
+  - clientCode
+  - terminalCode
+  - serviceCode
+  - asiaStaffId
+  - crmStaffId
+  - orderId
+  - methods
+  - checksum
+properties:
+  clientCode:
+    description: Code for client to connect to Payment service. PS provide this code to client before deploying
+    type: string
+    example: 'PHONGVU01'
+  terminalCode:
+    description: Branch/terminal code of the order
+    type: string
+    example: 'CP09'
+  serviceCode:
+    type: string
+    description: Service of the payment bill such as Retail(sample - Phong vu's Order), telecom bill, Electric...
+    example: 'RETAIL'
+  asiaStaffId:
+    type: string
+    description: Staff id (in asia system) perform the transaction. PS only forward this infor to OM, LO, not validate the true/false of this ID
+    example: '50380'
+  crmStaffId:
+    type: string
+    description: Staff (in CRM system) perform the transaction. PS only forward this infor to OM, LO, not validate the true/false of this ID
+    example: '50380'
+  clientTransactionCode:
+    type: string
+    description: Transaction's code of client. This is private code for each client. Payment service support get a transaction by this code. This is unique code in month
+    example: '19606S11'
+  orderId:
+    type: string
+    description: Order ID in merchant system. With Phong Vu, It is order Id in OM
+    example: '19YTFS20'
+  methods:
+    type: array
+    items:
+      $ref: '#/components/schemas/PaymentMethodWithTransReq'
+    description: Payment methods of order are paid
+  addData:
+    type: string
+    description: Additional information from client
+    example: 'custName: Dau Thi Ngoc anh'
+  
+  checksum:
+    type: string
+    description: Secret string encrypted by secret key and all parameters for checksum
+    example: '4fb75072afc5bc29ad00f71a11c127d9'
+type: object

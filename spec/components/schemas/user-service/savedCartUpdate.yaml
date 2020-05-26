@@ -1,0 +1,11 @@
+title: savedCartUpdate
+type: object
+required:
+  - isSelected
+  - quantity
+properties:
+  quantity:
+    type: integer
+  isSelected:
+    type: boolean
+    example: true

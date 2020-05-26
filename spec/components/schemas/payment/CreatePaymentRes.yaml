@@ -1,0 +1,58 @@
+required:
+  - status
+  - terminalCode
+  - serviceCode
+  - asiaStaffId
+  - crmStaffId
+  - orderId
+  - methods
+  - checksum
+
+properties:
+  clientCode:
+    type: string
+    description: Code for client to connect to Payment service
+    example: ABC123XYZ
+  psTransactionCode:
+    type: string
+    description: Code of transaction
+    example: QHR7349
+
+  terminalCode:
+    type: string
+    description: Branch/terminal code of the order
+    example: 'PV009'
+  serviceCode:
+    type: string
+    description: Service code in Payment service. In this case, this is retail service
+    example: 'RETAIL'
+  orderId:
+    type: string
+    description: Order id in OM system
+    example: '17123456AXDF93483'
+  orderCode:
+    type: string
+    description: Order code in OM system
+    example: '17123456'
+  grandTotal:
+    type: number
+    description: Total paid of the order
+    example: 10500000
+  status:
+    type: string
+    description: Response message. SUCCESS if all payment methods are valid else FAILURE
+    enum:
+      - SUCCESS
+      - FAILURE
+    example: SUCCESS
+  message:
+    type: string
+    description: desciption of status
+    example: 'Thành công'
+  methods:
+    type: array
+    description: Available payment methods
+    items:
+      $ref: '#/components/schemas/PaymentMethodCheckResMethodArray'
+
+

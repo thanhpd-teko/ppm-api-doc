@@ -1,0 +1,16 @@
+title: appSetting
+type: object
+properties:
+  id:
+    type: string
+    maxLength: 255
+  key:
+    type: string
+    maxLength: 255
+  value:
+    type: string
+    maxLength: 255
+required:
+  - id
+  - key
+  - value

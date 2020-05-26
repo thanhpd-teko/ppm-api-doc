@@ -1,0 +1,4 @@
+title: terminals warehouses
+type: array
+items:
+  $ref: '#/components/schemas/terminal_warehouse'

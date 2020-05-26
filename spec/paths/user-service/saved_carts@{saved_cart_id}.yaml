@@ -1,0 +1,35 @@
+put:
+  summary: Update saved cart item
+  tags:
+    - Saved Cart
+  operationId: put_saved_cart
+  parameters:
+    - name: saved_cart_id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/savedCartUpdate'
+    required: true
+  responses:
+    200:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+                properties:
+                  savedCart:
+                    $ref: '#/components/schemas/savedCartProduct'
+  x-codegen-request-body-name: payload

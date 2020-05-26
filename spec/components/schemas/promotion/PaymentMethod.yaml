@@ -1,0 +1,6 @@
+type: string
+enum:
+  - COD
+  - VNPAY
+  - INSTALLMENT
+  - BANK

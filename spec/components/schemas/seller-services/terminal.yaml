@@ -1,0 +1,64 @@
+title: terminal
+type: object
+properties:
+  id:
+    type: integer
+  code:
+    type: string
+    maxLength: 255
+  isActive:
+    type: integer
+    minimum: 0
+    maximum: 1
+  name:
+    type: string
+    maxLength: 255
+  provinceCode:
+    type: string
+    maxLength: 10
+  districtCode:
+    type: string
+    maxLength: 10
+  wardCode:
+    type: string
+    maxLength: 10
+  streetAddress:
+    type: string
+    maxLength: 255
+  fullAddress:
+    type: string
+    maxLength: 511
+  isRequestedApproval:
+    type: integer
+    minimum: 0
+    maximum: 1
+  platform:
+    type: string
+    enum: ['WEB', 'APP', 'IBK']
+  type:
+    type: string
+    enum: ['AGE', 'OLN', 'SHR', 'SCA', 'TLS']
+  note:
+    type: string
+    maxLength: 255
+  isOwner:
+    type: integer
+    minimum: 0
+    maximum: 1
+  sellerID:
+    type: integer
+  deliveryMethods:
+    type: object
+    properties:
+      handOver:
+        type: integer
+        minimum: 0
+        maximum: 1
+      pickupCounter:
+        type: integer
+        minimum: 0
+        maximum: 1
+      homeDelivery:
+        type: integer
+        minimum: 0
+        maximum: 1

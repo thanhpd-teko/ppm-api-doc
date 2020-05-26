@@ -1,0 +1,97 @@
+properties:
+  id:
+    type: integer
+    description: Id của menu item
+    example: 1
+  parentId:
+    type: integer
+    description: Id của menu item parent
+    example: 2
+  priority:
+    type: integer
+    description: Thứ tự ưu tiên của menu item
+    example: 1
+  isTargetBlank:
+    type: integer
+    description: Có mở tab mới không? (0 hoặc 1)
+    example: 0
+  level:
+    type: integer
+    description: level của menu item
+    example: 1
+  icon:
+    type: string
+    description: ảnh của menu item
+    example: https://file.services.teko.vn/media/92/29/1567137562.1867676_Tivi-Samsung-32-inch-UA32N4000-1.jpg
+  name:
+    type: string
+    description: Tên của menu item
+    example: Đồ chơi, mẹ và bé
+  targetPath:
+    type: string
+    description: Tên của menu item
+    example: sellerCategories=1,2&attributeSets=1,2&brands=acer&skus=123456,654321&attributes.laptop_hedieuhanh=1,2
+  configs:
+    type: object
+    description: Cấu hình của menu item (dùng để filter lấy ra danh sách sản phẩm)
+    properties:
+      sellerCategories:
+        type: array
+        description: danh sách master category id, tương ứng với param sellerCategories trong api listing
+        items:
+          type: integer
+          description: id của master category
+        example: [1,2]
+      attributeSets:
+        type: array
+        description: danh sách attribute set id, tương ứng với param attributeSets trong api listing
+        items:
+          type: integer
+          description: id của attribute set
+        example: [1,2]
+      brands:
+        type: array
+        description: danh sách brand code tương ứng, tương ứng với param brands trong api listing
+        items:
+          type: string
+          description: Mã code của brand
+        example: ["acer","asus"]
+      skus:
+        type: array
+        description: danh sách sku, tương ứng với param skus trong api listing
+        items:
+          type: string
+          description: Mã sku
+        example: ["123456","654321"]
+      attributes:
+        type: array
+        description: danh sách cấu hình attributes, ex attributes.laptop_hedieuhanh=1,2 trong api listing
+        items:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Mã thuộc tính
+              example: laptop_hedieuhanh
+            optionIds:
+              type: array
+              description: Mã option id của thuộc tính
+              items:
+                type: integer
+                description: option id
+              example: [1,2]
+      price:
+        type: object
+        description: Filter theo khoảng giá, tương ứng price_gte=100000.0&price_lte=2000000.0
+        properties:
+          from:
+            type: number
+            format: double
+            description: Giá lớn hơn hoặc bằng
+            example: 100000.0
+          to:
+            type: number
+            format: double
+            description: Giá nhỏ hơn hoặc bằng
+            example: 2000000.0
+

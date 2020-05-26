@@ -1,0 +1,17 @@
+title: Terminals Warehouses MappingTerminal Warehouse
+type: object
+properties:
+  id:
+    type: integer
+  terminal:
+    $ref: '#/components/schemas/terminal'
+  warehouseName:
+    type: string
+  warehouseCode:
+    type: string
+  warehouseFullAddress:
+    type: string
+  isActive:
+    type: integer
+    minimum: 0
+    maximum: 1

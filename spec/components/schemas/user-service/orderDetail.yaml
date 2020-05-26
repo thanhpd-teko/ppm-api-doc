@@ -1,0 +1,23 @@
+title: orderDetal
+required:
+- calcAmount
+- productCode
+- quantity
+- seqNo
+- unitPrice
+type: object
+properties:
+  fullClassCode:
+    type: string
+  fullDeptCode:
+    type: string
+  seqNo:
+    type: integer
+  productCode:
+    type: string
+  unitPrice:
+    type: integer
+  quantity:
+    type: integer
+  calcAmount:
+    type: integer

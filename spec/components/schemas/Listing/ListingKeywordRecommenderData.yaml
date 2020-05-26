@@ -1,0 +1,21 @@
+required:
+  - query
+  - highlight
+  - displayCategory
+properties:
+  query:
+    type: string
+    description: từ khóa liên quan với input của người dùng
+  highlight:
+    type: string
+    description: từ khóa đã được nổi bật (dùng thẻ `<em></em>`)
+  displayCategory:
+    type: object
+    description: Khối thông tin về display category của từ khóa (nếu có). Nếu không có khối thông tin này, giá trị của object sẽ bằng null.
+    properties:
+      id: 
+        type: number 
+        description: Id của display category. 
+      name: 
+        type: string 
+        description: Tên của display category. 

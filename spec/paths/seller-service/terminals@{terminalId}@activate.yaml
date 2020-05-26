@@ -1,0 +1,47 @@
+patch:
+  summary: Activate Terminal
+  tags:
+    - Terminals
+  description: API to change Terminal state to active
+  parameters:
+    - name: terminalId
+      in: path
+      required: true
+      schema:
+        type: integer
+  responses:
+    200:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+    404:
+      description: Terminal not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+    400:
+      description: Terminal already active
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string

@@ -1,0 +1,86 @@
+get:
+  summary: View member point history (Mobile)
+  tags:
+  - Blue
+  operationId: get_temp_point_trans
+  parameters:
+  - name: X-User-Id
+    in: header
+    required: true
+    schema:
+      type: string
+  - name: clientCode
+    in: query
+    required: true
+    schema:
+      type: string
+  - name: actionTypeFilter
+    in: query
+    required: true
+    schema:
+      type: string
+      default: Order
+  - name: merchantIdFilter
+    in: query
+    schema:
+      type: integer
+      default: 0
+  - name: fromDateFilter
+    in: query
+    schema:
+      type: string
+  - name: toDateFilter
+    in: query
+    schema:
+      type: string
+  - name: orderCodeFilter
+    in: query
+    schema:
+      type: string
+  - name: actionCodeFilter
+    in: query
+    schema:
+      type: string
+  - name: statusFilter
+    in: query
+    schema:
+      type: string
+  - name: page
+    in: query
+    schema:
+      type: integer
+      default: 1
+  - name: pageSize
+    in: query
+    schema:
+      type: integer
+      default: 10
+  - name: sortField
+    in: query
+    description: Sort field
+    schema:
+      type: string
+  - name: sortOrder
+    in: query
+    description: Sort order
+    schema:
+      type: string
+  responses:
+    200:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/tempPointTransResponse'

@@ -1,0 +1,12 @@
+required:
+  - code
+properties:
+  code:
+    type: string
+  messsage:
+    type: string
+  extra:
+    description: Trả về thông tin của coupon
+    properties:
+      coupon:
+        $ref: '#/components/schemas/GetCouponExtra'

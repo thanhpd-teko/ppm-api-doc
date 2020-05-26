@@ -1,0 +1,107 @@
+description: Thông tin của các yêu cầu hoàn hàng
+required:
+  - id
+  - reason
+  - state
+  - fullReturn
+  - newCODAmount
+  - newGrandTotal
+  - inventoryCode
+  - createdBy
+  - createdAt
+properties:
+  id:
+    description: Mã yêu cầu hoàn hàng
+    type: string
+    nullable: false
+    minLength: 1
+    example: "d3a287f0-8018-4852-91ed-9f7bc8f614a5"
+  reason:
+    description: Lý do hoàn hàng
+    type: string
+    nullable: false
+    minLength: 1
+    example: "Khách đổi ý"
+  state:
+    description: Trạng thái yêu cầu hủy đơn
+    type: string
+    nullable: false
+    example: "CANCELLED"
+    minLength: 1
+  fullReturn:
+    description: Hoàn hết toàn bộ đơn hay một phần
+    type: boolean
+    nullable: false
+    default: false
+  items:
+    description: Thông tin hàng được hoàn
+    type: array
+    items:
+      required:
+        - lineItemId
+        - sku
+        - quantity
+      properties:
+        lineItemId:
+          description: ID của chỉ chi tiết dòng hàng
+          type: string
+          format: uuid
+          nullable: false
+          minLength: 1
+          example: "9a03ea07-6163-4c25-b327-65c45df13419"
+        sku:
+          description: Mã sản phẩm
+          type: string
+          nullable: false
+          minLength: 1
+          example: "19000002"
+        quantity:
+          description: Số lượng
+          type: integer
+          nullable: false
+          example: 2
+  newCODAmount:
+    description: Giá trị COD sau khi hoàn hàng, tính từ phía client
+    type: string
+    format: decimal
+    nullable: false
+    minLength: 1
+    example: 1000000
+  newGrandTotal:
+    description: Giá trị của tổng đơn sau khi hoàn hàng, tính từ phía client
+    type: string
+    format: decimal
+    nullable: false
+    minLength: 1
+    example: 1000000
+  inventoryCode:
+    description: Kho nhập hàng thu hồi
+    type: string
+    nullable: false
+    minLength: 1
+    example: "CH0000"
+  createdBy:
+    description: Thông tin người thực hiện yêu cầu hủy
+    nullable: false
+    type: object
+    required:
+      - id
+      - name
+    properties:
+      id:
+        description: ID của người dùng/hệ thống yêu cầu
+        nullable: false
+        type: string
+        minLength: 1
+        example: "ID-001"
+      name:
+        description: Tên của người dùng/hệ thống yêu cầu
+        nullable: false
+        type: string
+        minLength: 1
+        example: "System 001"
+  createdAt:
+    description: Thời gian tạo yêu cầu
+    nullable: false
+    type: string
+    format: date-time

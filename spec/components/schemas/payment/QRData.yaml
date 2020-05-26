@@ -1,0 +1,15 @@
+required:
+  - type
+  - image
+properties:
+  type:
+    type: string
+    description: The type of QR data format if generate sucessfully, client using this data to generate QR
+    example: 'image'  
+    enum:
+    - 'image'
+    - 'binary'
+  image:
+    type: string
+    description: Code of transaction
+    example: /v1/gen-api/image/type11/4656/41323/2019/7/10/1658678/300x300.png

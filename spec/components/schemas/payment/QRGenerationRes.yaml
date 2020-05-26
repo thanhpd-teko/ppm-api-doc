@@ -1,0 +1,8 @@
+properties:
+  data:
+    $ref: '#/components/schemas/QRData'
+  transactionCode:
+    type: string
+    description:  After generating QR code for order, PS will generate the transaction code and return to client for using to query result if waiting long time
+    example: QHR7349
+   

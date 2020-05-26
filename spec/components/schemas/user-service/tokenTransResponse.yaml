@@ -1,0 +1,53 @@
+title: tokenTransResponse
+type: object
+properties:
+  tokenTransId:
+    type: string
+  time:
+    type: string
+  businessTime:
+    type: string
+  validDate:
+    type: string
+  expiryDate:
+    type: string
+  orderCode:
+    type: string
+  actionCode:
+    type: string
+  grantType:
+    type: string
+  reason:
+    type: string
+  usagePriority:
+    type: string
+  actionName:
+    type: string
+  fromWalletAddress:
+    type: string
+  fromMerchantNameOrMember:
+    type: string
+  toWalletAddress:
+    type: string
+  toMerchantNameOrMember:
+    type: string
+  storeId:
+    type: integer
+  storeName:
+    type: string
+  userAddress:
+    type: string
+  currencyExchangeRate:
+    type: string
+  actionType:
+    type: string
+  tokenAmount:
+    type: string
+  partnerPointAmount:
+    type: string
+  nationalId:
+    type: string
+  memberId:
+    type: integer
+  pointExchangeRate:
+    type: string

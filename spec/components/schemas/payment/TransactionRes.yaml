@@ -1,0 +1,107 @@
+properties:
+  psTransactionCode:
+    type: string
+    description: transaction code
+  agentCode:
+    type: string
+    description: agent code
+  agentName:
+    type: string
+    description: agent name
+  channelCode:
+    type: string
+    description: channel code
+  channelName:
+    type: string
+    description: channel name
+  serviceCode:
+    type: string
+    description: service code
+  serviceName:
+    type: string
+    description: service name
+  orderId:
+    type: string
+    description: order id
+  orderCode:
+    type: string
+    description: order code
+  terminalCode:
+    type: string
+    description: branch code
+  terminalName:
+    type: string
+    description: branch name
+  partnerCode:
+    type: string
+    description: partner code
+  partnerName:
+    type: string
+    description: partner name
+  methodCode:
+    type: string
+    description: method code
+  methodName:
+    type: string
+    description: method name
+  amount:
+    type: integer
+    description: amount of money
+  status:
+    type: string
+    description: status of transaction
+  statusName:
+    type: string
+    description: status description
+  psResponseCode:
+    type: string
+    description: the response code from payment service
+  psResponseMessage:
+    type: string
+    description: the response message from payment service
+  currency:
+    type: string
+    description: currency
+  cardNumber:
+    type: string
+    description: card number
+  paymentTerm:
+    type: integer
+    description: installment term
+  bankCode:
+    type: string
+    description: bank code
+  bankName:
+    type: string
+    description: bank name
+  orderDescription:
+    type: string
+    description: order description
+  cardType:
+    type: string
+    description: card type
+  bankHotline:
+    type: string
+    description: bank hot line
+  partnerTransactionCode:
+    type: string
+    description: the transaction code from payment partner (Vnpay, Alepay)
+  clientTransactionCode:
+    type: string
+    description: the transaction code from client
+  clientRequestTime:
+    type: string
+    format: date-time
+    description: client request time
+  clientResponseTime:
+    type: string
+    format: date-time
+    description: time payment service reply to client
+  psRequestTime:
+    type: string
+    format: date-time
+    description: time ps make request to partner
+  psResponseTime:
+    type: string
+    format: date-time
+    description: time partner reply to ps

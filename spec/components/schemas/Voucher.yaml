@@ -1,0 +1,32 @@
+required:
+  - status
+  - code
+properties:
+  status:
+    type: integer
+    description: 1 - used | 2 - useable | 3 - cancelled
+  code:
+    type: string
+    description: voucher code
+  createdFrom:
+    type: string
+    description: from which order this voucher was created
+  usedFor:
+    type: string
+    description: for which order this voucher was used
+  startAt:
+    type: integer
+    format: int64
+    description: |
+      from when this voucher can be used
+      if this key has a value, it will override the value 
+      inside voucher data
+  endAt:
+    type: integer
+    format: int64
+    description: |
+      until when this voucher can be used
+      if this key has a value, it will override the value 
+      inside voucher data
+  data:
+    $ref: '#/components/schemas/VoucherData'

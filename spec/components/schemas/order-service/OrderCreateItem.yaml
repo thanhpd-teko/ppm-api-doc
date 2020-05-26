@@ -1,0 +1,70 @@
+type: object
+description: Thông tin sản phẩm trong đơn hàng
+required:
+  - sku
+  - quantity
+  - bizType
+  - vatRate
+  - unitPrice
+  - price
+  - rowTotal
+  - unitPriceBeforeTax
+  - sellerId
+properties:
+  lineItemId:
+    description: ID của line item. Nếu không truyền lên hệ thống sẽ tự generate.
+    type: string
+    format: uuid
+  sku:
+    description: SKU sản phẩm
+    type: string
+  quantity:
+    description: Số lượng
+    type: integer
+  bizType:
+    description: |
+      Loại hình kinh doanh sản phẩm
+      - "Biz": Hàng bán
+      - "Disp":	Hàng trưng bày
+      - "Outlet": Hàng thanh lý
+    type: string
+  vatRate:
+    description: Thuế
+    type: string
+    format: decimal
+  unitPrice:
+    description: Đơn giá
+    type: string
+    format: decimal
+  unitDiscount:
+    description: Giá giảm
+    type: string
+    format: decimal
+  discountReason:
+    description: Lý do giảm giá
+    type: string
+  unitAdd:
+    description: Số tiền được thêm vào trên mỗi sản phẩm nếu có (hoa hồng,...)
+    type: string
+    format: decimal
+  addReason:
+    description: Lý do thêm tiền
+    type: string
+  price:
+    description: Tổng tiền trên một sản phẩm đã cộng tiền, trừ tiền và đã tính thuế
+    type: string
+    format: decimal
+  warranty:
+    description: Số tháng bảo hành
+    type: integer
+  rowTotal:
+    description: Tổng tiền trên dòng (quantity x price)
+    type: string
+    format: decimal
+  unitPriceBeforeTax:
+    description: Giá trước thuế trên một đơn vị sản phẩm
+    type: string
+    format: decimal
+  sellerId:
+    description: Người bán hàng
+    type: integer

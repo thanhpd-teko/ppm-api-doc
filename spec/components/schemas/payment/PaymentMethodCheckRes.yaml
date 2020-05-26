@@ -1,0 +1,28 @@
+properties:
+  clientCode:
+    type: string
+    description: Code for client to connect to Payment service
+    example: 'ABC123XYZ'
+  terminalCode:
+    type: string
+    description: Branch/terminal code of the order
+    example: 'PV009'
+  serviceCode:
+    type: string
+    description: Service code in Payment service. In this case, this is retail service
+    example: 'RETAIL'
+  orderId:
+    type: string
+    description: Order code in OM system
+    example: '17123456'
+  grandTotal:
+    type: number
+    description: Total paid of the order
+    example: 10500000
+  methods:
+    type: array
+    description: Available payment methods
+    items: 
+    $ref: '#/components/schemas/PaymentMethodCheckResMethodArray'
+
+     

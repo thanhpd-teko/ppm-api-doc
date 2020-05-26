@@ -1,0 +1,158 @@
+properties:
+  money:
+    type: array
+    nullable: true
+    description: quyền lợi tặng tiền
+    items:
+      type: object
+      properties:
+        id:
+          type: number
+          description: id của quyền lợi
+        money:
+          type: number
+          format: double
+          nullable: true
+          description: số tiền được giảm
+        percent:
+          type: number
+          format: double
+          nullable: true
+          description: phần trăm được giảm
+        applyOn:
+          type: string
+          enum: [order, product]
+          description: đơn vị tính quyền lợi
+        maxDiscount:
+          type: number
+          format: double
+          nullable: true
+          description: số tiền tối đa được giảm
+        discountType:
+          type: string
+          enum: [money, percent]
+          description: Loại giảm giá
+        maxDiscountPerOrder:
+          type: number
+          description: số tiền tối đa được giảm trên mỗi đơn hàng
+  items:
+    type: array
+    nullable: true
+    description: quyền lợi quà tặng
+    items:
+      type: object
+      properties:
+        id:
+          type: number
+          description: id của quyền lợi
+        sku:
+          type: string
+          description: sku sản phẩm được tặng quà
+        name:
+          type: string
+          description: tên sản phẩm quà tặng
+        applyOn:
+          type: string
+          enum: [order, product]
+          description: đơn vị tính quyền lợi
+        quantity:
+          type: number
+          description: số lượng tặng mỗi lần
+        maxQuantityPerOrder:
+          type: number
+          description: số lượng quà tặng tối đa trên mỗi đơn hàng
+  voucher:
+    type: object
+    description: Quyền lợi tặng coupon
+    properties:
+      budgetStatus:
+        type: string
+        description: trạng thái ngân sách
+      maxQuantity:
+        type: number
+        description: số lượng coupon tặng quà tối đa trong 1 đơn hàng
+      quantity:
+        type: number
+        description: số lượng coupon tặng
+      outOfBudget:
+        type: boolean
+        description: trạng thái ngân sách
+      appliedPromotion:
+        type: object
+        description: CTKM áp dụng coupon được tặng
+        properties:
+          id:
+            type: number
+            description: id của CTKM áp dụng
+          name:
+            type: string
+            description: Tên CTKM áp dụng
+          description:
+            type: string
+            description: Mô tả của CTKM áp dụng
+          benefit:
+            type: object
+            description: quyền lợi của CTKM áp dụng (không có thông tin voucher)
+            properties:
+              money:
+                type: array
+                nullable: true
+                description: quyền lợi tặng tiền
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: number
+                      description: id của quyền lợi
+                    money:
+                      type: number
+                      format: double
+                      nullable: true
+                      description: số tiền được giảm
+                    percent:
+                      type: number
+                      format: double
+                      nullable: true
+                      description: phần trăm được giảm
+                    applyOn:
+                      type: string
+                      enum: [order, product]
+                      description: đơn vị tính quyền lợi
+                    maxDiscount:
+                      type: number
+                      format: double
+                      nullable: true
+                      description: số tiền tối đa được giảm
+                    discountType:
+                      type: string
+                      enum: [money, percent]
+                      description: Loại giảm giá
+                    maxDiscountPerOrder:
+                      type: number
+                      description: số tiền tối đa được giảm trên mỗi đơn hàng
+              items:
+                type: array
+                nullable: true
+                description: quyền lợi quà tặng
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: number
+                      description: id của quyền lợi
+                    sku:
+                      type: string
+                      description: sku sản phẩm được tặng quà
+                    name:
+                      type: string
+                      description: tên sản phẩm quà tặng
+                    applyOn:
+                      type: string
+                      enum: [order, product]
+                      description: đơn vị tính quyền lợi
+                    quantity:
+                      type: number
+                      description: số lượng tặng mỗi lần
+                    maxQuantityPerOrder:
+                      type: number
+                      description: số lượng quà tặng tối đa trên mỗi đơn hàng

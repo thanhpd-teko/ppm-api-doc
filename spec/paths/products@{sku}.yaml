@@ -1,0 +1,95 @@
+get:
+  tags:
+    - Search/Listing
+  summary: Product's detail API
+  description: API to get all information about product by sku
+  servers:
+    - url: 'http://listing.teko.com/{basePath}'
+      variables:
+        basePath:
+          default: api
+    - url: 'http://listing-dev.teko.com/{basePath}'
+      variables:
+        basePath:
+          default: api
+  parameters:
+    - name: sku
+      in: path
+      description: the SKU of product
+      required: true
+      schema:
+        type: string
+    - name: channel
+      in: query
+      description: channel want to get product
+      required: true
+      schema:
+        type: string
+    - name: terminal
+      in: query
+      description: terminal want to get product
+      required: true
+      schema:
+        type: string
+    - name: DISABLE_SIGN
+      in: query
+      description: key to get private infomation of product
+      required: false
+      schema:
+        type: string
+  responses:
+    200:
+      description: product object response
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - code
+              - result
+            properties:
+              code:
+                type: string
+                description: result code, should different from 00
+              result:
+                type: object
+                properties:
+                  product:
+                    properties:
+                      bundleProducts:
+                        type: array
+                        description: danh sách sản phẩm con trong trường hợp sản phẩm là bundle
+                        items:
+                          properties:
+                            imageUrl:
+                              type: string
+                              description: 1 ảnh đại diện của sản phẩm con
+                          allOf:
+                            - $ref: '#/components/schemas/ListingProductData'
+                            - $ref: '#/components/schemas/ListingProductDetail'
+                    allOf:
+                      - $ref: '#/components/schemas/ListingProductData'
+                      - $ref: '#/components/schemas/ListingProductDetail'
+    404:
+      description: product not found response
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListingError'
+          examples:
+            error:
+              summary: An example of 404 error
+              value:
+                code: "02"
+                message: "404 Not Found: Product with sku 123123 is not found"
+

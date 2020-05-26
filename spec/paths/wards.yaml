@@ -1,0 +1,27 @@
+get:
+  summary: Get Wards by District Code
+  tags:
+    - Location API
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              result:
+                type: object
+                properties:
+                  wards:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/area"
+  parameters:
+    - schema:
+        type: string
+      in: query
+      name: districtCode
+      required: true

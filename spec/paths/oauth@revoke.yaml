@@ -1,0 +1,51 @@
+post:
+  tags:
+    - IAM API
+  summary: Revoke Token API
+  description: |
+    Revoke Token API in OAuth2 help you to revoke your access or refresh token.
+  parameters:
+    - in: header
+      name: Authorization
+      description: Basic `base64({client_id}:{client_secret})`
+      schema:
+        type: string
+      required: false
+    - name: token
+      description: your access or refresh token which is used for revoke.
+      in: query
+      schema:
+        type: string
+      required: true
+    - name: token_type_hint
+      description: |
+        `access_token` or `refresh_token`.
+      in: query
+      schema:
+        type: string
+        enum:
+          - access_token
+          - refresh_token
+      required: false
+  responses:
+    "200":
+      description: token revocation success response
+      content:
+        application/json:
+          schema:
+            type: object
+    "400":
+      description: token revocation error response
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/TokenInvalidResp"
+    "401":
+      description: token revocation unauthorized error response
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/TokenUnauthorizedResp"
+
+  servers:
+    - url: "http://id.teko.vn"

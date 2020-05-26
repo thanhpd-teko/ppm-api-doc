@@ -1,0 +1,13 @@
+required:
+  - code
+properties:
+  name:
+    description: warehouse name
+    type: string
+  branchCode:
+    description: warehouse branch code
+    type: string
+  code:
+    description: warehouse code
+    type: string
+type: object

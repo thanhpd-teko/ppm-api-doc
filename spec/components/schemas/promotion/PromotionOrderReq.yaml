@@ -1,0 +1,40 @@
+required:
+  - orderId
+  - orderCode
+  - products
+  - terminal
+  - orderPromotionIds
+  - grandTotal
+  - paymentMethod
+  - items
+  - promotions
+properties:
+  orderId:
+    type: string
+    description: Order uuid
+  orderCode:
+    type: string
+    description: Order Code
+  items:
+    type: array
+    items:
+      $ref: '#/components/schemas/LineItem'
+  promotions:
+    type: array
+    items:
+      $ref: '#/components/schemas/PromotionItem'
+  terminal:
+    type: string
+  paymentMethod:
+    $ref: '#/components/schemas/PaymentMethod'
+  grandTotal:
+    type: number
+    format: double
+    description: Tổng giá trị đơn hàng
+  billingType:
+    type: string
+    description: Loại hóa đơn, truyền lên 02 nếu là đơn miễn thuế, default là 01
+  payments:
+    type: array
+    items:
+      $ref: '#/components/schemas/PaymentItem'

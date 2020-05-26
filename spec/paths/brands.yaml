@@ -1,0 +1,252 @@
+get:
+  tags:
+    - Brand
+  summary: List Brand API
+  description: |
+    API to get list of brands,
+    these brands can be sorted in multi field include:
+    ```
+    sort_field = {
+        "quantity": {
+            "dynamic": "strict",
+            "properties": {
+                "last_1_week": {
+                    "type": "double"
+                },
+                "last_2_week": {
+                    "type": "double"
+                },
+                "last_3_week": {
+                    "type": "double"
+                },
+                "last_4_week": {
+                    "type": "double"
+                },
+                "last_1_month": {
+                    "type": "double"
+                },
+                "last_2_month": {
+                    "type": "double"
+                },
+                "last_3_month": {
+                    "type": "double"
+                },
+                "last_6_month": {
+                    "type": "double"
+                },
+                "last_12_month": {
+                    "type": "double"
+                }
+
+            }
+        },
+        "turnover": {
+            "dynamic": "strict",
+            "properties": {
+                "last_1_week": {
+                    "type": "double"
+                },
+                "last_2_week": {
+                    "type": "double"
+                },
+                "last_3_week": {
+                    "type": "double"
+                },
+                "last_4_week": {
+                    "type": "double"
+                },
+                "last_1_month": {
+                    "type": "double"
+                },
+                "last_2_month": {
+                    "type": "double"
+                },
+                "last_3_month": {
+                    "type": "double"
+                },
+                "last_6_month": {
+                    "type": "double"
+                },
+                "last_12_month": {
+                    "type": "double"
+                }
+
+            }
+        },
+        "profit": {
+            "dynamic": "strict",
+            "properties": {
+                "last_1_week": {
+                    "type": "double"
+                },
+                "last_2_week": {
+                    "type": "double"
+                },
+                "last_3_week": {
+                    "type": "double"
+                },
+                "last_4_week": {
+                    "type": "double"
+                },
+                "last_1_month": {
+                    "type": "double"
+                },
+                "last_2_month": {
+                    "type": "double"
+                },
+                "last_3_month": {
+                    "type": "double"
+                },
+                "last_6_month": {
+                    "type": "double"
+                },
+                "last_12_month": {
+                    "type": "double"
+                }
+
+            }
+        },
+        "view": {
+            "dynamic": "strict",
+            "properties": {
+                "last_1_day": {
+                    "type": "integer"
+                },
+                "last_3_day": {
+                    "type": "integer"
+                },
+                "last_7_day": {
+                    "type": "integer"
+                },
+                "last_10_day": {
+                    "type": "integer"
+                },
+                "last_30_day": {
+                    "type": "integer"
+                },
+                "last_60_day": {
+                    "type": "integer"
+                },
+                "last_90_day": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+    ```
+  servers:
+    - url: 'http://listing.teko.com/{basePath}'
+      variables:
+        basePath:
+          default: api
+    - url: 'http://listing-dev.teko.com/{basePath}'
+      variables:
+        basePath:
+          default: api
+  parameters:
+    - name: terminal
+      in: query
+      description: |
+        terminal to identify client
+        >only one value allowed
+      required: false
+      schema:
+        type: string
+      example: CP01
+    - name: channel
+      in: query
+      description: |
+        channel to identify client
+        >only one value allowed
+      required: false
+      schema:
+        type: string
+      example: pv_online
+    - name: displayCategoryId
+      in: query
+      description: |
+        id of display category to get brands list
+        >only one value allowed
+      required: false
+      schema:
+        type: integer
+      example: 1
+    - name: _limit
+      in: query
+      description: |
+        maximum number of brands in response
+      required: false
+      schema:
+        type: integer
+        default: 20
+      example: 20
+    - name: _page
+      in: query
+      description: |
+        page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+      example: 1
+    - name: _sort
+      in: query
+      required: false
+      description: |
+        List of conditions for sorting result.
+      schema:
+        type: string
+        default: quantity.last_3_month
+      example: quantity.last_2_week, view.last_60_day
+    - name: _order
+      in: query
+      required: false
+      description: |
+        Values: [`asc`, `desc`]
+      schema:
+        type: string
+        default: desc
+      example: asc,asc
+  responses:
+    200:
+      description: response for successful request
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListingBrandResp'
+    400:
+      description: invalid parameters
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListingError'
+          examples:
+            error:
+              summary: An example of 400 error
+              value:
+                code: "BAD_REQUEST"
+                message: "400 Bad Request: Input payload validation failed. Brands limit, starting from 1 invalid literal for int() with base 10: 'b'"
+    500:
+      description: response when server has error
+      headers:
+        requestId:
+          schema:
+            type: string
+          description: uuid request for tracking
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListingError'
+          example:
+            code: 'INTERNAL_SERVER'
+            message: 'Connection to elasticsearch has troubles'

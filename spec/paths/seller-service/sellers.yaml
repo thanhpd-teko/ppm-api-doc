@@ -1,0 +1,53 @@
+get:
+  tags:
+    - Sellers
+  summary: List of all Sellers API
+  description: API to get list of all Sellers
+  responses:
+    200:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+
+              message:
+                type: string
+              result:
+                type: object
+                properties:
+                  sellers:
+                    $ref: '#/components/schemas/sellers'
+
+post:
+  tags:
+    - Sellers
+  summary: Create a Seller
+  description: API to create a Seller
+
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/seller_create'
+    
+  responses:
+    201:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+                properties:
+                  id: 
+                    type: integer

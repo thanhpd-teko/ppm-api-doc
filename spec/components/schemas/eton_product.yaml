@@ -1,0 +1,17 @@
+required:
+  - qty
+  - serials
+  - sku
+properties:
+  serials:
+    description: Serial list
+    items:
+      type: string
+    type: array
+  qty:
+    description: Quantity
+    type: integer
+  sku:
+    description: Product code
+    type: string
+type: object

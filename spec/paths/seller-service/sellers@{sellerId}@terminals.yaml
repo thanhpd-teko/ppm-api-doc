@@ -1,0 +1,93 @@
+get:
+  tags:
+    - Sellers
+  summary: List of Terminals that Seller can selling on
+  description: API to get list of Terminals that Seller can selling on with pagination
+  parameters:
+    - name: sellerId
+      in: path
+      required: true
+      schema:
+        type: integer
+    - name: page
+      in: query
+      schema:
+        type: integer
+      description: page number use to paginate
+      required: false
+    - name: pageSize
+      in: query
+      schema:
+        type: integer
+      description: page size use to paginate
+      required: false
+    - name: query
+      in: query
+      schema:
+        type: string
+      description: string use to fitler by terminal name or code
+      required: false
+    - name: type
+      in: query
+      schema:
+        type: string
+      description: '`AGE` `OLN` `SHR` `SCA` `TLS` Example: `AGE,OLN,SHR`'
+      required: false
+    - name: platform
+      in: query
+      schema:
+        type: string
+      description: '`APP` `WEB` `IBK` Example: `APP,WEB,IBK`'
+      required: false
+    - name: code
+      in: query
+      schema:
+        type: string
+      description: 'Example: `PVU_SHR_WEB_0009,PVU_SHR_WEB_0009`'
+      required: false
+    - name: sellerID
+      in: query
+      schema:
+        type: string
+      description: 'Example: `1,2,3`'
+      required: false
+    - name: provinceCode
+      in: query
+      schema:
+        type: string
+      description: 'provinceCode: Ex: `01,02,03`'
+      required: false
+  responses:
+    200:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+                properties:
+                  page:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  total:
+                    type: integer
+                  terminals:
+                    $ref: '#/components/schemas/terminals'
+    404:
+      description: Seller not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string

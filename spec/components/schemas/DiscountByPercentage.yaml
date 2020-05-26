@@ -1,0 +1,10 @@
+required:
+  - percent
+properties:
+  percent:
+    type: integer
+    example: 8
+  maxValue:
+    type: integer
+    format: int64
+    example: 5000000

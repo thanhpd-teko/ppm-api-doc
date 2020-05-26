@@ -1,0 +1,27 @@
+required:
+  - code
+properties:
+  code:
+    type: string
+  messsage:
+    type: string
+  extra:
+    description: Trả về danh sách đơn hàng confirm lỗi và thành công
+    type: object
+    properties:
+      failed:
+        description: Danh sách đơn hàng không thành công
+        type: array
+        items:
+          $ref: '#/components/schemas/PromotionOrderError'
+      success:
+        description: Danh sách đơn hàng thành công
+        type: array
+        items:
+          properties:
+            orderId:
+              type: string
+              description: Mã đơn hàng
+            transactionId:
+              type: string
+              description: transactionId tương ứng trên hệ thống PPM

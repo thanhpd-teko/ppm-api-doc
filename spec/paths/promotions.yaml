@@ -1,0 +1,79 @@
+get:
+  tags:
+    - Promotion API
+  summary: Get Promotion API
+  description: Lấy list các chương trình khuyến mãi theo điều kiện filter
+  operationId: get-coupon-promotions
+  parameters:
+    - name: channel
+      description: Kênh bán hàng
+      in: query
+      required: false
+      schema:
+        $ref: '#/components/schemas/Channel'
+    - name: terminal
+      in: query
+      description: Địa điểm bán hàng
+      required: false
+      schema:
+        type: string
+    - name: coupon
+      in: query
+      description: Mã giảm giá (required khi type = coupon)
+      schema:
+        type: string
+    - name: type
+      in: query
+      description: Loại khuyến mãi (theo mã giảm giá hay theo đơn hàng)
+      required: true
+      schema:
+        type: string
+        enum:
+          - order
+          - coupon
+    - name: payment_method
+      in: query
+      description: Hình thức thanh toán
+      required: false
+      schema:
+        type: string
+    - name: grand_total
+      in: query
+      description: Giá trị đơn hàng
+      required: false
+      schema:
+        type: number
+        format: double
+    - name: start_time
+      in: query
+      description: Thời điểm bắt đầu theo format yyyy-MM-dd'T'HH:mm:ssZ
+      required: false
+      schema:
+        type: string
+    - name: end_time
+      in: query
+      description: Thời điểm kết thúc theo format yyyy-MM-dd'T'HH:mm:ssZ
+      required: false
+      schema:
+        type: string
+    - name: skus
+      in: query
+      schema:
+        type: string
+      description: |
+        List các sku trong đơn hàng tách nhau bởi dấu phẩy, để lấy thêm thông tin promotion áp
+        dụng cho sản phẩm nào. Nên truyền lên trong trường hợp lấy coupon promotion cho sản phẩm
+      example: 1807447,1807448,1807449
+  responses:
+    '200':
+      description: Lấy thông tin chương trình khuyến mãi thành công
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/PromotionResp'
+    '400':
+      description: Sai thông tin, mã coupon không tồn tại hoặc đã được sử dụng
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/GetPromotionError'

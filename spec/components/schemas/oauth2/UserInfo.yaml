@@ -1,0 +1,56 @@
+required:
+  - sub
+  - name
+  - picture
+  - updated_at
+
+properties:
+  sub:
+    type: string
+    description: User ID.
+    example: "0008a2dba1ae426d8ae6e0775a7e69d9"
+  name:
+    type: string
+    description: User's name.
+    example: "Firstname Middlename Lastname"
+  picture:
+    type: string
+    format: url
+    description: User's current avatar url.
+    example: "https://lh3.googleusercontent.com/a-/AAuE7mAuo2uYjnRpQLMGGTQt9x2ylG6e93CNd8r_QNA0"
+  updated_at:
+    type: string
+    description: Last update time for user.
+    example: "2019-12-31 23:59:59"
+  email:
+    type: string
+    description: User's email.
+    example: "user@email.com"
+  phone_number:
+    type: string
+    description: User's phone number.
+    example: "0123456789"
+  birthday:
+    type: string
+    format: date
+    description: User's birthday.
+    example: "2019-12-31"
+  address:
+    type: string
+    description: User's address.
+    example: "330 Miller Rd. Doylestown, PA 18901"
+  roles:
+    type: array
+    items:
+      type: string
+    description: List of user's current roles (in all services).
+    example: ["service_1:admin", "service_2:developer"]
+  permissions:
+    type: array
+    items:
+      type: string
+    description: List of user's current permissions (in all services).
+    example: ["service_1:user:read", "service_2:client:update"]
+  meta_data:
+    type: object
+    description: User's other data, for example `sso_id`, `asia_id`.

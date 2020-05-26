@@ -1,0 +1,22 @@
+properties:
+  applyFrom:
+    type: integer
+    format: int64
+    description: only apply if the order grand total is higher than
+    example: 1000000
+  name:
+    type: string
+    description: the name of the program
+    example: Voucher doanh nghiệp cho đơn hàng lớn hơn 10 triệu
+  startAt:
+    type: integer
+    format: int64
+    description: from when this voucher can be used
+  endAt:
+    type: integer
+    format: int64
+  discount:
+    type: object
+    oneOf:
+      - '$ref': '#/components/schemas/DiscountByValue'
+      - '$ref': '#/components/schemas/DiscountByPercentage'

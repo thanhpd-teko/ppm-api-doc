@@ -1,0 +1,25 @@
+parameters:
+  - description: The Pick coupon ID of stock.picking needs to handle WMS
+    name: id
+    required: true
+    in: path
+    schema:
+      type: integer
+put:
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/eton_so_returned_req'
+    required: true
+  operationId: put_external_so_return
+  tags:
+    - External
+  responses:
+    '200':
+      description: Successful updating
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/eton_success_res'
+  summary: Update SO status by type (returned)

@@ -1,0 +1,11 @@
+title: calculatePoint
+required:
+- orderAmount
+type: object
+properties:
+  orderDetail:
+    type: array
+    items:
+      $ref: '#/components/schemas/orderDetail'
+  orderAmount:
+    type: integer

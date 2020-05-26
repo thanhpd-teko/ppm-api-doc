@@ -1,0 +1,33 @@
+type: object
+description: Thông tin hóa đơn.
+required:
+  - type
+  - taxCode
+  - name
+  - address
+properties:
+  email:
+    type: string
+    format: email
+    description: Email của khách hàng
+  printPretaxPrice:
+    type: boolean
+    description: In giá trước thuế
+  printAfter:
+    type: integer
+    description: In sau ngày
+  type:
+    type: string
+    description: "Loại hóa đơn. Giá trị: 01, 02"
+  taxCode:
+    type: string
+    description: Mã số thuế
+  phone:
+    type: string
+    description: Điện thoại
+  name:
+    type: string
+    description: Tên khách hàng
+  address:
+    type: string
+    description: Địa chỉ

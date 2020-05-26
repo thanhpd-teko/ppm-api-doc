@@ -1,0 +1,70 @@
+get:
+  summary: Get 1 active profile
+  tags:
+    - Profiles
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              result:
+                type: object
+                properties:
+                  profiles:
+                    $ref: "#/components/schemas/profile"
+  operationId: get_profiles
+  description: Get 1 active profile of an user per client system
+  parameters:
+    - schema:
+        type: string
+      in: query
+      name: clientCode
+      required: true
+      description: Code for client to connect to User service
+    - schema:
+        type: string
+      in: header
+      name: Authorization
+      required: true
+      description: "`Bearer {access token}`"
+patch:
+  tags:
+    - Profiles
+  summary: Update user profile
+  operationId: update_user_profile
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/profilePatchRequest"
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+  parameters:
+    - schema:
+        type: string
+      in: query
+      name: clientCode
+      required: true
+      description: Code for client to connect to User service
+    - schema:
+        type: string
+      in: header
+      name: Authorization
+      required: true
+      description: "`Bearer {access token}`"
+

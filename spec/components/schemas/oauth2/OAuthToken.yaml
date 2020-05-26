@@ -1,0 +1,28 @@
+required:
+  - access_token
+  - expires_in
+  - refresh_token
+  - scope
+  - token_type
+properties:
+  access_token:
+    type: string
+    description: access_token is JWT string token which is signed from Private Key of ID Service.
+    example: "eyJ0eXAiOiJKV1QiLCJh...DUf2yEl0DTYAAJIzIYRBdOvkLQ"
+  expires_in:
+    type: integer
+    format: int64
+    description: expires_in is an integer which describe TTL of access_token.
+    example: 864000
+  refresh_token:
+    type: string
+    description: refresh_token (with grant_type is authorazation_code, password and refresh_token).
+    example: "UTiylovD1xiwVA...rpQOgh7"
+  scope:
+    type: string
+    description: scope with access_token.
+    example: "profile"
+  token_type:
+    type: string
+    description: token_type is equal to Bearer.
+    example: "Bearer"

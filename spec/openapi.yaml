@@ -1,0 +1,180 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Teko Api Specification
+  contact:
+    email: tien.dv@teko.vn
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  x-logo:
+    url: 'https://teko-vn.github.io/api-docs/Teko-Logo-01.svg'
+  description: >
+    This documentation describes APIs used in/exposed from Teko micro-services ecosystem
+
+    # Introduction
+
+    These specifications are following
+
+    [OpenAPI 3.0.0
+    format](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md).
+
+tags:
+  - name: Vouchers
+    description: Provides apis for voucher service
+  - name: IAM API
+    description: |
+      We provide four examples one for each of the grant types defined by the [OAuth2 RFC 6749](https://tools.ietf.org/html/rfc6749).
+      These grant types (or workflows) are:
+      1. Authorization Code Grant.
+      2. The Implicit Grant.
+      3. The Resource Owner Password Credentials Grant.
+      4. The Client Credentials Grant.
+
+      For OAuth2, you can see example to connect with OAuth2 [here](https://requests-oauthlib.readthedocs.io/en/latest/oauth2_workflow.html).
+
+      In addition, we also support [OpenID Connect Flow](https://openid.net/connect/) which has been developed by extending OAuth 2.0.
+
+      OAuth 2.0 is a specification as to how to issue `access tokens`. It is defined in RFC 6749 (The OAuth 2.0 Authorization Framework).
+
+      OpenID Connect is a specification as to how to issue ID tokens. The main part is defined in OpenID Connect Core 1.0.
+
+      **Access Token**
+
+      JSON Web Token (JWT) is an open standard ([`RFC 7519`](https://tools.ietf.org/html/rfc7519)) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA or ECDSA.
+      Although JWTs can be encrypted to also provide secrecy between parties, we will focus on signed tokens. Signed tokens can verify the integrity of the claims contained within it, while encrypted tokens hide those claims from other parties. When tokens are signed using public/private key pairs, the signature also certifies that only the party holding the private key is the one that signed it.
+
+      IAM Access Token (JWT) with following format:
+      - ***HEADER***: algorithm & token type
+      ```
+      {
+          "typ": "JWT",
+          "alg": "RS256"
+      }
+      ```
+
+      - ***PAYLOAD***: data
+      ```
+      {
+          "jti": "14qbEKuydIxz7IBLpg9EXludOOGztBEpoadiKcuEbtcct4Rd",
+          "client_id": "client_id_0",
+          "scope": "profile",
+          "user": {
+            "id": 1,
+            "name": "User 0"
+          }
+      }
+      ```
+        - `jti` - JWT ID.
+        - `client_id` - your client_id of application.
+        - `scope` - your scope of application.
+        - `user` - with id and name are included -  `user_id` and `user_name`.
+
+      - ***VERIFY SIGNATURE***
+
+        `RSASHA56(base64UrlEncode(header) + "." + base64UrlEncode(payload), <your public key>, <your private key>)`.
+
+      See [here](https://tools.ietf.org/html/rfc7519#section-4) for more information.
+  - description: Branch operations
+    name: Branches
+  - description: Warehouse operations
+    name: Warehouses
+  - description: Location operations
+    name: Locations
+  - description: StockQuant operations
+    name: Stock Quantities
+  - description: StockOut operations
+    name: Stock Out
+  - description: SRM product operations
+    name: SRM Products
+  - description: External APIs
+    name: External
+  - name: Promotion API
+    description: Provide apis for other services to get promotion info
+  - name: Promotion Confirm/Validation API
+    description: Provide apis for other services to get promotion info
+  - name: Product Listing
+    description: Provides apis for Product Listing APIs
+  - name: Competitor API
+    description: Provides api to get a list of competitors
+  - name: Orders
+    description: Provides APIs to create and manage Orders
+  - name: Banners
+    description: Provide API to get banner info
+  - name: User Services
+    description: Provide API for user service
+servers:
+  - url: 'http://example.com/api/v1'
+  - url: 'https://example.com/api/v1'
+  - url: /api/v2
+  - url: https://orders.dev.svc.5kbps.io
+    description: Order Development Server
+
+x-tagGroups:
+  - name: Offline Sales
+    tags:
+      - Vouchers
+  - name: Identity Platform
+    tags:
+      - IAM API
+  - name: WMS
+    tags:
+      - Branches
+      - Warehouses
+      - Locations
+      - Stock Quantities
+      - Stock Out
+      - External
+  - name: SRM
+    tags:
+      - SRM Products
+  - name: Product Listing
+    tags:
+      - Search/Listing
+      - Version 2
+      - Brand
+      - DisplayCategory
+      - MenuItem
+      - Search Platform
+  - name: Price And Promotions
+    tags:
+      - Promotion Coupon API
+      - Promotion API
+      - Promotion Confirm/Validation API
+      - Competitor API
+  - name: Payment service
+    tags:
+      - Methods
+      - Transactions
+      - Payments
+      - Qrcode
+  - name: Order Service
+    tags:
+      - Orders
+  - name: Page Builder
+    tags:
+      - Banners
+  - name: User Service
+    tags:
+      - Addresses
+      - Profiles
+      - Ratings
+      - Comments
+      - Saved Cart
+      - Wish List
+      - App Setting
+      - Auth
+      - Blue
+  - name: Location Service
+    tags:
+      - Location API
+  - name: DCA Service
+    tags:
+      - Account
+      - Account Lookup
+  - name: Seller Service
+    tags:
+      - Sellers
+      - Terminals
+      - Extra
+      - Terminals Warehouses Mapping

@@ -1,0 +1,20 @@
+type: object
+required:
+  - lineItemId
+  - sku
+  - name
+  - quantity
+properties:
+  lineItemId:
+    type: string
+    format: uuid
+    description: ID của dòng hàng khuyến mãi
+  sku:
+    type: string
+    description: Mã sản phẩm tặng
+  name:
+    type: string
+    description: Tên sản phẩm tặng
+  quantity:
+    type: integer
+    description: Số lượng sản phẩm tặng cho một lần áp dụng

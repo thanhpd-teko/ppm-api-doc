@@ -1,0 +1,34 @@
+post:
+  tags:
+    - Methods
+  summary: >-
+    Get available payment methods for cart. Refer to payment_methods/check api
+    for valid payment methods definition
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/PaymentMethodCartReq'
+    required: true
+  operationId: post_payment_method_cart
+  responses:
+    '200':
+      description: Methods response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PaymentMethodCartRes'
+    '400':
+      description: Invalid request response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PaymentError'
+    '403':
+      description: Forbiden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PaymentForbiddenError'
+  servers:
+    - url: 'http://dev-payment.teko.vn/api'

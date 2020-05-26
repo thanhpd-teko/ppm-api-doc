@@ -1,0 +1,10 @@
+required:
+  - orderId
+  - orderCode
+properties:
+  orderId:
+    type: string
+    description: Order uuid
+  orderCode:
+    type: string
+    description: Order Code

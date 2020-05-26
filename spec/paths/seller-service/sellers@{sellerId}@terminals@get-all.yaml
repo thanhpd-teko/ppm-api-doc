@@ -1,0 +1,40 @@
+get:
+  tags:
+    - Sellers
+  summary: List of all Terminals that Seller can selling on
+  description: API to get list of all Terminals that Seller can selling on
+  parameters:
+    - name: sellerId
+      in: path
+      required: true
+      schema:
+        type: integer
+  responses:
+    200:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+
+              message:
+                type: string
+              result:
+                type: object
+                properties:
+                  terminals:
+                    $ref: '#/components/schemas/terminals'
+    404:
+      description: Seller not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string

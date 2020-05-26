@@ -1,0 +1,133 @@
+get:
+  summary: Get saved cart by user
+  tags:
+    - Saved Cart
+  operationId: get_saved_carts
+  parameters:
+    - name: Authorization
+      in: header
+      required: true
+      description: "`Bearer {access token}`"
+      schema:
+        type: string
+    - name: clientCode
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    200:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+                properties:
+                  savedCarts:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/savedCartProductRes"
+    404:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              result:
+                type: object
+
+put:
+  summary: create or update saved cart for user
+  tags:
+    - Saved Cart
+  operationId: post_saved_carts
+  parameters:
+    - name: Authorization
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: clientCode
+      in: query
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            products:
+              type: array
+              items:
+                required:
+                  - productSku
+                  - quantity
+                  - sellerId
+                type: object
+                properties:
+                  isSelected:
+                    type: boolean
+                    example: true
+                  productSku:
+                    type: string
+                  quantity:
+                    type: integer
+                  sellerId:
+                    type: integer
+    required: true
+  responses:
+    201:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+delete:
+  summary: Delete saved cart by user
+  tags:
+    - Saved Cart
+  operationId: delete_saved_carts
+  parameters:
+    - name: Authorization
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: clientCode
+      in: query
+      required: true
+      schema:
+        type: string
+    - name: ids
+      in: query
+      schema:
+        type: string
+  responses:
+    200:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string

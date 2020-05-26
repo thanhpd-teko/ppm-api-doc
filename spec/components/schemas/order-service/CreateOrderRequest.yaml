@@ -1,0 +1,85 @@
+required:
+  - customer
+  - items
+  - totalDiscount
+  - service
+  - grandTotal
+  - terminalCode
+  - channelCode
+  - sellerId
+properties:
+  originalId:
+    description: |
+      Mã đơn hàng gốc. 
+      Dùng trong trường hợp cần clone order, trường này sẽ dùng để track lại id đơn hàng được clone từ.
+    type: string
+    format: uuid
+  refOrderCode:
+    description: Mã code của đơn được phát sinh từ hệ thông khác.
+    type: string
+  salesmanId:
+    description: | 
+      ID nhân viên bán hàng.
+      Bắt buộc nếu channel khác online.  
+    type: string
+  customer:
+    $ref: "#/components/schemas/Customer"
+  items:
+    description: Thông tin sản phẩm trong đơn hàng
+    type: array
+    items:
+      $ref: "#/components/schemas/OrderCreateItem"
+  inventoryCode:
+    description: Mã kho xuất hàng
+    type: string
+  totalDiscount:
+    description: Giảm giá trên đơn hàng
+    type: string
+    format: decimal
+  note:
+    description: Ghi chú, diễn giải
+    type: string
+  payments:
+    description: Thông tin thanh toán cho đơn.
+    type: array
+    items:
+      $ref: "#/components/schemas/OrderPayment"
+  service:
+    $ref: "#/components/schemas/OrderService"
+  billingInfo:
+    $ref: "#/components/schemas/BillingInfo"
+  shippingInfo:
+    $ref: "#/components/schemas/OrderCreateShippingInfo"
+  grandTotal:
+    description: Tổng giá trị đơn hàng
+    type: string
+    format: decimal
+  referralCode:
+    description: Mã giới thiệu
+    type: string
+  memberCard:
+    description: Mã thẻ thành viên, áp dụng cho loyalty.
+    type: string
+  promotions:
+    description: Chương trình khuyến mãi
+    type: array
+    items:
+      $ref: "#/components/schemas/OrderPromotion"
+  terminalCode:
+    description: |
+      "Code của địa điểm bán hàng
+      Tham chiếu vào: https://catalog.services.teko.vn/extra-data?type=channels"
+    type: string
+    example: CP00
+  channelCode:
+    description: | 
+      "Code kênh bán hàng
+      Tham chiếu vào: https://catalog.services.teko.vn/extra-data?type=channels"
+    type: string
+    example: pv_showroom
+  sellerId:
+    description: |
+      "ID của nhà bán hàng
+      Tham chiếu vào: https://catalog.services.teko.vn/extra-data?type=sellers"
+    type: integer
+    example: 1

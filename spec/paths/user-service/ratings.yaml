@@ -1,0 +1,103 @@
+get:
+  summary: "Get ratings"
+  tags:
+    - Ratings
+  operationId: get_ratings
+  parameters:
+    - name: userId
+      in: query
+      schema:
+        type: string
+    - name: clientCode
+      in: query
+      schema:
+        type: string
+    - name: productSku
+      in: query
+      schema:
+        type: string
+    - name: sellerId
+      in: query
+      schema:
+        type: integer
+    - name: page
+      in: query
+      schema:
+        type: integer
+        default: 1
+    - name: pageSize
+      in: query
+      schema:
+        type: integer
+        default: 10
+    - name: sortField
+      in: query
+      description: Sort field
+      schema:
+        type: string
+        default: updated_at
+    - name: sortOrder
+      in: query
+      description: Sort order
+      schema:
+        type: string
+        default: descend
+  responses:
+    200:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+                properties:
+                  ratings:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ratingResponse'
+post:
+  summary: "Create rating"
+  tags:
+    - Ratings
+  operationId: post_ratings
+  parameters:
+    - name: Authorization
+      in: header
+      schema:
+        type: string
+      required: true
+    - name: clientCode
+      in: query
+      schema:
+        type: string
+      required: true
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/rating'
+    required: true
+  responses:
+    200:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+                properties:
+                  rating:
+                    $ref: '#/components/schemas/ratingResponse'
+  x-codegen-request-body-name: payload

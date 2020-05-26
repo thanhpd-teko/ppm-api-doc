@@ -1,0 +1,8 @@
+required:
+  - orders
+properties:
+  orders:
+    description: Danh sách order cần confirm
+    type: array
+    items:
+      $ref: '#/components/schemas/PromotionOrderReq'

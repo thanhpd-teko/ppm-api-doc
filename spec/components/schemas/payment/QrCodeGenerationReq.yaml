@@ -1,0 +1,82 @@
+required:
+  - clientCode
+  - qrType
+  - terminalCode
+  - expDate
+  - checksum
+properties:
+  clientCode:
+    description: Code for client to connect to Payment service. PS provide this code to client before deploying
+    type: string
+    example: 'PHONGVU01'
+  terminalCode:
+    description: Branch code/terminal ID that process the order or receipts.
+    type: string
+    example: 'CP09'
+  serviceCode:
+    type: string
+    description: Service code of QR. It is null if QRType=1 and =RETAIL if qrType=2
+    example: 'QR'
+  qrType:
+    type: string
+    enum:
+    - '01'
+    - '02'
+    
+  
+    description: |-
+      QR Type
+      - `01-QR sản phẩm`
+      - `02-QR đơn hàng`
+
+
+    example: '01'
+  sku:
+    type: string
+    description: SKU of product want to generate QR code when qrType =01
+    example: '183620'
+  txnId:
+    type: string
+    description: >-
+      Order ID or billing number. With PhongVu merchant and serviceCode=RETAIL, it is not null and it is order ID in OM system
+    example: '19YTFS20'
+  amount:
+    type: number
+    format: double
+    description: Amount to pay by QR method, it is not null if qrType=2,3
+    example: 2500000
+
+  note:
+    type: string
+    description: additional information
+    example: 'Generate QR code for order payment'
+  expDate:
+    type: string
+    description: Expire time for QRcode with the format yyMMddHHmm
+    example: '1908201600'
+  width:
+    type: integer
+    description: width of QRcode Image, default value=300 if it is null
+    example: '300'
+  height:
+    type: integer
+    description: height of QRcode Image, default value=300 if it is null
+    example: '300'
+  imageType:
+    type: string
+    enum:
+    - 'binary'
+    - 'image'
+    description: type of QR data format, default value=image if it is null
+    example: 'image'
+  imageFormat:
+    type: string
+    enum:
+    - 'png'
+    description: format of Qrcode image, default value=png if it is null
+    example: 'png'
+  checksum:
+    type: string
+    description: Secret string encrypted by secret key and all parameters for checksum
+    example: '4fb75072afc5bc29ad00f71a11c127d9'
+type: object

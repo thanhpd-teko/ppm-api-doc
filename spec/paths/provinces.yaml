@@ -1,0 +1,23 @@
+get:
+  summary: Get All Provinces
+  tags:
+    - Location API
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              result:
+                type: object
+                properties:
+                  provinces:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/area"
+  description: Get all provinces in Vietnam
+  operationId: get_all_provinces

@@ -1,0 +1,41 @@
+post:
+  summary: Promotion Confirm Multi API
+  description: Xác nhận nhiều đơn hàng cùng lúc và trừ ngân sách
+  operationId: promotions/confirm-multi
+  tags:
+    - Promotion Confirm/Validation API
+  parameters:
+    - in: header
+      name: PPM-Authorization
+      schema:
+        type: string
+        format: Bearer Token
+      required: true
+      description: Bearer Token được gen bằng jwt, thuật toán RS256, payload phải có exp
+    - in: header
+      name: Source
+      schema:
+        type: string
+        format: string
+      required: true
+      description: Client gọi request, hiện đang support 'OM'
+  requestBody:
+    description: Dữ liệu khuyến mãi của đơn hàng
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/PromotionMultiOrderReq'
+  responses:
+    '200':
+      description: Xác nhận đơn, trừ ngân sách thành công
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/PromotionConfirmSuccess'
+    '400':
+      description: Truyền lên sai tham số
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/PromotionConfirmError'

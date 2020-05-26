@@ -1,0 +1,70 @@
+properties:
+  promotionId:
+    type: integer
+    description: Id của promotions
+  uuid:
+    type: string
+    description: Mã uuid của gói khuyến mãi, để định danh gói khuyến mãi và benefit của nó áp dụng cho 1 hoặc 1 tập
+        order lines (combo)
+  type:
+    type: string
+    enum:
+      - promotion
+      - extra
+      - flash_sale
+    description: Loại khuyến mãi
+  applyType:
+    type: string
+    enum:
+      - product
+      - combo
+      - order
+  applyOn:
+    type: array
+    description: |
+      Mảng các order line mà ctkm áp dụng, với ctkm cho đơn hàng thì không cần truyền lên. Nếu ctkm là
+      mua 2A tặng 1B, tối thiểu phải có 5A. Đơn hàng có 5A thì applyOn là mảng chứa 5A, khối gifts có 2B.
+    items:
+      $ref: '#/components/schemas/PromotionApplyOnItem'
+  discount:
+    type: number
+    format: double
+    description: |
+      Tổng khuyến mãi được nhận cho chương trình khuyến mãi. Nếu mua 1A được giảm 10k, đơn hàng cho 3A
+      thì discount = 30k
+  originalDiscount:
+    type: number
+    format: double
+    description: Giá trị discount gốc, truyền lên trong trường hợp đơn miễn thuế
+  gifts:
+    type: array
+    items:
+      $ref: '#/components/schemas/Gift'
+    description: Mảng các quà được tặng từ ctkm. Ví dụ mua 1A được tặng 2B. Đơn hàng có 3A thì gifts = 6B
+  removedGifts:
+    type: array
+    items:
+      $ref: '#/components/schemas/RemovedGift'
+    description: Mảng các quà được trả lại
+  quantity:
+    type: integer
+    description: |
+      Số lần promotion được apply. Ví dụ nếu chương trình mua 3A tặng 2B mà đơn hàng có 7A thì quanity = 2. Nếu ctkm
+       là mua 1A tặng 1B, đơn hàng có 4A thì quantity = 4
+  voucher:
+    type: object
+    properties:
+      quantity:
+        type: integer
+        description: |
+          Số lượng voucher thực tế được tặng cho 1 ctkm. Ví dụ với CTKM mua 1 sp được tặng 1 voucher, nhưng max_quantity là 3,
+          thì khi KH mua 5 sản phẩm, số lượng voucher sản phẩm là quantity=min(5*1, 3) = 3
+  coupon:
+    type: string
+    description: Truyền lên coupon code nếu ctkm này ăn theo coupon
+required:
+  - type
+  - uuid
+  - applyType
+  - quantity
+  - promotionId

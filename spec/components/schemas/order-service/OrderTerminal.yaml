@@ -1,0 +1,48 @@
+type: object
+description: Thông tin Địa điểm bán hàng
+required:
+  - code
+  - name
+properties:
+  code:
+    description: Mã của Địa điểm bán hàng
+    type: string
+    nullable: false
+    minLength: 1
+    example: "CP01"
+  name:
+    description: Tên của địa điểm bán hàng
+    type: string
+    nullable: false
+    minLength: 1
+    example: "Chi nhánh bán hàng Phong Vũ"
+  region:
+    description: Mã phân vùng
+    type: string
+    nullable: true
+    minLength: 1
+    enum: ["northern", "central", "southern"]
+  provinceCode:
+    description: Mã tỉnh thành
+    type: string
+    nullable: true
+    minLength: 1
+    example: "79"
+  districtCode:
+    description: Mã quận huyện
+    type: string
+    nullable: true
+    minLength: 1
+    example: "7907"
+  wardCode:
+    description: Mã phuờng xã
+    type: string
+    nullable: true
+    minLength: 1
+    example: "790705"
+  address:
+    description: Địa chỉ cụ thể
+    type: string
+    nullable: true
+    minLength: 1
+    example: "Số 9-11 Nguyễn Thị Thập, Phường Tân Phú , Quận 7"

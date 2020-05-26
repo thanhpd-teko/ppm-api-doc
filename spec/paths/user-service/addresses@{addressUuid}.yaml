@@ -1,0 +1,225 @@
+get:
+  summary: Get an address
+  tags:
+    - Addresses
+  parameters:
+    - schema:
+        type: string
+      in: header
+      name: Authorization
+      required: true
+      description: "`Bearer {access token}`"
+    - name: addressUuid
+      required: true
+      in: path
+      schema:
+        type: string
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                description: USI000S
+              result:
+                type: object
+                properties:
+                  address:
+                    $ref: "#/components/schemas/address"
+          examples:
+            example-1:
+              value:
+                code: success
+                result:
+                  address:
+                    addressId: 15d1e6f2-ab70-41a4-b70a-9561d81e8ce8
+                    userId: 0f9ad68d489f47f4977185b55856d39
+                    address: "54 Nguyễn Chí Thanh, Láng Thượng, Đống Đa, Hà Nội"
+                    addressNote: Tầng 16 tòa nhà Vincom NCT
+                    isDefault: "false"
+                    email: linh.dt@teko.vn
+                    name: Đỗ Trần Linh
+                    telephone: "012345667"
+                    longitude: "21.0239309"
+                    latitude: "105.8080925"
+                    provinceCode: "01"
+                    districtCode: "0101"
+                    wardCode: "010101"
+                    clientCode: "vnshop"
+                    provinceName: "Hà Nội"
+                    districtName: "Ba Đình"
+                    wardName: "Phúc Xá"
+    "400":
+      description: Not pass Authorization
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                description: USI0001E
+              message:
+                type: string
+                description: Invalid user ID
+    "404":
+      description: Address not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                description: USI104E
+              message:
+                type: string
+                description: The requested address can not be found
+    "405":
+      description: Method Not Allowed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                description: USI106E
+              message:
+                type: string
+                description: The requested address only can change by the owner
+  description: Get a address by address id
+  operationId: "2"
+patch:
+  summary: "Update address"
+  tags:
+    - Addresses
+  parameters:
+    - schema:
+        type: string
+      in: header
+      name: Authorization
+      required: true
+      description: "`Bearer {access token}`"
+    - name: addressUuid
+      required: true
+      in: path
+      schema:
+        type: string
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+    "400":
+      description: Not pass Authorization
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                description: USI0001E
+              message:
+                type: string
+                description: Invalid user ID
+    "404":
+      description: Address not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                description: USI104E
+              message:
+                type: string
+                description: The requested address can not be found
+    "405":
+      description: Method Not Allowed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                description: USI106E
+              message:
+                type: string
+                description: The requested address only can change by the owner
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/addressPatchRequest"
+    description: ""
+delete:
+  summary: "Delete an address"
+  tags:
+    - Addresses
+  parameters:
+    - schema:
+        type: string
+      in: header
+      name: Authorization
+      required: true
+      description: "`Bearer {access token}`"
+    - name: addressUuid
+      required: true
+      in: path
+      schema:
+        type: string
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+    "404":
+      description: Address not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                description: USI104E
+              message:
+                type: string
+                description: The requested address can not be found
+    "405":
+      description: Delete default address
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                description: USI105E
+              message:
+                type: string
+                description: The default address can not be delete
+  operationId: delete_address
+  description: Delete an address

@@ -1,0 +1,10 @@
+properties:
+  message:
+    type: string
+  result:
+    type: object
+  code:
+    type: string
+required:
+  - code
+type: object

@@ -1,0 +1,86 @@
+post:
+  summary: "Filter Account on Elastic Search"
+  tags:
+    - Account Lookup
+  servers:
+    - url: 'https://search.develop.tekoapis.net/api/v1/suggest'
+  parameters:
+    - name: x-tk-access-token
+      in: header
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            query:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: "telephone or taxCode"
+                type:
+                  type: string
+                  description: "phrase_prefix"
+            suggestions:
+              type: array
+              items:
+                type: object
+                properties:
+                  suggestion_name:
+                    type: string
+                    description: "dca-api"
+                  filters:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                          description: sellerId or roleId
+                        value:
+                          type: string
+            size:
+              type: integer
+            enable_highlight:
+              type: boolean
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              data:
+                type: object
+                properties:
+                  dca-api:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        address:
+                          type: string
+                        name:
+                          type: string
+                        taxCode:
+                          type: string
+                        telephone:
+                          type: string
+                        isCompany:
+                          type: boolean
+                        sellerId:
+                          type: integer
+                        roleId:
+                          type: string
+
+

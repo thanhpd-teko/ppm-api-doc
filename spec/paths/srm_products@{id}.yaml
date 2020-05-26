@@ -1,0 +1,44 @@
+put:
+  tags:
+    - SRM Products
+  requestBody:
+    $ref: '#/components/requestBodies/srm_product_item_req'
+  operationId: put_srm_product_item
+  summary: Update a product
+  responses:
+    '200':
+      description: Successful Update
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/srm_product_success'
+    '403':
+      description: Insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/srm_product_error'
+parameters:
+  - name: id
+    required: true
+    in: path
+    schema:
+      type: integer
+delete:
+  tags:
+    - SRM Products
+  operationId: delete_srm_product_item
+  summary: Delete a product
+  responses:
+    '200':
+      description: Successful Delete
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/srm_product_success'
+    '403':
+      description: Insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/srm_product_error'

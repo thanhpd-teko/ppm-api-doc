@@ -1,0 +1,26 @@
+get:
+  summary: Get Districts By Province Code
+  tags:
+    - Location API
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              result:
+                type: object
+                properties:
+                  districts:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/area"
+  parameters:
+    - schema:
+        type: string
+      in: query
+      name: provinceCode

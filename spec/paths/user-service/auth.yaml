@@ -1,0 +1,66 @@
+post:
+  summary: "Decrypt Data and Verify Signature"
+  tags:
+    - Auth
+  operationId: post_auth
+  requestBody:
+    content:
+      application/json:
+        schema:
+          required:
+            - data
+            - signature
+          type: object
+          properties:
+            data:
+              type: string
+            signature:
+              type: string
+    required: true
+  responses:
+    200:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              result:
+                type: object
+                properties:
+                  mobile:
+                    type: string
+                    maxLength: 255
+                  bankcode:
+                    type: string
+                    maxLength: 255
+                  token:
+                    type: string
+                    maxLength: 255
+            example:
+              code: "00"
+              message: Success
+              result:
+                mobile: " 841693488992"
+                bankcode: "VBA"
+                token: CLIENT_VNSHOP_TEST
+    400:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                description: 95|97
+              message:
+                type: string
+                description: Incorrect Padding|Chữ ký không hợp lệ
+            example:
+              code: "97"
+              message: Chữ ký không hợp lệ

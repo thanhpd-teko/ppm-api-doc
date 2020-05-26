@@ -1,0 +1,13 @@
+properties:
+  sku:
+    type: string
+  lineItemId:
+    type: string
+    description: Id của order line converted từ gift này
+  quantity:
+    type: integer
+    description: Nếu chương trình mua 3 tặng 2 thì quantity ở đây sẽ là 2
+required:
+  - sku
+  - quantity
+  - lineItemId

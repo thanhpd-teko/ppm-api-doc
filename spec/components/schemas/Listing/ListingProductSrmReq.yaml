@@ -1,0 +1,39 @@
+type: array
+description: Danh sách sản phẩm và tồn kho tương ứng
+items:
+  type: object
+  properties:
+    sku:
+      type: string
+      description: SKU của sản phẩm
+    importPrice:
+      type: number
+      format: double
+      description: Giá nhập
+    salePoint:
+      type: number
+      format: float
+      description: Điểm thưởng
+    timestamp:
+      type: number
+      format: float
+      description: Thời gian cập nhật thông tin sản phẩm (timestamp tính theo milisecond)
+    tax:
+      type: object
+      description: Thuế
+      properties:
+        taxIn:
+          type: number
+          format: float
+          description: Thuế nhập
+        taxOut:
+          type: number
+          format: float
+          description: Thuế xuất
+        taxInCode:
+          type: string
+          description: Mã loại thuế nhập
+        taxOutCode:
+          type: string
+          description: Mã loại thuế xuất
+
