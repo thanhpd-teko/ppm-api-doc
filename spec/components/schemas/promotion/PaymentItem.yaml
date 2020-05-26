@@ -11,6 +11,9 @@ properties:
   ref:
     type: string
     description: Mã PHM - khi paymentMethod = 'PMH'
+  promotionId:
+    type: string
+    description: Truyền lên promotionId tương ứng trong trường hợp là phiếu mua hagf
 
 required:
   - paymentId
