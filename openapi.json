@@ -79,6 +79,10 @@
     {
       "name": "User Services",
       "description": "Provide API for user service"
+    },
+    {
+      "name": "Policy",
+      "description": "Provide API for policy service"
     }
   ],
   "servers": [
@@ -201,6 +205,12 @@
         "Terminals",
         "Extra",
         "Terminals Warehouses Mapping"
+      ]
+    },
+    {
+      "name": "Policy Service",
+      "tags": [
+        "Policy"
       ]
     }
   ],
@@ -2131,6 +2141,72 @@
           {
             "url": "http://dev-payment.teko.vn/api"
           }
+        ]
+      }
+    },
+    "/shipping-fee": {
+      "get": {
+        "summary": "Get shipping fee",
+        "servers": [
+          {
+            "url": "https://policy.develop.tekoapis.net"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "terminal",
+            "in": "query",
+            "description": "Sale terminal",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "vnshop"
+          },
+          {
+            "name": "grandTotal",
+            "in": "query",
+            "description": "Order value",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "shippingLocation",
+            "in": "query",
+            "description": "Shipping location",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "HN"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get shipping fee of an order",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShippingFeeRes"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Not supported shipping location, order sku",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Policy"
         ]
       }
     },
@@ -16423,6 +16499,24 @@
             "type": "string",
             "format": "date-time",
             "description": "time partner reply to ps"
+          }
+        }
+      },
+      "ShippingFeeRes": {
+        "required": [
+          "code"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "result": {
+            "properties": {
+              "shippingFee": {
+                "type": "number",
+                "description": "Shipping fee"
+              }
+            }
           }
         }
       },
