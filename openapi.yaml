@@ -1686,6 +1686,12 @@ paths:
       servers:
         - url: 'https://policy.develop.tekoapis.net'
       parameters:
+        - name: X-Request-Id
+          in: header
+          description: Request id for tracking - should be uuid
+          required: true
+          schema:
+            type: string
         - name: terminal
           in: query
           description: Sale terminal
