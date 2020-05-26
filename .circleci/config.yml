@@ -40,7 +40,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "f5:4a:44:a1:32:8c:ee:a9:6b:96:47:0a:f5:0d:d1:4c"
+            - "03:e5:ec:8e:3c:13:c4:11:f7:d7:ca:ec:42:98:bd:8a"
       - *update_npm
       - *restore_cache
       - *install_dependencies
